@@ -119,19 +119,19 @@ public class GameFrame extends javax.swing.JFrame {
 
 		jLabelBattleship
 				.setIcon(new javax.swing.ImageIcon(
-						"\\img\\battleship.png")); // NOI18N
+						"img\\battleship.png")); // NOI18N
 
 		jLabelSubmarine
 				.setIcon(new javax.swing.ImageIcon(
-						"C:\\Users\\L1r\\Google Drive\\Project Battleship\\Netbeans\\submarine.png")); // NOI18N
+						"img\\submarine.png")); // NOI18N
 
 		jLabelDestroyer
 				.setIcon(new javax.swing.ImageIcon(
-						"C:\\Users\\L1r\\Google Drive\\Project Battleship\\Netbeans\\destroyer.png")); // NOI18N
+						"img\\destroyer.png")); // NOI18N
 
 		jLabelCruiser
 				.setIcon(new javax.swing.ImageIcon(
-						"C:\\Users\\L1r\\Google Drive\\Project Battleship\\Netbeans\\cruiser.png")); // NOI18N
+						"img\\cruiser.png")); // NOI18N
 
 		jRadioButtonHorizontal.setBackground(new java.awt.Color(255, 255, 255));
 		jRadioButtonHorizontal.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
