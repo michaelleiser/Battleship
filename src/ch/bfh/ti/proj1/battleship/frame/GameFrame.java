@@ -1,21 +1,100 @@
 package ch.bfh.ti.proj1.battleship.frame;
 
 import java.awt.Color;
+import java.awt.Cursor;
+import java.awt.Dimension;
+import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.BorderFactory;
+import javax.swing.GroupLayout;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
+import javax.swing.JTextPane;
 import javax.swing.JToggleButton;
+import javax.swing.LayoutStyle;
+import javax.swing.SwingConstants;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.WindowConstants;
 
 /**
  * 
  * @author L1r
  */
-public class GameFrame extends javax.swing.JFrame {
+public class GameFrame extends JFrame {
 
+	// Variables declaration - do not modify
+	private JPanel jPanePlayingField;
+
+	private JPanel jPanelYourField;
+	private JLabel jLabelYourField;
+
+	private JPanel jPanelEnemyField;
+	private JLabel jLabelEnemyField;
+
+	private JRadioButton jRadioButtonNbrOfBattleship;
+	private JLabel jLabelBattleship;
+	private JRadioButton jRadioButtonNbrOfSubmarine;
+	private JLabel jLabelSubmarine;
+	private JRadioButton jRadioButtonNbrOfDestroyer;
+	private JLabel jLabelDestroyer;
+	private JRadioButton jRadioButtonNbrOfCruiser;
+	private JLabel jLabelCruiser;
+	private JRadioButton jRadioButtonHorizontal;
+	private JRadioButton jRadioButtonVertical;
+
+	private JPanel jPanelStatistics;
+	private JLabel jLabelStatistics;
+	private JLabel jLabelHits;
+	private JLabel jLabelWater;
+	private JLabel jLabelSunk;
+	private JLabel jLabelShots;
+
+	private JLabel jLabelYou;
+	private JLabel jLabelYouHits;
+	private JLabel jLabelYouWater;
+	private JLabel jLabelYouSunk;
+	private JLabel jLabelYouShots;
+
+	private JLabel jLabelEnemy;
+	private JLabel jLabelEnemyHits;
+	private JLabel jLabelEnemyWater;
+	private JLabel jLabelEnemySunk;
+	private JLabel jLabelEnemyShots;
+
+	private JPanel jPanelHistory;
+	private JLabel jLabelHistory;
+	private JScrollPane jScrollPaneHistory;
+	private JTextPane jTextPaneHistory;
+	private JPanel jPanelChat;
+	private JLabel jLabelChat;
+	private JScrollPane jScrollPaneChat;
+	private JTextPane jTextPaneChat;
+	private JScrollPane jScrollPaneYourMessage;
+	private JTextPane jTextPaneYourMessage;
+	private JButton jButtonSend;
+	private JButton jButtonRestart;
+
+	private JButton jButtonReady;
+	// End of variables declaration
+	
 	/** Creates new form NewJFrame1 */
-	public GameFrame(int nbrOfRows, int nbrOfColoumns, int nbrOfBattleships, int nbrOfSubmarines, int nbrOfDestroyers, int nbrOfCruisers) {
-		initComponents(nbrOfRows, nbrOfColoumns, nbrOfBattleships, nbrOfSubmarines, nbrOfDestroyers, nbrOfCruisers);
+	public GameFrame(int nbrOfRows, int nbrOfColoumns, int nbrOfBattleships,
+			int nbrOfSubmarines, int nbrOfDestroyers, int nbrOfCruisers) {
+		initComponents(nbrOfRows, nbrOfColoumns, nbrOfBattleships,
+				nbrOfSubmarines, nbrOfDestroyers, nbrOfCruisers);
 	}
 
 	/**
@@ -25,483 +104,292 @@ public class GameFrame extends javax.swing.JFrame {
 	 */
 	@SuppressWarnings("unchecked")
 	// <editor-fold defaultstate="collapsed" desc="Generated Code">
-	private void initComponents(int nbrOfRows, int nbrOfColoumns, int nbrOfBattleships, int nbrOfSubmarines, int nbrOfDestroyers, int nbrOfCruisers) {
+	private void initComponents(int nbrOfRows, int nbrOfColoumns,
+			int nbrOfBattleships, int nbrOfSubmarines, int nbrOfDestroyers,
+			int nbrOfCruisers) {
 
-		jLabel10 = new javax.swing.JLabel();
-		jPanePlayingField = new javax.swing.JPanel();
-		jLabelYourField = new javax.swing.JLabel();
-		jLabelEnemyField = new javax.swing.JLabel();
-		jLabelBattleship = new javax.swing.JLabel();
-		jLabelSubmarine = new javax.swing.JLabel();
-		jLabelDestroyer = new javax.swing.JLabel();
-		jLabelCruiser = new javax.swing.JLabel();
-		jRadioButtonHorizontal = new javax.swing.JRadioButton();
-		jRadioButtonVertical = new javax.swing.JRadioButton();
-		jRadioButtonNbrOfSubmarine = new javax.swing.JRadioButton();
-		jRadioButtonNbrOfSubmarine.setText(nbrOfSubmarines + "x");
-		jRadioButtonNbrOfBattleship = new javax.swing.JRadioButton();
-		jRadioButtonNbrOfBattleship.setText(nbrOfBattleships + "x");
-		jRadioButtonNbrOfDestroyer = new javax.swing.JRadioButton();
-		jRadioButtonNbrOfDestroyer.setText(nbrOfDestroyers + "x");
-		jRadioButtonNbrOfCruiser = new javax.swing.JRadioButton();
-		jRadioButtonNbrOfCruiser.setText(nbrOfCruisers + "x");
-		jPanelYourField = new javax.swing.JPanel();
-		jLabel_ = new javax.swing.JLabel();
-		jLabel1 = new javax.swing.JLabel();
-		jLabel2 = new javax.swing.JLabel();
-		jLabel3 = new javax.swing.JLabel();
-		jLabelA = new javax.swing.JLabel();
-		jToggleButtonA1 = new javax.swing.JToggleButton();
-		jToggleButtonA2 = new javax.swing.JToggleButton();
-		jToggleButtonA3 = new javax.swing.JToggleButton();
-		jLabelB = new javax.swing.JLabel();
-		jToggleButtonB1 = new javax.swing.JToggleButton();
-		jToggleButtonB2 = new javax.swing.JToggleButton();
-		jToggleButtonB3 = new javax.swing.JToggleButton();
-		jLabelC = new javax.swing.JLabel();
-		jToggleButtonC1 = new javax.swing.JToggleButton();
-		jToggleButtonC2 = new javax.swing.JToggleButton();
-		jToggleButtonC3 = new javax.swing.JToggleButton();
-		jPanelEnemyField = new javax.swing.JPanel();
-		/*jLabelx_ = new javax.swing.JLabel();
-		jLabelx1 = new javax.swing.JLabel();
-		jLabelx2 = new javax.swing.JLabel();
-		jLabelx3 = new javax.swing.JLabel();
-		jLabelxA = new javax.swing.JLabel();
-		jToggleButtonxA1 = new javax.swing.JToggleButton();
-		jToggleButtonxA2 = new javax.swing.JToggleButton();
-		jToggleButtonxA3 = new javax.swing.JToggleButton();
-		jLabelxB = new javax.swing.JLabel();
-		jToggleButtonxB1 = new javax.swing.JToggleButton();
-		jToggleButtonxB2 = new javax.swing.JToggleButton();
-		jToggleButtonxB3 = new javax.swing.JToggleButton();
-		jLabelxC = new javax.swing.JLabel();
-		jToggleButtonxC1 = new javax.swing.JToggleButton();
-		jToggleButtonxC2 = new javax.swing.JToggleButton();
-		jToggleButtonxC3 = new javax.swing.JToggleButton();*/
-		jPanelStatistics = new javax.swing.JPanel();
-		jLabelStatistics = new javax.swing.JLabel();
-		jLabelHits = new javax.swing.JLabel();
-		jLabelWater = new javax.swing.JLabel();
-		jLabelSunk = new javax.swing.JLabel();
-		jLabelShots = new javax.swing.JLabel();
-		jLabelYou = new javax.swing.JLabel();
-		jLabelEnemy = new javax.swing.JLabel();
-		jLabelYouHits = new javax.swing.JLabel();
-		jLabelYouWater = new javax.swing.JLabel();
-		jLabelYouSunk = new javax.swing.JLabel();
-		jLabelYouShots = new javax.swing.JLabel();
-		jLabelEnemyHits = new javax.swing.JLabel();
-		jLabelEnemyWater = new javax.swing.JLabel();
-		jLabelEnemySunk = new javax.swing.JLabel();
-		jLabelEnemyShots = new javax.swing.JLabel();
-		jPanelChat = new javax.swing.JPanel();
-		jButtonSend = new javax.swing.JButton();
-		jScrollPaneYourMessage = new javax.swing.JScrollPane();
-		jTextPaneYourMessage = new javax.swing.JTextPane();
-		jLabelChat = new javax.swing.JLabel();
-		jScrollPaneChat = new javax.swing.JScrollPane();
-		jTextPaneChat = new javax.swing.JTextPane();
-		jButtonRestart = new javax.swing.JButton();
-		jButtonReady = new javax.swing.JButton();
-		jPanelHistory = new javax.swing.JPanel();
-		jLabelHistory = new javax.swing.JLabel();
-		jScrollPaneChat1 = new javax.swing.JScrollPane();
-		jTextPaneHistory = new javax.swing.JTextPane();
-
-		jLabel10.setText("jLabel10");
-
-		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-		setName("FrameGame"); // NOI18N
-
-		jPanePlayingField.setBackground(new java.awt.Color(255, 255, 255));
-		jPanePlayingField.setBorder(javax.swing.BorderFactory
-				.createEtchedBorder());
-		jPanePlayingField.setCursor(new java.awt.Cursor(
-				java.awt.Cursor.DEFAULT_CURSOR));
-
-		jLabelYourField.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+		jPanePlayingField = new JPanel();
+		jPanePlayingField.setBackground(new Color(255, 255, 255));
+		jPanePlayingField.setBorder(BorderFactory.createEtchedBorder());
+		jPanePlayingField.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+		
+		jPanelYourField = new JPanel();
+		jLabelYourField = new JLabel();
+		jLabelYourField.setFont(new Font("Tahoma", 1, 14)); // NOI18N
 		jLabelYourField.setText("Your Field");
-
-		jLabelEnemyField.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-		jLabelEnemyField.setText("Enemy Field");
-
-		jLabelBattleship
-				.setIcon(new javax.swing.ImageIcon(
-						"img\\battleship.png")); // NOI18N
-
-		jLabelSubmarine
-				.setIcon(new javax.swing.ImageIcon(
-						"img\\submarine.png")); // NOI18N
-
-		jLabelDestroyer
-				.setIcon(new javax.swing.ImageIcon(
-						"img\\destroyer.png")); // NOI18N
-
-		jLabelCruiser
-				.setIcon(new javax.swing.ImageIcon(
-						"img\\cruiser.png")); // NOI18N
-
-		jRadioButtonHorizontal.setBackground(new java.awt.Color(255, 255, 255));
-		jRadioButtonHorizontal.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+		
+		jPanelEnemyField = new JPanel();
+		jLabelEnemyField = new JLabel();
+		jLabelEnemyField.setFont(new Font("Tahoma", 1, 14)); // NOI18N
+		jLabelEnemyField.setText("Enemy Field");	
+		
+		jRadioButtonNbrOfBattleship = new JRadioButton();
+		jRadioButtonNbrOfBattleship.setText(nbrOfBattleships + "x");
+		jRadioButtonNbrOfBattleship.setBackground(new Color(255, 255, 255));
+		jRadioButtonNbrOfBattleship.setFont(new Font("Tahoma", 1, 11)); // NOI18N
+		jRadioButtonNbrOfBattleship.setSelected(true);
+		jRadioButtonNbrOfBattleship.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent evt) {
+				jRadioButtonNbrOfBattleshipActionPerformed(evt);
+			}
+		});
+		jLabelBattleship = new JLabel();
+		jLabelBattleship.setIcon(new ImageIcon("img\\battleship.png")); // NOI18N
+		jRadioButtonNbrOfSubmarine = new JRadioButton();
+		jRadioButtonNbrOfSubmarine.setText(nbrOfSubmarines + "x");
+		jRadioButtonNbrOfSubmarine.setBackground(new Color(255, 255, 255));
+		jRadioButtonNbrOfSubmarine.setFont(new Font("Tahoma", 1, 11)); // NOI18N
+		jRadioButtonNbrOfSubmarine.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent evt) {
+				jRadioButtonNbrOfSubmarineActionPerformed(evt);
+			}
+		});
+		jLabelSubmarine = new JLabel();
+		jLabelSubmarine.setIcon(new ImageIcon("img\\submarine.png")); // NOI18N
+		jRadioButtonNbrOfDestroyer = new JRadioButton();
+		jRadioButtonNbrOfDestroyer.setText(nbrOfDestroyers + "x");
+		jRadioButtonNbrOfDestroyer.setBackground(new Color(255, 255, 255));
+		jRadioButtonNbrOfDestroyer.setFont(new Font("Tahoma", 1, 11)); // NOI18N
+		jRadioButtonNbrOfDestroyer.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent evt) {
+				jRadioButtonNbrOfDestroyerActionPerformed(evt);
+			}
+		});
+		jLabelDestroyer = new JLabel();
+		jLabelDestroyer.setIcon(new ImageIcon("img\\destroyer.png")); // NOI18N
+		jRadioButtonNbrOfCruiser = new JRadioButton();
+		jRadioButtonNbrOfCruiser.setText(nbrOfCruisers + "x");	
+		jRadioButtonNbrOfCruiser.setBackground(new Color(255, 255, 255));
+		jRadioButtonNbrOfCruiser.setFont(new Font("Tahoma", 1, 11)); // NOI18N
+		jRadioButtonNbrOfCruiser.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent evt) {
+				jRadioButtonNbrOfCruiserActionPerformed(evt);
+			}
+		});
+		jLabelCruiser = new JLabel();
+		jLabelCruiser.setIcon(new ImageIcon("img\\cruiser.png")); // NOI18N
+		jRadioButtonHorizontal = new JRadioButton();
+		jRadioButtonHorizontal.setBackground(new Color(255, 255, 255));
+		jRadioButtonHorizontal.setFont(new Font("Tahoma", 1, 11)); // NOI18N
 		jRadioButtonHorizontal.setSelected(true);
 		jRadioButtonHorizontal.setText("horizontal");
-		jRadioButtonHorizontal
-				.addActionListener(new java.awt.event.ActionListener() {
-					public void actionPerformed(java.awt.event.ActionEvent evt) {
-						jRadioButtonHorizontalActionPerformed(evt);
-					}
-				});
-
-		jRadioButtonVertical.setBackground(new java.awt.Color(255, 255, 255));
-		jRadioButtonVertical.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+		jRadioButtonHorizontal.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent evt) {
+				jRadioButtonHorizontalActionPerformed(evt);
+			}
+		});
+		jRadioButtonVertical = new JRadioButton();
+		jRadioButtonVertical.setBackground(new Color(255, 255, 255));
+		jRadioButtonVertical.setFont(new Font("Tahoma", 1, 11)); // NOI18N
 		jRadioButtonVertical.setText("vertical");
-		jRadioButtonVertical
-				.addActionListener(new java.awt.event.ActionListener() {
-					public void actionPerformed(java.awt.event.ActionEvent evt) {
-						jRadioButtonVerticalActionPerformed(evt);
-					}
-				});
-
-		jRadioButtonNbrOfSubmarine.setBackground(new java.awt.Color(255, 255,
-				255));
-		jRadioButtonNbrOfSubmarine.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-		//jRadioButtonNbrOfSubmarine.setText("2x");
-		jRadioButtonNbrOfSubmarine
-				.addActionListener(new java.awt.event.ActionListener() {
-					public void actionPerformed(java.awt.event.ActionEvent evt) {
-						jRadioButtonNbrOfSubmarineActionPerformed(evt);
-					}
-				});
-
-		jRadioButtonNbrOfBattleship.setBackground(new java.awt.Color(255, 255,
-				255));
-		jRadioButtonNbrOfBattleship.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-		jRadioButtonNbrOfBattleship.setSelected(true);
-		//jRadioButtonNbrOfBattleship.setText("1x");
-		jRadioButtonNbrOfBattleship
-				.addActionListener(new java.awt.event.ActionListener() {
-					public void actionPerformed(java.awt.event.ActionEvent evt) {
-						jRadioButtonNbrOfBattleshipActionPerformed(evt);
-					}
-				});
-
-		jRadioButtonNbrOfDestroyer.setBackground(new java.awt.Color(255, 255,
-				255));
-		jRadioButtonNbrOfDestroyer.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-		//jRadioButtonNbrOfDestroyer.setText("3x");
-		jRadioButtonNbrOfDestroyer
-				.addActionListener(new java.awt.event.ActionListener() {
-					public void actionPerformed(java.awt.event.ActionEvent evt) {
-						jRadioButtonNbrOfDestroyerActionPerformed(evt);
-					}
-				});
-
-		jRadioButtonNbrOfCruiser
-				.setBackground(new java.awt.Color(255, 255, 255));
-		jRadioButtonNbrOfCruiser.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-		//jRadioButtonNbrOfCruiser.setText("4x");
-		jRadioButtonNbrOfCruiser
-				.addActionListener(new java.awt.event.ActionListener() {
-					public void actionPerformed(java.awt.event.ActionEvent evt) {
-						jRadioButtonNbrOfCruiserActionPerformed(evt);
-					}
-				});
-
-		jPanelYourField.setMinimumSize(new java.awt.Dimension(200, 200));
-		jPanelYourField.setPreferredSize(new java.awt.Dimension(200, 200));
-		jPanelYourField.setLayout(new java.awt.GridLayout(4, 4));
-
-		jLabel_.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-		jLabel_.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-		jLabel_.setText("/");
-		jLabel_.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-		jPanelYourField.add(jLabel_);
-
-		jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-		jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-		jLabel1.setText("1");
-		jLabel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-		jPanelYourField.add(jLabel1);
-
-		jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-		jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-		jLabel2.setText("2");
-		jLabel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-		jPanelYourField.add(jLabel2);
-
-		jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-		jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-		jLabel3.setText("3");
-		jLabel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-		jPanelYourField.add(jLabel3);
-
-		jLabelA.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-		jLabelA.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-		jLabelA.setText("A");
-		jLabelA.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-		jPanelYourField.add(jLabelA);
-
-		jToggleButtonA1.addMouseListener(new java.awt.event.MouseAdapter() {
-			public void mouseClicked(java.awt.event.MouseEvent evt) {
-				jToggleButtonA1MouseClicked(evt);
+		jRadioButtonVertical.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent evt) {
+				jRadioButtonVerticalActionPerformed(evt);
 			}
 		});
-		jPanelYourField.add(jToggleButtonA1);
 
-		jToggleButtonA2.addMouseListener(new java.awt.event.MouseAdapter() {
-			public void mouseClicked(java.awt.event.MouseEvent evt) {
-				jToggleButtonA2MouseClicked(evt);
-			}
-		});
-		jPanelYourField.add(jToggleButtonA2);
-
-		jToggleButtonA3.addMouseListener(new java.awt.event.MouseAdapter() {
-			public void mouseClicked(java.awt.event.MouseEvent evt) {
-				jToggleButtonA3MouseClicked(evt);
-			}
-		});
-		jPanelYourField.add(jToggleButtonA3);
-
-		jLabelB.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-		jLabelB.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-		jLabelB.setText("B");
-		jLabelB.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-		jPanelYourField.add(jLabelB);
-
-		jToggleButtonB1.addMouseListener(new java.awt.event.MouseAdapter() {
-			public void mouseClicked(java.awt.event.MouseEvent evt) {
-				jToggleButtonB1MouseClicked(evt);
-			}
-		});
-		jPanelYourField.add(jToggleButtonB1);
-
-		jToggleButtonB2.addMouseListener(new java.awt.event.MouseAdapter() {
-			public void mouseClicked(java.awt.event.MouseEvent evt) {
-				jToggleButtonB2MouseClicked(evt);
-			}
-		});
-		jPanelYourField.add(jToggleButtonB2);
-
-		jToggleButtonB3.addMouseListener(new java.awt.event.MouseAdapter() {
-			public void mouseClicked(java.awt.event.MouseEvent evt) {
-				jToggleButtonB3MouseClicked(evt);
-			}
-		});
-		jPanelYourField.add(jToggleButtonB3);
-
-		jLabelC.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-		jLabelC.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-		jLabelC.setText("C");
-		jLabelC.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-		jPanelYourField.add(jLabelC);
-
-		jToggleButtonC1.addMouseListener(new java.awt.event.MouseAdapter() {
-			public void mouseClicked(java.awt.event.MouseEvent evt) {
-				jToggleButtonC1MouseClicked(evt);
-			}
-		});
-		jPanelYourField.add(jToggleButtonC1);
-
-		jToggleButtonC2.addMouseListener(new java.awt.event.MouseAdapter() {
-			public void mouseClicked(java.awt.event.MouseEvent evt) {
-				jToggleButtonC2MouseClicked(evt);
-			}
-		});
-		jPanelYourField.add(jToggleButtonC2);
-
-		jToggleButtonC3.addMouseListener(new java.awt.event.MouseAdapter() {
-			public void mouseClicked(java.awt.event.MouseEvent evt) {
-				jToggleButtonC3MouseClicked(evt);
-			}
-		});
-		jPanelYourField.add(jToggleButtonC3);
-
-		jPanelEnemyField.setMinimumSize(new java.awt.Dimension(200, 200));
+		jPanelStatistics = new JPanel();
+		jPanelStatistics.setBorder(BorderFactory.createEtchedBorder());
+		jLabelStatistics = new JLabel();
+		jLabelStatistics.setFont(new Font("Tahoma", 1, 11)); // NOI18N
+		jLabelStatistics.setText("Statistics");
+		jLabelHits = new JLabel();
+		jLabelHits.setFont(new Font("Tahoma", 1, 11)); // NOI18N
+		jLabelHits.setText("Hits");
+		jLabelWater = new JLabel();
+		jLabelWater.setFont(new Font("Tahoma", 1, 11)); // NOI18N
+		jLabelWater.setText("Water");
+		jLabelSunk = new JLabel();
+		jLabelSunk.setFont(new Font("Tahoma", 1, 11)); // NOI18N
+		jLabelSunk.setText("Sunk");
+		jLabelShots = new JLabel();
+		jLabelShots.setFont(new Font("Tahoma", 1, 11)); // NOI18N
+		jLabelShots.setText("Shots");
+		jLabelYou = new JLabel();
+		jLabelYou.setFont(new Font("Tahoma", 1, 11)); // NOI18N
+		jLabelYou.setText("You");
+		jLabelYouHits = new JLabel();
+		jLabelYouHits.setFont(new Font("Tahoma", 1, 11)); // NOI18N
+		jLabelYouHits.setText("0");
+		jLabelYouWater = new JLabel();
+		jLabelYouWater.setFont(new Font("Tahoma", 1, 11)); // NOI18N
+		jLabelYouWater.setText("0");
+		jLabelYouSunk = new JLabel();
+		jLabelYouSunk.setFont(new Font("Tahoma", 1, 11)); // NOI18N
+		jLabelYouSunk.setText("0");
+		jLabelYouShots = new JLabel();
+		jLabelYouShots.setFont(new Font("Tahoma", 1, 11)); // NOI18N
+		jLabelYouShots.setText("0");
+		jLabelEnemy = new JLabel();
+		jLabelEnemy.setFont(new Font("Tahoma", 1, 11)); // NOI18N
+		jLabelEnemy.setText("Enemy");
+		jLabelEnemyHits = new JLabel();
+		jLabelEnemyHits.setFont(new Font("Tahoma", 1, 11)); // NOI18N
+		jLabelEnemyHits.setText("0");
+		jLabelEnemyWater = new JLabel();
+		jLabelEnemyWater.setFont(new Font("Tahoma", 1, 11)); // NOI18N
+		jLabelEnemyWater.setText("0");
+		jLabelEnemySunk = new JLabel();
+		jLabelEnemySunk.setFont(new Font("Tahoma", 1, 11)); // NOI18N
+		jLabelEnemySunk.setText("0");
+		jLabelEnemyShots = new JLabel();
+		jLabelEnemyShots.setFont(new Font("Tahoma", 1, 11)); // NOI18N
+		jLabelEnemyShots.setText("0");	
 		
+		jPanelHistory = new JPanel();
+		jPanelHistory.setBorder(BorderFactory.createEtchedBorder());
+		jLabelHistory = new JLabel();
+		jLabelHistory.setFont(new Font("Tahoma", 1, 11)); // NOI18N
+		jLabelHistory.setText("History");
+		jScrollPaneHistory = new JScrollPane();
+		jTextPaneHistory = new JTextPane();
+		jTextPaneHistory.setEditable(false);
+		jTextPaneHistory.setText("\n*******************************\n********* BATTLESHIP ***********\n*******************************\n\n\n* Player 1 Turn*\n\n\n\nPlayer 1 Shoot at B3 and hits a battleship\n\n\nPlayer 2 Shoot at B1 and hits the water\n\n\n\n*Player 2 Turn*");
 		
+		jPanelChat = new JPanel();
+		jPanelChat.setBorder(BorderFactory.createEtchedBorder());
+		jLabelChat = new JLabel();
+		jLabelChat.setFont(new Font("Tahoma", 1, 11)); // NOI18N
+		jLabelChat.setText("Chat");
+		jScrollPaneChat = new JScrollPane();
+		jTextPaneChat = new JTextPane();
+		jTextPaneChat.setEditable(false);
+		jScrollPaneYourMessage = new JScrollPane();
+		jTextPaneYourMessage = new JTextPane();
+		jTextPaneYourMessage.setText("{Your Message}");
+		jTextPaneYourMessage.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent evt) {
+				jTextPaneYourMessageMouseClicked(evt);
+			}
+		});
+		jButtonSend = new JButton();
+		jButtonSend.setText("Send");
+		jButtonSend.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent evt) {
+				jButtonSendActionPerformed(evt);
+			}
+		});
+		
+		jButtonRestart = new JButton();
+		jButtonRestart.setText("Restart");
+		jButtonRestart.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent evt) {
+				jButtonRestartMouseClicked(evt);
+			}
+		});
+		jButtonReady = new JButton();
+		jButtonReady.setText("Ready");
+		
+		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+		setName("FrameGame"); // NOI18N
+
+		jScrollPaneYourMessage.setViewportView(jTextPaneYourMessage);
+
 		int rows = nbrOfRows + 1;
-	    int coloumns = nbrOfColoumns + 1;
-		jPanelEnemyField.setLayout(new java.awt.GridLayout(rows, coloumns));
-
-		JToggleButton buttons[][] = new JToggleButton[rows][coloumns];
+		int coloumns = nbrOfColoumns + 1;
 		
-		for(int i = 0; i < rows; i++){
-        	for(int j = 0; j < coloumns; j++){
-        		if(i == 0 && j == 0){
-        			JLabel x = new JLabel();
-        			x.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        			x.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        			x.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        			x.setText("/");
-        			jPanelEnemyField.add(x);
-        		}
-        		else if(i == 0){
-        			JLabel x = new JLabel();
-        			x.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        			x.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        			x.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        			x.setText(j + "");
-        			jPanelEnemyField.add(x);
-        		}
-        		else if(j == 0){
-        			JLabel x = new JLabel();
-        			x.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        			x.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        			x.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        			x.setText((char)(i+64) + "");
-        			jPanelEnemyField.add(x);
-        		}
-        		else{
-        			JToggleButton jtb = new JToggleButton();
-        			buttons[i-1][j-1] = jtb;
-        			jtb.addActionListener(new ActionListener(){
-        				public void actionPerformed(ActionEvent ae){
-        					System.out.println(ae.getSource());
-        				}
-        			});
-        			jPanelEnemyField.add(jtb);
-        		}
-        	}
-        }
+		jPanelYourField.setMinimumSize(new Dimension(200, 200));
+		jPanelYourField.setLayout(new GridLayout(rows, coloumns));
+		JToggleButton buttons1[][] = new JToggleButton[rows][coloumns];
+		for (int i = 0; i < rows; i++) {
+			for (int j = 0; j < coloumns; j++) {
+				if (i == 0 && j == 0) {
+					JLabel x = new JLabel();
+					x.setFont(new Font("Tahoma", 1, 14)); // NOI18N
+					x.setHorizontalAlignment(SwingConstants.CENTER);
+					x.setBorder(BorderFactory.createEtchedBorder());
+					x.setText("/");
+					jPanelYourField.add(x);
+				} else if (i == 0) {
+					JLabel x = new JLabel();
+					x.setFont(new Font("Tahoma", 1, 14)); // NOI18N
+					x.setHorizontalAlignment(SwingConstants.CENTER);
+					x.setBorder(BorderFactory.createEtchedBorder());
+					x.setText(j + "");
+					jPanelYourField.add(x);
+				} else if (j == 0) {
+					JLabel x = new JLabel();
+					x.setFont(new Font("Tahoma", 1, 14)); // NOI18N
+					x.setHorizontalAlignment(SwingConstants.CENTER);
+					x.setBorder(BorderFactory.createEtchedBorder());
+					x.setText((char) (i + 64) + "");
+					jPanelYourField.add(x);
+				} else {
+					JToggleButton jtb = new JToggleButton();
+					buttons1[i - 1][j - 1] = jtb;
+					jtb.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent ae) {
+							System.out.println(ae.getSource());
+						}
+					});
+					jPanelYourField.add(jtb);
+				}
+			}
+		}
 		
-		
-		
-		
-		
-		/*jLabelx_.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-		jLabelx_.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-		jLabelx_.setText("/");
-		jLabelx_.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-		jPanelEnemyField.add(jLabelx_);
-
-		jLabelx1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-		jLabelx1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-		jLabelx1.setText("1");
-		jLabelx1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-		jPanelEnemyField.add(jLabelx1);
-
-		jLabelx2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-		jLabelx2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-		jLabelx2.setText("2");
-		jLabelx2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-		jPanelEnemyField.add(jLabelx2);
-
-		jLabelx3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-		jLabelx3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-		jLabelx3.setText("3");
-		jLabelx3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-		jPanelEnemyField.add(jLabelx3);
-
-		jLabelxA.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-		jLabelxA.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-		jLabelxA.setText("A");
-		jLabelxA.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-		jPanelEnemyField.add(jLabelxA);
-
-		jToggleButtonxA1.addMouseListener(new java.awt.event.MouseAdapter() {
-			public void mouseClicked(java.awt.event.MouseEvent evt) {
-				jToggleButtonxA1MouseClicked(evt);
+		jPanelEnemyField.setMinimumSize(new Dimension(200, 200));
+		jPanelEnemyField.setLayout(new GridLayout(rows, coloumns));
+		JToggleButton buttons2[][] = new JToggleButton[rows][coloumns];
+		for (int i = 0; i < rows; i++) {
+			for (int j = 0; j < coloumns; j++) {
+				if (i == 0 && j == 0) {
+					JLabel x = new JLabel();
+					x.setFont(new Font("Tahoma", 1, 14)); // NOI18N
+					x.setHorizontalAlignment(SwingConstants.CENTER);
+					x.setBorder(BorderFactory.createEtchedBorder());
+					x.setText("/");
+					jPanelEnemyField.add(x);
+				} else if (i == 0) {
+					JLabel x = new JLabel();
+					x.setFont(new Font("Tahoma", 1, 14)); // NOI18N
+					x.setHorizontalAlignment(SwingConstants.CENTER);
+					x.setBorder(BorderFactory.createEtchedBorder());
+					x.setText(j + "");
+					jPanelEnemyField.add(x);
+				} else if (j == 0) {
+					JLabel x = new JLabel();
+					x.setFont(new Font("Tahoma", 1, 14)); // NOI18N
+					x.setHorizontalAlignment(SwingConstants.CENTER);
+					x.setBorder(BorderFactory.createEtchedBorder());
+					x.setText((char) (i + 64) + "");
+					jPanelEnemyField.add(x);
+				} else {
+					JToggleButton jtb = new JToggleButton();
+					buttons2[i - 1][j - 1] = jtb;
+					jtb.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent ae) {
+							System.out.println(ae.getSource());
+						}
+					});
+					jPanelEnemyField.add(jtb);
+				}
 			}
-		});
-		jPanelEnemyField.add(jToggleButtonxA1);
+		}	
 
-		jToggleButtonxA2.addMouseListener(new java.awt.event.MouseAdapter() {
-			public void mouseClicked(java.awt.event.MouseEvent evt) {
-				jToggleButtonxA2MouseClicked(evt);
-			}
-		});
-		jPanelEnemyField.add(jToggleButtonxA2);
-
-		jToggleButtonxA3.addMouseListener(new java.awt.event.MouseAdapter() {
-			public void mouseClicked(java.awt.event.MouseEvent evt) {
-				jToggleButtonxA3MouseClicked(evt);
-			}
-		});
-		jPanelEnemyField.add(jToggleButtonxA3);
-
-		jLabelxB.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-		jLabelxB.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-		jLabelxB.setText("B");
-		jLabelxB.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-		jPanelEnemyField.add(jLabelxB);
-
-		jToggleButtonxB1.addMouseListener(new java.awt.event.MouseAdapter() {
-			public void mouseClicked(java.awt.event.MouseEvent evt) {
-				jToggleButtonxB1MouseClicked(evt);
-			}
-		});
-		jPanelEnemyField.add(jToggleButtonxB1);
-
-		jToggleButtonxB2.addMouseListener(new java.awt.event.MouseAdapter() {
-			public void mouseClicked(java.awt.event.MouseEvent evt) {
-				jToggleButtonxB2MouseClicked(evt);
-			}
-		});
-		jPanelEnemyField.add(jToggleButtonxB2);
-
-		jToggleButtonxB3.addMouseListener(new java.awt.event.MouseAdapter() {
-			public void mouseClicked(java.awt.event.MouseEvent evt) {
-				jToggleButtonxB3MouseClicked(evt);
-			}
-		});
-		jPanelEnemyField.add(jToggleButtonxB3);
-
-		jLabelxC.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-		jLabelxC.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-		jLabelxC.setText("C");
-		jLabelxC.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-		jPanelEnemyField.add(jLabelxC);
-
-		jToggleButtonxC1.addMouseListener(new java.awt.event.MouseAdapter() {
-			public void mouseClicked(java.awt.event.MouseEvent evt) {
-				jToggleButtonxC1MouseClicked(evt);
-			}
-		});
-		jPanelEnemyField.add(jToggleButtonxC1);
-
-		jToggleButtonxC2.addMouseListener(new java.awt.event.MouseAdapter() {
-			public void mouseClicked(java.awt.event.MouseEvent evt) {
-				jToggleButtonxC2MouseClicked(evt);
-			}
-		});
-		jPanelEnemyField.add(jToggleButtonxC2);
-
-		jToggleButtonxC3.addMouseListener(new java.awt.event.MouseAdapter() {
-			public void mouseClicked(java.awt.event.MouseEvent evt) {
-				jToggleButtonxC3MouseClicked(evt);
-			}
-		});
-		jPanelEnemyField.add(jToggleButtonxC3);*/
-
-		javax.swing.GroupLayout jPanePlayingFieldLayout = new javax.swing.GroupLayout(
-				jPanePlayingField);
+		GroupLayout jPanePlayingFieldLayout = new GroupLayout(jPanePlayingField);
 		jPanePlayingField.setLayout(jPanePlayingFieldLayout);
 		jPanePlayingFieldLayout
 				.setHorizontalGroup(jPanePlayingFieldLayout
-						.createParallelGroup(
-								javax.swing.GroupLayout.Alignment.LEADING)
+						.createParallelGroup(GroupLayout.Alignment.LEADING)
 						.addGroup(
 								jPanePlayingFieldLayout
 										.createSequentialGroup()
 										.addContainerGap()
-										.addComponent(
-												jPanelYourField,
-												javax.swing.GroupLayout.PREFERRED_SIZE,
-												300,
-												javax.swing.GroupLayout.PREFERRED_SIZE)
+										.addComponent(jPanelYourField,
+												GroupLayout.PREFERRED_SIZE,
+												300, GroupLayout.PREFERRED_SIZE)
 										.addGap(37, 37, 37)
 										.addGroup(
 												jPanePlayingFieldLayout
 														.createParallelGroup(
-																javax.swing.GroupLayout.Alignment.LEADING)
+																GroupLayout.Alignment.LEADING)
 														.addGroup(
 																jPanePlayingFieldLayout
 																		.createSequentialGroup()
 																		.addComponent(
 																				jRadioButtonNbrOfBattleship)
 																		.addPreferredGap(
-																				javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+																				LayoutStyle.ComponentPlacement.RELATED)
 																		.addComponent(
 																				jLabelBattleship))
 														.addGroup(
@@ -510,7 +398,7 @@ public class GameFrame extends javax.swing.JFrame {
 																		.addGroup(
 																				jPanePlayingFieldLayout
 																						.createParallelGroup(
-																								javax.swing.GroupLayout.Alignment.TRAILING)
+																								GroupLayout.Alignment.TRAILING)
 																						.addComponent(
 																								jRadioButtonNbrOfCruiser)
 																						.addComponent(
@@ -523,7 +411,7 @@ public class GameFrame extends javax.swing.JFrame {
 																		.addGroup(
 																				jPanePlayingFieldLayout
 																						.createParallelGroup(
-																								javax.swing.GroupLayout.Alignment.LEADING)
+																								GroupLayout.Alignment.LEADING)
 																						.addComponent(
 																								jLabelSubmarine)
 																						.addGroup(
@@ -535,7 +423,7 @@ public class GameFrame extends javax.swing.JFrame {
 																										.addGroup(
 																												jPanePlayingFieldLayout
 																														.createParallelGroup(
-																																javax.swing.GroupLayout.Alignment.LEADING)
+																																GroupLayout.Alignment.LEADING)
 																														.addComponent(
 																																jLabelCruiser)
 																														.addComponent(
@@ -551,13 +439,11 @@ public class GameFrame extends javax.swing.JFrame {
 																		.addComponent(
 																				jRadioButtonVertical)))
 										.addPreferredGap(
-												javax.swing.LayoutStyle.ComponentPlacement.RELATED,
+												LayoutStyle.ComponentPlacement.RELATED,
 												43, Short.MAX_VALUE)
-										.addComponent(
-												jPanelEnemyField,
-												javax.swing.GroupLayout.PREFERRED_SIZE,
-												300,
-												javax.swing.GroupLayout.PREFERRED_SIZE)
+										.addComponent(jPanelEnemyField,
+												GroupLayout.PREFERRED_SIZE,
+												300, GroupLayout.PREFERRED_SIZE)
 										.addContainerGap())
 						.addGroup(
 								jPanePlayingFieldLayout
@@ -565,21 +451,20 @@ public class GameFrame extends javax.swing.JFrame {
 										.addGap(130, 130, 130)
 										.addComponent(jLabelYourField)
 										.addPreferredGap(
-												javax.swing.LayoutStyle.ComponentPlacement.RELATED,
+												LayoutStyle.ComponentPlacement.RELATED,
 												540, Short.MAX_VALUE)
 										.addComponent(jLabelEnemyField)
 										.addGap(117, 117, 117)));
 		jPanePlayingFieldLayout
 				.setVerticalGroup(jPanePlayingFieldLayout
-						.createParallelGroup(
-								javax.swing.GroupLayout.Alignment.LEADING)
+						.createParallelGroup(GroupLayout.Alignment.LEADING)
 						.addGroup(
 								jPanePlayingFieldLayout
 										.createSequentialGroup()
 										.addGroup(
 												jPanePlayingFieldLayout
 														.createParallelGroup(
-																javax.swing.GroupLayout.Alignment.LEADING)
+																GroupLayout.Alignment.LEADING)
 														.addGroup(
 																jPanePlayingFieldLayout
 																		.createSequentialGroup()
@@ -595,24 +480,24 @@ public class GameFrame extends javax.swing.JFrame {
 																		.addGroup(
 																				jPanePlayingFieldLayout
 																						.createParallelGroup(
-																								javax.swing.GroupLayout.Alignment.LEADING)
+																								GroupLayout.Alignment.LEADING)
 																						.addComponent(
 																								jPanelEnemyField,
-																								javax.swing.GroupLayout.PREFERRED_SIZE,
+																								GroupLayout.PREFERRED_SIZE,
 																								300,
-																								javax.swing.GroupLayout.PREFERRED_SIZE)
+																								GroupLayout.PREFERRED_SIZE)
 																						.addComponent(
 																								jPanelYourField,
-																								javax.swing.GroupLayout.PREFERRED_SIZE,
+																								GroupLayout.PREFERRED_SIZE,
 																								300,
-																								javax.swing.GroupLayout.PREFERRED_SIZE)
+																								GroupLayout.PREFERRED_SIZE)
 																						.addGroup(
 																								jPanePlayingFieldLayout
 																										.createSequentialGroup()
 																										.addGroup(
 																												jPanePlayingFieldLayout
 																														.createParallelGroup(
-																																javax.swing.GroupLayout.Alignment.TRAILING)
+																																GroupLayout.Alignment.TRAILING)
 																														.addComponent(
 																																jRadioButtonNbrOfSubmarine)
 																														.addGroup(
@@ -631,7 +516,7 @@ public class GameFrame extends javax.swing.JFrame {
 																										.addGroup(
 																												jPanePlayingFieldLayout
 																														.createParallelGroup(
-																																javax.swing.GroupLayout.Alignment.TRAILING)
+																																GroupLayout.Alignment.TRAILING)
 																														.addComponent(
 																																jLabelDestroyer)
 																														.addComponent(
@@ -642,7 +527,7 @@ public class GameFrame extends javax.swing.JFrame {
 																										.addGroup(
 																												jPanePlayingFieldLayout
 																														.createParallelGroup(
-																																javax.swing.GroupLayout.Alignment.TRAILING)
+																																GroupLayout.Alignment.TRAILING)
 																														.addComponent(
 																																jRadioButtonNbrOfCruiser)
 																														.addComponent(
@@ -653,85 +538,35 @@ public class GameFrame extends javax.swing.JFrame {
 																										.addGroup(
 																												jPanePlayingFieldLayout
 																														.createParallelGroup(
-																																javax.swing.GroupLayout.Alignment.LEADING)
+																																GroupLayout.Alignment.LEADING)
 																														.addComponent(
 																																jRadioButtonHorizontal)
 																														.addComponent(
 																																jRadioButtonVertical))))))
 										.addPreferredGap(
-												javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+												LayoutStyle.ComponentPlacement.RELATED)
 										.addGroup(
 												jPanePlayingFieldLayout
 														.createParallelGroup(
-																javax.swing.GroupLayout.Alignment.BASELINE)
+																GroupLayout.Alignment.BASELINE)
 														.addComponent(
 																jLabelYourField)
 														.addComponent(
 																jLabelEnemyField))
 										.addContainerGap()));
 
-		jPanelStatistics.setBorder(javax.swing.BorderFactory
-				.createEtchedBorder());
-
-		jLabelStatistics.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-		jLabelStatistics.setText("Statistics");
-
-		jLabelHits.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-		jLabelHits.setText("Hits");
-
-		jLabelWater.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-		jLabelWater.setText("Water");
-
-		jLabelSunk.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-		jLabelSunk.setText("Sunk");
-
-		jLabelShots.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-		jLabelShots.setText("Shots");
-
-		jLabelYou.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-		jLabelYou.setText("You");
-
-		jLabelEnemy.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-		jLabelEnemy.setText("Enemy");
-
-		jLabelYouHits.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-		jLabelYouHits.setText("0");
-
-		jLabelYouWater.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-		jLabelYouWater.setText("0");
-
-		jLabelYouSunk.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-		jLabelYouSunk.setText("0");
-
-		jLabelYouShots.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-		jLabelYouShots.setText("0");
-
-		jLabelEnemyHits.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-		jLabelEnemyHits.setText("0");
-
-		jLabelEnemyWater.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-		jLabelEnemyWater.setText("0");
-
-		jLabelEnemySunk.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-		jLabelEnemySunk.setText("0");
-
-		jLabelEnemyShots.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-		jLabelEnemyShots.setText("0");
-
-		javax.swing.GroupLayout jPanelStatisticsLayout = new javax.swing.GroupLayout(
-				jPanelStatistics);
+		GroupLayout jPanelStatisticsLayout = new GroupLayout(jPanelStatistics);
 		jPanelStatistics.setLayout(jPanelStatisticsLayout);
 		jPanelStatisticsLayout
 				.setHorizontalGroup(jPanelStatisticsLayout
-						.createParallelGroup(
-								javax.swing.GroupLayout.Alignment.LEADING)
+						.createParallelGroup(GroupLayout.Alignment.LEADING)
 						.addGroup(
 								jPanelStatisticsLayout
 										.createSequentialGroup()
 										.addGroup(
 												jPanelStatisticsLayout
 														.createParallelGroup(
-																javax.swing.GroupLayout.Alignment.LEADING)
+																GroupLayout.Alignment.LEADING)
 														.addGroup(
 																jPanelStatisticsLayout
 																		.createSequentialGroup()
@@ -747,14 +582,14 @@ public class GameFrame extends javax.swing.JFrame {
 																		.addGroup(
 																				jPanelStatisticsLayout
 																						.createParallelGroup(
-																								javax.swing.GroupLayout.Alignment.LEADING)
+																								GroupLayout.Alignment.LEADING)
 																						.addGroup(
 																								jPanelStatisticsLayout
 																										.createSequentialGroup()
 																										.addGroup(
 																												jPanelStatisticsLayout
 																														.createParallelGroup(
-																																javax.swing.GroupLayout.Alignment.LEADING)
+																																GroupLayout.Alignment.LEADING)
 																														.addComponent(
 																																jLabelYouHits)
 																														.addComponent(
@@ -769,7 +604,7 @@ public class GameFrame extends javax.swing.JFrame {
 																										.addGroup(
 																												jPanelStatisticsLayout
 																														.createParallelGroup(
-																																javax.swing.GroupLayout.Alignment.LEADING)
+																																GroupLayout.Alignment.LEADING)
 																														.addComponent(
 																																jLabelWater)
 																														.addComponent(
@@ -786,7 +621,7 @@ public class GameFrame extends javax.swing.JFrame {
 																		.addGroup(
 																				jPanelStatisticsLayout
 																						.createParallelGroup(
-																								javax.swing.GroupLayout.Alignment.LEADING)
+																								GroupLayout.Alignment.LEADING)
 																						.addComponent(
 																								jLabelEnemyHits)
 																						.addComponent(
@@ -800,8 +635,7 @@ public class GameFrame extends javax.swing.JFrame {
 										.addContainerGap(95, Short.MAX_VALUE)));
 		jPanelStatisticsLayout
 				.setVerticalGroup(jPanelStatisticsLayout
-						.createParallelGroup(
-								javax.swing.GroupLayout.Alignment.LEADING)
+						.createParallelGroup(GroupLayout.Alignment.LEADING)
 						.addGroup(
 								jPanelStatisticsLayout
 										.createSequentialGroup()
@@ -811,7 +645,7 @@ public class GameFrame extends javax.swing.JFrame {
 										.addGroup(
 												jPanelStatisticsLayout
 														.createParallelGroup(
-																javax.swing.GroupLayout.Alignment.BASELINE)
+																GroupLayout.Alignment.BASELINE)
 														.addComponent(jLabelYou)
 														.addComponent(
 																jLabelEnemy))
@@ -819,7 +653,7 @@ public class GameFrame extends javax.swing.JFrame {
 										.addGroup(
 												jPanelStatisticsLayout
 														.createParallelGroup(
-																javax.swing.GroupLayout.Alignment.BASELINE)
+																GroupLayout.Alignment.BASELINE)
 														.addComponent(
 																jLabelYouHits)
 														.addComponent(
@@ -830,7 +664,7 @@ public class GameFrame extends javax.swing.JFrame {
 										.addGroup(
 												jPanelStatisticsLayout
 														.createParallelGroup(
-																javax.swing.GroupLayout.Alignment.BASELINE)
+																GroupLayout.Alignment.BASELINE)
 														.addComponent(
 																jLabelYouWater)
 														.addComponent(
@@ -841,7 +675,7 @@ public class GameFrame extends javax.swing.JFrame {
 										.addGroup(
 												jPanelStatisticsLayout
 														.createParallelGroup(
-																javax.swing.GroupLayout.Alignment.BASELINE)
+																GroupLayout.Alignment.BASELINE)
 														.addComponent(
 																jLabelYouSunk)
 														.addComponent(
@@ -852,7 +686,7 @@ public class GameFrame extends javax.swing.JFrame {
 										.addGroup(
 												jPanelStatisticsLayout
 														.createParallelGroup(
-																javax.swing.GroupLayout.Alignment.BASELINE)
+																GroupLayout.Alignment.BASELINE)
 														.addComponent(
 																jLabelYouShots)
 														.addComponent(
@@ -861,37 +695,13 @@ public class GameFrame extends javax.swing.JFrame {
 																jLabelEnemyShots))
 										.addContainerGap(16, Short.MAX_VALUE)));
 
-		jPanelChat.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-		jButtonSend.setText("Send");
-		jButtonSend.addActionListener(new java.awt.event.ActionListener() {
-			public void actionPerformed(java.awt.event.ActionEvent evt) {
-				jButtonSendActionPerformed(evt);
-			}
-		});
-
-		jTextPaneYourMessage.setText("{Your Message}");
-		jTextPaneYourMessage
-				.addMouseListener(new java.awt.event.MouseAdapter() {
-					public void mouseClicked(java.awt.event.MouseEvent evt) {
-						jTextPaneYourMessageMouseClicked(evt);
-					}
-				});
-		jScrollPaneYourMessage.setViewportView(jTextPaneYourMessage);
-
-		jLabelChat.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-		jLabelChat.setText("Chat");
-
-		jTextPaneChat.setEditable(false);
 		jScrollPaneChat.setViewportView(jTextPaneChat);
 
-		javax.swing.GroupLayout jPanelChatLayout = new javax.swing.GroupLayout(
-				jPanelChat);
+		GroupLayout jPanelChatLayout = new GroupLayout(jPanelChat);
 		jPanelChat.setLayout(jPanelChatLayout);
 		jPanelChatLayout
 				.setHorizontalGroup(jPanelChatLayout
-						.createParallelGroup(
-								javax.swing.GroupLayout.Alignment.LEADING)
+						.createParallelGroup(GroupLayout.Alignment.LEADING)
 						.addGroup(
 								jPanelChatLayout
 										.createSequentialGroup()
@@ -899,7 +709,7 @@ public class GameFrame extends javax.swing.JFrame {
 										.addGroup(
 												jPanelChatLayout
 														.createParallelGroup(
-																javax.swing.GroupLayout.Alignment.LEADING)
+																GroupLayout.Alignment.LEADING)
 														.addComponent(
 																jScrollPaneChat)
 														.addComponent(
@@ -909,281 +719,240 @@ public class GameFrame extends javax.swing.JFrame {
 																		.createSequentialGroup()
 																		.addComponent(
 																				jScrollPaneYourMessage,
-																				javax.swing.GroupLayout.PREFERRED_SIZE,
+																				GroupLayout.PREFERRED_SIZE,
 																				179,
-																				javax.swing.GroupLayout.PREFERRED_SIZE)
+																				GroupLayout.PREFERRED_SIZE)
 																		.addGap(18,
 																				18,
 																				18)
 																		.addComponent(
 																				jButtonSend,
-																				javax.swing.GroupLayout.DEFAULT_SIZE,
-																				javax.swing.GroupLayout.DEFAULT_SIZE,
+																				GroupLayout.DEFAULT_SIZE,
+																				GroupLayout.DEFAULT_SIZE,
 																				Short.MAX_VALUE)))
 										.addContainerGap()));
-		jPanelChatLayout
-				.setVerticalGroup(jPanelChatLayout
-						.createParallelGroup(
-								javax.swing.GroupLayout.Alignment.LEADING)
+		jPanelChatLayout.setVerticalGroup(jPanelChatLayout.createParallelGroup(
+				GroupLayout.Alignment.LEADING).addGroup(
+				jPanelChatLayout
+						.createSequentialGroup()
+						.addContainerGap()
+						.addComponent(jLabelChat)
+						.addPreferredGap(
+								LayoutStyle.ComponentPlacement.UNRELATED)
+						.addComponent(jScrollPaneChat,
+								GroupLayout.PREFERRED_SIZE, 163,
+								GroupLayout.PREFERRED_SIZE)
+						.addGap(12, 12, 12)
 						.addGroup(
 								jPanelChatLayout
+										.createParallelGroup(
+												GroupLayout.Alignment.LEADING)
+										.addComponent(jScrollPaneYourMessage,
+												GroupLayout.PREFERRED_SIZE,
+												GroupLayout.DEFAULT_SIZE,
+												GroupLayout.PREFERRED_SIZE)
+										.addComponent(jButtonSend))
+						.addGap(16, 16, 16)));
+
+		jScrollPaneHistory.setViewportView(jTextPaneHistory);
+
+		GroupLayout jPanelHistoryLayout = new GroupLayout(jPanelHistory);
+		jPanelHistory.setLayout(jPanelHistoryLayout);
+		jPanelHistoryLayout.setHorizontalGroup(jPanelHistoryLayout
+				.createParallelGroup(GroupLayout.Alignment.LEADING)
+				.addGroup(
+						jPanelHistoryLayout.createSequentialGroup()
+								.addContainerGap().addComponent(jLabelHistory)
+								.addContainerGap(252, Short.MAX_VALUE))
+				.addGroup(
+						jPanelHistoryLayout.createParallelGroup(
+								GroupLayout.Alignment.LEADING).addGroup(
+								jPanelHistoryLayout
 										.createSequentialGroup()
 										.addContainerGap()
-										.addComponent(jLabelChat)
-										.addPreferredGap(
-												javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-										.addComponent(
-												jScrollPaneChat,
-												javax.swing.GroupLayout.PREFERRED_SIZE,
-												163,
-												javax.swing.GroupLayout.PREFERRED_SIZE)
-										.addGap(12, 12, 12)
-										.addGroup(
-												jPanelChatLayout
-														.createParallelGroup(
-																javax.swing.GroupLayout.Alignment.LEADING)
-														.addComponent(
-																jScrollPaneYourMessage,
-																javax.swing.GroupLayout.PREFERRED_SIZE,
-																javax.swing.GroupLayout.DEFAULT_SIZE,
-																javax.swing.GroupLayout.PREFERRED_SIZE)
-														.addComponent(
-																jButtonSend))
-										.addGap(16, 16, 16)));
-
-		jButtonRestart.setText("Restart");
-		jButtonRestart.addMouseListener(new java.awt.event.MouseAdapter() {
-			public void mouseClicked(java.awt.event.MouseEvent evt) {
-				jButtonRestartMouseClicked(evt);
-			}
-		});
-
-		jButtonReady.setText("Ready");
-
-		jPanelHistory.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-		jLabelHistory.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-		jLabelHistory.setText("History");
-
-		jTextPaneHistory.setEditable(false);
-		jTextPaneHistory
-				.setText("\n*******************************\n********* BATTLESHIP ***********\n*******************************\n\n\n* Player 1 Turn*\n\n\n\nPlayer 1 Shoot at B3 and hits a battleship\n\n\nPlayer 2 Shoot at B1 and hits the water\n\n\n\n*Player 2 Turn*");
-		jScrollPaneChat1.setViewportView(jTextPaneHistory);
-
-		javax.swing.GroupLayout jPanelHistoryLayout = new javax.swing.GroupLayout(
-				jPanelHistory);
-		jPanelHistory.setLayout(jPanelHistoryLayout);
-		jPanelHistoryLayout
-				.setHorizontalGroup(jPanelHistoryLayout
-						.createParallelGroup(
-								javax.swing.GroupLayout.Alignment.LEADING)
-						.addGroup(
-								jPanelHistoryLayout.createSequentialGroup()
-										.addContainerGap()
-										.addComponent(jLabelHistory)
-										.addContainerGap(252, Short.MAX_VALUE))
-						.addGroup(
-								jPanelHistoryLayout
-										.createParallelGroup(
-												javax.swing.GroupLayout.Alignment.LEADING)
-										.addGroup(
-												jPanelHistoryLayout
-														.createSequentialGroup()
-														.addContainerGap()
-														.addComponent(
-																jScrollPaneChat1,
-																javax.swing.GroupLayout.DEFAULT_SIZE,
-																283,
-																Short.MAX_VALUE)
-														.addContainerGap())));
+										.addComponent(jScrollPaneHistory,
+												GroupLayout.DEFAULT_SIZE, 283,
+												Short.MAX_VALUE)
+										.addContainerGap())));
 		jPanelHistoryLayout
 				.setVerticalGroup(jPanelHistoryLayout
-						.createParallelGroup(
-								javax.swing.GroupLayout.Alignment.LEADING)
+						.createParallelGroup(GroupLayout.Alignment.LEADING)
 						.addGroup(
 								jPanelHistoryLayout
 										.createSequentialGroup()
 										.addContainerGap()
 										.addComponent(jLabelHistory)
 										.addContainerGap(
-												javax.swing.GroupLayout.DEFAULT_SIZE,
+												GroupLayout.DEFAULT_SIZE,
 												Short.MAX_VALUE))
 						.addGroup(
 								jPanelHistoryLayout
 										.createParallelGroup(
-												javax.swing.GroupLayout.Alignment.LEADING)
+												GroupLayout.Alignment.LEADING)
 										.addGroup(
-												javax.swing.GroupLayout.Alignment.TRAILING,
+												GroupLayout.Alignment.TRAILING,
 												jPanelHistoryLayout
 														.createSequentialGroup()
 														.addContainerGap(33,
 																Short.MAX_VALUE)
 														.addComponent(
-																jScrollPaneChat1,
-																javax.swing.GroupLayout.PREFERRED_SIZE,
+																jScrollPaneHistory,
+																GroupLayout.PREFERRED_SIZE,
 																206,
-																javax.swing.GroupLayout.PREFERRED_SIZE)
+																GroupLayout.PREFERRED_SIZE)
 														.addContainerGap())));
 
-		javax.swing.GroupLayout layout = new javax.swing.GroupLayout(
-				getContentPane());
+		GroupLayout layout = new GroupLayout(getContentPane());
 		getContentPane().setLayout(layout);
 		layout.setHorizontalGroup(layout
-				.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+				.createParallelGroup(GroupLayout.Alignment.LEADING)
 				.addGroup(
 						layout.createSequentialGroup()
 								.addContainerGap()
 								.addGroup(
 										layout.createParallelGroup(
-												javax.swing.GroupLayout.Alignment.LEADING,
+												GroupLayout.Alignment.LEADING,
 												false)
 												.addComponent(
 														jPanePlayingField,
-														javax.swing.GroupLayout.PREFERRED_SIZE,
-														javax.swing.GroupLayout.DEFAULT_SIZE,
-														javax.swing.GroupLayout.PREFERRED_SIZE)
+														GroupLayout.PREFERRED_SIZE,
+														GroupLayout.DEFAULT_SIZE,
+														GroupLayout.PREFERRED_SIZE)
 												.addGroup(
 														layout.createSequentialGroup()
 																.addGroup(
 																		layout.createParallelGroup(
-																				javax.swing.GroupLayout.Alignment.LEADING,
+																				GroupLayout.Alignment.LEADING,
 																				false)
 																				.addGroup(
 																						layout.createSequentialGroup()
 																								.addComponent(
 																										jButtonRestart,
-																										javax.swing.GroupLayout.PREFERRED_SIZE,
+																										GroupLayout.PREFERRED_SIZE,
 																										129,
-																										javax.swing.GroupLayout.PREFERRED_SIZE)
+																										GroupLayout.PREFERRED_SIZE)
 																								.addGap(18,
 																										18,
 																										18)
 																								.addComponent(
 																										jButtonReady,
-																										javax.swing.GroupLayout.DEFAULT_SIZE,
-																										javax.swing.GroupLayout.DEFAULT_SIZE,
+																										GroupLayout.DEFAULT_SIZE,
+																										GroupLayout.DEFAULT_SIZE,
 																										Short.MAX_VALUE))
 																				.addComponent(
 																						jPanelStatistics,
-																						javax.swing.GroupLayout.PREFERRED_SIZE,
-																						javax.swing.GroupLayout.DEFAULT_SIZE,
-																						javax.swing.GroupLayout.PREFERRED_SIZE))
+																						GroupLayout.PREFERRED_SIZE,
+																						GroupLayout.DEFAULT_SIZE,
+																						GroupLayout.PREFERRED_SIZE))
 																.addGap(18, 18,
 																		18)
 																.addComponent(
 																		jPanelHistory,
-																		javax.swing.GroupLayout.PREFERRED_SIZE,
-																		javax.swing.GroupLayout.DEFAULT_SIZE,
-																		javax.swing.GroupLayout.PREFERRED_SIZE)
+																		GroupLayout.PREFERRED_SIZE,
+																		GroupLayout.DEFAULT_SIZE,
+																		GroupLayout.PREFERRED_SIZE)
 																.addGap(18, 18,
 																		18)
 																.addComponent(
 																		jPanelChat,
-																		javax.swing.GroupLayout.DEFAULT_SIZE,
-																		javax.swing.GroupLayout.DEFAULT_SIZE,
+																		GroupLayout.DEFAULT_SIZE,
+																		GroupLayout.DEFAULT_SIZE,
 																		Short.MAX_VALUE)))
-								.addContainerGap(
-										javax.swing.GroupLayout.DEFAULT_SIZE,
+								.addContainerGap(GroupLayout.DEFAULT_SIZE,
 										Short.MAX_VALUE)));
 		layout.setVerticalGroup(layout
-				.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+				.createParallelGroup(GroupLayout.Alignment.LEADING)
 				.addGroup(
 						layout.createSequentialGroup()
 								.addContainerGap()
 								.addComponent(jPanePlayingField,
-										javax.swing.GroupLayout.PREFERRED_SIZE,
-										javax.swing.GroupLayout.DEFAULT_SIZE,
-										javax.swing.GroupLayout.PREFERRED_SIZE)
+										GroupLayout.PREFERRED_SIZE,
+										GroupLayout.DEFAULT_SIZE,
+										GroupLayout.PREFERRED_SIZE)
 								.addGap(18, 18, 18)
 								.addGroup(
 										layout.createParallelGroup(
-												javax.swing.GroupLayout.Alignment.LEADING)
+												GroupLayout.Alignment.LEADING)
 												.addComponent(
 														jPanelHistory,
-														javax.swing.GroupLayout.DEFAULT_SIZE,
-														javax.swing.GroupLayout.DEFAULT_SIZE,
+														GroupLayout.DEFAULT_SIZE,
+														GroupLayout.DEFAULT_SIZE,
 														Short.MAX_VALUE)
 												.addGroup(
 														layout.createSequentialGroup()
 																.addComponent(
 																		jPanelStatistics,
-																		javax.swing.GroupLayout.PREFERRED_SIZE,
-																		javax.swing.GroupLayout.DEFAULT_SIZE,
-																		javax.swing.GroupLayout.PREFERRED_SIZE)
+																		GroupLayout.PREFERRED_SIZE,
+																		GroupLayout.DEFAULT_SIZE,
+																		GroupLayout.PREFERRED_SIZE)
 																.addPreferredGap(
-																		javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+																		LayoutStyle.ComponentPlacement.RELATED)
 																.addGroup(
 																		layout.createParallelGroup(
-																				javax.swing.GroupLayout.Alignment.BASELINE)
+																				GroupLayout.Alignment.BASELINE)
 																				.addComponent(
 																						jButtonRestart)
 																				.addComponent(
 																						jButtonReady)))
 												.addComponent(
 														jPanelChat,
-														javax.swing.GroupLayout.PREFERRED_SIZE,
-														javax.swing.GroupLayout.DEFAULT_SIZE,
-														javax.swing.GroupLayout.PREFERRED_SIZE))
+														GroupLayout.PREFERRED_SIZE,
+														GroupLayout.DEFAULT_SIZE,
+														GroupLayout.PREFERRED_SIZE))
 								.addContainerGap()));
 
 		pack();
 	}// </editor-fold>
 
-	private void jRadioButtonHorizontalActionPerformed(
-			java.awt.event.ActionEvent evt) {
+	private void jRadioButtonHorizontalActionPerformed(ActionEvent evt) {
 		jRadioButtonVertical.setSelected(false);
 		jRadioButtonHorizontal.setSelected(true);
 	}
 
-	private void jRadioButtonVerticalActionPerformed(
-			java.awt.event.ActionEvent evt) {
+	private void jRadioButtonVerticalActionPerformed(ActionEvent evt) {
 		jRadioButtonHorizontal.setSelected(false);
 		jRadioButtonVertical.setSelected(true);
 	}
 
-	private void jRadioButtonNbrOfSubmarineActionPerformed(
-			java.awt.event.ActionEvent evt) {
+	private void jRadioButtonNbrOfSubmarineActionPerformed(ActionEvent evt) {
 		jRadioButtonNbrOfBattleship.setSelected(false);
 		jRadioButtonNbrOfDestroyer.setSelected(false);
 		jRadioButtonNbrOfCruiser.setSelected(false);
 		jRadioButtonNbrOfSubmarine.setSelected(true);
 	}
 
-	private void jRadioButtonNbrOfBattleshipActionPerformed(
-			java.awt.event.ActionEvent evt) {
+	private void jRadioButtonNbrOfBattleshipActionPerformed(ActionEvent evt) {
 		jRadioButtonNbrOfSubmarine.setSelected(false);
 		jRadioButtonNbrOfDestroyer.setSelected(false);
 		jRadioButtonNbrOfCruiser.setSelected(false);
 		jRadioButtonNbrOfBattleship.setSelected(true);
 	}
 
-	private void jRadioButtonNbrOfDestroyerActionPerformed(
-			java.awt.event.ActionEvent evt) {
+	private void jRadioButtonNbrOfDestroyerActionPerformed(ActionEvent evt) {
 		jRadioButtonNbrOfSubmarine.setSelected(false);
 		jRadioButtonNbrOfBattleship.setSelected(false);
 		jRadioButtonNbrOfCruiser.setSelected(false);
 		jRadioButtonNbrOfDestroyer.setSelected(true);
 	}
 
-	private void jRadioButtonNbrOfCruiserActionPerformed(
-			java.awt.event.ActionEvent evt) {
+	private void jRadioButtonNbrOfCruiserActionPerformed(ActionEvent evt) {
 		jRadioButtonNbrOfSubmarine.setSelected(false);
 		jRadioButtonNbrOfBattleship.setSelected(false);
 		jRadioButtonNbrOfDestroyer.setSelected(false);
 		jRadioButtonNbrOfCruiser.setSelected(true);
 	}
 
-	private void jButtonSendActionPerformed(java.awt.event.ActionEvent evt) {
+	private void jButtonSendActionPerformed(ActionEvent evt) {
 		String s = jTextPaneChat.getText();
 		s = s.concat(jTextPaneYourMessage.getText() + "\n");
 		jTextPaneChat.setText(s);
 	}
 
-	private void jTextPaneYourMessageMouseClicked(java.awt.event.MouseEvent evt) {
+	private void jTextPaneYourMessageMouseClicked(MouseEvent evt) {
 		jTextPaneYourMessage.setText(null);
 	}
 
-	private void jButtonRestartMouseClicked(java.awt.event.MouseEvent evt) {
+	private void jButtonRestartMouseClicked(MouseEvent evt) {
 		/* Set the Nimbus look and feel */
 		// <editor-fold defaultstate="collapsed"
 		// desc=" Look and feel setting code (optional) ">
@@ -1194,30 +963,30 @@ public class GameFrame extends javax.swing.JFrame {
 		 * /tutorial/uiswing/lookandfeel/plaf.html
 		 */
 		try {
-			for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager
+			for (UIManager.LookAndFeelInfo info : UIManager
 					.getInstalledLookAndFeels()) {
 				if ("Nimbus".equals(info.getName())) {
-					javax.swing.UIManager.setLookAndFeel(info.getClassName());
+					UIManager.setLookAndFeel(info.getClassName());
 					break;
 				}
 			}
 		} catch (ClassNotFoundException ex) {
-			java.util.logging.Logger.getLogger(CoordinateFrame.class.getName())
-					.log(java.util.logging.Level.SEVERE, null, ex);
+			Logger.getLogger(CoordinateFrame.class.getName()).log(Level.SEVERE,
+					null, ex);
 		} catch (InstantiationException ex) {
-			java.util.logging.Logger.getLogger(CoordinateFrame.class.getName())
-					.log(java.util.logging.Level.SEVERE, null, ex);
+			Logger.getLogger(CoordinateFrame.class.getName()).log(Level.SEVERE,
+					null, ex);
 		} catch (IllegalAccessException ex) {
-			java.util.logging.Logger.getLogger(CoordinateFrame.class.getName())
-					.log(java.util.logging.Level.SEVERE, null, ex);
-		} catch (javax.swing.UnsupportedLookAndFeelException ex) {
-			java.util.logging.Logger.getLogger(CoordinateFrame.class.getName())
-					.log(java.util.logging.Level.SEVERE, null, ex);
+			Logger.getLogger(CoordinateFrame.class.getName()).log(Level.SEVERE,
+					null, ex);
+		} catch (UnsupportedLookAndFeelException ex) {
+			Logger.getLogger(CoordinateFrame.class.getName()).log(Level.SEVERE,
+					null, ex);
 		}
 		// </editor-fold>
 
 		/* Create and display the form */
-		java.awt.EventQueue.invokeLater(new Runnable() {
+		EventQueue.invokeLater(new Runnable() {
 
 			public void run() {
 				new CoordinateFrame().setVisible(true);
@@ -1226,200 +995,4 @@ public class GameFrame extends javax.swing.JFrame {
 		this.dispose();
 	}
 
-	private void jToggleButtonA1MouseClicked(java.awt.event.MouseEvent evt) {
-		jToggleButtonA1.setBackground(Color.black);
-		jToggleButtonA1.setSelected(true);
-	}
-
-	private void jToggleButtonA2MouseClicked(java.awt.event.MouseEvent evt) {
-		jToggleButtonA2.setBackground(Color.black);
-		jToggleButtonA2.setSelected(true);
-	}
-
-	private void jToggleButtonA3MouseClicked(java.awt.event.MouseEvent evt) {
-		jToggleButtonA3.setBackground(Color.black);
-		jToggleButtonA3.setSelected(true);
-	}
-
-	/*private void jToggleButtonxA1MouseClicked(java.awt.event.MouseEvent evt) {
-		if (jToggleButtonA1.isSelected()) {
-			jToggleButtonxA1.setBackground(Color.red);
-		} else {
-			jToggleButtonxA1.setBackground(Color.blue);
-		}
-	}
-
-	private void jToggleButtonxA2MouseClicked(java.awt.event.MouseEvent evt) {
-		if (jToggleButtonA2.isSelected()) {
-			jToggleButtonxA2.setBackground(Color.red);
-		} else {
-			jToggleButtonxA2.setBackground(Color.blue);
-		}
-	}
-
-	private void jToggleButtonxA3MouseClicked(java.awt.event.MouseEvent evt) {
-		if (jToggleButtonA3.isSelected()) {
-			jToggleButtonxA3.setBackground(Color.red);
-		} else {
-			jToggleButtonxA3.setBackground(Color.blue);
-		}
-	}*/
-
-	private void jToggleButtonB1MouseClicked(java.awt.event.MouseEvent evt) {
-		jToggleButtonB1.setBackground(Color.black);
-		jToggleButtonB1.setSelected(true);
-	}
-
-	private void jToggleButtonB2MouseClicked(java.awt.event.MouseEvent evt) {
-		jToggleButtonB2.setBackground(Color.black);
-		jToggleButtonB2.setSelected(true);
-	}
-
-	private void jToggleButtonB3MouseClicked(java.awt.event.MouseEvent evt) {
-		jToggleButtonB3.setBackground(Color.black);
-		jToggleButtonB3.setSelected(true);
-	}
-
-	private void jToggleButtonC1MouseClicked(java.awt.event.MouseEvent evt) {
-		jToggleButtonC1.setBackground(Color.black);
-		jToggleButtonC1.setSelected(true);
-	}
-
-	private void jToggleButtonC2MouseClicked(java.awt.event.MouseEvent evt) {
-		jToggleButtonC2.setBackground(Color.black);
-		jToggleButtonC2.setSelected(true);
-	}
-
-	private void jToggleButtonC3MouseClicked(java.awt.event.MouseEvent evt) {
-		jToggleButtonC3.setBackground(Color.black);
-		jToggleButtonC3.setSelected(true);
-	}
-
-	/*private void jToggleButtonxB1MouseClicked(java.awt.event.MouseEvent evt) {
-		if (jToggleButtonB1.isSelected()) {
-			jToggleButtonxB1.setBackground(Color.red);
-		} else {
-			jToggleButtonxB1.setBackground(Color.blue);
-		}
-	}
-
-	private void jToggleButtonxB2MouseClicked(java.awt.event.MouseEvent evt) {
-		if (jToggleButtonB2.isSelected()) {
-			jToggleButtonxB2.setBackground(Color.red);
-		} else {
-			jToggleButtonxB2.setBackground(Color.blue);
-		}
-	}
-
-	private void jToggleButtonxB3MouseClicked(java.awt.event.MouseEvent evt) {
-		if (jToggleButtonB3.isSelected()) {
-			jToggleButtonxB3.setBackground(Color.red);
-		} else {
-			jToggleButtonxB3.setBackground(Color.blue);
-		}
-	}
-
-	private void jToggleButtonxC1MouseClicked(java.awt.event.MouseEvent evt) {
-		if (jToggleButtonC1.isSelected()) {
-			jToggleButtonxC1.setBackground(Color.red);
-		} else {
-			jToggleButtonxC1.setBackground(Color.blue);
-		}
-	}
-
-	private void jToggleButtonxC2MouseClicked(java.awt.event.MouseEvent evt) {
-		if (jToggleButtonC2.isSelected()) {
-			jToggleButtonxC2.setBackground(Color.red);
-		} else {
-			jToggleButtonxC2.setBackground(Color.blue);
-		}
-	}
-
-	private void jToggleButtonxC3MouseClicked(java.awt.event.MouseEvent evt) {
-		if (jToggleButtonC3.isSelected()) {
-			jToggleButtonxC3.setBackground(Color.red);
-		} else {
-			jToggleButtonxC3.setBackground(Color.blue);
-		}
-	}*/
-
-	// Variables declaration - do not modify
-	private javax.swing.JButton jButtonReady;
-	private javax.swing.JButton jButtonRestart;
-	private javax.swing.JButton jButtonSend;
-	private javax.swing.JLabel jLabel1;
-	private javax.swing.JLabel jLabel10;
-	private javax.swing.JLabel jLabel2;
-	private javax.swing.JLabel jLabel3;
-	private javax.swing.JLabel jLabelA;
-	private javax.swing.JLabel jLabelB;
-	private javax.swing.JLabel jLabelBattleship;
-	private javax.swing.JLabel jLabelC;
-	private javax.swing.JLabel jLabelChat;
-	private javax.swing.JLabel jLabelCruiser;
-	private javax.swing.JLabel jLabelDestroyer;
-	private javax.swing.JLabel jLabelEnemy;
-	private javax.swing.JLabel jLabelEnemyField;
-	private javax.swing.JLabel jLabelEnemyHits;
-	private javax.swing.JLabel jLabelEnemyShots;
-	private javax.swing.JLabel jLabelEnemySunk;
-	private javax.swing.JLabel jLabelEnemyWater;
-	private javax.swing.JLabel jLabelHistory;
-	private javax.swing.JLabel jLabelHits;
-	private javax.swing.JLabel jLabelShots;
-	private javax.swing.JLabel jLabelStatistics;
-	private javax.swing.JLabel jLabelSubmarine;
-	private javax.swing.JLabel jLabelSunk;
-	private javax.swing.JLabel jLabelWater;
-	private javax.swing.JLabel jLabelYou;
-	private javax.swing.JLabel jLabelYouHits;
-	private javax.swing.JLabel jLabelYouShots;
-	private javax.swing.JLabel jLabelYouSunk;
-	private javax.swing.JLabel jLabelYouWater;
-	private javax.swing.JLabel jLabelYourField;
-	private javax.swing.JLabel jLabel_;
-	/*private javax.swing.JLabel jLabelx1;
-	private javax.swing.JLabel jLabelx2;
-	private javax.swing.JLabel jLabelx3;
-	private javax.swing.JLabel jLabelxA;
-	private javax.swing.JLabel jLabelxB;
-	private javax.swing.JLabel jLabelxC;
-	private javax.swing.JLabel jLabelx_;*/
-	private javax.swing.JPanel jPanePlayingField;
-	private javax.swing.JPanel jPanelChat;
-	private javax.swing.JPanel jPanelEnemyField;
-	private javax.swing.JPanel jPanelHistory;
-	private javax.swing.JPanel jPanelStatistics;
-	private javax.swing.JPanel jPanelYourField;
-	private javax.swing.JRadioButton jRadioButtonHorizontal;
-	private javax.swing.JRadioButton jRadioButtonNbrOfBattleship;
-	private javax.swing.JRadioButton jRadioButtonNbrOfCruiser;
-	private javax.swing.JRadioButton jRadioButtonNbrOfDestroyer;
-	private javax.swing.JRadioButton jRadioButtonNbrOfSubmarine;
-	private javax.swing.JRadioButton jRadioButtonVertical;
-	private javax.swing.JScrollPane jScrollPaneChat;
-	private javax.swing.JScrollPane jScrollPaneChat1;
-	private javax.swing.JScrollPane jScrollPaneYourMessage;
-	private javax.swing.JTextPane jTextPaneChat;
-	private javax.swing.JTextPane jTextPaneHistory;
-	private javax.swing.JTextPane jTextPaneYourMessage;
-	private javax.swing.JToggleButton jToggleButtonA1;
-	private javax.swing.JToggleButton jToggleButtonA2;
-	private javax.swing.JToggleButton jToggleButtonA3;
-	private javax.swing.JToggleButton jToggleButtonB1;
-	private javax.swing.JToggleButton jToggleButtonB2;
-	private javax.swing.JToggleButton jToggleButtonB3;
-	private javax.swing.JToggleButton jToggleButtonC1;
-	private javax.swing.JToggleButton jToggleButtonC2;
-	private javax.swing.JToggleButton jToggleButtonC3;
-	/*private javax.swing.JToggleButton jToggleButtonxA1;
-	private javax.swing.JToggleButton jToggleButtonxA2;
-	private javax.swing.JToggleButton jToggleButtonxA3;
-	private javax.swing.JToggleButton jToggleButtonxB1;
-	private javax.swing.JToggleButton jToggleButtonxB2;
-	private javax.swing.JToggleButton jToggleButtonxB3;
-	private javax.swing.JToggleButton jToggleButtonxC1;
-	private javax.swing.JToggleButton jToggleButtonxC2;
-	private javax.swing.JToggleButton jToggleButtonxC3;*/
-	// End of variables declaration
 }

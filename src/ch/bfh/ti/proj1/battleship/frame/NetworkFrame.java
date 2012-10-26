@@ -1,10 +1,62 @@
 package ch.bfh.ti.proj1.battleship.frame;
 
+import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.BorderFactory;
+import javax.swing.GroupLayout;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JTextField;
+import javax.swing.LayoutStyle;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.WindowConstants;
+
 /**
  * 
  * @author L1r
  */
-public class NetworkFrame extends javax.swing.JFrame {
+public class NetworkFrame extends JFrame {
+
+	// Variables declaration - do not modify
+	private JLabel jLabelStep1of2;
+
+	private JPanel jPanelEnterYourName;
+	private JLabel jLabelEnterYourName;
+	private JLabel jLabelPlayerName;
+	private JTextField jTextPlayerName;
+
+	private JPanel jPanelHostOrJoinGame;
+	private JLabel jLabelHostOrJoinGame;
+
+	private JPanel jPanelHostGame;
+	private JLabel jLabelHostGame;
+	private JRadioButton jRadioButtonHostGame;
+	private JLabel jLabelFreePort;
+	private JTextField jTextFieldFreePort;
+
+	private JPanel jPanelJoinGame;
+	private JLabel jLabelJoinGame;
+	private JRadioButton jRadioButtonJoinGame;
+	private JLabel jLabelSharedPort;
+	private JTextField jTextFieldSharedPort;
+	private JLabel jLabeIPAddress;
+	private JTextField jTextFieldIPAddress;
+
+	private JLabel jLabelStatus;
+
+	private JButton jButtonConnect;
+	private JButton jButtonCancel;
+	// End of variables declaration
 
 	/** Creates new form NewJFrame */
 	public NetworkFrame() {
@@ -19,91 +71,109 @@ public class NetworkFrame extends javax.swing.JFrame {
 	@SuppressWarnings("unchecked")
 	// <editor-fold defaultstate="collapsed" desc="Generated Code">
 	private void initComponents() {
+		
+		jLabelStep1of2 = new JLabel();
+		jLabelStep1of2.setFont(new Font("Tahoma", 0, 24)); // NOI18N
+		jLabelStep1of2.setText("Step 1/2 - Establish network connection");
+		
+		jPanelEnterYourName = new JPanel();
+		jPanelEnterYourName.setBorder(BorderFactory.createEtchedBorder());
+		jLabelEnterYourName = new JLabel();
+		jLabelEnterYourName.setFont(new Font("Tahoma", 1, 11)); // NOI18N
+		jLabelEnterYourName.setText("Please enter your name:");
+		jLabelPlayerName = new JLabel();
+		jLabelPlayerName.setText("Player's Name");
+		jTextPlayerName = new JTextField();
+		jTextPlayerName.setText("Player");
+		jTextPlayerName.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent evt) {
+				jTextPlayerNameActionPerformed(evt);
+			}
+		});
+		
+		jPanelHostOrJoinGame = new JPanel();
+		jPanelHostOrJoinGame.setBorder(BorderFactory.createEtchedBorder());
+		jLabelHostOrJoinGame = new JLabel();
+		jLabelHostOrJoinGame.setFont(new Font("Tahoma", 1, 11)); // NOI18N
+		jLabelHostOrJoinGame.setText("Would you like to host a game or to join a hosted game?");
 
-		jButtonCancel = new javax.swing.JButton();
-		jButtonConnect = new javax.swing.JButton();
-		jLabelStep1of2 = new javax.swing.JLabel();
-		jPanelHostOrJoinGame = new javax.swing.JPanel();
-		jPanelHostGame = new javax.swing.JPanel();
-		jLabelFreePort = new javax.swing.JLabel();
-		jLabelHostGame = new javax.swing.JLabel();
-		jTextFieldFreePort = new javax.swing.JTextField();
-		jRadioButtonHostGame = new javax.swing.JRadioButton();
-		jPanelJoinGame = new javax.swing.JPanel();
-		jRadioButtonJoinGame = new javax.swing.JRadioButton();
-		jLabelJoinGame = new javax.swing.JLabel();
-		jLabelSharedPort = new javax.swing.JLabel();
-		jTextFieldSharedPort = new javax.swing.JTextField();
-		jLabeIPAddress = new javax.swing.JLabel();
-		jTextFieldIPAddress = new javax.swing.JTextField();
-		jLabelHostOrJoinGame = new javax.swing.JLabel();
-		jPanelEnterYourName = new javax.swing.JPanel();
-		jTextPlayerName = new javax.swing.JTextField();
-		jLabelEnterYourName = new javax.swing.JLabel();
-		jLabelPlayerName = new javax.swing.JLabel();
-		jLabelStatus = new javax.swing.JLabel();
+		jPanelHostGame = new JPanel();
+		jPanelHostGame.setBorder(BorderFactory.createEtchedBorder());
+		jLabelHostGame = new JLabel();
+		jLabelHostGame.setFont(new Font("Tahoma", 1, 11)); // NOI18N
+		jLabelHostGame.setText("Host a new game:");
+		jRadioButtonHostGame = new JRadioButton();
+		jRadioButtonHostGame.setSelected(true);
+		jRadioButtonHostGame.setToolTipText("Tooltip");
+		jRadioButtonHostGame.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent evt) {
+				jRadioButtonHostGameActionPerformed(evt);
+			}
+		});
+		jLabelFreePort = new JLabel();
+		jLabelFreePort.setText("Free Port");
+		jTextFieldFreePort = new JTextField();
+		jTextFieldFreePort.setText("4444");
+		jTextFieldFreePort.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent evt) {
+				jTextFieldFreePortActionPerformed(evt);
+			}
+		});
+		
+		jPanelJoinGame = new JPanel();
+		jPanelJoinGame.setBorder(BorderFactory.createEtchedBorder());
+		jLabelJoinGame = new JLabel();
+		jLabelJoinGame.setFont(new Font("Tahoma", 1, 11)); // NOI18N
+		jLabelJoinGame.setText("Join a hosted game:");
+		jRadioButtonJoinGame = new JRadioButton();
+		jRadioButtonJoinGame.setToolTipText("Tooltip");
+		jRadioButtonJoinGame.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent evt) {
+				jRadioButtonJoinGameActionPerformed(evt);
+			}
+		});
+		jLabelSharedPort = new JLabel();
+		jLabelSharedPort.setText("Shared Port of Host");
+		jTextFieldSharedPort = new JTextField();
+		jTextFieldSharedPort.setText("4444");
+		jTextFieldSharedPort.setEnabled(false);
+		jLabeIPAddress = new JLabel();
+		jLabeIPAddress.setText("IP-Address of Host");
+		jTextFieldIPAddress = new JTextField();
+		jTextFieldIPAddress.setText("localhost");
+		jTextFieldIPAddress.setEnabled(false);
+		jLabelStatus = new JLabel();
+		jLabelStatus.setText("Connecting...Please start application of second player if it is not started yet.");
 
-		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-		setTitle("Battle ship");
-		setName("FrameCoordinateGameSettings"); // NOI18N
-
+		jButtonConnect = new JButton();
+		jButtonConnect.setText("connect");
+		jButtonConnect.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent evt) {
+				jButtonConnectMouseClicked(evt);
+			}
+		});
+		jButtonConnect.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent evt) {
+				jButtonConnectActionPerformed(evt);
+			}
+		});
+		jButtonCancel = new JButton();
 		jButtonCancel.setText("Cancel");
-		jButtonCancel.addActionListener(new java.awt.event.ActionListener() {
-			public void actionPerformed(java.awt.event.ActionEvent evt) {
+		jButtonCancel.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent evt) {
 				jButtonCancelActionPerformed(evt);
 			}
 		});
 
-		jButtonConnect.setText("connect");
-		jButtonConnect.addMouseListener(new java.awt.event.MouseAdapter() {
-			public void mouseClicked(java.awt.event.MouseEvent evt) {
-				jButtonConnectMouseClicked(evt);
-			}
-		});
-		jButtonConnect.addActionListener(new java.awt.event.ActionListener() {
-			public void actionPerformed(java.awt.event.ActionEvent evt) {
-				jButtonConnectActionPerformed(evt);
-			}
-		});
+		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+		setTitle("Battle ship");
+		setName("FrameCoordinateGameSettings"); // NOI18N		
 
-		jLabelStep1of2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-		jLabelStep1of2.setText("Step 1/2 - Establish network connection");
-
-		jPanelHostOrJoinGame.setBorder(javax.swing.BorderFactory
-				.createEtchedBorder());
-
-		jPanelHostGame
-				.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-		jLabelFreePort.setText("Free Port");
-
-		jLabelHostGame.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-		jLabelHostGame.setText("Host a new game:");
-
-		jTextFieldFreePort.setText("4444");
-		jTextFieldFreePort
-				.addActionListener(new java.awt.event.ActionListener() {
-					public void actionPerformed(java.awt.event.ActionEvent evt) {
-						jTextFieldFreePortActionPerformed(evt);
-					}
-				});
-
-		jRadioButtonHostGame.setSelected(true);
-		jRadioButtonHostGame.setToolTipText("Tooltip");
-		jRadioButtonHostGame
-				.addActionListener(new java.awt.event.ActionListener() {
-					public void actionPerformed(java.awt.event.ActionEvent evt) {
-						jRadioButtonHostGameActionPerformed(evt);
-					}
-				});
-
-		javax.swing.GroupLayout jPanelHostGameLayout = new javax.swing.GroupLayout(
-				jPanelHostGame);
+		GroupLayout jPanelHostGameLayout = new GroupLayout(jPanelHostGame);
 		jPanelHostGame.setLayout(jPanelHostGameLayout);
 		jPanelHostGameLayout
 				.setHorizontalGroup(jPanelHostGameLayout
-						.createParallelGroup(
-								javax.swing.GroupLayout.Alignment.LEADING)
+						.createParallelGroup(GroupLayout.Alignment.LEADING)
 						.addGroup(
 								jPanelHostGameLayout
 										.createSequentialGroup()
@@ -111,7 +181,7 @@ public class NetworkFrame extends javax.swing.JFrame {
 										.addGroup(
 												jPanelHostGameLayout
 														.createParallelGroup(
-																javax.swing.GroupLayout.Alignment.LEADING)
+																GroupLayout.Alignment.LEADING)
 														.addGroup(
 																jPanelHostGameLayout
 																		.createSequentialGroup()
@@ -128,19 +198,18 @@ public class NetworkFrame extends javax.swing.JFrame {
 																		.addComponent(
 																				jLabelFreePort)
 																		.addPreferredGap(
-																				javax.swing.LayoutStyle.ComponentPlacement.RELATED,
+																				LayoutStyle.ComponentPlacement.RELATED,
 																				52,
 																				Short.MAX_VALUE)
 																		.addComponent(
 																				jTextFieldFreePort,
-																				javax.swing.GroupLayout.PREFERRED_SIZE,
+																				GroupLayout.PREFERRED_SIZE,
 																				77,
-																				javax.swing.GroupLayout.PREFERRED_SIZE)))
+																				GroupLayout.PREFERRED_SIZE)))
 										.addContainerGap()));
 		jPanelHostGameLayout
 				.setVerticalGroup(jPanelHostGameLayout
-						.createParallelGroup(
-								javax.swing.GroupLayout.Alignment.LEADING)
+						.createParallelGroup(GroupLayout.Alignment.LEADING)
 						.addGroup(
 								jPanelHostGameLayout
 										.createSequentialGroup()
@@ -148,7 +217,7 @@ public class NetworkFrame extends javax.swing.JFrame {
 										.addGroup(
 												jPanelHostGameLayout
 														.createParallelGroup(
-																javax.swing.GroupLayout.Alignment.TRAILING)
+																GroupLayout.Alignment.TRAILING)
 														.addComponent(
 																jLabelHostGame)
 														.addComponent(
@@ -157,47 +226,21 @@ public class NetworkFrame extends javax.swing.JFrame {
 										.addGroup(
 												jPanelHostGameLayout
 														.createParallelGroup(
-																javax.swing.GroupLayout.Alignment.BASELINE)
+																GroupLayout.Alignment.BASELINE)
 														.addComponent(
 																jLabelFreePort)
 														.addComponent(
 																jTextFieldFreePort,
-																javax.swing.GroupLayout.PREFERRED_SIZE,
-																javax.swing.GroupLayout.DEFAULT_SIZE,
-																javax.swing.GroupLayout.PREFERRED_SIZE))
+																GroupLayout.PREFERRED_SIZE,
+																GroupLayout.DEFAULT_SIZE,
+																GroupLayout.PREFERRED_SIZE))
 										.addContainerGap(52, Short.MAX_VALUE)));
 
-		jPanelJoinGame
-				.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-		jRadioButtonJoinGame.setToolTipText("Tooltip");
-		jRadioButtonJoinGame
-				.addActionListener(new java.awt.event.ActionListener() {
-					public void actionPerformed(java.awt.event.ActionEvent evt) {
-						jRadioButtonJoinGameActionPerformed(evt);
-					}
-				});
-
-		jLabelJoinGame.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-		jLabelJoinGame.setText("Join a hosted game:");
-
-		jLabelSharedPort.setText("Shared Port of Host");
-
-		jTextFieldSharedPort.setText("4444");
-		jTextFieldSharedPort.setEnabled(false);
-
-		jLabeIPAddress.setText("IP-Address of Host");
-
-		jTextFieldIPAddress.setText("localhost");
-		jTextFieldIPAddress.setEnabled(false);
-
-		javax.swing.GroupLayout jPanelJoinGameLayout = new javax.swing.GroupLayout(
-				jPanelJoinGame);
+		GroupLayout jPanelJoinGameLayout = new GroupLayout(jPanelJoinGame);
 		jPanelJoinGame.setLayout(jPanelJoinGameLayout);
 		jPanelJoinGameLayout
 				.setHorizontalGroup(jPanelJoinGameLayout
-						.createParallelGroup(
-								javax.swing.GroupLayout.Alignment.LEADING)
+						.createParallelGroup(GroupLayout.Alignment.LEADING)
 						.addGroup(
 								jPanelJoinGameLayout
 										.createSequentialGroup()
@@ -205,14 +248,14 @@ public class NetworkFrame extends javax.swing.JFrame {
 										.addGroup(
 												jPanelJoinGameLayout
 														.createParallelGroup(
-																javax.swing.GroupLayout.Alignment.LEADING)
+																GroupLayout.Alignment.LEADING)
 														.addGroup(
 																jPanelJoinGameLayout
 																		.createSequentialGroup()
 																		.addGroup(
 																				jPanelJoinGameLayout
 																						.createParallelGroup(
-																								javax.swing.GroupLayout.Alignment.LEADING)
+																								GroupLayout.Alignment.LEADING)
 																						.addComponent(
 																								jLabelSharedPort)
 																						.addComponent(
@@ -223,15 +266,15 @@ public class NetworkFrame extends javax.swing.JFrame {
 																		.addGroup(
 																				jPanelJoinGameLayout
 																						.createParallelGroup(
-																								javax.swing.GroupLayout.Alignment.LEADING)
+																								GroupLayout.Alignment.LEADING)
 																						.addComponent(
 																								jTextFieldIPAddress,
-																								javax.swing.GroupLayout.DEFAULT_SIZE,
+																								GroupLayout.DEFAULT_SIZE,
 																								84,
 																								Short.MAX_VALUE)
 																						.addComponent(
 																								jTextFieldSharedPort,
-																								javax.swing.GroupLayout.DEFAULT_SIZE,
+																								GroupLayout.DEFAULT_SIZE,
 																								84,
 																								Short.MAX_VALUE)))
 														.addGroup(
@@ -247,8 +290,7 @@ public class NetworkFrame extends javax.swing.JFrame {
 										.addContainerGap()));
 		jPanelJoinGameLayout
 				.setVerticalGroup(jPanelJoinGameLayout
-						.createParallelGroup(
-								javax.swing.GroupLayout.Alignment.LEADING)
+						.createParallelGroup(GroupLayout.Alignment.LEADING)
 						.addGroup(
 								jPanelJoinGameLayout
 										.createSequentialGroup()
@@ -256,53 +298,49 @@ public class NetworkFrame extends javax.swing.JFrame {
 										.addGroup(
 												jPanelJoinGameLayout
 														.createParallelGroup(
-																javax.swing.GroupLayout.Alignment.TRAILING)
+																GroupLayout.Alignment.TRAILING)
 														.addComponent(
 																jLabelJoinGame)
 														.addComponent(
 																jRadioButtonJoinGame,
-																javax.swing.GroupLayout.PREFERRED_SIZE,
+																GroupLayout.PREFERRED_SIZE,
 																21,
-																javax.swing.GroupLayout.PREFERRED_SIZE))
+																GroupLayout.PREFERRED_SIZE))
 										.addGap(25, 25, 25)
 										.addGroup(
 												jPanelJoinGameLayout
 														.createParallelGroup(
-																javax.swing.GroupLayout.Alignment.BASELINE)
+																GroupLayout.Alignment.BASELINE)
 														.addComponent(
 																jLabelSharedPort)
 														.addComponent(
 																jTextFieldSharedPort,
-																javax.swing.GroupLayout.PREFERRED_SIZE,
-																javax.swing.GroupLayout.DEFAULT_SIZE,
-																javax.swing.GroupLayout.PREFERRED_SIZE))
+																GroupLayout.PREFERRED_SIZE,
+																GroupLayout.DEFAULT_SIZE,
+																GroupLayout.PREFERRED_SIZE))
 										.addGap(18, 18, 18)
 										.addGroup(
 												jPanelJoinGameLayout
 														.createParallelGroup(
-																javax.swing.GroupLayout.Alignment.BASELINE)
+																GroupLayout.Alignment.BASELINE)
 														.addComponent(
 																jLabeIPAddress)
 														.addComponent(
 																jTextFieldIPAddress,
-																javax.swing.GroupLayout.PREFERRED_SIZE,
-																javax.swing.GroupLayout.DEFAULT_SIZE,
-																javax.swing.GroupLayout.PREFERRED_SIZE))
+																GroupLayout.PREFERRED_SIZE,
+																GroupLayout.DEFAULT_SIZE,
+																GroupLayout.PREFERRED_SIZE))
 										.addContainerGap(
-												javax.swing.GroupLayout.DEFAULT_SIZE,
+												GroupLayout.DEFAULT_SIZE,
 												Short.MAX_VALUE)));
 
-		jLabelHostOrJoinGame.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-		jLabelHostOrJoinGame
-				.setText("Would you like to host a game or to join a hosted game?");
-
-		javax.swing.GroupLayout jPanelHostOrJoinGameLayout = new javax.swing.GroupLayout(
+		
+		GroupLayout jPanelHostOrJoinGameLayout = new GroupLayout(
 				jPanelHostOrJoinGame);
 		jPanelHostOrJoinGame.setLayout(jPanelHostOrJoinGameLayout);
 		jPanelHostOrJoinGameLayout
 				.setHorizontalGroup(jPanelHostOrJoinGameLayout
-						.createParallelGroup(
-								javax.swing.GroupLayout.Alignment.LEADING)
+						.createParallelGroup(GroupLayout.Alignment.LEADING)
 						.addGroup(
 								jPanelHostOrJoinGameLayout
 										.createSequentialGroup()
@@ -310,34 +348,33 @@ public class NetworkFrame extends javax.swing.JFrame {
 										.addGroup(
 												jPanelHostOrJoinGameLayout
 														.createParallelGroup(
-																javax.swing.GroupLayout.Alignment.LEADING)
+																GroupLayout.Alignment.LEADING)
 														.addGroup(
 																jPanelHostOrJoinGameLayout
 																		.createSequentialGroup()
 																		.addComponent(
 																				jPanelHostGame,
-																				javax.swing.GroupLayout.PREFERRED_SIZE,
-																				javax.swing.GroupLayout.DEFAULT_SIZE,
-																				javax.swing.GroupLayout.PREFERRED_SIZE)
+																				GroupLayout.PREFERRED_SIZE,
+																				GroupLayout.DEFAULT_SIZE,
+																				GroupLayout.PREFERRED_SIZE)
 																		.addGap(18,
 																				18,
 																				18)
 																		.addComponent(
 																				jPanelJoinGame,
-																				javax.swing.GroupLayout.PREFERRED_SIZE,
-																				javax.swing.GroupLayout.DEFAULT_SIZE,
-																				javax.swing.GroupLayout.PREFERRED_SIZE))
+																				GroupLayout.PREFERRED_SIZE,
+																				GroupLayout.DEFAULT_SIZE,
+																				GroupLayout.PREFERRED_SIZE))
 														.addComponent(
 																jLabelHostOrJoinGame))
 										.addContainerGap(
-												javax.swing.GroupLayout.DEFAULT_SIZE,
+												GroupLayout.DEFAULT_SIZE,
 												Short.MAX_VALUE)));
 		jPanelHostOrJoinGameLayout
 				.setVerticalGroup(jPanelHostOrJoinGameLayout
-						.createParallelGroup(
-								javax.swing.GroupLayout.Alignment.LEADING)
+						.createParallelGroup(GroupLayout.Alignment.LEADING)
 						.addGroup(
-								javax.swing.GroupLayout.Alignment.TRAILING,
+								GroupLayout.Alignment.TRAILING,
 								jPanelHostOrJoinGameLayout
 										.createSequentialGroup()
 										.addContainerGap()
@@ -346,41 +383,25 @@ public class NetworkFrame extends javax.swing.JFrame {
 										.addGroup(
 												jPanelHostOrJoinGameLayout
 														.createParallelGroup(
-																javax.swing.GroupLayout.Alignment.LEADING)
+																GroupLayout.Alignment.LEADING)
 														.addComponent(
 																jPanelHostGame,
-																javax.swing.GroupLayout.DEFAULT_SIZE,
-																javax.swing.GroupLayout.DEFAULT_SIZE,
+																GroupLayout.DEFAULT_SIZE,
+																GroupLayout.DEFAULT_SIZE,
 																Short.MAX_VALUE)
 														.addComponent(
 																jPanelJoinGame,
-																javax.swing.GroupLayout.PREFERRED_SIZE,
-																javax.swing.GroupLayout.DEFAULT_SIZE,
-																javax.swing.GroupLayout.PREFERRED_SIZE))
+																GroupLayout.PREFERRED_SIZE,
+																GroupLayout.DEFAULT_SIZE,
+																GroupLayout.PREFERRED_SIZE))
 										.addContainerGap()));
 
-		jPanelEnterYourName.setBorder(javax.swing.BorderFactory
-				.createEtchedBorder());
-
-		jTextPlayerName.setText("Player");
-		jTextPlayerName.addActionListener(new java.awt.event.ActionListener() {
-			public void actionPerformed(java.awt.event.ActionEvent evt) {
-				jTextPlayerNameActionPerformed(evt);
-			}
-		});
-
-		jLabelEnterYourName.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-		jLabelEnterYourName.setText("Please enter your name:");
-
-		jLabelPlayerName.setText("Player's Name");
-
-		javax.swing.GroupLayout jPanelEnterYourNameLayout = new javax.swing.GroupLayout(
+		GroupLayout jPanelEnterYourNameLayout = new GroupLayout(
 				jPanelEnterYourName);
 		jPanelEnterYourName.setLayout(jPanelEnterYourNameLayout);
 		jPanelEnterYourNameLayout
 				.setHorizontalGroup(jPanelEnterYourNameLayout
-						.createParallelGroup(
-								javax.swing.GroupLayout.Alignment.LEADING)
+						.createParallelGroup(GroupLayout.Alignment.LEADING)
 						.addGroup(
 								jPanelEnterYourNameLayout
 										.createSequentialGroup()
@@ -388,7 +409,7 @@ public class NetworkFrame extends javax.swing.JFrame {
 										.addGroup(
 												jPanelEnterYourNameLayout
 														.createParallelGroup(
-																javax.swing.GroupLayout.Alignment.LEADING)
+																GroupLayout.Alignment.LEADING)
 														.addComponent(
 																jLabelEnterYourName)
 														.addGroup(
@@ -401,14 +422,13 @@ public class NetworkFrame extends javax.swing.JFrame {
 																				18)
 																		.addComponent(
 																				jTextPlayerName,
-																				javax.swing.GroupLayout.PREFERRED_SIZE,
+																				GroupLayout.PREFERRED_SIZE,
 																				113,
-																				javax.swing.GroupLayout.PREFERRED_SIZE)))
+																				GroupLayout.PREFERRED_SIZE)))
 										.addContainerGap(249, Short.MAX_VALUE)));
 		jPanelEnterYourNameLayout
 				.setVerticalGroup(jPanelEnterYourNameLayout
-						.createParallelGroup(
-								javax.swing.GroupLayout.Alignment.LEADING)
+						.createParallelGroup(GroupLayout.Alignment.LEADING)
 						.addGroup(
 								jPanelEnterYourNameLayout
 										.createSequentialGroup()
@@ -418,31 +438,28 @@ public class NetworkFrame extends javax.swing.JFrame {
 										.addGroup(
 												jPanelEnterYourNameLayout
 														.createParallelGroup(
-																javax.swing.GroupLayout.Alignment.BASELINE)
+																GroupLayout.Alignment.BASELINE)
 														.addComponent(
 																jLabelPlayerName)
 														.addComponent(
 																jTextPlayerName,
-																javax.swing.GroupLayout.PREFERRED_SIZE,
+																GroupLayout.PREFERRED_SIZE,
 																20,
-																javax.swing.GroupLayout.PREFERRED_SIZE))
+																GroupLayout.PREFERRED_SIZE))
 										.addContainerGap(
-												javax.swing.GroupLayout.DEFAULT_SIZE,
+												GroupLayout.DEFAULT_SIZE,
 												Short.MAX_VALUE)));
 
-		jLabelStatus
-				.setText("Connecting...Please start application of second player if it is not started yet.");
-
-		javax.swing.GroupLayout layout = new javax.swing.GroupLayout(
-				getContentPane());
+		
+		GroupLayout layout = new GroupLayout(getContentPane());
 		getContentPane().setLayout(layout);
 		layout.setHorizontalGroup(layout
-				.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+				.createParallelGroup(GroupLayout.Alignment.LEADING)
 				.addGroup(
 						layout.createSequentialGroup()
 								.addGroup(
 										layout.createParallelGroup(
-												javax.swing.GroupLayout.Alignment.LEADING)
+												GroupLayout.Alignment.LEADING)
 												.addGroup(
 														layout.createSequentialGroup()
 																.addGap(20, 20,
@@ -454,84 +471,80 @@ public class NetworkFrame extends javax.swing.JFrame {
 																.addContainerGap()
 																.addGroup(
 																		layout.createParallelGroup(
-																				javax.swing.GroupLayout.Alignment.TRAILING,
+																				GroupLayout.Alignment.TRAILING,
 																				false)
 																				.addComponent(
 																						jPanelEnterYourName,
-																						javax.swing.GroupLayout.Alignment.LEADING,
-																						javax.swing.GroupLayout.DEFAULT_SIZE,
-																						javax.swing.GroupLayout.DEFAULT_SIZE,
+																						GroupLayout.Alignment.LEADING,
+																						GroupLayout.DEFAULT_SIZE,
+																						GroupLayout.DEFAULT_SIZE,
 																						Short.MAX_VALUE)
 																				.addComponent(
 																						jPanelHostOrJoinGame,
-																						javax.swing.GroupLayout.Alignment.LEADING,
-																						javax.swing.GroupLayout.DEFAULT_SIZE,
-																						javax.swing.GroupLayout.DEFAULT_SIZE,
+																						GroupLayout.Alignment.LEADING,
+																						GroupLayout.DEFAULT_SIZE,
+																						GroupLayout.DEFAULT_SIZE,
 																						Short.MAX_VALUE)))
 												.addGroup(
-														javax.swing.GroupLayout.Alignment.TRAILING,
+														GroupLayout.Alignment.TRAILING,
 														layout.createSequentialGroup()
 																.addContainerGap()
 																.addComponent(
 																		jButtonConnect,
-																		javax.swing.GroupLayout.DEFAULT_SIZE,
+																		GroupLayout.DEFAULT_SIZE,
 																		214,
 																		Short.MAX_VALUE)
 																.addGap(18, 18,
 																		18)
 																.addComponent(
 																		jButtonCancel,
-																		javax.swing.GroupLayout.PREFERRED_SIZE,
+																		GroupLayout.PREFERRED_SIZE,
 																		229,
-																		javax.swing.GroupLayout.PREFERRED_SIZE))
+																		GroupLayout.PREFERRED_SIZE))
 												.addGroup(
 														layout.createSequentialGroup()
 																.addContainerGap()
 																.addComponent(
 																		jLabelStatus)))
 								.addContainerGap()));
-		layout.setVerticalGroup(layout
-				.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-				.addGroup(
-						layout.createSequentialGroup()
-								.addContainerGap()
-								.addComponent(jLabelStep1of2)
-								.addGap(18, 18, 18)
-								.addComponent(jPanelEnterYourName,
-										javax.swing.GroupLayout.PREFERRED_SIZE,
-										javax.swing.GroupLayout.DEFAULT_SIZE,
-										javax.swing.GroupLayout.PREFERRED_SIZE)
-								.addGap(18, 18, 18)
-								.addComponent(jPanelHostOrJoinGame,
-										javax.swing.GroupLayout.PREFERRED_SIZE,
-										javax.swing.GroupLayout.DEFAULT_SIZE,
-										javax.swing.GroupLayout.PREFERRED_SIZE)
-								.addGap(18, 18, 18)
-								.addComponent(jLabelStatus)
-								.addGap(18, 18, 18)
-								.addGroup(
-										layout.createParallelGroup(
-												javax.swing.GroupLayout.Alignment.BASELINE)
-												.addComponent(jButtonConnect)
-												.addComponent(jButtonCancel))
-								.addContainerGap(
-										javax.swing.GroupLayout.DEFAULT_SIZE,
-										Short.MAX_VALUE)));
+		layout.setVerticalGroup(layout.createParallelGroup(
+				GroupLayout.Alignment.LEADING).addGroup(
+				layout.createSequentialGroup()
+						.addContainerGap()
+						.addComponent(jLabelStep1of2)
+						.addGap(18, 18, 18)
+						.addComponent(jPanelEnterYourName,
+								GroupLayout.PREFERRED_SIZE,
+								GroupLayout.DEFAULT_SIZE,
+								GroupLayout.PREFERRED_SIZE)
+						.addGap(18, 18, 18)
+						.addComponent(jPanelHostOrJoinGame,
+								GroupLayout.PREFERRED_SIZE,
+								GroupLayout.DEFAULT_SIZE,
+								GroupLayout.PREFERRED_SIZE)
+						.addGap(18, 18, 18)
+						.addComponent(jLabelStatus)
+						.addGap(18, 18, 18)
+						.addGroup(
+								layout.createParallelGroup(
+										GroupLayout.Alignment.BASELINE)
+										.addComponent(jButtonConnect)
+										.addComponent(jButtonCancel))
+						.addContainerGap(GroupLayout.DEFAULT_SIZE,
+								Short.MAX_VALUE)));
 
 		pack();
 	}// </editor-fold>
 
-	private void jTextPlayerNameActionPerformed(java.awt.event.ActionEvent evt) {
+	private void jTextPlayerNameActionPerformed(ActionEvent evt) {
 		// TODO add your handling code here:
 	}
 
-	private void jTextFieldFreePortActionPerformed(
-			java.awt.event.ActionEvent evt) {
+	private void jTextFieldFreePortActionPerformed(ActionEvent evt) {
 		// TODO add your handling code here:
 	}
 
-	private void jRadioButtonHostGameActionPerformed(
-			java.awt.event.ActionEvent evt) {
+	private void jRadioButtonHostGameActionPerformed(ActionEvent evt) {
 		jRadioButtonJoinGame.setSelected(false);
 		jRadioButtonHostGame.setSelected(true);
 
@@ -540,8 +553,7 @@ public class NetworkFrame extends javax.swing.JFrame {
 		jTextFieldSharedPort.setEnabled(false);
 	}
 
-	private void jRadioButtonJoinGameActionPerformed(
-			java.awt.event.ActionEvent evt) {
+	private void jRadioButtonJoinGameActionPerformed(ActionEvent evt) {
 		jRadioButtonHostGame.setSelected(false);
 		jRadioButtonJoinGame.setSelected(true);
 
@@ -550,14 +562,14 @@ public class NetworkFrame extends javax.swing.JFrame {
 		jTextFieldSharedPort.setEnabled(true);
 	}
 
-	private void jButtonCancelActionPerformed(java.awt.event.ActionEvent evt) {
+	private void jButtonCancelActionPerformed(ActionEvent evt) {
 		System.exit(0);
 	}
 
-	private void jButtonConnectActionPerformed(java.awt.event.ActionEvent evt) {
+	private void jButtonConnectActionPerformed(ActionEvent evt) {
 	}
 
-	private void jButtonConnectMouseClicked(java.awt.event.MouseEvent evt) {
+	private void jButtonConnectMouseClicked(MouseEvent evt) {
 		/* Set the Nimbus look and feel */
 		// <editor-fold defaultstate="collapsed"
 		// desc=" Look and feel setting code (optional) ">
@@ -568,61 +580,30 @@ public class NetworkFrame extends javax.swing.JFrame {
 		 * /tutorial/uiswing/lookandfeel/plaf.html
 		 */
 		try {
-			for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager
+			for (UIManager.LookAndFeelInfo info : UIManager
 					.getInstalledLookAndFeels()) {
 				if ("Nimbus".equals(info.getName())) {
-					javax.swing.UIManager.setLookAndFeel(info.getClassName());
+					UIManager.setLookAndFeel(info.getClassName());
 					break;
 				}
 			}
 		} catch (ClassNotFoundException ex) {
-			java.util.logging.Logger.getLogger(CoordinateFrame.class.getName())
-					.log(java.util.logging.Level.SEVERE, null, ex);
+			Logger.getLogger(CoordinateFrame.class.getName()).log(Level.SEVERE,null, ex);
 		} catch (InstantiationException ex) {
-			java.util.logging.Logger.getLogger(CoordinateFrame.class.getName())
-					.log(java.util.logging.Level.SEVERE, null, ex);
+			Logger.getLogger(CoordinateFrame.class.getName()).log(Level.SEVERE,null, ex);
 		} catch (IllegalAccessException ex) {
-			java.util.logging.Logger.getLogger(CoordinateFrame.class.getName())
-					.log(java.util.logging.Level.SEVERE, null, ex);
-		} catch (javax.swing.UnsupportedLookAndFeelException ex) {
-			java.util.logging.Logger.getLogger(CoordinateFrame.class.getName())
-					.log(java.util.logging.Level.SEVERE, null, ex);
+			Logger.getLogger(CoordinateFrame.class.getName()).log(Level.SEVERE,null, ex);
+		} catch (UnsupportedLookAndFeelException ex) {
+			Logger.getLogger(CoordinateFrame.class.getName()).log(Level.SEVERE,null, ex);
 		}
 		// </editor-fold>
 
 		/* Create and display the form */
-		java.awt.EventQueue.invokeLater(new Runnable() {
-
+		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				new CoordinateFrame().setVisible(true);
 			}
 		});
 		this.dispose();
-
 	}
-	
-	// Variables declaration - do not modify
-	private javax.swing.JButton jButtonConnect;
-	private javax.swing.JButton jButtonCancel;
-	private javax.swing.JLabel jLabeIPAddress;
-	private javax.swing.JLabel jLabelEnterYourName;
-	private javax.swing.JLabel jLabelFreePort;
-	private javax.swing.JLabel jLabelHostGame;
-	private javax.swing.JLabel jLabelHostOrJoinGame;
-	private javax.swing.JLabel jLabelJoinGame;
-	private javax.swing.JLabel jLabelPlayerName;
-	private javax.swing.JLabel jLabelSharedPort;
-	private javax.swing.JLabel jLabelStatus;
-	private javax.swing.JLabel jLabelStep1of2;
-	private javax.swing.JPanel jPanelEnterYourName;
-	private javax.swing.JPanel jPanelHostGame;
-	private javax.swing.JPanel jPanelHostOrJoinGame;
-	private javax.swing.JPanel jPanelJoinGame;
-	private javax.swing.JRadioButton jRadioButtonHostGame;
-	private javax.swing.JRadioButton jRadioButtonJoinGame;
-	private javax.swing.JTextField jTextFieldFreePort;
-	private javax.swing.JTextField jTextFieldIPAddress;
-	private javax.swing.JTextField jTextFieldSharedPort;
-	private javax.swing.JTextField jTextPlayerName;
-	// End of variables declaration
 }
