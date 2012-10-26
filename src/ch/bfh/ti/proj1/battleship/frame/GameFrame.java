@@ -9,8 +9,8 @@ import java.awt.Color;
 public class GameFrame extends javax.swing.JFrame {
 
 	/** Creates new form NewJFrame1 */
-	public GameFrame() {
-		initComponents();
+	public GameFrame(int nbrOfFields, int nbrOfBattleships, int nbrOfSubmarines, int nbrOfDestroyers, int nbrOfCruisers) {
+		initComponents(nbrOfFields, nbrOfBattleships, nbrOfSubmarines, nbrOfDestroyers, nbrOfCruisers);
 	}
 
 	/**
@@ -20,7 +20,7 @@ public class GameFrame extends javax.swing.JFrame {
 	 */
 	@SuppressWarnings("unchecked")
 	// <editor-fold defaultstate="collapsed" desc="Generated Code">
-	private void initComponents() {
+	private void initComponents(int nbrOfFields, int nbrOfBattleships, int nbrOfSubmarines, int nbrOfDestroyers, int nbrOfCruisers) {
 
 		jLabel10 = new javax.swing.JLabel();
 		jPanePlayingField = new javax.swing.JPanel();
@@ -33,9 +33,13 @@ public class GameFrame extends javax.swing.JFrame {
 		jRadioButtonHorizontal = new javax.swing.JRadioButton();
 		jRadioButtonVertical = new javax.swing.JRadioButton();
 		jRadioButtonNbrOfSubmarine = new javax.swing.JRadioButton();
+		jRadioButtonNbrOfSubmarine.setText(nbrOfSubmarines + "x");
 		jRadioButtonNbrOfBattleship = new javax.swing.JRadioButton();
+		jRadioButtonNbrOfBattleship.setText(nbrOfBattleships + "x");
 		jRadioButtonNbrOfDestroyer = new javax.swing.JRadioButton();
+		jRadioButtonNbrOfDestroyer.setText(nbrOfDestroyers + "x");
 		jRadioButtonNbrOfCruiser = new javax.swing.JRadioButton();
+		jRadioButtonNbrOfCruiser.setText(nbrOfCruisers + "x");
 		jPanelYourField = new javax.swing.JPanel();
 		jLabel_ = new javax.swing.JLabel();
 		jLabel1 = new javax.swing.JLabel();
@@ -157,7 +161,7 @@ public class GameFrame extends javax.swing.JFrame {
 		jRadioButtonNbrOfSubmarine.setBackground(new java.awt.Color(255, 255,
 				255));
 		jRadioButtonNbrOfSubmarine.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-		jRadioButtonNbrOfSubmarine.setText("2x");
+		//jRadioButtonNbrOfSubmarine.setText("2x");
 		jRadioButtonNbrOfSubmarine
 				.addActionListener(new java.awt.event.ActionListener() {
 					public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -169,7 +173,7 @@ public class GameFrame extends javax.swing.JFrame {
 				255));
 		jRadioButtonNbrOfBattleship.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
 		jRadioButtonNbrOfBattleship.setSelected(true);
-		jRadioButtonNbrOfBattleship.setText("1x");
+		//jRadioButtonNbrOfBattleship.setText("1x");
 		jRadioButtonNbrOfBattleship
 				.addActionListener(new java.awt.event.ActionListener() {
 					public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -180,7 +184,7 @@ public class GameFrame extends javax.swing.JFrame {
 		jRadioButtonNbrOfDestroyer.setBackground(new java.awt.Color(255, 255,
 				255));
 		jRadioButtonNbrOfDestroyer.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-		jRadioButtonNbrOfDestroyer.setText("3x");
+		//jRadioButtonNbrOfDestroyer.setText("3x");
 		jRadioButtonNbrOfDestroyer
 				.addActionListener(new java.awt.event.ActionListener() {
 					public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -191,7 +195,7 @@ public class GameFrame extends javax.swing.JFrame {
 		jRadioButtonNbrOfCruiser
 				.setBackground(new java.awt.Color(255, 255, 255));
 		jRadioButtonNbrOfCruiser.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-		jRadioButtonNbrOfCruiser.setText("4x");
+		//jRadioButtonNbrOfCruiser.setText("4x");
 		jRadioButtonNbrOfCruiser
 				.addActionListener(new java.awt.event.ActionListener() {
 					public void actionPerformed(java.awt.event.ActionEvent evt) {

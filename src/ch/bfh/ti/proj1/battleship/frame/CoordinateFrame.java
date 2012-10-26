@@ -671,9 +671,15 @@ public class CoordinateFrame extends javax.swing.JFrame {
 
 		/* Create and display the form */
 		java.awt.EventQueue.invokeLater(new Runnable() {
-
+			
+			int nbrOfFields = Integer.parseInt(jTextFieldNbrOfFields.getText());
+			int nbrOfBattleships = Integer.parseInt(jTextFieldNbrOfBattleship.getText());
+			int nbrOfSubmarines = Integer.parseInt(jTextFieldNbrOfSubmarine.getText());
+			int nbrOfDestroyers = Integer.parseInt(jTextFieldNbrOfDestroyer.getText());
+			int nbrOfCruisers = Integer.parseInt(jTextFieldNbrOfCruiser.getText());			
+			
 			public void run() {
-				new GameFrame().setVisible(true);
+				new GameFrame(nbrOfFields, nbrOfBattleships, nbrOfSubmarines, nbrOfDestroyers, nbrOfCruisers).setVisible(true);
 			}
 		});
 		this.dispose();
