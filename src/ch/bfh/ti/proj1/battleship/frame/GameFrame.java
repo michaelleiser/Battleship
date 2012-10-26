@@ -2,6 +2,9 @@ package ch.bfh.ti.proj1.battleship.frame;
 
 import java.awt.Color;
 
+import javax.swing.JLabel;
+import javax.swing.JToggleButton;
+
 /**
  * 
  * @author L1r
@@ -9,8 +12,8 @@ import java.awt.Color;
 public class GameFrame extends javax.swing.JFrame {
 
 	/** Creates new form NewJFrame1 */
-	public GameFrame(int nbrOfFields, int nbrOfBattleships, int nbrOfSubmarines, int nbrOfDestroyers, int nbrOfCruisers) {
-		initComponents(nbrOfFields, nbrOfBattleships, nbrOfSubmarines, nbrOfDestroyers, nbrOfCruisers);
+	public GameFrame(int nbrOfRows, int nbrOfColoumns, int nbrOfBattleships, int nbrOfSubmarines, int nbrOfDestroyers, int nbrOfCruisers) {
+		initComponents(nbrOfRows, nbrOfColoumns, nbrOfBattleships, nbrOfSubmarines, nbrOfDestroyers, nbrOfCruisers);
 	}
 
 	/**
@@ -20,7 +23,7 @@ public class GameFrame extends javax.swing.JFrame {
 	 */
 	@SuppressWarnings("unchecked")
 	// <editor-fold defaultstate="collapsed" desc="Generated Code">
-	private void initComponents(int nbrOfFields, int nbrOfBattleships, int nbrOfSubmarines, int nbrOfDestroyers, int nbrOfCruisers) {
+	private void initComponents(int nbrOfRows, int nbrOfColoumns, int nbrOfBattleships, int nbrOfSubmarines, int nbrOfDestroyers, int nbrOfCruisers) {
 
 		jLabel10 = new javax.swing.JLabel();
 		jPanePlayingField = new javax.swing.JPanel();
@@ -58,7 +61,7 @@ public class GameFrame extends javax.swing.JFrame {
 		jToggleButtonC2 = new javax.swing.JToggleButton();
 		jToggleButtonC3 = new javax.swing.JToggleButton();
 		jPanelEnemyField = new javax.swing.JPanel();
-		jLabelx_ = new javax.swing.JLabel();
+		/*jLabelx_ = new javax.swing.JLabel();
 		jLabelx1 = new javax.swing.JLabel();
 		jLabelx2 = new javax.swing.JLabel();
 		jLabelx3 = new javax.swing.JLabel();
@@ -73,7 +76,7 @@ public class GameFrame extends javax.swing.JFrame {
 		jLabelxC = new javax.swing.JLabel();
 		jToggleButtonxC1 = new javax.swing.JToggleButton();
 		jToggleButtonxC2 = new javax.swing.JToggleButton();
-		jToggleButtonxC3 = new javax.swing.JToggleButton();
+		jToggleButtonxC3 = new javax.swing.JToggleButton();*/
 		jPanelStatistics = new javax.swing.JPanel();
 		jLabelStatistics = new javax.swing.JLabel();
 		jLabelHits = new javax.swing.JLabel();
@@ -313,9 +316,39 @@ public class GameFrame extends javax.swing.JFrame {
 		jPanelYourField.add(jToggleButtonC3);
 
 		jPanelEnemyField.setMinimumSize(new java.awt.Dimension(200, 200));
-		jPanelEnemyField.setLayout(new java.awt.GridLayout(4, 4));
+		
+		
+		int rows = nbrOfRows;
+	    int coloumns = nbrOfColoumns;
+		jPanelEnemyField.setLayout(new java.awt.GridLayout(rows, coloumns));
 
-		jLabelx_.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+		for(int i = 0; i < rows; i++){
+        	for(int j = 0; j < coloumns; j++){
+        		if(i == 0 && j == 0){
+        			JLabel x = new JLabel();
+        			x.setText("/");
+        			jPanelEnemyField.add(x);
+        		}
+        		else if(i == 0){
+        			JLabel x = new JLabel();
+        			x.setText(j + "");
+        			jPanelEnemyField.add(x);
+        		}
+        		else if(j == 0){
+        			JLabel x = new JLabel();
+        			x.setText((char)(i+64) + "");
+        			jPanelEnemyField.add(x);
+        		}
+        		else{
+        			jPanelEnemyField.add(new JToggleButton());
+        		}
+        	}
+        }
+		
+		
+		
+		
+		/*jLabelx_.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 		jLabelx_.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 		jLabelx_.setText("/");
 		jLabelx_.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -418,7 +451,7 @@ public class GameFrame extends javax.swing.JFrame {
 				jToggleButtonxC3MouseClicked(evt);
 			}
 		});
-		jPanelEnemyField.add(jToggleButtonxC3);
+		jPanelEnemyField.add(jToggleButtonxC3);*/
 
 		javax.swing.GroupLayout jPanePlayingFieldLayout = new javax.swing.GroupLayout(
 				jPanePlayingField);
@@ -1187,7 +1220,7 @@ public class GameFrame extends javax.swing.JFrame {
 		jToggleButtonA3.setSelected(true);
 	}
 
-	private void jToggleButtonxA1MouseClicked(java.awt.event.MouseEvent evt) {
+	/*private void jToggleButtonxA1MouseClicked(java.awt.event.MouseEvent evt) {
 		if (jToggleButtonA1.isSelected()) {
 			jToggleButtonxA1.setBackground(Color.red);
 		} else {
@@ -1209,7 +1242,7 @@ public class GameFrame extends javax.swing.JFrame {
 		} else {
 			jToggleButtonxA3.setBackground(Color.blue);
 		}
-	}
+	}*/
 
 	private void jToggleButtonB1MouseClicked(java.awt.event.MouseEvent evt) {
 		jToggleButtonB1.setBackground(Color.black);
@@ -1241,7 +1274,7 @@ public class GameFrame extends javax.swing.JFrame {
 		jToggleButtonC3.setSelected(true);
 	}
 
-	private void jToggleButtonxB1MouseClicked(java.awt.event.MouseEvent evt) {
+	/*private void jToggleButtonxB1MouseClicked(java.awt.event.MouseEvent evt) {
 		if (jToggleButtonB1.isSelected()) {
 			jToggleButtonxB1.setBackground(Color.red);
 		} else {
@@ -1287,7 +1320,7 @@ public class GameFrame extends javax.swing.JFrame {
 		} else {
 			jToggleButtonxC3.setBackground(Color.blue);
 		}
-	}
+	}*/
 
 	// Variables declaration - do not modify
 	private javax.swing.JButton jButtonReady;
@@ -1324,13 +1357,13 @@ public class GameFrame extends javax.swing.JFrame {
 	private javax.swing.JLabel jLabelYouWater;
 	private javax.swing.JLabel jLabelYourField;
 	private javax.swing.JLabel jLabel_;
-	private javax.swing.JLabel jLabelx1;
+	/*private javax.swing.JLabel jLabelx1;
 	private javax.swing.JLabel jLabelx2;
 	private javax.swing.JLabel jLabelx3;
 	private javax.swing.JLabel jLabelxA;
 	private javax.swing.JLabel jLabelxB;
 	private javax.swing.JLabel jLabelxC;
-	private javax.swing.JLabel jLabelx_;
+	private javax.swing.JLabel jLabelx_;*/
 	private javax.swing.JPanel jPanePlayingField;
 	private javax.swing.JPanel jPanelChat;
 	private javax.swing.JPanel jPanelEnemyField;
@@ -1358,7 +1391,7 @@ public class GameFrame extends javax.swing.JFrame {
 	private javax.swing.JToggleButton jToggleButtonC1;
 	private javax.swing.JToggleButton jToggleButtonC2;
 	private javax.swing.JToggleButton jToggleButtonC3;
-	private javax.swing.JToggleButton jToggleButtonxA1;
+	/*private javax.swing.JToggleButton jToggleButtonxA1;
 	private javax.swing.JToggleButton jToggleButtonxA2;
 	private javax.swing.JToggleButton jToggleButtonxA3;
 	private javax.swing.JToggleButton jToggleButtonxB1;
@@ -1366,6 +1399,6 @@ public class GameFrame extends javax.swing.JFrame {
 	private javax.swing.JToggleButton jToggleButtonxB3;
 	private javax.swing.JToggleButton jToggleButtonxC1;
 	private javax.swing.JToggleButton jToggleButtonxC2;
-	private javax.swing.JToggleButton jToggleButtonxC3;
+	private javax.swing.JToggleButton jToggleButtonxC3;*/
 	// End of variables declaration
 }
