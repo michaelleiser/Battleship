@@ -70,7 +70,6 @@ public class Player {
 		} else {
 			throw new BattleshipException("The provided Portnumber is not in between 1'024 and 65'535");
 		}
-		
 	}
 
 
