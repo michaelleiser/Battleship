@@ -46,25 +46,38 @@ public class Player {
 		this.ipAddress = val;
 	}
 	
+	/**
+	 * Gets the ip address of the local computer of the user
+	 * and stores this address for the player. 
+	 * 
+	 * @throws BattleshipException
+	 * 				thrown if the local ip address could not be extracted and stored.
+	 */
 	public void setLocalIpAddress() throws BattleshipException {
 		// TODO: Get the local ip address of this computer and set it.
 	}
 
 
+	/**
+	 * Returns the stored reserved port number of the player's computer.
+	 * 
+	 * @return the stored reserved port number of the player's computer.
+	 */
 	public int getPortNumber() {
 		return portNumber;
 	}
 
 
 	/**
-	 * Validates if the provided port number to store is
-	 * greater than 1024 and smaller than 65535.
+	 * Validates if the provided port number to store is greater than 1024 and smaller than 65535.
+	 * If this is true, the port number is stored otherwise an exception is thrown.
 	 * 
 	 * @param portNumber
+	 * 						the port number of the player's computer
 	 * @throws BattleshipException
+	 * 						thrown if the provided port number is not a correct port number
 	 */
 	public void setPortNumber(int portNumber) throws BattleshipException {
-		// TODO validate if the number is within possible range of port numbers
 		if(portNumber >= 1024 && portNumber <= 65535) {
 			this.portNumber = portNumber;
 		} else {
