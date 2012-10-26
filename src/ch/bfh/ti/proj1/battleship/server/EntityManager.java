@@ -47,6 +47,12 @@ public class EntityManager {
 	}
 
 
+	/**
+	 * 
+	 * 
+	 * @return
+	 * @throws BattleshipException
+	 */
 	public Player getRemotePlayer() throws BattleshipException {
 		if (this.remotePlayer != null) {
 			return remotePlayer;
@@ -56,11 +62,25 @@ public class EntityManager {
 	}
 
 
+	/**
+	 * Stores the second player in the entity manager.
+	 * 
+	 * @param remotePlayer
+	 * 				the second player to set
+	 */
 	public void setRemotePlayer(Player remotePlayer) {
 		this.remotePlayer = remotePlayer;
 	}
 
 
+	/**
+	 * Returns the port number specified for the server
+	 * 
+	 * @return
+	 * 					the port number specified for the server
+	 * @throws BattleshipException
+	 * 					thrown if port number not specified yet (set to 0)
+	 */
 	public int getServerPortNumber() throws BattleshipException {
 		if (this.serverPortNumber != 0) {
 			return serverPortNumber;
@@ -86,7 +106,4 @@ public class EntityManager {
 			throw new BattleshipException("The provided Portnumber is not in between 1'024 and 65'535");
 		}
 	}
-
-	
-	
 }
