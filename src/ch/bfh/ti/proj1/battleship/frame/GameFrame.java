@@ -1,6 +1,8 @@
 package ch.bfh.ti.proj1.battleship.frame;
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JLabel;
 import javax.swing.JToggleButton;
@@ -318,32 +320,51 @@ public class GameFrame extends javax.swing.JFrame {
 		jPanelEnemyField.setMinimumSize(new java.awt.Dimension(200, 200));
 		
 		
-		int rows = nbrOfRows;
-	    int coloumns = nbrOfColoumns;
+		int rows = nbrOfRows + 1;
+	    int coloumns = nbrOfColoumns + 1;
 		jPanelEnemyField.setLayout(new java.awt.GridLayout(rows, coloumns));
 
+		JToggleButton buttons[][] = new JToggleButton[rows][coloumns];
+		
 		for(int i = 0; i < rows; i++){
         	for(int j = 0; j < coloumns; j++){
         		if(i == 0 && j == 0){
         			JLabel x = new JLabel();
+        			x.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        			x.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        			x.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         			x.setText("/");
         			jPanelEnemyField.add(x);
         		}
         		else if(i == 0){
         			JLabel x = new JLabel();
+        			x.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        			x.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        			x.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         			x.setText(j + "");
         			jPanelEnemyField.add(x);
         		}
         		else if(j == 0){
         			JLabel x = new JLabel();
+        			x.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        			x.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        			x.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         			x.setText((char)(i+64) + "");
         			jPanelEnemyField.add(x);
         		}
         		else{
-        			jPanelEnemyField.add(new JToggleButton());
+        			JToggleButton jtb = new JToggleButton();
+        			buttons[i-1][j-1] = jtb;
+        			jtb.addActionListener(new ActionListener(){
+        				public void actionPerformed(ActionEvent ae){
+        					System.out.println(ae.getSource());
+        				}
+        			});
+        			jPanelEnemyField.add(jtb);
         		}
         	}
         }
+		
 		
 		
 		

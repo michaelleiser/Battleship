@@ -600,10 +600,10 @@ public class NetworkFrame extends javax.swing.JFrame {
 		this.dispose();
 
 	}
-
+	
 	// Variables declaration - do not modify
-	private javax.swing.JButton jButtonCancel;
 	private javax.swing.JButton jButtonConnect;
+	private javax.swing.JButton jButtonCancel;
 	private javax.swing.JLabel jLabeIPAddress;
 	private javax.swing.JLabel jLabelEnterYourName;
 	private javax.swing.JLabel jLabelFreePort;

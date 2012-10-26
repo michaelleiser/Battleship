@@ -78,11 +78,6 @@ public class CoordinateFrame extends javax.swing.JFrame {
         jPanelNbrOfFields.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jTextFieldNbrOfRows.setText("10");
-        jTextFieldNbrOfRows.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldNbrOfRowsActionPerformed(evt);
-            }
-        });
 
         jLabelNbrOfFields.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabelNbrOfFields.setText("Number of fields : ");
@@ -92,11 +87,6 @@ public class CoordinateFrame extends javax.swing.JFrame {
         jLabelNbrOfColoumns.setText("Number of coloumns : ");
 
         jTextFieldNbrOfColoumns.setText("10");
-        jTextFieldNbrOfColoumns.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldNbrOfColoumnsActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanelNbrOfFieldsLayout = new javax.swing.GroupLayout(jPanelNbrOfFields);
         jPanelNbrOfFields.setLayout(jPanelNbrOfFieldsLayout);
@@ -370,9 +360,7 @@ public class CoordinateFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>
 
-private void jTextFieldNbrOfRowsActionPerformed(java.awt.event.ActionEvent evt) {                                                      
-// TODO add your handling code here:
-}                                                     
+                                                  
 
 private void jTextFieldNbrOfBattleshipActionPerformed(java.awt.event.ActionEvent evt) {                                                          
 // TODO add your handling code here:
@@ -469,10 +457,6 @@ private void jButtonCancelActionPerformed(java.awt.event.ActionEvent evt) {
     private void jTextPaneYourMessageMouseClicked(java.awt.event.MouseEvent evt) {                                                  
         jTextPaneYourMessage.setText(null);
     }                                                 
-
-    private void jTextFieldNbrOfColoumnsActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
-    }
 
     // Variables declaration - do not modify
     private javax.swing.JButton jButtonCancel;
