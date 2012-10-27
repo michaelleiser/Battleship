@@ -667,9 +667,9 @@ public class CoordinateFrame extends JFrame implements Runnable{
 	}
 
 	private void jButtonSendActionPerformed(ActionEvent evt) {
-		String s = jTextPaneChat.getText();
-		s = s.concat(jTextPaneYourMessage.getText() + "\n");
-		jTextPaneChat.setText(s);
+//		String s = jTextPaneChat.getText();
+//		s = s.concat(jTextPaneYourMessage.getText() + "\n");
+//		jTextPaneChat.setText(s);
 	}
 
 	private void jButtonValidateAndCoordinateActionPerformed(ActionEvent evt) {
@@ -780,11 +780,22 @@ public class CoordinateFrame extends JFrame implements Runnable{
 		}
 	}
 	
-	public int PORT = 8765;
+	public int PORT = 4444;
 	public String IP = "localhost";
 	Socket socket;
 	DataInputStream in;
 	PrintStream out;
 	Thread thread;
+
+	public void disableComponents() {
+		jTextFieldNbrOfBattleship.disable();
+		jTextFieldNbrOfColoumns.disable();
+		jTextFieldNbrOfCruiser.disable();
+		jTextFieldNbrOfDestroyer.disable();
+		jTextFieldNbrOfRows.disable();
+		jTextFieldNbrOfSubmarine.disable();
+		jRadioButtonShootAlternatively.setVisible(false);
+		jRadioButtonShootUntilWater.setVisible(false);
+	}
 
 }

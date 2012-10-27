@@ -147,11 +147,6 @@ public class NetworkFrame extends JFrame {
 
 		jButtonConnect = new JButton();
 		jButtonConnect.setText("connect");
-		jButtonConnect.addMouseListener(new MouseAdapter() {
-			public void mouseClicked(MouseEvent evt) {
-				jButtonConnectMouseClicked(evt);
-			}
-		});
 		jButtonConnect.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
 				jButtonConnectActionPerformed(evt);
@@ -567,9 +562,6 @@ public class NetworkFrame extends JFrame {
 	}
 
 	private void jButtonConnectActionPerformed(ActionEvent evt) {
-	}
-
-	private void jButtonConnectMouseClicked(MouseEvent evt) {
 		/* Set the Nimbus look and feel */
 		// <editor-fold defaultstate="collapsed"
 		// desc=" Look and feel setting code (optional) ">
@@ -633,9 +625,12 @@ public class NetworkFrame extends JFrame {
 			/* Create and display the form */
 			EventQueue.invokeLater(new Runnable() {
 				public void run() {
-					new CoordinateFrame(port, IP).setVisible(true);
+					CoordinateFrame cf = new CoordinateFrame(port, IP);
+					cf.setVisible(true);
+					cf.disableComponents();
 				}
 			});
 			this.dispose();}
 	}
+
 }
