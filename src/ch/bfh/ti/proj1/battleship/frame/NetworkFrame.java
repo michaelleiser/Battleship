@@ -579,31 +579,63 @@ public class NetworkFrame extends JFrame {
 		 * http://download.oracle.com/javase
 		 * /tutorial/uiswing/lookandfeel/plaf.html
 		 */
-		try {
-			for (UIManager.LookAndFeelInfo info : UIManager
-					.getInstalledLookAndFeels()) {
-				if ("Nimbus".equals(info.getName())) {
-					UIManager.setLookAndFeel(info.getClassName());
-					break;
+		if (jRadioButtonHostGame.isSelected()) {
+			final int port = Integer.parseInt(jTextFieldFreePort.getText());
+			new MyServer(port);
+			try {
+				for (UIManager.LookAndFeelInfo info : UIManager
+						.getInstalledLookAndFeels()) {
+					if ("Nimbus".equals(info.getName())) {
+						UIManager.setLookAndFeel(info.getClassName());
+						break;
+					}
 				}
+			} catch (ClassNotFoundException ex) {
+				Logger.getLogger(CoordinateFrame.class.getName()).log(Level.SEVERE,null, ex);
+			} catch (InstantiationException ex) {
+				Logger.getLogger(CoordinateFrame.class.getName()).log(Level.SEVERE,null, ex);
+			} catch (IllegalAccessException ex) {
+				Logger.getLogger(CoordinateFrame.class.getName()).log(Level.SEVERE,null, ex);
+			} catch (UnsupportedLookAndFeelException ex) {
+				Logger.getLogger(CoordinateFrame.class.getName()).log(Level.SEVERE,null, ex);
 			}
-		} catch (ClassNotFoundException ex) {
-			Logger.getLogger(CoordinateFrame.class.getName()).log(Level.SEVERE,null, ex);
-		} catch (InstantiationException ex) {
-			Logger.getLogger(CoordinateFrame.class.getName()).log(Level.SEVERE,null, ex);
-		} catch (IllegalAccessException ex) {
-			Logger.getLogger(CoordinateFrame.class.getName()).log(Level.SEVERE,null, ex);
-		} catch (UnsupportedLookAndFeelException ex) {
-			Logger.getLogger(CoordinateFrame.class.getName()).log(Level.SEVERE,null, ex);
-		}
-		// </editor-fold>
+			// </editor-fold>
 
-		/* Create and display the form */
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				new CoordinateFrame().setVisible(true);
+			/* Create and display the form */
+			EventQueue.invokeLater(new Runnable() {
+				public void run() {
+					new CoordinateFrame(port, "localhost").setVisible(true);
+				}
+			});
+			this.dispose();
+		} else if (jRadioButtonJoinGame.isSelected()) {
+			final int port = Integer.parseInt(jTextFieldSharedPort.getText());
+			final String IP = jTextFieldIPAddress.getText();
+			try {
+				for (UIManager.LookAndFeelInfo info : UIManager
+						.getInstalledLookAndFeels()) {
+					if ("Nimbus".equals(info.getName())) {
+						UIManager.setLookAndFeel(info.getClassName());
+						break;
+					}
+				}
+			} catch (ClassNotFoundException ex) {
+				Logger.getLogger(CoordinateFrame.class.getName()).log(Level.SEVERE,null, ex);
+			} catch (InstantiationException ex) {
+				Logger.getLogger(CoordinateFrame.class.getName()).log(Level.SEVERE,null, ex);
+			} catch (IllegalAccessException ex) {
+				Logger.getLogger(CoordinateFrame.class.getName()).log(Level.SEVERE,null, ex);
+			} catch (UnsupportedLookAndFeelException ex) {
+				Logger.getLogger(CoordinateFrame.class.getName()).log(Level.SEVERE,null, ex);
 			}
-		});
-		this.dispose();
+			// </editor-fold>
+
+			/* Create and display the form */
+			EventQueue.invokeLater(new Runnable() {
+				public void run() {
+					new CoordinateFrame(port, IP).setVisible(true);
+				}
+			});
+			this.dispose();}
 	}
 }

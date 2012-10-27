@@ -6,6 +6,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.DataInputStream;
+import java.io.IOException;
+import java.io.PrintStream;
+import java.net.Socket;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.BorderFactory;
@@ -27,7 +31,7 @@ import javax.swing.WindowConstants;
  * 
  * @author L1r
  */
-public class CoordinateFrame extends JFrame {
+public class CoordinateFrame extends JFrame implements Runnable{
 
 	// Variables declaration - do not modify
 	private JLabel jLabelStep2of2;
@@ -70,8 +74,12 @@ public class CoordinateFrame extends JFrame {
 	// End of variables declaration
 
 	/** Creates new form NewJFrame */
-	public CoordinateFrame() {
+	public CoordinateFrame(int PORT, String IP) {
+		this.PORT = PORT;
+		this.IP = IP;
+	
 		initComponents();
+		start();
 	}
 
 	/**
@@ -724,5 +732,59 @@ public class CoordinateFrame extends JFrame {
 	private void jTextPaneYourMessageMouseClicked(MouseEvent evt) {
 		jTextPaneYourMessage.setText(null);
 	}
+
+	public void start() {
+		try {
+			socket = new Socket(IP, PORT);
+			in = new DataInputStream(socket.getInputStream());
+			out = new PrintStream(socket.getOutputStream());
+			jButtonSend.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					String inp = jTextPaneYourMessage.getText();
+					out.println(inp);
+					jTextPaneYourMessage.setText("");
+				}
+			});
+		} catch (IOException e) {
+		}
+
+		if (thread == null) {
+			thread = new Thread(this);
+			thread.setPriority(Thread.MIN_PRIORITY);
+			thread.start();
+		}
+	}
+
+	public void stop() {
+		try {
+			socket.close();
+		} catch (IOException e) {
+		}
+		if ((thread != null) && thread.isAlive()) {
+			thread.stop();
+			thread = null;
+		}
+	}
+
+	public void run() {
+		String line;
+		try {
+			while (true) {
+				line = in.readLine();
+				if (line != null){
+					jTextPaneChat.setText(line);
+				}
+			}
+		} catch (IOException e) {
+		}
+	}
+	
+	public int PORT = 8765;
+	public String IP = "localhost";
+	Socket socket;
+	DataInputStream in;
+	PrintStream out;
+	Thread thread;
 
 }

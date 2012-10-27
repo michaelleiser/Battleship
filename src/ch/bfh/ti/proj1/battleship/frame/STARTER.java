@@ -19,20 +19,25 @@ public class STARTER {
 		 * /tutorial/uiswing/lookandfeel/plaf.html
 		 */
 		try {
-			for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
+			for (UIManager.LookAndFeelInfo info : UIManager
+					.getInstalledLookAndFeels()) {
 				if ("Nimbus".equals(info.getName())) {
 					UIManager.setLookAndFeel(info.getClassName());
 					break;
 				}
 			}
 		} catch (ClassNotFoundException ex) {
-			Logger.getLogger(NetworkFrame.class.getName()).log(Level.SEVERE,null, ex);
+			Logger.getLogger(NetworkFrame.class.getName()).log(Level.SEVERE,
+					null, ex);
 		} catch (InstantiationException ex) {
-			Logger.getLogger(NetworkFrame.class.getName()).log(Level.SEVERE,null, ex);
+			Logger.getLogger(NetworkFrame.class.getName()).log(Level.SEVERE,
+					null, ex);
 		} catch (IllegalAccessException ex) {
-			Logger.getLogger(NetworkFrame.class.getName()).log(Level.SEVERE,null, ex);
+			Logger.getLogger(NetworkFrame.class.getName()).log(Level.SEVERE,
+					null, ex);
 		} catch (UnsupportedLookAndFeelException ex) {
-			Logger.getLogger(NetworkFrame.class.getName()).log(Level.SEVERE,null, ex);
+			Logger.getLogger(NetworkFrame.class.getName()).log(Level.SEVERE,
+					null, ex);
 		}
 		// </editor-fold>
 
