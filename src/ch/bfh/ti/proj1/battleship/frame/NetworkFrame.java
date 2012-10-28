@@ -56,6 +56,7 @@ public class NetworkFrame extends JFrame {
 
 	private JButton jButtonConnect;
 	private JButton jButtonCancel;
+
 	// End of variables declaration
 
 	/** Creates new form NewJFrame */
@@ -71,11 +72,11 @@ public class NetworkFrame extends JFrame {
 	@SuppressWarnings("unchecked")
 	// <editor-fold defaultstate="collapsed" desc="Generated Code">
 	private void initComponents() {
-		
+
 		jLabelStep1of2 = new JLabel();
 		jLabelStep1of2.setFont(new Font("Tahoma", 0, 24)); // NOI18N
 		jLabelStep1of2.setText("Step 1/2 - Establish network connection");
-		
+
 		jPanelEnterYourName = new JPanel();
 		jPanelEnterYourName.setBorder(BorderFactory.createEtchedBorder());
 		jLabelEnterYourName = new JLabel();
@@ -90,12 +91,13 @@ public class NetworkFrame extends JFrame {
 				jTextPlayerNameActionPerformed(evt);
 			}
 		});
-		
+
 		jPanelHostOrJoinGame = new JPanel();
 		jPanelHostOrJoinGame.setBorder(BorderFactory.createEtchedBorder());
 		jLabelHostOrJoinGame = new JLabel();
 		jLabelHostOrJoinGame.setFont(new Font("Tahoma", 1, 11)); // NOI18N
-		jLabelHostOrJoinGame.setText("Would you like to host a game or to join a hosted game?");
+		jLabelHostOrJoinGame
+				.setText("Would you like to host a game or to join a hosted game?");
 
 		jPanelHostGame = new JPanel();
 		jPanelHostGame.setBorder(BorderFactory.createEtchedBorder());
@@ -119,7 +121,7 @@ public class NetworkFrame extends JFrame {
 				jTextFieldFreePortActionPerformed(evt);
 			}
 		});
-		
+
 		jPanelJoinGame = new JPanel();
 		jPanelJoinGame.setBorder(BorderFactory.createEtchedBorder());
 		jLabelJoinGame = new JLabel();
@@ -143,7 +145,8 @@ public class NetworkFrame extends JFrame {
 		jTextFieldIPAddress.setText("localhost");
 		jTextFieldIPAddress.setEnabled(false);
 		jLabelStatus = new JLabel();
-		jLabelStatus.setText("Connecting...Please start application of second player if it is not started yet.");
+		jLabelStatus
+				.setText("Connecting...Please start application of second player if it is not started yet.");
 
 		jButtonConnect = new JButton();
 		jButtonConnect.setText("connect");
@@ -162,7 +165,7 @@ public class NetworkFrame extends JFrame {
 
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		setTitle("Battle ship");
-		setName("FrameCoordinateGameSettings"); // NOI18N		
+		setName("FrameCoordinateGameSettings"); // NOI18N
 
 		GroupLayout jPanelHostGameLayout = new GroupLayout(jPanelHostGame);
 		jPanelHostGame.setLayout(jPanelHostGameLayout);
@@ -329,7 +332,6 @@ public class NetworkFrame extends JFrame {
 												GroupLayout.DEFAULT_SIZE,
 												Short.MAX_VALUE)));
 
-		
 		GroupLayout jPanelHostOrJoinGameLayout = new GroupLayout(
 				jPanelHostOrJoinGame);
 		jPanelHostOrJoinGame.setLayout(jPanelHostOrJoinGameLayout);
@@ -445,7 +447,6 @@ public class NetworkFrame extends JFrame {
 												GroupLayout.DEFAULT_SIZE,
 												Short.MAX_VALUE)));
 
-		
 		GroupLayout layout = new GroupLayout(getContentPane());
 		getContentPane().setLayout(layout);
 		layout.setHorizontalGroup(layout
@@ -573,64 +574,15 @@ public class NetworkFrame extends JFrame {
 		 */
 		if (jRadioButtonHostGame.isSelected()) {
 			final int port = Integer.parseInt(jTextFieldFreePort.getText());
-			new MyServer(port);
-			try {
-				for (UIManager.LookAndFeelInfo info : UIManager
-						.getInstalledLookAndFeels()) {
-					if ("Nimbus".equals(info.getName())) {
-						UIManager.setLookAndFeel(info.getClassName());
-						break;
-					}
-				}
-			} catch (ClassNotFoundException ex) {
-				Logger.getLogger(CoordinateFrame.class.getName()).log(Level.SEVERE,null, ex);
-			} catch (InstantiationException ex) {
-				Logger.getLogger(CoordinateFrame.class.getName()).log(Level.SEVERE,null, ex);
-			} catch (IllegalAccessException ex) {
-				Logger.getLogger(CoordinateFrame.class.getName()).log(Level.SEVERE,null, ex);
-			} catch (UnsupportedLookAndFeelException ex) {
-				Logger.getLogger(CoordinateFrame.class.getName()).log(Level.SEVERE,null, ex);
-			}
-			// </editor-fold>
-
-			/* Create and display the form */
-			EventQueue.invokeLater(new Runnable() {
-				public void run() {
-					new CoordinateFrame(port, "localhost").setVisible(true);
-				}
-			});
+			Game g = new Game();
+			g.hostGame(port);
 			this.dispose();
 		} else if (jRadioButtonJoinGame.isSelected()) {
 			final int port = Integer.parseInt(jTextFieldSharedPort.getText());
 			final String IP = jTextFieldIPAddress.getText();
-			try {
-				for (UIManager.LookAndFeelInfo info : UIManager
-						.getInstalledLookAndFeels()) {
-					if ("Nimbus".equals(info.getName())) {
-						UIManager.setLookAndFeel(info.getClassName());
-						break;
-					}
-				}
-			} catch (ClassNotFoundException ex) {
-				Logger.getLogger(CoordinateFrame.class.getName()).log(Level.SEVERE,null, ex);
-			} catch (InstantiationException ex) {
-				Logger.getLogger(CoordinateFrame.class.getName()).log(Level.SEVERE,null, ex);
-			} catch (IllegalAccessException ex) {
-				Logger.getLogger(CoordinateFrame.class.getName()).log(Level.SEVERE,null, ex);
-			} catch (UnsupportedLookAndFeelException ex) {
-				Logger.getLogger(CoordinateFrame.class.getName()).log(Level.SEVERE,null, ex);
-			}
-			// </editor-fold>
-
-			/* Create and display the form */
-			EventQueue.invokeLater(new Runnable() {
-				public void run() {
-					CoordinateFrame cf = new CoordinateFrame(port, IP);
-					cf.setVisible(true);
-					cf.disableComponents();
-				}
-			});
-			this.dispose();}
+			Game g = new Game();
+			g.joinGame(port, IP);
+			this.dispose();
+		}
 	}
-
 }
