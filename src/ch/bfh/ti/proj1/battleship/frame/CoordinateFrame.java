@@ -1,5 +1,4 @@
 package ch.bfh.ti.proj1.battleship.frame;
-
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -31,7 +30,7 @@ import javax.swing.WindowConstants;
  * 
  * @author L1r
  */
-public class CoordinateFrame extends JFrame implements Runnable{
+public class CoordinateFrame extends JFrame{
 
 	// Variables declaration - do not modify
 	private JLabel jLabelStep2of2;
@@ -64,9 +63,9 @@ public class CoordinateFrame extends JFrame implements Runnable{
 	private JPanel jPanelChat;
 	private JLabel jLabelChat;
 	private JScrollPane jScrollPaneChat;
-	private JTextPane jTextPaneChat;
+	JTextPane jTextPaneChat;
 	private JScrollPane jScrollPaneYourMessage;
-	private JTextPane jTextPaneYourMessage;
+	JTextPane jTextPaneYourMessage;
 	private JButton jButtonSend;
 
 	private JButton jButtonValidateAndCoordinate;
@@ -74,12 +73,8 @@ public class CoordinateFrame extends JFrame implements Runnable{
 	// End of variables declaration
 
 	/** Creates new form NewJFrame */
-	public CoordinateFrame(int PORT, String IP) {
-		this.PORT = PORT;
-		this.IP = IP;
-	
+	public CoordinateFrame() {
 		initComponents();
-		start();
 	}
 
 	/**
@@ -667,9 +662,8 @@ public class CoordinateFrame extends JFrame implements Runnable{
 	}
 
 	private void jButtonSendActionPerformed(ActionEvent evt) {
-//		String s = jTextPaneChat.getText();
-//		s = s.concat(jTextPaneYourMessage.getText() + "\n");
-//		jTextPaneChat.setText(s);
+		game.mc.sendMessage(evt);
+		
 	}
 
 	private void jButtonValidateAndCoordinateActionPerformed(ActionEvent evt) {
@@ -733,59 +727,7 @@ public class CoordinateFrame extends JFrame implements Runnable{
 		jTextPaneYourMessage.setText(null);
 	}
 
-	public void start() {
-		try {
-			socket = new Socket(IP, PORT);
-			in = new DataInputStream(socket.getInputStream());
-			out = new PrintStream(socket.getOutputStream());
-			jButtonSend.addActionListener(new ActionListener() {
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					String inp = jTextPaneYourMessage.getText();
-					out.println(inp);
-					jTextPaneYourMessage.setText("");
-				}
-			});
-		} catch (IOException e) {
-		}
-
-		if (thread == null) {
-			thread = new Thread(this);
-			thread.setPriority(Thread.MIN_PRIORITY);
-			thread.start();
-		}
-	}
-
-	public void stop() {
-		try {
-			socket.close();
-		} catch (IOException e) {
-		}
-		if ((thread != null) && thread.isAlive()) {
-			thread.stop();
-			thread = null;
-		}
-	}
-
-	public void run() {
-		String line;
-		try {
-			while (true) {
-				line = in.readLine();
-				if (line != null){
-					jTextPaneChat.setText(line);
-				}
-			}
-		} catch (IOException e) {
-		}
-	}
 	
-	public int PORT = 4444;
-	public String IP = "localhost";
-	Socket socket;
-	DataInputStream in;
-	PrintStream out;
-	Thread thread;
 
 	public void disableComponents() {
 		jTextFieldNbrOfBattleship.disable();
@@ -797,5 +739,11 @@ public class CoordinateFrame extends JFrame implements Runnable{
 		jRadioButtonShootAlternatively.setVisible(false);
 		jRadioButtonShootUntilWater.setVisible(false);
 	}
+
+	public void setGame(Game game) {
+		this.game = game;
+	}
+
+	private Game game;
 
 }

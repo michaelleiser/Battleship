@@ -989,10 +989,11 @@ public class GameFrame extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 
 			public void run() {
-				new CoordinateFrame(8765, "localhost").setVisible(true);
+				new CoordinateFrame().setVisible(true);
 			}
 		});
 		this.dispose();
 	}
 
 }
+

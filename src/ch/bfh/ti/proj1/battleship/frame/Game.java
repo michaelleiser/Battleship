@@ -1,5 +1,6 @@
 package ch.bfh.ti.proj1.battleship.frame;
 
+
 import java.awt.EventQueue;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -7,9 +8,16 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
 public class Game {
+	
+	MyClient mc;
+	CoordinateFrame cf;
+	
+	public Game(){}
 
 	public void hostGame(final int port) {
 		new MyServer(port);
+		mc = new MyClient(port, "localhost");
+		mc.setGame(this);
 		try {
 			for (UIManager.LookAndFeelInfo info : UIManager
 					.getInstalledLookAndFeels()) {
@@ -34,15 +42,20 @@ public class Game {
 		// </editor-fold>
 
 		/* Create and display the form */
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				new CoordinateFrame(port, "localhost").setVisible(true);
-			}
-		});
-
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				cf = new CoordinateFrame();
+//				cf.setVisible(true);
+//			}
+//		});
+		cf = new CoordinateFrame();
+		cf.setVisible(true);
+		cf.setGame(this);
 	}
 
 	public void joinGame(final int port, final String IP) {
+		mc = new MyClient(port, IP);
+		mc.setGame(this);
 		try {
 			for (UIManager.LookAndFeelInfo info : UIManager
 					.getInstalledLookAndFeels()) {
@@ -67,13 +80,17 @@ public class Game {
 		// </editor-fold>
 
 		/* Create and display the form */
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				CoordinateFrame cf = new CoordinateFrame(port, IP);
-				cf.setVisible(true);
-				cf.disableComponents();
-			}
-		});
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				cf = new CoordinateFrame();
+//				cf.setVisible(true);
+//				cf.disableComponents();
+//			}
+//		});
+		cf = new CoordinateFrame();
+		cf.setVisible(true);
+		cf.disableComponents();
+		cf.setGame(this);
 	}
 
 }
