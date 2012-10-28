@@ -662,8 +662,9 @@ public class CoordinateFrame extends JFrame{
 	}
 
 	private void jButtonSendActionPerformed(ActionEvent evt) {
-		game.mc.sendMessage(evt);
-		
+		String s;
+		s = "Coordinate " + "Chat " + jTextPaneYourMessage.getText();
+		game.mc.sendMessage(s);
 	}
 
 	private void jButtonValidateAndCoordinateActionPerformed(ActionEvent evt) {
@@ -700,26 +701,46 @@ public class CoordinateFrame extends JFrame{
 		// </editor-fold>
 
 		/* Create and display the form */
-		EventQueue.invokeLater(new Runnable() {
+//		EventQueue.invokeLater(new Runnable() {
+//
+//			int nbrOfRows = Integer.parseInt(jTextFieldNbrOfRows.getText());
+//			int nbrOfColoumns = Integer.parseInt(jTextFieldNbrOfColoumns
+//					.getText());
+//			int nbrOfBattleships = Integer.parseInt(jTextFieldNbrOfBattleship
+//					.getText());
+//			int nbrOfSubmarines = Integer.parseInt(jTextFieldNbrOfSubmarine
+//					.getText());
+//			int nbrOfDestroyers = Integer.parseInt(jTextFieldNbrOfDestroyer
+//					.getText());
+//			int nbrOfCruisers = Integer.parseInt(jTextFieldNbrOfCruiser
+//					.getText());
+//
+//			public void run() {
+//				new GameFrame(nbrOfRows, nbrOfColoumns, nbrOfBattleships,
+//						nbrOfSubmarines, nbrOfDestroyers, nbrOfCruisers)
+//						.setVisible(true);
+//			}
+//		});
+		
+		
+		int nbrOfRows = Integer.parseInt(jTextFieldNbrOfRows.getText());
+		int nbrOfColoumns = Integer.parseInt(jTextFieldNbrOfColoumns
+				.getText());
+		int nbrOfBattleships = Integer.parseInt(jTextFieldNbrOfBattleship
+				.getText());
+		int nbrOfSubmarines = Integer.parseInt(jTextFieldNbrOfSubmarine
+				.getText());
+		int nbrOfDestroyers = Integer.parseInt(jTextFieldNbrOfDestroyer
+				.getText());
+		int nbrOfCruisers = Integer.parseInt(jTextFieldNbrOfCruiser
+				.getText());
 
-			int nbrOfRows = Integer.parseInt(jTextFieldNbrOfRows.getText());
-			int nbrOfColoumns = Integer.parseInt(jTextFieldNbrOfColoumns
-					.getText());
-			int nbrOfBattleships = Integer.parseInt(jTextFieldNbrOfBattleship
-					.getText());
-			int nbrOfSubmarines = Integer.parseInt(jTextFieldNbrOfSubmarine
-					.getText());
-			int nbrOfDestroyers = Integer.parseInt(jTextFieldNbrOfDestroyer
-					.getText());
-			int nbrOfCruisers = Integer.parseInt(jTextFieldNbrOfCruiser
-					.getText());
+		GameFrame gf = new GameFrame(nbrOfRows, nbrOfColoumns, nbrOfBattleships,
+				nbrOfSubmarines, nbrOfDestroyers, nbrOfCruisers);
+		gf.setVisible(true);
+		gf.setGame(game);
+		game.setGameFrame(gf);
 
-			public void run() {
-				new GameFrame(nbrOfRows, nbrOfColoumns, nbrOfBattleships,
-						nbrOfSubmarines, nbrOfDestroyers, nbrOfCruisers)
-						.setVisible(true);
-			}
-		});
 		this.dispose();
 	}
 

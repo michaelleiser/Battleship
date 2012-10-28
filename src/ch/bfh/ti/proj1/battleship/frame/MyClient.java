@@ -59,7 +59,14 @@ public class MyClient implements Runnable{
 			while (true) {
 				line = in.readLine();
 				if (line != null){
-					game.cf.jTextPaneChat.setText(line);
+					
+					if(line.contains("Coordinate Chat")){
+						game.cf.jTextPaneChat.setText(line);
+					}
+					if(line.contains("Game Chat")){
+						game.gf.jTextPaneChat.setText(line);
+					}
+					
 				}
 			}
 		} catch (IOException e) {
@@ -72,8 +79,8 @@ public class MyClient implements Runnable{
 	PrintStream out;
 	Thread thread;
 
-	public void sendMessage(ActionEvent evt) {
-		out.println(game.cf.jTextPaneYourMessage.getText());
+	public void sendMessage(String s) {
+		out.println(s);
 	}
 
 	public void setGame(Game game) {

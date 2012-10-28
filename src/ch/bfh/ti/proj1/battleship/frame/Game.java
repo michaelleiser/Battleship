@@ -11,6 +11,7 @@ public class Game {
 	
 	MyClient mc;
 	CoordinateFrame cf;
+	GameFrame gf;
 	
 	public Game(){}
 
@@ -91,6 +92,10 @@ public class Game {
 		cf.setVisible(true);
 		cf.disableComponents();
 		cf.setGame(this);
+	}
+
+	public void setGameFrame(GameFrame gf) {
+		this.gf = gf;
 	}
 
 }

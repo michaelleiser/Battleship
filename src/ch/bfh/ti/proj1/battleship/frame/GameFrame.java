@@ -81,7 +81,7 @@ public class GameFrame extends JFrame {
 	private JPanel jPanelChat;
 	private JLabel jLabelChat;
 	private JScrollPane jScrollPaneChat;
-	private JTextPane jTextPaneChat;
+	JTextPane jTextPaneChat;
 	private JScrollPane jScrollPaneYourMessage;
 	private JTextPane jTextPaneYourMessage;
 	private JButton jButtonSend;
@@ -943,9 +943,13 @@ public class GameFrame extends JFrame {
 	}
 
 	private void jButtonSendActionPerformed(ActionEvent evt) {
-		String s = jTextPaneChat.getText();
-		s = s.concat(jTextPaneYourMessage.getText() + "\n");
-		jTextPaneChat.setText(s);
+//		String s = jTextPaneChat.getText();
+//		s = s.concat(jTextPaneYourMessage.getText() + "\n");
+//		jTextPaneChat.setText(s);
+		
+		String s;
+		s = "Game " + "Chat " + jTextPaneYourMessage.getText();
+		game.mc.sendMessage(s);
 	}
 
 	private void jTextPaneYourMessageMouseClicked(MouseEvent evt) {
@@ -995,5 +999,10 @@ public class GameFrame extends JFrame {
 		this.dispose();
 	}
 
-}
+	public void setGame(Game game) {
+		this.game = game;
+	}
 
+	private Game game;
+	
+}

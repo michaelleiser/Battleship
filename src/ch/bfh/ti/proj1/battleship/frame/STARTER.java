@@ -42,10 +42,11 @@ public class STARTER {
 		// </editor-fold>
 
 		/* Create and display the form */
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				new NetworkFrame().setVisible(true);
-			}
-		});
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				new NetworkFrame().setVisible(true);
+//			}
+//		});
+		new NetworkFrame().setVisible(true);
 	}
 }

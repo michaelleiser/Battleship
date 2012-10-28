@@ -86,11 +86,6 @@ public class NetworkFrame extends JFrame {
 		jLabelPlayerName.setText("Player's Name");
 		jTextPlayerName = new JTextField();
 		jTextPlayerName.setText("Player");
-		jTextPlayerName.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent evt) {
-				jTextPlayerNameActionPerformed(evt);
-			}
-		});
 
 		jPanelHostOrJoinGame = new JPanel();
 		jPanelHostOrJoinGame.setBorder(BorderFactory.createEtchedBorder());
@@ -116,11 +111,6 @@ public class NetworkFrame extends JFrame {
 		jLabelFreePort.setText("Free Port");
 		jTextFieldFreePort = new JTextField();
 		jTextFieldFreePort.setText("4444");
-		jTextFieldFreePort.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent evt) {
-				jTextFieldFreePortActionPerformed(evt);
-			}
-		});
 
 		jPanelJoinGame = new JPanel();
 		jPanelJoinGame.setBorder(BorderFactory.createEtchedBorder());
@@ -531,14 +521,6 @@ public class NetworkFrame extends JFrame {
 
 		pack();
 	}// </editor-fold>
-
-	private void jTextPlayerNameActionPerformed(ActionEvent evt) {
-		// TODO add your handling code here:
-	}
-
-	private void jTextFieldFreePortActionPerformed(ActionEvent evt) {
-		// TODO add your handling code here:
-	}
 
 	private void jRadioButtonHostGameActionPerformed(ActionEvent evt) {
 		jRadioButtonJoinGame.setSelected(false);
