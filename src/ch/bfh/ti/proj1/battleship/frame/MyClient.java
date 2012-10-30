@@ -1,8 +1,5 @@
 package ch.bfh.ti.proj1.battleship.frame;
 
-
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.DataInputStream;
 import java.io.IOException;
 import java.io.PrintStream;

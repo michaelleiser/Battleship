@@ -1,8 +1,9 @@
 package ch.bfh.ti.proj1.battleship.frame;
 
-import java.net.*;
-import java.io.*;
-
+import java.io.DataInputStream;
+import java.io.IOException;
+import java.io.PrintStream;
+import java.net.Socket;
 
 class MyConnection extends Thread {
 	protected Socket client;

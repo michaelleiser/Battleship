@@ -1,8 +1,10 @@
 package ch.bfh.ti.proj1.battleship.frame;
 
-import java.net.*;
-import java.io.*;
-import java.util.*;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.util.Vector;
 
 public class MyServer implements Runnable {
 	public int PORT = 8765;
