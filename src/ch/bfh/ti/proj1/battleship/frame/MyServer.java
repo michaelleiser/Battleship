@@ -6,6 +6,10 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Vector;
 
+/**
+ * @author Daniel Kotlàris
+ * @author Michael Leiser
+ */
 public class MyServer implements Runnable {
 	public int PORT = 8765;
 	protected ServerSocket listen;

@@ -6,6 +6,10 @@ import java.util.logging.Logger;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
+/**
+ * @author Daniel Kotlàris
+ * @author Michael Leiser
+ */
 public class Game {
 	
 	MyClient mc;
@@ -89,7 +93,7 @@ public class Game {
 //		});
 		cf = new CoordinateFrame();
 		cf.setVisible(true);
-		cf.disableComponents();
+		cf.disableComponents();					// disable Components temporarily for the client
 		cf.setGame(this);
 	}
 

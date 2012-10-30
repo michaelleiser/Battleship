@@ -5,6 +5,10 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.net.Socket;
 
+/**
+ * @author Daniel Kotlàris
+ * @author Michael Leiser
+ */
 class MyConnection extends Thread {
 	protected Socket client;
 	protected DataInputStream in;

@@ -22,8 +22,8 @@ import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.WindowConstants;
 
 /**
- * 
- * @author L1r
+ * @author Daniel Kotlàris
+ * @author Michael Leiser
  */
 public class NetworkFrame extends JFrame {
 

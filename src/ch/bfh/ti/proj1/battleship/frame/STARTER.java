@@ -6,6 +6,10 @@ import java.util.logging.Logger;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
+/**
+ * @author Daniel Kotlàris
+ * @author Michael Leiser
+ */
 public class STARTER {
 
 	public static void main(String[] args) {
