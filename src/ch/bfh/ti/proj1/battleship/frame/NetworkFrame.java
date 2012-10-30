@@ -138,6 +138,7 @@ public class NetworkFrame extends JFrame {
 		jLabelStatus
 				.setText("Connecting...Please start application of second player if it is not started yet.");
 
+	
 		jButtonConnect = new JButton();
 		jButtonConnect.setText("connect");
 		jButtonConnect.addActionListener(new ActionListener() {
