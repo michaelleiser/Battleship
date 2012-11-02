@@ -1,6 +1,7 @@
 package ch.bfh.ti.proj1.battleship.frame;
 
 import java.awt.EventQueue;
+import java.net.InetAddress;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.UIManager;
@@ -52,5 +53,7 @@ public class STARTER {
 //			}
 //		});
 		new NetworkFrame().setVisible(true);
+		
+
 	}
 }
