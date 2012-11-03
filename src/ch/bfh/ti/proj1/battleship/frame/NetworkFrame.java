@@ -21,6 +21,9 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.WindowConstants;
 
+import org.sound.Sound;
+import org.sound.Sound.Sounds;
+
 /**
  * @author Daniel Kotlàris
  * @author Michael Leiser
