@@ -21,36 +21,17 @@ public class Game {
 		new MyServer(port);
 		mc = new MyClient(port, "localhost");
 		mc.setGame(this);
-		try {
-			for (UIManager.LookAndFeelInfo info : UIManager
-					.getInstalledLookAndFeels()) {
-				if ("Nimbus".equals(info.getName())) {
-					UIManager.setLookAndFeel(info.getClassName());
-					break;
-				}
-			}
-		} catch (ClassNotFoundException ex) {
-			Logger.getLogger(CoordinateFrame.class.getName()).log(Level.SEVERE,
-					null, ex);
-		} catch (InstantiationException ex) {
-			Logger.getLogger(CoordinateFrame.class.getName()).log(Level.SEVERE,
-					null, ex);
-		} catch (IllegalAccessException ex) {
-			Logger.getLogger(CoordinateFrame.class.getName()).log(Level.SEVERE,
-					null, ex);
-		} catch (UnsupportedLookAndFeelException ex) {
-			Logger.getLogger(CoordinateFrame.class.getName()).log(Level.SEVERE,
-					null, ex);
-		}
-		
-		cf = new CoordinateFrame();
-		cf.setVisible(true);
-		cf.setGame(this);
+		showCoordinateFrame();
 	}
 
 	public void joinGame(final int port, final String IP) {
 		mc = new MyClient(port, IP);
 		mc.setGame(this);
+		showCoordinateFrame();		
+		cf.disableComponents();					// disable Components temporarily for the client
+	}
+	
+	private void showCoordinateFrame() {
 		try {
 			for (UIManager.LookAndFeelInfo info : UIManager
 					.getInstalledLookAndFeels()) {
@@ -72,10 +53,8 @@ public class Game {
 			Logger.getLogger(CoordinateFrame.class.getName()).log(Level.SEVERE,
 					null, ex);
 		}
-
 		cf = new CoordinateFrame();
 		cf.setVisible(true);
-		cf.disableComponents();					// disable Components temporarily for the client
 		cf.setGame(this);
 	}
 
