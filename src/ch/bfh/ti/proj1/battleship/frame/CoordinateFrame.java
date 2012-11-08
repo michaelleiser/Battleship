@@ -706,6 +706,8 @@ public class CoordinateFrame extends JFrame{
 		game.setGameFrame(gf);
 
 		this.dispose();
+		
+		game.mc.sendMessage("Coordinate " + "Validate " + nbrOfRows + " " + nbrOfColoumns + " " + nbrOfBattleships + " " + nbrOfSubmarines + " " + nbrOfDestroyers + " " + nbrOfCruisers);
 	}
 
 	private void jTextPaneYourMessageMouseClicked(MouseEvent evt) {
@@ -732,6 +734,16 @@ public class CoordinateFrame extends JFrame{
 		jTextFieldNbrOfSubmarine.setEnabled(true);
 		jRadioButtonShootAlternatively.setEnabled(true);
 		jRadioButtonShootUntilWater.setEnabled(true);
+	}
+	
+	public void setComponents(String nbrOfRows, String nbrOfColoumns, String nbrOfBattleships,
+			String nbrOfSubmarines, String nbrOfDestroyers, String nbrOfCruisers){
+		jTextFieldNbrOfRows.setText(nbrOfRows);
+		jTextFieldNbrOfColoumns.setText(nbrOfColoumns);
+		jTextFieldNbrOfBattleship.setText(nbrOfBattleships);
+		jTextFieldNbrOfSubmarine.setText(nbrOfSubmarines);
+		jTextFieldNbrOfDestroyer.setText(nbrOfDestroyers);
+		jTextFieldNbrOfCruiser.setText(nbrOfCruisers);
 	}
 
 	public void setGame(Game game) {
