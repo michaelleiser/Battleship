@@ -30,6 +30,7 @@ class MyConnection extends Thread {
 		this.start();
 	}
 
+	@SuppressWarnings("deprecation")
 	public void run() {
 		String line;
 		try {

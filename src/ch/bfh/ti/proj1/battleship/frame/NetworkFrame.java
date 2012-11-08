@@ -1,13 +1,8 @@
 package ch.bfh.ti.proj1.battleship.frame;
 
-import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.BorderFactory;
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
@@ -17,18 +12,15 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.WindowConstants;
-
-import org.sound.Sound;
-import org.sound.Sound.Sounds;
 
 /**
  * @author Daniel Kotlàris
  * @author Michael Leiser
  */
 public class NetworkFrame extends JFrame {
+
+	private static final long serialVersionUID = 1L;
 
 	// Variables declaration - do not modify
 	private JLabel jLabelStep1of2;
@@ -548,26 +540,19 @@ public class NetworkFrame extends JFrame {
 	}
 
 	private void jButtonConnectActionPerformed(ActionEvent evt) {
-		/* Set the Nimbus look and feel */
-		// <editor-fold defaultstate="collapsed"
-		// desc=" Look and feel setting code (optional) ">
-		/*
-		 * If Nimbus (introduced in Java SE 6) is not available, stay with the
-		 * default look and feel. For details see
-		 * http://download.oracle.com/javase
-		 * /tutorial/uiswing/lookandfeel/plaf.html
-		 */
 		if (jRadioButtonHostGame.isSelected()) {
 			final int port = Integer.parseInt(jTextFieldFreePort.getText());
 			Game g = new Game();
 			g.hostGame(port);
-			this.dispose();
+//			this.dispose();
+			jLabelStatus.setText("Waiting for connection...");
+			
 		} else if (jRadioButtonJoinGame.isSelected()) {
 			final int port = Integer.parseInt(jTextFieldSharedPort.getText());
 			final String IP = jTextFieldIPAddress.getText();
 			Game g = new Game();
 			g.joinGame(port, IP);
-			this.dispose();
+//			this.dispose();
 		}
 	}
 }

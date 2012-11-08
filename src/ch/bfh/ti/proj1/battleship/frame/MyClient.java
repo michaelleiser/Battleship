@@ -25,14 +25,6 @@ public class MyClient implements Runnable{
 			socket = new Socket(IP, port);
 			in = new DataInputStream(socket.getInputStream());
 			out = new PrintStream(socket.getOutputStream());
-//			jButtonSend.addActionListener(new ActionListener() {
-//				@Override
-//				public void actionPerformed(ActionEvent e) {
-//					String inp = jTextPaneYourMessage.getText();
-//					out.println(inp);
-//					jTextPaneYourMessage.setText("");
-//				}
-//			});
 		} catch (IOException e) {
 		}
 
@@ -43,6 +35,7 @@ public class MyClient implements Runnable{
 		}
 	}
 
+	@SuppressWarnings("deprecation")
 	public void stop() {
 		try {
 			socket.close();
@@ -54,6 +47,7 @@ public class MyClient implements Runnable{
 		}
 	}
 
+	@SuppressWarnings("deprecation")
 	public void run() {
 		String line;
 		try {

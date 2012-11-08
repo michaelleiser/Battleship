@@ -1,6 +1,5 @@
 package ch.bfh.ti.proj1.battleship.frame;
 
-import java.awt.EventQueue;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.UIManager;
@@ -43,15 +42,7 @@ public class Game {
 			Logger.getLogger(CoordinateFrame.class.getName()).log(Level.SEVERE,
 					null, ex);
 		}
-		// </editor-fold>
-
-		/* Create and display the form */
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				cf = new CoordinateFrame();
-//				cf.setVisible(true);
-//			}
-//		});
+		
 		cf = new CoordinateFrame();
 		cf.setVisible(true);
 		cf.setGame(this);
@@ -81,16 +72,7 @@ public class Game {
 			Logger.getLogger(CoordinateFrame.class.getName()).log(Level.SEVERE,
 					null, ex);
 		}
-		// </editor-fold>
 
-		/* Create and display the form */
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				cf = new CoordinateFrame();
-//				cf.setVisible(true);
-//				cf.disableComponents();
-//			}
-//		});
 		cf = new CoordinateFrame();
 		cf.setVisible(true);
 		cf.disableComponents();					// disable Components temporarily for the client
