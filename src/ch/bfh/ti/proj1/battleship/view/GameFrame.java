@@ -1,4 +1,4 @@
-package ch.bfh.ti.proj1.battleship.frame;
+package ch.bfh.ti.proj1.battleship.view;
 
 import java.awt.Color;
 import java.awt.Cursor;
@@ -27,6 +27,8 @@ import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.WindowConstants;
+
+import ch.bfh.ti.proj1.battleship.frame.Game;
 
 /**
  * @author Daniel Kotlàris
@@ -82,7 +84,7 @@ public class GameFrame extends JFrame {
 	private JPanel jPanelChat;
 	private JLabel jLabelChat;
 	private JScrollPane jScrollPaneChat;
-	JTextPane jTextPaneChat;
+	public JTextPane jTextPaneChat;
 	private JScrollPane jScrollPaneYourMessage;
 	private JTextPane jTextPaneYourMessage;
 	private JButton jButtonSend;

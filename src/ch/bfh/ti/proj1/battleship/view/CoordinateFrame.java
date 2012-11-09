@@ -1,4 +1,4 @@
-package ch.bfh.ti.proj1.battleship.frame;
+package ch.bfh.ti.proj1.battleship.view;
 
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -21,6 +21,8 @@ import javax.swing.LayoutStyle;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.WindowConstants;
+
+import ch.bfh.ti.proj1.battleship.frame.Game;
 
 /**
  * @author Daniel Kotlàris
@@ -61,7 +63,7 @@ public class CoordinateFrame extends JFrame{
 	private JPanel jPanelChat;
 	private JLabel jLabelChat;
 	private JScrollPane jScrollPaneChat;
-	JTextPane jTextPaneChat;
+	public JTextPane jTextPaneChat;
 	private JScrollPane jScrollPaneYourMessage;
 	JTextPane jTextPaneYourMessage;
 	private JButton jButtonSend;

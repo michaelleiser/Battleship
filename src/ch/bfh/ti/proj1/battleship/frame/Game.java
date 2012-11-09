@@ -5,13 +5,17 @@ import java.util.logging.Logger;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
+import ch.bfh.ti.proj1.battleship.view.CoordinateFrame;
+import ch.bfh.ti.proj1.battleship.view.GameFrame;
+import ch.bfh.ti.proj1.battleship.view.NetworkFrame;
+
 /**
  * @author Daniel Kotlàris
  * @author Michael Leiser
  */
 public class Game {
 	
-	MyClient mc;
+	public MyClient mc;
 	NetworkFrame nf;
 	CoordinateFrame cf;
 	GameFrame gf;
