@@ -3,11 +3,11 @@ package org.game;
 public class GameBoard {
 	
 	private PlayingField pf1;
-	private PlayingField pf2;
+	//private PlayingField pf2;
 
 	public GameBoard() {
 		pf1 = new PlayingField();
-		pf2 = new PlayingField();
+		//pf2 = new PlayingField();
 	}
 
 	public void placeShip(Ship ship, int x, int y, int k) {
