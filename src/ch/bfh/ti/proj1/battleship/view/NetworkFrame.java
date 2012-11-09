@@ -136,7 +136,7 @@ public class NetworkFrame extends JFrame {
 		jTextFieldIPAddress.setEnabled(false);
 		jLabelStatus = new JLabel();
 		jLabelStatus
-				.setText("Connecting...Please start application of second player if it is not started yet.");
+				.setText("Select host or join game and click connect");
 
 	
 		jButtonConnect = new JButton();
@@ -550,8 +550,8 @@ public class NetworkFrame extends JFrame {
 			final int port = Integer.parseInt(jTextFieldFreePort.getText());
 //			Game g = new Game();
 			g.hostGame(port);
-			this.dispose();
-			jLabelStatus.setText("Waiting for connection...");
+//			this.dispose();
+			jLabelStatus.setText("Connecting...Please start application of second player if it is not started yet.");
 			
 		} else if (jRadioButtonJoinGame.isSelected()) {
 			final int port = Integer.parseInt(jTextFieldSharedPort.getText());

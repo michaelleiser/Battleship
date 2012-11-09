@@ -65,7 +65,10 @@ public class MyClient implements Runnable{
 						String[] s = line.split(" ");
 						game.cf.setComponents(s[2], s[3], s[4], s[5], s[6], s[7]);
 					}
-					
+					if(line.contains("Game Show")){
+						game.nf.dispose();
+						game.showCoordinateFrame();
+					}
 				}
 			}
 		} catch (IOException e) {

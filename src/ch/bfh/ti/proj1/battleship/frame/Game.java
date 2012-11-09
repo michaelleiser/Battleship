@@ -45,13 +45,14 @@ public class Game {
 		new MyServer(port);
 		mc = new MyClient(port, "localhost");
 		mc.setGame(this);
-		showCoordinateFrame();
+//		showCoordinateFrame();
 	}
 
 	public void joinGame(final int port, final String IP) {
 		mc = new MyClient(port, IP);
 		mc.setGame(this);
-		showCoordinateFrame();		
+		showCoordinateFrame();	
+		mc.sendMessage("Game " + "Show ");
 		cf.disableComponents();					// disable Components temporarily for the client
 	}
 	
