@@ -1,4 +1,4 @@
-package org.sound;
+package ch.bfh.ti.proj1.battleship.sound;
 
 import java.io.File;
 

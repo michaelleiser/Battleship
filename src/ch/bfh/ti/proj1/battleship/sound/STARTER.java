@@ -1,6 +1,6 @@
-package org.sound;
+package ch.bfh.ti.proj1.battleship.sound;
 
-import org.sound.Sound.Sounds;
+import ch.bfh.ti.proj1.battleship.sound.Sound.Sounds;
 
 public class STARTER {
 
