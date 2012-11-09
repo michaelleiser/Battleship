@@ -1,18 +1,15 @@
 package org.sound;
 
 import java.io.File;
-import java.io.IOException;
 
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
 
 public class Sound {
 
 	public enum Sounds {
-		BEGIN, DEATH
+		BEGIN, DEATH, UMBRELLA
 	}
 
 	public static void playSound(File f) throws Exception {
@@ -31,12 +28,12 @@ public class Sound {
 		switch (sound) {
 		case BEGIN:
 			File f = new File(
-					"C:/Program Files/Eclipse/Workspace/AAA/begin.wav");
+					"wav/begin.wav");
 			playSound(f);
 			break;
 		case DEATH:
 			File f2 = new File(
-					"C:/Program Files/Eclipse/Workspace/AAA/death.wav");
+					"wav/death.wav");
 			playSound(f2);
 			break;
 		default:
