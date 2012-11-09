@@ -5,8 +5,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.BorderFactory;
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
@@ -18,8 +16,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.LayoutStyle;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.WindowConstants;
 
 import ch.bfh.ti.proj1.battleship.frame.Game;
@@ -718,9 +714,5 @@ public class CoordinateFrame extends JFrame{
 		jTextFieldNbrOfDestroyer.setText(nbrOfDestroyers);
 		jTextFieldNbrOfCruiser.setText(nbrOfCruisers);
 	}
-
-//	public void setGame(Game game) {
-//		this.game = game;
-//	}
 
 }

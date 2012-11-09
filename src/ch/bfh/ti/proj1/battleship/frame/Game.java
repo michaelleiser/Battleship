@@ -3,7 +3,6 @@ package ch.bfh.ti.proj1.battleship.frame;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
 
 import ch.bfh.ti.proj1.battleship.view.CoordinateFrame;
 import ch.bfh.ti.proj1.battleship.view.GameFrame;
@@ -33,16 +32,7 @@ public class Game {
 					break;
 				}
 			}
-		} catch (ClassNotFoundException ex) {
-			Logger.getLogger(NetworkFrame.class.getName()).log(Level.SEVERE,
-					null, ex);
-		} catch (InstantiationException ex) {
-			Logger.getLogger(NetworkFrame.class.getName()).log(Level.SEVERE,
-					null, ex);
-		} catch (IllegalAccessException ex) {
-			Logger.getLogger(NetworkFrame.class.getName()).log(Level.SEVERE,
-					null, ex);
-		} catch (UnsupportedLookAndFeelException ex) {
+		} catch (Exception ex) {
 			Logger.getLogger(NetworkFrame.class.getName()).log(Level.SEVERE,
 					null, ex);
 		}
@@ -74,24 +64,17 @@ public class Game {
 					break;
 				}
 			}
-		} catch (ClassNotFoundException ex) {
-			Logger.getLogger(CoordinateFrame.class.getName()).log(Level.SEVERE,
-					null, ex);
-		} catch (InstantiationException ex) {
-			Logger.getLogger(CoordinateFrame.class.getName()).log(Level.SEVERE,
-					null, ex);
-		} catch (IllegalAccessException ex) {
-			Logger.getLogger(CoordinateFrame.class.getName()).log(Level.SEVERE,
-					null, ex);
-		} catch (UnsupportedLookAndFeelException ex) {
+		} catch (Exception ex) {
 			Logger.getLogger(CoordinateFrame.class.getName()).log(Level.SEVERE,
 					null, ex);
 		}
+		
 		cf = new CoordinateFrame(this);
 		cf.setVisible(true);
 	}
 	
-	public void showGameFrame(int nbrOfRows, int nbrOfColoumns, int nbrOfBattleships, int nbrOfSubmarines, int nbrOfDestroyers, int nbrOfCruisers){
+	public void showGameFrame(int nbrOfRows, int nbrOfColoumns, int nbrOfBattleships,
+			int nbrOfSubmarines, int nbrOfDestroyers, int nbrOfCruisers){
 		try {
 			for (UIManager.LookAndFeelInfo info : UIManager
 					.getInstalledLookAndFeels()) {
@@ -100,19 +83,10 @@ public class Game {
 					break;
 				}
 			}
-		} catch (ClassNotFoundException ex) {
-			Logger.getLogger(GameFrame.class.getName()).log(Level.SEVERE, null,
-					ex);
-		} catch (InstantiationException ex) {
-			Logger.getLogger(GameFrame.class.getName()).log(Level.SEVERE, null,
-					ex);
-		} catch (IllegalAccessException ex) {
-			Logger.getLogger(GameFrame.class.getName()).log(Level.SEVERE, null,
-					ex);
-		} catch (UnsupportedLookAndFeelException ex) {
-			Logger.getLogger(GameFrame.class.getName()).log(Level.SEVERE, null,
-					ex);
+		} catch (Exception ex) {
+			Logger.getLogger(GameFrame.class.getName()).log(Level.SEVERE, null,	ex);
 		}
+		
 
 		gf = new GameFrame(nbrOfRows, nbrOfColoumns, nbrOfBattleships,
 				nbrOfSubmarines, nbrOfDestroyers, nbrOfCruisers);
