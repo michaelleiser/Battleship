@@ -1,6 +1,5 @@
-package ch.bfh.ti.proj1.battleship.server;
+package ch.bfh.ti.proj1.battleship.client;
 
-import ch.bfh.ti.proj1.battleship.client.Player;
 import ch.bfh.ti.proj1.battleship.exception.BattleshipException;
 
 /**

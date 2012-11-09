@@ -1,6 +1,5 @@
-package ch.bfh.ti.proj1.battleship.server;
+package ch.bfh.ti.proj1.battleship.client;
 
-import ch.bfh.ti.proj1.battleship.client.Player;
 
 /**
  * This class controls that the right player can play and 
