@@ -70,8 +70,11 @@ public class CoordinateFrame extends JFrame{
 	private JButton jButtonCancel;
 	// End of variables declaration
 
+	private Game game;
+	
 	/** Creates new form NewJFrame */
-	public CoordinateFrame() {
+	public CoordinateFrame(Game game) {
+		this.game = game;
 		initComponents();
 	}
 
@@ -664,50 +667,18 @@ public class CoordinateFrame extends JFrame{
 	}
 
 	private void jButtonValidateAndCoordinateActionPerformed(ActionEvent evt) {
-
-		try {
-			for (UIManager.LookAndFeelInfo info : UIManager
-					.getInstalledLookAndFeels()) {
-				if ("Nimbus".equals(info.getName())) {
-					UIManager.setLookAndFeel(info.getClassName());
-					break;
-				}
-			}
-		} catch (ClassNotFoundException ex) {
-			Logger.getLogger(GameFrame.class.getName()).log(Level.SEVERE, null,
-					ex);
-		} catch (InstantiationException ex) {
-			Logger.getLogger(GameFrame.class.getName()).log(Level.SEVERE, null,
-					ex);
-		} catch (IllegalAccessException ex) {
-			Logger.getLogger(GameFrame.class.getName()).log(Level.SEVERE, null,
-					ex);
-		} catch (UnsupportedLookAndFeelException ex) {
-			Logger.getLogger(GameFrame.class.getName()).log(Level.SEVERE, null,
-					ex);
-		}
-
 		int nbrOfRows = Integer.parseInt(jTextFieldNbrOfRows.getText());
-		int nbrOfColoumns = Integer.parseInt(jTextFieldNbrOfColoumns
-				.getText());
-		int nbrOfBattleships = Integer.parseInt(jTextFieldNbrOfBattleship
-				.getText());
-		int nbrOfSubmarines = Integer.parseInt(jTextFieldNbrOfSubmarine
-				.getText());
-		int nbrOfDestroyers = Integer.parseInt(jTextFieldNbrOfDestroyer
-				.getText());
-		int nbrOfCruisers = Integer.parseInt(jTextFieldNbrOfCruiser
-				.getText());
+		int nbrOfColoumns = Integer.parseInt(jTextFieldNbrOfColoumns.getText());
+		int nbrOfBattleships = Integer.parseInt(jTextFieldNbrOfBattleship.getText());
+		int nbrOfSubmarines = Integer.parseInt(jTextFieldNbrOfSubmarine.getText());
+		int nbrOfDestroyers = Integer.parseInt(jTextFieldNbrOfDestroyer.getText());
+		int nbrOfCruisers = Integer.parseInt(jTextFieldNbrOfCruiser.getText());
 
-		GameFrame gf = new GameFrame(nbrOfRows, nbrOfColoumns, nbrOfBattleships,
-				nbrOfSubmarines, nbrOfDestroyers, nbrOfCruisers);
-		gf.setVisible(true);
-		gf.setGame(game);
-		game.setGameFrame(gf);
+		game.showGameFrame(nbrOfRows, nbrOfColoumns, nbrOfBattleships, nbrOfSubmarines, nbrOfDestroyers, nbrOfCruisers);
 
-		this.dispose();
-		
 		game.mc.sendMessage("Coordinate " + "Validate " + nbrOfRows + " " + nbrOfColoumns + " " + nbrOfBattleships + " " + nbrOfSubmarines + " " + nbrOfDestroyers + " " + nbrOfCruisers);
+	
+		this.dispose();
 	}
 
 	private void jTextPaneYourMessageMouseClicked(MouseEvent evt) {
@@ -746,10 +717,8 @@ public class CoordinateFrame extends JFrame{
 		jTextFieldNbrOfCruiser.setText(nbrOfCruisers);
 	}
 
-	public void setGame(Game game) {
-		this.game = game;
-	}
-
-	private Game game;
+//	public void setGame(Game game) {
+//		this.game = game;
+//	}
 
 }

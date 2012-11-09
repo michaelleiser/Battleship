@@ -976,7 +976,8 @@ public class GameFrame extends JFrame {
 		}
 		// </editor-fold>
 
-		new CoordinateFrame().setVisible(true);
+		game.showCoordinateFrame();
+//		new CoordinateFrame().setVisible(true);
 		this.dispose();
 	}
 

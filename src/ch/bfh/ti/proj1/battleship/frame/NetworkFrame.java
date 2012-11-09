@@ -54,8 +54,12 @@ public class NetworkFrame extends JFrame {
 
 	// End of variables declaration
 
-	/** Creates new form NewJFrame */
-	public NetworkFrame() {
+	private Game g;
+	
+	/** Creates new form NewJFrame 
+	 * @param game */
+	public NetworkFrame(Game g) {
+		this.g = g;
 		initComponents();
 	}
 
@@ -542,17 +546,17 @@ public class NetworkFrame extends JFrame {
 	private void jButtonConnectActionPerformed(ActionEvent evt) {
 		if (jRadioButtonHostGame.isSelected()) {
 			final int port = Integer.parseInt(jTextFieldFreePort.getText());
-			Game g = new Game();
+//			Game g = new Game();
 			g.hostGame(port);
-//			this.dispose();
+			this.dispose();
 			jLabelStatus.setText("Waiting for connection...");
 			
 		} else if (jRadioButtonJoinGame.isSelected()) {
 			final int port = Integer.parseInt(jTextFieldSharedPort.getText());
 			final String IP = jTextFieldIPAddress.getText();
-			Game g = new Game();
+//			Game g = new Game();
 			g.joinGame(port, IP);
-//			this.dispose();
+			this.dispose();
 		}
 	}
 }

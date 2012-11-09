@@ -12,10 +12,40 @@ import javax.swing.UnsupportedLookAndFeelException;
 public class Game {
 	
 	MyClient mc;
+	NetworkFrame nf;
 	CoordinateFrame cf;
 	GameFrame gf;
 	
-	public Game(){}
+	public Game(){
+		
+	}
+	
+	public void showNetworkFrame(){
+		try {
+			for (UIManager.LookAndFeelInfo info : UIManager
+					.getInstalledLookAndFeels()) {
+				if ("Nimbus".equals(info.getName())) {
+					UIManager.setLookAndFeel(info.getClassName());
+					break;
+				}
+			}
+		} catch (ClassNotFoundException ex) {
+			Logger.getLogger(NetworkFrame.class.getName()).log(Level.SEVERE,
+					null, ex);
+		} catch (InstantiationException ex) {
+			Logger.getLogger(NetworkFrame.class.getName()).log(Level.SEVERE,
+					null, ex);
+		} catch (IllegalAccessException ex) {
+			Logger.getLogger(NetworkFrame.class.getName()).log(Level.SEVERE,
+					null, ex);
+		} catch (UnsupportedLookAndFeelException ex) {
+			Logger.getLogger(NetworkFrame.class.getName()).log(Level.SEVERE,
+					null, ex);
+		}
+
+		nf = new NetworkFrame(this);
+		nf.setVisible(true);
+	}
 
 	public void hostGame(final int port) {
 		new MyServer(port);
@@ -31,7 +61,7 @@ public class Game {
 		cf.disableComponents();					// disable Components temporarily for the client
 	}
 	
-	private void showCoordinateFrame() {
+	public void showCoordinateFrame() {
 		try {
 			for (UIManager.LookAndFeelInfo info : UIManager
 					.getInstalledLookAndFeels()) {
@@ -53,13 +83,37 @@ public class Game {
 			Logger.getLogger(CoordinateFrame.class.getName()).log(Level.SEVERE,
 					null, ex);
 		}
-		cf = new CoordinateFrame();
+		cf = new CoordinateFrame(this);
 		cf.setVisible(true);
-		cf.setGame(this);
 	}
+	
+	public void showGameFrame(int nbrOfRows, int nbrOfColoumns, int nbrOfBattleships, int nbrOfSubmarines, int nbrOfDestroyers, int nbrOfCruisers){
+		try {
+			for (UIManager.LookAndFeelInfo info : UIManager
+					.getInstalledLookAndFeels()) {
+				if ("Nimbus".equals(info.getName())) {
+					UIManager.setLookAndFeel(info.getClassName());
+					break;
+				}
+			}
+		} catch (ClassNotFoundException ex) {
+			Logger.getLogger(GameFrame.class.getName()).log(Level.SEVERE, null,
+					ex);
+		} catch (InstantiationException ex) {
+			Logger.getLogger(GameFrame.class.getName()).log(Level.SEVERE, null,
+					ex);
+		} catch (IllegalAccessException ex) {
+			Logger.getLogger(GameFrame.class.getName()).log(Level.SEVERE, null,
+					ex);
+		} catch (UnsupportedLookAndFeelException ex) {
+			Logger.getLogger(GameFrame.class.getName()).log(Level.SEVERE, null,
+					ex);
+		}
 
-	public void setGameFrame(GameFrame gf) {
-		this.gf = gf;
+		gf = new GameFrame(nbrOfRows, nbrOfColoumns, nbrOfBattleships,
+				nbrOfSubmarines, nbrOfDestroyers, nbrOfCruisers);
+		gf.setVisible(true);
+		gf.setGame(this);
 	}
 
 }
