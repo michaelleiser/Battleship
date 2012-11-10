@@ -86,12 +86,67 @@ public class Game {
 		} catch (Exception ex) {
 			Logger.getLogger(GameFrame.class.getName()).log(Level.SEVERE, null,	ex);
 		}
-		gf = new GameFrame(nbrOfRows, nbrOfColoumns, nbrOfBattleships, nbrOfSubmarines, nbrOfDestroyers, nbrOfCruisers);
+		gf = new GameFrame(this);
 		gf.setVisible(true);
-		gf.setGame(this);
 	}
 
 	private int nbrOfRows = 10;
+	public int getNbrOfRows() {
+		return nbrOfRows;
+	}
+
+	public void setNbrOfRows(int nbrOfRows) {
+		this.nbrOfRows = nbrOfRows;
+	}
+
+	public int getNbrOfColoumns() {
+		return nbrOfColoumns;
+	}
+
+	public void setNbrOfColoumns(int nbrOfColoumns) {
+		this.nbrOfColoumns = nbrOfColoumns;
+	}
+
+	public int getNbrOfBattleships() {
+		return nbrOfBattleships;
+	}
+
+	public void setNbrOfBattleships(int nbrOfBattleships) {
+		this.nbrOfBattleships = nbrOfBattleships;
+	}
+
+	public int getNbrOfSubmarines() {
+		return nbrOfSubmarines;
+	}
+
+	public void setNbrOfSubmarines(int nbrOfSubmarines) {
+		this.nbrOfSubmarines = nbrOfSubmarines;
+	}
+
+	public int getNbrOfDestroyers() {
+		return nbrOfDestroyers;
+	}
+
+	public void setNbrOfDestroyers(int nbrOfDestroyers) {
+		this.nbrOfDestroyers = nbrOfDestroyers;
+	}
+
+	public int getNbrOfCruisers() {
+		return nbrOfCruisers;
+	}
+
+	public void setNbrOfCruisers(int nbrOfCruisers) {
+		this.nbrOfCruisers = nbrOfCruisers;
+	}
+
+	public String getGameMode() {
+		return gameMode;
+	}
+
+	public void setGameMode(String gameMode) {
+		this.gameMode = gameMode;
+	}
+
 	private int nbrOfColoumns = 10;
 	private int nbrOfBattleships = 1;
 	private int nbrOfSubmarines = 2;

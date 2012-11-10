@@ -90,13 +90,14 @@ public class GameFrame extends JFrame {
 	private JButton jButtonRestart;
 
 	private JButton jButtonReady;
+	
+	private Game game;
 	// End of variables declaration
 	
 	/** Creates new form NewJFrame1 */
-	public GameFrame(int nbrOfRows, int nbrOfColoumns, int nbrOfBattleships,
-			int nbrOfSubmarines, int nbrOfDestroyers, int nbrOfCruisers) {
-		initComponents(nbrOfRows, nbrOfColoumns, nbrOfBattleships,
-				nbrOfSubmarines, nbrOfDestroyers, nbrOfCruisers);
+	public GameFrame(Game game) {
+		this.game = game;
+		initComponents(this.game.getNbrOfRows(), this.game.getNbrOfColoumns(), this.game.getNbrOfBattleships(), this.game.getNbrOfSubmarines(), this.game.getNbrOfCruisers(), this.game.getNbrOfDestroyers());
 	}
 
 	/**
@@ -965,15 +966,8 @@ public class GameFrame extends JFrame {
 			Logger.getLogger(CoordinateFrame.class.getName()).log(Level.SEVERE,
 					null, ex);
 		}
-
 		game.showCoordinateFrame();
 		this.dispose();
 	}
 
-	public void setGame(Game game) {
-		this.game = game;
-	}
-
-	private Game game;
-	
 }
