@@ -25,7 +25,6 @@ import javax.swing.JToggleButton;
 import javax.swing.LayoutStyle;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.WindowConstants;
 
 import ch.bfh.ti.proj1.battleship.frame.Game;
@@ -963,20 +962,10 @@ public class GameFrame extends JFrame {
 					break;
 				}
 			}
-		} catch (ClassNotFoundException ex) {
-			Logger.getLogger(CoordinateFrame.class.getName()).log(Level.SEVERE,
-					null, ex);
-		} catch (InstantiationException ex) {
-			Logger.getLogger(CoordinateFrame.class.getName()).log(Level.SEVERE,
-					null, ex);
-		} catch (IllegalAccessException ex) {
-			Logger.getLogger(CoordinateFrame.class.getName()).log(Level.SEVERE,
-					null, ex);
-		} catch (UnsupportedLookAndFeelException ex) {
+		} catch (Exception ex) {
 			Logger.getLogger(CoordinateFrame.class.getName()).log(Level.SEVERE,
 					null, ex);
 		}
-		// </editor-fold>
 
 		game.showCoordinateFrame();
 //		new CoordinateFrame().setVisible(true);

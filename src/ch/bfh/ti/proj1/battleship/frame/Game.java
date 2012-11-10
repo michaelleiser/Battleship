@@ -20,7 +20,7 @@ public class Game {
 	GameFrame gf;
 	
 	public Game(){
-		
+		showNetworkFrame();
 	}
 	
 	public void showNetworkFrame(){
