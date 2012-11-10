@@ -114,11 +114,6 @@ public class CoordinateFrame extends JFrame{
 		jLabelNbrOfBattleship.setText("Number of Battleship : ");
 		jTextFieldNbrOfBattleship = new JTextField();
 		jTextFieldNbrOfBattleship.setText(game.getNbrOfBattleships() + "");
-		jTextFieldNbrOfBattleship.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent evt) {
-				jTextFieldNbrOfBattleshipActionPerformed(evt);
-			}
-		});
 		jLabelNbrOfSubmarine = new JLabel();
 		jLabelNbrOfSubmarine.setText("Number of Submarine : ");
 		jTextFieldNbrOfSubmarine = new JTextField();
@@ -641,10 +636,6 @@ public class CoordinateFrame extends JFrame{
 		pack();
 	}// </editor-fold>
 
-	private void jTextFieldNbrOfBattleshipActionPerformed(ActionEvent evt) {
-		// TODO add your handling code here:
-	}
-
 	private void jRadioButtonShootAlternativelyActionPerformed(ActionEvent evt) {
 		jRadioButtonShootUntilWater.setSelected(false);
 		jRadioButtonShootAlternatively.setSelected(true);
@@ -680,7 +671,6 @@ public class CoordinateFrame extends JFrame{
 		else if(jRadioButtonShootUntilWater.isSelected()){
 			gameMode = "UntilWater";
 		}
-		
 		
 		game.mc.sendMessage("Coordinate " + "Validate " + nbrOfRows + " " + nbrOfColoumns + " " + nbrOfBattleships + " " + nbrOfSubmarines + " " + nbrOfDestroyers + " " + nbrOfCruisers + " " + gameMode);
 		game.mc.sendMessage("Coordinate " + "Options " + nbrOfRows + " " + nbrOfColoumns + " " + nbrOfBattleships + " " + nbrOfSubmarines + " " + nbrOfDestroyers + " " + nbrOfCruisers + " " + gameMode);
