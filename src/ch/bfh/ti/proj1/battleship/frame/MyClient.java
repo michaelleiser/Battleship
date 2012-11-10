@@ -69,6 +69,19 @@ public class MyClient implements Runnable{
 						game.nf.dispose();
 						game.showCoordinateFrame();
 					}
+					if(line.contains("Coordinate Enable")){
+						game.cf.enableComponents();
+					}
+					if(line.contains("Coordinate ShowGameFrame")){
+						game.showGameFrame();
+					}
+					if(line.contains("Coordinate Dispose")){
+						game.cf.dispose();
+					}
+					if(line.contains("Coordinate Options")){
+						String[] s = line.split(" ");
+						game.setOptions(Integer.parseInt(s[2]), Integer.parseInt(s[3]), Integer.parseInt(s[4]), Integer.parseInt(s[5]), Integer.parseInt(s[6]), Integer.parseInt(s[7]));
+					}
 				}
 			}
 		} catch (IOException e) {

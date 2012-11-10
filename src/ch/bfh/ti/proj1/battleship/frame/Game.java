@@ -74,8 +74,7 @@ public class Game {
 		cf.setVisible(true);
 	}
 	
-	public void showGameFrame(int nbrOfRows, int nbrOfColoumns, int nbrOfBattleships,
-			int nbrOfSubmarines, int nbrOfDestroyers, int nbrOfCruisers){
+	public void showGameFrame(){
 		try {
 			for (UIManager.LookAndFeelInfo info : UIManager
 					.getInstalledLookAndFeels()) {
@@ -95,4 +94,21 @@ public class Game {
 		gf.setGame(this);
 	}
 
+	
+	private int nbrOfRows;
+	private int nbrOfColoumns;
+	private int nbrOfBattleships;
+	private int nbrOfSubmarines;
+	private int nbrOfDestroyers;
+	private int nbrOfCruisers;
+	
+	public void setOptions(int nbrOfRows, int nbrOfColoumns, int nbrOfBattleships,
+			int nbrOfSubmarines, int nbrOfDestroyers, int nbrOfCruisers){
+		this.nbrOfRows = nbrOfRows;
+		this.nbrOfColoumns = nbrOfColoumns;
+		this.nbrOfBattleships = nbrOfBattleships;
+		this.nbrOfSubmarines = nbrOfSubmarines;
+		this.nbrOfDestroyers = nbrOfDestroyers;
+		this.nbrOfCruisers = nbrOfCruisers;
+	}
 }

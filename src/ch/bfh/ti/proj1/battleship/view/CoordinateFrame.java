@@ -672,13 +672,30 @@ public class CoordinateFrame extends JFrame{
 		int nbrOfDestroyers = Integer.parseInt(jTextFieldNbrOfDestroyer.getText());
 		int nbrOfCruisers = Integer.parseInt(jTextFieldNbrOfCruiser.getText());
 
-		game.showGameFrame(nbrOfRows, nbrOfColoumns, nbrOfBattleships, nbrOfSubmarines, nbrOfDestroyers, nbrOfCruisers);
-
 		game.mc.sendMessage("Coordinate " + "Validate " + nbrOfRows + " " + nbrOfColoumns + " " + nbrOfBattleships + " " + nbrOfSubmarines + " " + nbrOfDestroyers + " " + nbrOfCruisers);
-	
-		this.dispose();
+		disableComponents();
+		game.mc.sendMessage("Coordinate " + "Enable ");
+		
+		game.setOptions(nbrOfRows, nbrOfColoumns, nbrOfBattleships, nbrOfSubmarines, nbrOfDestroyers, nbrOfCruisers);
+		
+		game.mc.sendMessage("Coordinate " + "Options " + nbrOfRows + " " + nbrOfColoumns + " " + nbrOfBattleships + " " + nbrOfSubmarines + " " + nbrOfDestroyers + " " + nbrOfCruisers);
+		
+		if(nbrOfRows == nbrRow){
+			game.showGameFrame();
+			this.dispose();
+			game.mc.sendMessage("Coordinate " + "ShowGameFrame ");
+			game.mc.sendMessage("Coordinate " + "Dispose ");
+		}
+		nbrRow = nbrOfRows;
 	}
 
+	private int nbrCol = 10;
+	private int nbrRow = 10;
+	private int nbrBat = 1;
+	private int nbrSub = 2;
+	private int nbrCru = 3;
+	private int nbrDes = 4;
+	
 	private void jTextPaneYourMessageMouseClicked(MouseEvent evt) {
 		jTextPaneYourMessage.setText(null);
 	}	
