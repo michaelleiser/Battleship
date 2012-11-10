@@ -63,7 +63,7 @@ public class MyClient implements Runnable{
 					}
 					if(line.contains("Coordinate Validate ")){
 						String[] s = line.split(" ");
-						game.cf.setComponents(s[2], s[3], s[4], s[5], s[6], s[7]);
+						game.cf.setComponents(s[2], s[3], s[4], s[5], s[6], s[7], s[8]);
 					}
 					if(line.contains("Game Show")){
 						game.nf.dispose();
@@ -80,7 +80,7 @@ public class MyClient implements Runnable{
 					}
 					if(line.contains("Coordinate Options")){
 						String[] s = line.split(" ");
-						game.setOptions(Integer.parseInt(s[2]), Integer.parseInt(s[3]), Integer.parseInt(s[4]), Integer.parseInt(s[5]), Integer.parseInt(s[6]), Integer.parseInt(s[7]));
+						game.setOptions(Integer.parseInt(s[2]), Integer.parseInt(s[3]), Integer.parseInt(s[4]), Integer.parseInt(s[5]), Integer.parseInt(s[6]), Integer.parseInt(s[7]), Boolean.parseBoolean(s[8]));
 					}
 				}
 			}

@@ -671,22 +671,24 @@ public class CoordinateFrame extends JFrame{
 		int nbrOfSubmarines = Integer.parseInt(jTextFieldNbrOfSubmarine.getText());
 		int nbrOfDestroyers = Integer.parseInt(jTextFieldNbrOfDestroyer.getText());
 		int nbrOfCruisers = Integer.parseInt(jTextFieldNbrOfCruiser.getText());
-
-		game.mc.sendMessage("Coordinate " + "Validate " + nbrOfRows + " " + nbrOfColoumns + " " + nbrOfBattleships + " " + nbrOfSubmarines + " " + nbrOfDestroyers + " " + nbrOfCruisers);
+		boolean gameModeAlternatively = jRadioButtonShootAlternatively.isSelected();
+		
+		game.mc.sendMessage("Coordinate " + "Validate " + nbrOfRows + " " + nbrOfColoumns + " " + nbrOfBattleships + " " + nbrOfSubmarines + " " + nbrOfDestroyers + " " + nbrOfCruisers + " " + gameModeAlternatively);
 		disableComponents();
 		game.mc.sendMessage("Coordinate " + "Enable ");
 		
-		game.setOptions(nbrOfRows, nbrOfColoumns, nbrOfBattleships, nbrOfSubmarines, nbrOfDestroyers, nbrOfCruisers);
+		game.setOptions(nbrOfRows, nbrOfColoumns, nbrOfBattleships, nbrOfSubmarines, nbrOfDestroyers, nbrOfCruisers, gameModeAlternatively);
 		
-		game.mc.sendMessage("Coordinate " + "Options " + nbrOfRows + " " + nbrOfColoumns + " " + nbrOfBattleships + " " + nbrOfSubmarines + " " + nbrOfDestroyers + " " + nbrOfCruisers);
+		game.mc.sendMessage("Coordinate " + "Options " + nbrOfRows + " " + nbrOfColoumns + " " + nbrOfBattleships + " " + nbrOfSubmarines + " " + nbrOfDestroyers + " " + nbrOfCruisers + " " + gameModeAlternatively);
 		
-		if(nbrOfRows == nbrRow){
+		if(nbrOfRows == nbrRow && nbrOfColoumns == nbrCol){
 			game.showGameFrame();
 			this.dispose();
 			game.mc.sendMessage("Coordinate " + "ShowGameFrame ");
 			game.mc.sendMessage("Coordinate " + "Dispose ");
 		}
 		nbrRow = nbrOfRows;
+		nbrCol = nbrOfColoumns;
 	}
 
 	private int nbrCol = 10;
@@ -695,6 +697,7 @@ public class CoordinateFrame extends JFrame{
 	private int nbrSub = 2;
 	private int nbrCru = 3;
 	private int nbrDes = 4;
+	private boolean gameModeAlternatively = true;
 	
 	private void jTextPaneYourMessageMouseClicked(MouseEvent evt) {
 		jTextPaneYourMessage.setText(null);
@@ -723,13 +726,21 @@ public class CoordinateFrame extends JFrame{
 	}
 	
 	public void setComponents(String nbrOfRows, String nbrOfColoumns, String nbrOfBattleships,
-			String nbrOfSubmarines, String nbrOfDestroyers, String nbrOfCruisers){
+			String nbrOfSubmarines, String nbrOfDestroyers, String nbrOfCruisers, String gameModeAlternatively){
 		jTextFieldNbrOfRows.setText(nbrOfRows);
 		jTextFieldNbrOfColoumns.setText(nbrOfColoumns);
 		jTextFieldNbrOfBattleship.setText(nbrOfBattleships);
 		jTextFieldNbrOfSubmarine.setText(nbrOfSubmarines);
 		jTextFieldNbrOfDestroyer.setText(nbrOfDestroyers);
 		jTextFieldNbrOfCruiser.setText(nbrOfCruisers);
+		if(Boolean.parseBoolean(gameModeAlternatively) == true){
+			jRadioButtonShootUntilWater.setSelected(false);
+			jRadioButtonShootAlternatively.setSelected(true);
+		}
+		else{
+			jRadioButtonShootAlternatively.setSelected(false);
+			jRadioButtonShootUntilWater.setSelected(true);
+		}
 	}
 
 }
