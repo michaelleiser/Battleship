@@ -953,7 +953,6 @@ public class GameFrame extends JFrame {
 	}
 
 	private void jButtonRestartMouseClicked(MouseEvent evt) {
-
 		try {
 			for (UIManager.LookAndFeelInfo info : UIManager
 					.getInstalledLookAndFeels()) {
@@ -968,7 +967,6 @@ public class GameFrame extends JFrame {
 		}
 
 		game.showCoordinateFrame();
-//		new CoordinateFrame().setVisible(true);
 		this.dispose();
 	}
 

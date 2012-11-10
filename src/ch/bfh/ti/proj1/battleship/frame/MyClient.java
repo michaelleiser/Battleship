@@ -54,12 +54,13 @@ public class MyClient implements Runnable{
 			while (true) {
 				line = in.readLine();
 				if (line != null){
-					
 					if(line.contains("Coordinate Chat")){
-						game.cf.jTextPaneChat.setText(line);
+						String s = line.substring(16, line.length());
+						game.cf.jTextPaneChat.setText(s);
 					}
 					if(line.contains("Game Chat")){
-						game.gf.jTextPaneChat.setText(line);
+						String s = line.substring(10, line.length());
+						game.gf.jTextPaneChat.setText(s);
 					}
 					if(line.contains("Coordinate Validate")){
 						String[] s = line.split(" ");

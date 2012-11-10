@@ -54,10 +54,9 @@ public class NetworkFrame extends JFrame {
 	private JButton jButtonConnect;
 	private JButton jButtonCancel;
 
+	private Game g;
 	// End of variables declaration
 
-	private Game g;
-	
 	/** Creates new form NewJFrame 
 	 * @param game */
 	public NetworkFrame(Game g) {
@@ -135,9 +134,7 @@ public class NetworkFrame extends JFrame {
 		jTextFieldIPAddress.setText("localhost");
 		jTextFieldIPAddress.setEnabled(false);
 		jLabelStatus = new JLabel();
-		jLabelStatus
-				.setText("Select host or join game and click connect");
-
+		jLabelStatus.setText("Select host or join game and click connect");
 	
 		jButtonConnect = new JButton();
 		jButtonConnect.setText("connect");
@@ -524,8 +521,8 @@ public class NetworkFrame extends JFrame {
 	}// </editor-fold>
 
 	private void jRadioButtonHostGameActionPerformed(ActionEvent evt) {
-		jRadioButtonJoinGame.setSelected(false);
 		jRadioButtonHostGame.setSelected(true);
+		jRadioButtonJoinGame.setSelected(false);
 
 		jTextFieldFreePort.setEnabled(true);
 		jTextFieldIPAddress.setEnabled(false);

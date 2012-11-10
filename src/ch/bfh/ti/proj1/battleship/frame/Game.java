@@ -25,18 +25,15 @@ public class Game {
 	
 	public void showNetworkFrame(){
 		try {
-			for (UIManager.LookAndFeelInfo info : UIManager
-					.getInstalledLookAndFeels()) {
+			for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
 				if ("Nimbus".equals(info.getName())) {
 					UIManager.setLookAndFeel(info.getClassName());
 					break;
 				}
 			}
-		} catch (Exception ex) {
-			Logger.getLogger(NetworkFrame.class.getName()).log(Level.SEVERE,
-					null, ex);
+		} catch (Exception e) {
+			Logger.getLogger(NetworkFrame.class.getName()).log(Level.SEVERE, null, e);
 		}
-
 		nf = new NetworkFrame(this);
 		nf.setVisible(true);
 	}
@@ -54,8 +51,8 @@ public class Game {
 		if(mc.isConnected()){
 			nf.dispose();
 			showCoordinateFrame();	
-			mc.sendMessage("Game " + "Show ");
 			cf.disableComponents();					// disable Components temporarily for the client
+			mc.sendMessage("Game " + "Show ");
 		}
 	}
 	
@@ -89,10 +86,7 @@ public class Game {
 		} catch (Exception ex) {
 			Logger.getLogger(GameFrame.class.getName()).log(Level.SEVERE, null,	ex);
 		}
-		
-
-		gf = new GameFrame(nbrOfRows, nbrOfColoumns, nbrOfBattleships,
-				nbrOfSubmarines, nbrOfDestroyers, nbrOfCruisers);
+		gf = new GameFrame(nbrOfRows, nbrOfColoumns, nbrOfBattleships, nbrOfSubmarines, nbrOfDestroyers, nbrOfCruisers);
 		gf.setVisible(true);
 		gf.setGame(this);
 	}
