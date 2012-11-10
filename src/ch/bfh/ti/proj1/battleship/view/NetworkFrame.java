@@ -548,17 +548,12 @@ public class NetworkFrame extends JFrame {
 	private void jButtonConnectActionPerformed(ActionEvent evt) {
 		if (jRadioButtonHostGame.isSelected()) {
 			final int port = Integer.parseInt(jTextFieldFreePort.getText());
-//			Game g = new Game();
 			g.hostGame(port);
-//			this.dispose();
 			jLabelStatus.setText("Connecting...Please start application of second player if it is not started yet.");
-			
 		} else if (jRadioButtonJoinGame.isSelected()) {
 			final int port = Integer.parseInt(jTextFieldSharedPort.getText());
 			final String IP = jTextFieldIPAddress.getText();
-//			Game g = new Game();
 			g.joinGame(port, IP);
-			this.dispose();
 		}
 	}
 }

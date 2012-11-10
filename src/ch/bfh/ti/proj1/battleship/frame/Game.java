@@ -51,9 +51,12 @@ public class Game {
 	public void joinGame(final int port, final String IP) {
 		mc = new MyClient(port, IP);
 		mc.setGame(this);
-		showCoordinateFrame();	
-		mc.sendMessage("Game " + "Show ");
-		cf.disableComponents();					// disable Components temporarily for the client
+		if(mc.isConnected()){
+			nf.dispose();
+			showCoordinateFrame();	
+			mc.sendMessage("Game " + "Show ");
+			cf.disableComponents();					// disable Components temporarily for the client
+		}
 	}
 	
 	public void showCoordinateFrame() {
@@ -94,7 +97,6 @@ public class Game {
 		gf.setGame(this);
 	}
 
-	
 	private int nbrOfRows = 10;
 	private int nbrOfColoumns = 10;
 	private int nbrOfBattleships = 1;

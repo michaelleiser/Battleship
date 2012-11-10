@@ -61,7 +61,7 @@ public class MyClient implements Runnable{
 					if(line.contains("Game Chat")){
 						game.gf.jTextPaneChat.setText(line);
 					}
-					if(line.contains("Coordinate Validate ")){
+					if(line.contains("Coordinate Validate")){
 						String[] s = line.split(" ");
 						game.cf.setComponents(s[2], s[3], s[4], s[5], s[6], s[7], s[8]);
 					}
@@ -103,4 +103,13 @@ public class MyClient implements Runnable{
 	}
 	
 	private Game game;
+
+	public boolean isConnected() {
+		if(socket == null){
+			return false;
+		}
+		else{
+			return true;
+		}
+	}
 }
