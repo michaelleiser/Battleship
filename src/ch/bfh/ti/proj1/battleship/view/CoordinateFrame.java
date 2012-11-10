@@ -648,11 +648,13 @@ public class CoordinateFrame extends JFrame{
 	private void jRadioButtonShootAlternativelyActionPerformed(ActionEvent evt) {
 		jRadioButtonShootUntilWater.setSelected(false);
 		jRadioButtonShootAlternatively.setSelected(true);
+		gameMode = "Alternatively";
 	}
 
 	private void jRadioButtonShootUntilWaterActionPerformed(ActionEvent evt) {
 		jRadioButtonShootAlternatively.setSelected(false);
 		jRadioButtonShootUntilWater.setSelected(true);
+		gameMode = "UntilWater";
 	}
 
 	private void jButtonCancelActionPerformed(ActionEvent evt) {
@@ -671,15 +673,19 @@ public class CoordinateFrame extends JFrame{
 		int nbrOfSubmarines = Integer.parseInt(jTextFieldNbrOfSubmarine.getText());
 		int nbrOfDestroyers = Integer.parseInt(jTextFieldNbrOfDestroyer.getText());
 		int nbrOfCruisers = Integer.parseInt(jTextFieldNbrOfCruiser.getText());
-		boolean gameModeAlternatively = jRadioButtonShootAlternatively.isSelected();
+		String gameMode = "";
+		if(jRadioButtonShootAlternatively.isSelected()){
+			gameMode = "Alternatively";
+		}
+		else if(jRadioButtonShootUntilWater.isSelected()){
+			gameMode = "UntilWater";
+		}
+		game.setOptions(nbrOfRows, nbrOfColoumns, nbrOfBattleships, nbrOfSubmarines, nbrOfDestroyers, nbrOfCruisers, gameMode);
+		disableComponents();		
 		
-		game.mc.sendMessage("Coordinate " + "Validate " + nbrOfRows + " " + nbrOfColoumns + " " + nbrOfBattleships + " " + nbrOfSubmarines + " " + nbrOfDestroyers + " " + nbrOfCruisers + " " + gameModeAlternatively);
-		disableComponents();
+		game.mc.sendMessage("Coordinate " + "Validate " + nbrOfRows + " " + nbrOfColoumns + " " + nbrOfBattleships + " " + nbrOfSubmarines + " " + nbrOfDestroyers + " " + nbrOfCruisers + " " + gameMode);
+		game.mc.sendMessage("Coordinate " + "Options " + nbrOfRows + " " + nbrOfColoumns + " " + nbrOfBattleships + " " + nbrOfSubmarines + " " + nbrOfDestroyers + " " + nbrOfCruisers + " " + gameMode);
 		game.mc.sendMessage("Coordinate " + "Enable ");
-		
-		game.setOptions(nbrOfRows, nbrOfColoumns, nbrOfBattleships, nbrOfSubmarines, nbrOfDestroyers, nbrOfCruisers, gameModeAlternatively);
-		
-		game.mc.sendMessage("Coordinate " + "Options " + nbrOfRows + " " + nbrOfColoumns + " " + nbrOfBattleships + " " + nbrOfSubmarines + " " + nbrOfDestroyers + " " + nbrOfCruisers + " " + gameModeAlternatively);
 		
 		if(nbrOfRows == nbrRow && nbrOfColoumns == nbrCol){
 			game.showGameFrame();
@@ -697,7 +703,7 @@ public class CoordinateFrame extends JFrame{
 	private int nbrSub = 2;
 	private int nbrCru = 3;
 	private int nbrDes = 4;
-	private boolean gameModeAlternatively = true;
+	private String gameMode = "Alternatively";
 	
 	private void jTextPaneYourMessageMouseClicked(MouseEvent evt) {
 		jTextPaneYourMessage.setText(null);
@@ -726,18 +732,18 @@ public class CoordinateFrame extends JFrame{
 	}
 	
 	public void setComponents(String nbrOfRows, String nbrOfColoumns, String nbrOfBattleships,
-			String nbrOfSubmarines, String nbrOfDestroyers, String nbrOfCruisers, String gameModeAlternatively){
+			String nbrOfSubmarines, String nbrOfDestroyers, String nbrOfCruisers, String gameMode){
 		jTextFieldNbrOfRows.setText(nbrOfRows);
 		jTextFieldNbrOfColoumns.setText(nbrOfColoumns);
 		jTextFieldNbrOfBattleship.setText(nbrOfBattleships);
 		jTextFieldNbrOfSubmarine.setText(nbrOfSubmarines);
 		jTextFieldNbrOfDestroyer.setText(nbrOfDestroyers);
 		jTextFieldNbrOfCruiser.setText(nbrOfCruisers);
-		if(Boolean.parseBoolean(gameModeAlternatively) == true){
+		if(gameMode.equals("Alternatively")){
 			jRadioButtonShootUntilWater.setSelected(false);
 			jRadioButtonShootAlternatively.setSelected(true);
 		}
-		else{
+		else if(gameMode.equals("UntilWater")){
 			jRadioButtonShootAlternatively.setSelected(false);
 			jRadioButtonShootUntilWater.setSelected(true);
 		}

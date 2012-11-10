@@ -97,24 +97,21 @@ public class Game {
 	private int nbrOfSubmarines = 2;
 	private int nbrOfDestroyers = 3;
 	private int nbrOfCruisers = 4;
-	private boolean gameModeAlternatively = true;
-	private boolean gameModeShootUntilWater = false;
+	private String gameMode = "Alternatively";
 	
 	public void setOptions(int nbrOfRows, int nbrOfColoumns, int nbrOfBattleships,
-			int nbrOfSubmarines, int nbrOfDestroyers, int nbrOfCruisers, boolean gameModeAlternatively){
+			int nbrOfSubmarines, int nbrOfDestroyers, int nbrOfCruisers, String gameMode){
 		this.nbrOfRows = nbrOfRows;
 		this.nbrOfColoumns = nbrOfColoumns;
 		this.nbrOfBattleships = nbrOfBattleships;
 		this.nbrOfSubmarines = nbrOfSubmarines;
 		this.nbrOfDestroyers = nbrOfDestroyers;
 		this.nbrOfCruisers = nbrOfCruisers;
-		if(gameModeAlternatively == true){
-			this.gameModeAlternatively = true;
-			this.gameModeShootUntilWater = false;
+		if(gameMode.equals("Alternatively")){
+			this.gameMode = "Alternatively";
 		}
-		else{
-			this.gameModeAlternatively = false;
-			this.gameModeShootUntilWater = true;
+		else if (gameMode.equals("UntilWater")){
+			this.gameMode = "UntilWater";
 		}
 	}
 }
