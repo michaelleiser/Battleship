@@ -11,10 +11,12 @@ import java.util.Vector;
  * @author Michael Leiser
  */
 public class MyServer implements Runnable {
-	public int PORT = 8765;
+	
+	private int PORT = 8765;
+	
 	protected ServerSocket listen;
 	protected Vector<MyConnection> connections;
-	Thread connect;
+	private Thread connect;
 	
 	public MyServer(int PORT) {
 		this.PORT = PORT;

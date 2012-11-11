@@ -10,6 +10,7 @@ import java.net.Socket;
  * @author Michael Leiser
  */
 class MyConnection extends Thread {
+	
 	protected Socket client;
 	protected DataInputStream in;
 	protected PrintStream out;

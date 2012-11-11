@@ -3,7 +3,6 @@ package ch.bfh.ti.proj1.battleship.frame;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.UIManager;
-
 import ch.bfh.ti.proj1.battleship.view.CoordinateFrame;
 import ch.bfh.ti.proj1.battleship.view.GameFrame;
 import ch.bfh.ti.proj1.battleship.view.NetworkFrame;
@@ -58,26 +57,22 @@ public class Game {
 	
 	public void showCoordinateFrame() {
 		try {
-			for (UIManager.LookAndFeelInfo info : UIManager
-					.getInstalledLookAndFeels()) {
+			for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
 				if ("Nimbus".equals(info.getName())) {
 					UIManager.setLookAndFeel(info.getClassName());
 					break;
 				}
 			}
 		} catch (Exception ex) {
-			Logger.getLogger(CoordinateFrame.class.getName()).log(Level.SEVERE,
-					null, ex);
+			Logger.getLogger(CoordinateFrame.class.getName()).log(Level.SEVERE, null, ex);
 		}
-		
 		cf = new CoordinateFrame(this);
 		cf.setVisible(true);
 	}
 	
 	public void showGameFrame(){
 		try {
-			for (UIManager.LookAndFeelInfo info : UIManager
-					.getInstalledLookAndFeels()) {
+			for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
 				if ("Nimbus".equals(info.getName())) {
 					UIManager.setLookAndFeel(info.getClassName());
 					break;

@@ -14,6 +14,11 @@ public class MyClient implements Runnable{
 	private int port;
 	private String IP;
 	
+	private Socket socket;
+	private DataInputStream in;
+	private PrintStream out;
+	private Thread thread;
+	
 	public MyClient(int port, String IP) {
 		this.port = port;
 		this.IP = IP;
@@ -89,12 +94,6 @@ public class MyClient implements Runnable{
 		}
 	}
 	
-
-	Socket socket;
-	DataInputStream in;
-	PrintStream out;
-	Thread thread;
-
 	public void sendMessage(String s) {
 		out.println(s);
 	}
