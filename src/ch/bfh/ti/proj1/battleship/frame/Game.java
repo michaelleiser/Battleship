@@ -18,8 +18,33 @@ public class Game {
 	CoordinateFrame cf;
 	GameFrame gf;
 	
+	private int nbrOfRows = 10;
+	private int nbrOfColoumns = 10;
+	private int nbrOfBattleships = 1;
+	private int nbrOfSubmarines = 2;
+	private int nbrOfDestroyers = 3;
+	private int nbrOfCruisers = 4;
+	private String gameMode = "Alternatively";
+	
 	public Game(){
 		showNetworkFrame();
+	}
+	
+	public void hostGame(final int port) {
+		new MyServer(port);
+		mc = new MyClient(port, "localhost");
+		mc.setGame(this);
+	}
+
+	public void joinGame(final int port, final String IP) {
+		mc = new MyClient(port, IP);
+		mc.setGame(this);
+		if(mc.isConnected()){
+			nf.dispose();
+			showCoordinateFrame();	
+			cf.disableComponents();
+			mc.sendMessage("Game " + "Show ");
+		}
 	}
 	
 	public void showNetworkFrame(){
@@ -37,24 +62,6 @@ public class Game {
 		nf.setVisible(true);
 	}
 
-	public void hostGame(final int port) {
-		new MyServer(port);
-		mc = new MyClient(port, "localhost");
-		mc.setGame(this);
-//		showCoordinateFrame();
-	}
-
-	public void joinGame(final int port, final String IP) {
-		mc = new MyClient(port, IP);
-		mc.setGame(this);
-		if(mc.isConnected()){
-			nf.dispose();
-			showCoordinateFrame();	
-			cf.disableComponents();					// disable Components temporarily for the client
-			mc.sendMessage("Game " + "Show ");
-		}
-	}
-	
 	public void showCoordinateFrame() {
 		try {
 			for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
@@ -85,7 +92,6 @@ public class Game {
 		gf.setVisible(true);
 	}
 
-	private int nbrOfRows = 10;
 	public int getNbrOfRows() {
 		return nbrOfRows;
 	}
@@ -141,13 +147,6 @@ public class Game {
 	public void setGameMode(String gameMode) {
 		this.gameMode = gameMode;
 	}
-
-	private int nbrOfColoumns = 10;
-	private int nbrOfBattleships = 1;
-	private int nbrOfSubmarines = 2;
-	private int nbrOfDestroyers = 3;
-	private int nbrOfCruisers = 4;
-	private String gameMode = "Alternatively";
 	
 	public void setOptions(int nbrOfRows, int nbrOfColoumns, int nbrOfBattleships,
 			int nbrOfSubmarines, int nbrOfDestroyers, int nbrOfCruisers, String gameMode){

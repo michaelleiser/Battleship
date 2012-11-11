@@ -969,6 +969,7 @@ public class GameFrame extends JFrame {
 				enemyField[i][j].setEnabled(true);
 			}
 		}
+		jButtonReady.setEnabled(false);
 	}
 	
 }
