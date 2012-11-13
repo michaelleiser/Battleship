@@ -21,11 +21,12 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
-import javax.swing.JToggleButton;
 import javax.swing.LayoutStyle;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.WindowConstants;
+
+import ch.bfh.ti.proj1.battleship.client.Field;
 import ch.bfh.ti.proj1.battleship.frame.Game;
 
 /**
@@ -91,8 +92,8 @@ public class GameFrame extends JFrame {
 	
 	private Game game;
 	
-	private JToggleButton yourField[][];
-	private JToggleButton enemyField[][];
+	private Field[][] yourField;
+	private Field[][] enemyField;
 	
 	public GameFrame(Game game) {
 		this.game = game;
@@ -288,11 +289,11 @@ public class GameFrame extends JFrame {
 		
 		jPanelYourField.setMinimumSize(new Dimension(200, 200));
 		jPanelYourField.setLayout(new GridLayout(rows, coloumns));
-		yourField = new JToggleButton[rows][coloumns];
+		yourField = new Field[rows][coloumns];
 		
 		jPanelEnemyField.setMinimumSize(new Dimension(200, 200));
 		jPanelEnemyField.setLayout(new GridLayout(rows, coloumns));
-		enemyField = new JToggleButton[rows][coloumns];
+		enemyField = new Field[rows][coloumns];
 		
 		for (int i = 0; i < rows; i++) {
 			for (int j = 0; j < coloumns; j++) {
@@ -339,7 +340,7 @@ public class GameFrame extends JFrame {
 					x1.setText((char) (i + 64) + "");
 					jPanelEnemyField.add(x1);
 				} else {
-					JToggleButton jtb = new JToggleButton();
+					Field jtb = new Field();
 					yourField[i - 1][j - 1] = jtb;
 					jtb.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent ae) {
@@ -348,7 +349,7 @@ public class GameFrame extends JFrame {
 					});
 					jPanelYourField.add(jtb);
 					
-					JToggleButton jtb1 = new JToggleButton();
+					Field jtb1 = new Field();
 					jtb1.setEnabled(false);
 					enemyField[i - 1][j - 1] = jtb1;
 					jtb1.addActionListener(new ActionListener() {

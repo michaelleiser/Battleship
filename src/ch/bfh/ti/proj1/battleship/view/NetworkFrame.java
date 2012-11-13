@@ -3,11 +3,14 @@ package ch.bfh.ti.proj1.battleship.view;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.regex.Pattern;
+
 import javax.swing.BorderFactory;
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
@@ -104,7 +107,6 @@ public class NetworkFrame extends JFrame {
 		jLabelFreePort.setText("Free Port");
 		jTextFieldFreePort = new JTextField();
 		jTextFieldFreePort.setText("4444");
-		jTextFieldFreePort.
 
 		jPanelJoinGame = new JPanel();
 		jPanelJoinGame.setBorder(BorderFactory.createEtchedBorder());
@@ -535,15 +537,39 @@ public class NetworkFrame extends JFrame {
 
 	private void jButtonConnectActionPerformed(ActionEvent evt) {
 		if (jRadioButtonHostGame.isSelected()) {
-			final int port = Integer.parseInt(jTextFieldFreePort.getText());
-			g.hostGame(port);
-			jLabelStatus.setText("Connecting...Please start application of second player if it is not started yet.");
-			disableComponents();
+			if (Pattern.matches("\\d{4,6}", jTextFieldFreePort.getText())) {
+				final int port = Integer.parseInt(jTextFieldFreePort.getText());
+				g.hostGame(port);
+				jLabelStatus.setText("Connecting...Please start application of second player if it is not started yet.");
+				disableComponents();
+			} else {
+				JOptionPane.showMessageDialog(this, "Entered port number is not valid!");
+			}
 		} else if (jRadioButtonJoinGame.isSelected()) {
-			final int port = Integer.parseInt(jTextFieldSharedPort.getText());
-			final String IP = jTextFieldIPAddress.getText();
-			g.joinGame(port, IP);
+			if (Pattern.matches("\\d{4,6}", jTextFieldSharedPort.getText()) && 
+							validateIPAddress(jTextFieldIPAddress.getText())) {
+				final int port = Integer.parseInt(jTextFieldSharedPort.getText());
+				final String IP = jTextFieldIPAddress.getText();
+				g.joinGame(port, IP);
+			} else {
+				JOptionPane.showMessageDialog(this, "Entered IP address or shared port number is not valid!");
+			}
 		}
+	}
+	
+	private final boolean validateIPAddress(String ipAddress){
+		if (jTextFieldIPAddress.getText().equalsIgnoreCase("localhost")){
+			return true;
+		} else if(Pattern.matches("[0123456789.]*", ipAddress)) {
+			String[] parts = ipAddress.split( "\\." );
+			if (parts.length != 4) return false;
+			for ( String s : parts ) {
+				int i = Integer.parseInt( s );
+				if ( (i < 0) || (i > 255) ) return false;
+			}
+			return true;
+		} else 
+			return false;
 	}
 	
 	private void disableComponents(){

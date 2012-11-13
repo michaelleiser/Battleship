@@ -1,5 +1,7 @@
 package org.game;
 
+import ch.bfh.ti.proj1.battleship.client.Field;
+
 public class PlayingField {
 
 	private Field[][] fields;
