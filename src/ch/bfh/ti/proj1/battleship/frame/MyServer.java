@@ -14,14 +14,14 @@ public class MyServer implements Runnable {
 	
 	private int portNbr;
 	
-	protected ServerSocket listen;
+	protected ServerSocket serverSocket;
 	protected Vector<MyConnection> connections;
 	private Thread connectionThread;
 	
 	public MyServer(int port) {
 		this.portNbr = port;
 		try {
-			listen = new ServerSocket(this.portNbr);
+			serverSocket = new ServerSocket(this.portNbr);
 		} catch (IOException e) {
 		}
 		connections = new Vector<MyConnection>();
@@ -32,7 +32,7 @@ public class MyServer implements Runnable {
 	public void run() {
 		try {
 			while (true) {
-				Socket client = listen.accept();
+				Socket client = serverSocket.accept();
 				MyConnection c = new MyConnection(this, client);
 				connections.addElement(c);
 			}
