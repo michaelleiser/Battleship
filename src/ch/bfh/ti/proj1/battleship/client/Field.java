@@ -2,7 +2,6 @@ package ch.bfh.ti.proj1.battleship.client;
 
 import javax.swing.JToggleButton;
 
-import org.game.Ship;
 
 public class Field extends JToggleButton {
 
