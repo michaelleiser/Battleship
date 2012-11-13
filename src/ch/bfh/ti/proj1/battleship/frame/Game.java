@@ -13,11 +13,12 @@ import ch.bfh.ti.proj1.battleship.view.NetworkFrame;
  */
 public class Game {
 	
-	public MyClient mc;
-	NetworkFrame nf;
-	CoordinateFrame cf;
-	GameFrame gf;
+	public MyClient myClient;
+	NetworkFrame networkFrame;
+	CoordinateFrame clientFrame;
+	GameFrame gameFrame;
 	
+	// initialize standard values
 	private int nbrOfRows = 10;
 	private int nbrOfColoumns = 10;
 	private int nbrOfBattleships = 1;
@@ -32,18 +33,18 @@ public class Game {
 	
 	public void hostGame(final int port) {
 		new MyServer(port);
-		mc = new MyClient(port, "localhost");
-		mc.setGame(this);
+		myClient = new MyClient(port, "localhost");
+		myClient.setGame(this);
 	}
 
 	public void joinGame(final int port, final String IP) {
-		mc = new MyClient(port, IP);
-		mc.setGame(this);
-		if(mc.isConnected()){
-			nf.dispose();
+		myClient = new MyClient(port, IP);
+		myClient.setGame(this);
+		if(myClient.isConnected()){
+			networkFrame.dispose();
 			showCoordinateFrame();	
-			cf.disableComponents();
-			mc.sendMessage("Game " + "Show ");
+			clientFrame.disableComponents();
+			myClient.sendMessage("Game " + "Show ");
 		}
 	}
 	
@@ -58,8 +59,8 @@ public class Game {
 		} catch (Exception e) {
 			Logger.getLogger(NetworkFrame.class.getName()).log(Level.SEVERE, null, e);
 		}
-		nf = new NetworkFrame(this);
-		nf.setVisible(true);
+		networkFrame = new NetworkFrame(this);
+		networkFrame.setVisible(true);
 	}
 
 	public void showCoordinateFrame() {
@@ -73,8 +74,8 @@ public class Game {
 		} catch (Exception ex) {
 			Logger.getLogger(CoordinateFrame.class.getName()).log(Level.SEVERE, null, ex);
 		}
-		cf = new CoordinateFrame(this);
-		cf.setVisible(true);
+		clientFrame = new CoordinateFrame(this);
+		clientFrame.setVisible(true);
 	}
 	
 	public void showGameFrame(){
@@ -88,8 +89,8 @@ public class Game {
 		} catch (Exception ex) {
 			Logger.getLogger(GameFrame.class.getName()).log(Level.SEVERE, null,	ex);
 		}
-		gf = new GameFrame(this);
-		gf.setVisible(true);
+		gameFrame = new GameFrame(this);
+		gameFrame.setVisible(true);
 	}
 
 	public int getNbrOfRows() {

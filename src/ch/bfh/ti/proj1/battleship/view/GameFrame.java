@@ -938,7 +938,7 @@ public class GameFrame extends JFrame {
 
 	private void jButtonSendActionPerformed(ActionEvent evt) {
 		String s = "Game " + "Chat " + jTextPaneYourMessage.getText(); 
-		game.mc.sendMessage(s);
+		game.myClient.sendMessage(s);
 	}
 
 	private void jTextPaneYourMessageMouseClicked(MouseEvent evt) {

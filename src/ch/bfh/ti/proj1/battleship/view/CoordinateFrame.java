@@ -643,7 +643,7 @@ public class CoordinateFrame extends JFrame{
 
 	private void jButtonSendActionPerformed(ActionEvent evt) {
 		String s = "Coordinate " + "Chat " + jTextPaneYourMessage.getText();
-		game.mc.sendMessage(s);
+		game.myClient.sendMessage(s);
 	}
 
 	private void jButtonValidateAndCoordinateActionPerformed(ActionEvent evt) {
@@ -661,9 +661,9 @@ public class CoordinateFrame extends JFrame{
 			gameMode = "UntilWater";
 		}
 		
-		game.mc.sendMessage("Coordinate " + "Validate " + nbrOfRows + " " + nbrOfColoumns + " " + nbrOfBattleships + " " + nbrOfSubmarines + " " + nbrOfDestroyers + " " + nbrOfCruisers + " " + gameMode);
-		game.mc.sendMessage("Coordinate " + "Options " + nbrOfRows + " " + nbrOfColoumns + " " + nbrOfBattleships + " " + nbrOfSubmarines + " " + nbrOfDestroyers + " " + nbrOfCruisers + " " + gameMode);
-		game.mc.sendMessage("Coordinate " + "Enable ");
+		game.myClient.sendMessage("Coordinate " + "Validate " + nbrOfRows + " " + nbrOfColoumns + " " + nbrOfBattleships + " " + nbrOfSubmarines + " " + nbrOfDestroyers + " " + nbrOfCruisers + " " + gameMode);
+		game.myClient.sendMessage("Coordinate " + "Options " + nbrOfRows + " " + nbrOfColoumns + " " + nbrOfBattleships + " " + nbrOfSubmarines + " " + nbrOfDestroyers + " " + nbrOfCruisers + " " + gameMode);
+		game.myClient.sendMessage("Coordinate " + "Enable ");
 		
 		if(		(game.getNbrOfRows() == nbrOfRows) && 
 				(game.getNbrOfColoumns() == nbrOfColoumns) &&
@@ -674,8 +674,8 @@ public class CoordinateFrame extends JFrame{
 				(game.getGameMode().equals(gameMode))){
 			game.showGameFrame();
 			this.dispose();
-			game.mc.sendMessage("Coordinate " + "ShowGameFrame ");
-			game.mc.sendMessage("Coordinate " + "Dispose ");
+			game.myClient.sendMessage("Coordinate " + "ShowGameFrame ");
+			game.myClient.sendMessage("Coordinate " + "Dispose ");
 		}
 		game.setOptions(nbrOfRows, nbrOfColoumns, nbrOfBattleships, nbrOfSubmarines, nbrOfDestroyers, nbrOfCruisers, gameMode);
 		disableComponents();		
