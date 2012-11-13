@@ -74,6 +74,10 @@ public class CoordinateFrame extends JFrame{
 
 	private void initComponents() {
 		this.setTitle("Battleship - Player " + game.getPlayer().getName());
+		this.setResizable(false);
+		this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+		//setName("FrameCoordinateGameSettings");
+		
 		jLabelStep2of2 = new JLabel();
 		jLabelStep2of2.setFont(new Font("Tahoma", 0, 24));
 		jLabelStep2of2.setText("Step 2/2 - Coordinate game settings");
@@ -178,10 +182,6 @@ public class CoordinateFrame extends JFrame{
 			}
 		});
 		
-		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-		setTitle("Battle ship");
-		setName("FrameCoordinateGameSettings");
-
 		GroupLayout jPanelNbrOfFieldsLayout = new GroupLayout(jPanelNbrOfFields);
 		jPanelNbrOfFields.setLayout(jPanelNbrOfFieldsLayout);
 		jPanelNbrOfFieldsLayout

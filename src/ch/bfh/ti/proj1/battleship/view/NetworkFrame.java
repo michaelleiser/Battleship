@@ -62,6 +62,10 @@ public class NetworkFrame extends JFrame {
 	}
 
 	private void initComponents() {
+		this.setTitle("Battleship");
+		this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+		//setName("FrameCoordinateGameSettings");
+		this.setResizable(false);
 		jLabelStep1of2 = new JLabel();
 		jLabelStep1of2.setFont(new Font("Tahoma", 0, 24));
 		jLabelStep1of2.setText("Step 1/2 - Establish network connection");
@@ -100,6 +104,7 @@ public class NetworkFrame extends JFrame {
 		jLabelFreePort.setText("Free Port");
 		jTextFieldFreePort = new JTextField();
 		jTextFieldFreePort.setText("4444");
+		jTextFieldFreePort.
 
 		jPanelJoinGame = new JPanel();
 		jPanelJoinGame.setBorder(BorderFactory.createEtchedBorder());
@@ -140,10 +145,6 @@ public class NetworkFrame extends JFrame {
 				jButtonCancelActionPerformed(evt);
 			}
 		});
-
-		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-		setTitle("Battle ship");
-		setName("FrameCoordinateGameSettings");
 
 		GroupLayout jPanelHostGameLayout = new GroupLayout(jPanelHostGame);
 		jPanelHostGame.setLayout(jPanelHostGameLayout);

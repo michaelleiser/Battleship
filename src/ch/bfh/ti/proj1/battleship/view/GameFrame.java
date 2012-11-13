@@ -101,6 +101,9 @@ public class GameFrame extends JFrame {
 
 	private void initComponents() {
 		this.setTitle("Battleship - Player " + game.getPlayer().getName());
+		this.setResizable(false);
+		this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+		//setName("FrameGame");
 		jPanePlayingField = new JPanel();
 		jPanePlayingField.setBackground(new Color(255, 255, 255));
 		jPanePlayingField.setBorder(BorderFactory.createEtchedBorder());
@@ -278,9 +281,6 @@ public class GameFrame extends JFrame {
 			}
 		});
 		
-		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-		setName("FrameGame");
-
 		jScrollPaneYourMessage.setViewportView(jTextPaneYourMessage);
 
 		int rows = this.game.getNbrOfRows() + 1;

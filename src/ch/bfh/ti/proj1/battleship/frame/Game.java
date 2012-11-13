@@ -1,6 +1,5 @@
 package ch.bfh.ti.proj1.battleship.frame;
 
-import java.awt.Cursor;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.UIManager;
