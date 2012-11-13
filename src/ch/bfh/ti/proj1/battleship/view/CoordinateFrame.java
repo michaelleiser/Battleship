@@ -73,6 +73,7 @@ public class CoordinateFrame extends JFrame{
 	}
 
 	private void initComponents() {
+		this.setTitle("Battleship - Player " + game.getPlayer().getName());
 		jLabelStep2of2 = new JLabel();
 		jLabelStep2of2.setFont(new Font("Tahoma", 0, 24));
 		jLabelStep2of2.setText("Step 2/2 - Coordinate game settings");

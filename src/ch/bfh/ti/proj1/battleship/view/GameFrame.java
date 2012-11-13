@@ -100,6 +100,7 @@ public class GameFrame extends JFrame {
 	}
 
 	private void initComponents() {
+		this.setTitle("Battleship - Player " + game.getPlayer().getName());
 		jPanePlayingField = new JPanel();
 		jPanePlayingField.setBackground(new Color(255, 255, 255));
 		jPanePlayingField.setBorder(BorderFactory.createEtchedBorder());

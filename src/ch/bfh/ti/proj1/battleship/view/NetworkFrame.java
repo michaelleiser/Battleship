@@ -74,7 +74,7 @@ public class NetworkFrame extends JFrame {
 		jLabelPlayerName = new JLabel();
 		jLabelPlayerName.setText("Player's Name");
 		jTextFieldPlayerName = new JTextField();
-		jTextFieldPlayerName.setText("Player");
+		jTextFieldPlayerName.setText(System.getProperty("user.name"));
 
 		jPanelHostOrJoinGame = new JPanel();
 		jPanelHostOrJoinGame.setBorder(BorderFactory.createEtchedBorder());
@@ -551,5 +551,9 @@ public class NetworkFrame extends JFrame {
 		jRadioButtonJoinGame.setEnabled(false);
 		jTextFieldFreePort.setEnabled(false);
 		jButtonConnect.setEnabled(false);
+	}
+
+	public String getPlayerName() {
+		return jTextFieldPlayerName.getText();
 	}
 }

@@ -1,8 +1,12 @@
 package ch.bfh.ti.proj1.battleship.frame;
 
+import java.awt.Cursor;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.UIManager;
+
+import ch.bfh.ti.proj1.battleship.client.Player;
+import ch.bfh.ti.proj1.battleship.exception.BattleshipException;
 import ch.bfh.ti.proj1.battleship.view.CoordinateFrame;
 import ch.bfh.ti.proj1.battleship.view.GameFrame;
 import ch.bfh.ti.proj1.battleship.view.NetworkFrame;
@@ -17,6 +21,7 @@ public class Game {
 	NetworkFrame networkFrame;
 	CoordinateFrame clientFrame;
 	GameFrame gameFrame;
+	Player player;
 	
 	// initialize standard values
 	private int nbrOfRows = 10;
@@ -32,12 +37,24 @@ public class Game {
 	}
 	
 	public void hostGame(final int port) {
+		try {
+			player = new Player(this.networkFrame.getPlayerName());
+		} catch (BattleshipException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		new MyServer(port);
 		myClient = new MyClient(port, "localhost");
 		myClient.setGame(this);
 	}
 
 	public void joinGame(final int port, final String IP) {
+		try {
+			player = new Player(this.networkFrame.getPlayerName());
+		} catch (BattleshipException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		myClient = new MyClient(port, IP);
 		myClient.setGame(this);
 		if(myClient.isConnected()){
@@ -163,5 +180,9 @@ public class Game {
 		else if (gameMode.equals("UntilWater")){
 			this.gameMode = "UntilWater";
 		}
+	}
+
+	public Player getPlayer() {
+		return this.player;
 	}
 }
