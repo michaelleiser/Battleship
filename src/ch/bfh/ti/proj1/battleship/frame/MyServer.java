@@ -12,21 +12,21 @@ import java.util.Vector;
  */
 public class MyServer implements Runnable {
 	
-	private int port;
+	private int portNbr;
 	
 	protected ServerSocket listen;
 	protected Vector<MyConnection> connections;
-	private Thread connect;
+	private Thread connectionThread;
 	
 	public MyServer(int port) {
-		this.port = port;
+		this.portNbr = port;
 		try {
-			listen = new ServerSocket(this.port);
+			listen = new ServerSocket(this.portNbr);
 		} catch (IOException e) {
 		}
 		connections = new Vector<MyConnection>();
-		connect = new Thread(this);
-		connect.start();
+		connectionThread = new Thread(this);
+		connectionThread.start();
 	}
 
 	public void run() {
