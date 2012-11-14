@@ -955,9 +955,10 @@ public class GameFrame extends JFrame {
 	}
 
 	private void jButtonSendActionPerformed(ActionEvent evt) {
-		String s = jTextPaneYourMessage.getText(); 
-		game.myClient.sendMessage("Game " + "Chat " + s);
-		jTextPaneChat.setText(jTextPaneChat.getText().concat(s + "\n"));
+		String name = game.getPlayer().getName();
+		String text = jTextPaneYourMessage.getText(); 
+		game.myClient.sendMessage("Game " + "Chat " + name + ": " + text);
+		jTextPaneChat.setText(jTextPaneChat.getText().concat(name + ": " + text + "\n"));
 	}
 
 	private void jTextPaneYourMessageMouseClicked(MouseEvent evt) {
@@ -989,6 +990,22 @@ public class GameFrame extends JFrame {
 			}
 		}
 		jButtonReady.setEnabled(false);
+	}
+	
+	public void enableComponents(){
+		for(int i = 0; i < game.getNbrOfRows(); i++){
+			for(int j = 0; j < game.getNbrOfColoumns(); j++){
+				enemyField[i][j].setEnabled(true);
+			}
+		}
+	}
+	
+	public void disableComponents(){
+		for(int i = 0; i < game.getNbrOfRows(); i++){
+			for(int j = 0; j < game.getNbrOfColoumns(); j++){
+				enemyField[i][j].setEnabled(false);
+			}
+		}
 	}
 	
 }
