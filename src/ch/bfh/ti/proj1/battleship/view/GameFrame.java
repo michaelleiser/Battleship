@@ -241,7 +241,23 @@ public class GameFrame extends JFrame {
 		jScrollPaneHistory = new JScrollPane();
 		jTextPaneHistory = new JTextPane();
 		jTextPaneHistory.setEditable(false);
-		jTextPaneHistory.setText("\n*******************************\n********* BATTLESHIP ***********\n*******************************\n\n\n* Player 1 Turn*\n\n\n\nPlayer 1 Shoot at B3 and hits a battleship\n\n\nPlayer 2 Shoot at B1 and hits the water\n\n\n\n*Player 2 Turn*");
+		jTextPaneHistory.setText(	"************************************\n" +
+									"********* BATTLESHIP ***********\n" +
+									"************************************\n" +
+									"\n" +
+									"\n" +
+									"* Player 1 Turn *\n" +
+									"\n" +
+									"\n" +
+									"\n" +
+									"Player 1 Shoot at B3 and hits a battleship\n" +
+									"\n" +
+									"\n" +
+									"Player 2 Shoot at B1 and hits the water\n" +
+									"\n" +
+									"\n" +
+									"\n" +
+									"* Player 2 Turn *");
 		
 		jPanelChat = new JPanel();
 		jPanelChat.setBorder(BorderFactory.createEtchedBorder());
@@ -939,8 +955,9 @@ public class GameFrame extends JFrame {
 	}
 
 	private void jButtonSendActionPerformed(ActionEvent evt) {
-		String s = "Game " + "Chat " + jTextPaneYourMessage.getText(); 
-		game.myClient.sendMessage(s);
+		String s = jTextPaneYourMessage.getText(); 
+		game.myClient.sendMessage("Game " + "Chat " + s);
+		jTextPaneChat.setText(jTextPaneChat.getText().concat(s + "\n"));
 	}
 
 	private void jTextPaneYourMessageMouseClicked(MouseEvent evt) {

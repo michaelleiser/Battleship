@@ -61,11 +61,11 @@ public class MyClient implements Runnable{
 				if (line != null){
 					if(line.contains("Coordinate Chat")){
 						String s = line.substring(16, line.length());
-						game.clientFrame.jTextPaneChat.setText(s);
+						game.clientFrame.jTextPaneChat.setText(game.clientFrame.jTextPaneChat.getText().concat(s + "\n"));
 					}
 					if(line.contains("Game Chat")){
 						String s = line.substring(10, line.length());
-						game.gameFrame.jTextPaneChat.setText(s);
+						game.gameFrame.jTextPaneChat.setText(game.gameFrame.jTextPaneChat.getText().concat(s + "\n"));
 					}
 					if(line.contains("Coordinate Validate")){
 						String[] s = line.split(" ");

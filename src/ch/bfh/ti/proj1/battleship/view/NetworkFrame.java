@@ -537,7 +537,7 @@ public class NetworkFrame extends JFrame {
 
 	private void jButtonConnectActionPerformed(ActionEvent evt) {
 		if (jRadioButtonHostGame.isSelected()) {
-			if (Pattern.matches("\\d{4,6}", jTextFieldFreePort.getText())) {
+			if (validatePort(jTextFieldFreePort.getText())) {
 				final int port = Integer.parseInt(jTextFieldFreePort.getText());
 				g.hostGame(port);
 				jLabelStatus.setText("Connecting...Please start application of second player if it is not started yet.");
@@ -546,7 +546,7 @@ public class NetworkFrame extends JFrame {
 				JOptionPane.showMessageDialog(this, "Entered port number is not valid!");
 			}
 		} else if (jRadioButtonJoinGame.isSelected()) {
-			if (Pattern.matches("\\d{4,6}", jTextFieldSharedPort.getText()) && 
+			if (validatePort(jTextFieldSharedPort.getText()) && 
 							validateIPAddress(jTextFieldIPAddress.getText())) {
 				final int port = Integer.parseInt(jTextFieldSharedPort.getText());
 				final String IP = jTextFieldIPAddress.getText();
@@ -554,6 +554,19 @@ public class NetworkFrame extends JFrame {
 			} else {
 				JOptionPane.showMessageDialog(this, "Entered IP address or shared port number is not valid!");
 			}
+		}
+	}
+	
+	private final boolean validatePort(String port){
+		if(Pattern.matches("\\d{4,5}", port)){
+			int p = Integer.parseInt(port);
+			if((1024 <= p) && (p <= 65535)){
+				return true;
+			} else{
+				return false;
+			}
+		} else{
+			return false;
 		}
 	}
 	

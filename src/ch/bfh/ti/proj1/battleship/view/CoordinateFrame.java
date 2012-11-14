@@ -643,8 +643,9 @@ public class CoordinateFrame extends JFrame{
 	}
 
 	private void jButtonSendActionPerformed(ActionEvent evt) {
-		String s = "Coordinate " + "Chat " + jTextPaneYourMessage.getText();
-		game.myClient.sendMessage(s);
+		String s = jTextPaneYourMessage.getText();
+		game.myClient.sendMessage("Coordinate " + "Chat " + s);
+		jTextPaneChat.setText(jTextPaneChat.getText().concat(s + "\n"));
 	}
 
 	private void jButtonValidateAndCoordinateActionPerformed(ActionEvent evt) {
