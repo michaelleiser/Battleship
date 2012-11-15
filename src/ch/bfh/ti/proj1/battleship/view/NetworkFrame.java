@@ -67,8 +67,8 @@ public class NetworkFrame extends JFrame {
 	private void initComponents() {
 		this.setTitle("Battleship");
 		this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-		//setName("FrameCoordinateGameSettings");
 		this.setResizable(false);
+		
 		jLabelStep1of2 = new JLabel();
 		jLabelStep1of2.setFont(new Font("Tahoma", 0, 24));
 		jLabelStep1of2.setText("Step 1/2 - Establish network connection");

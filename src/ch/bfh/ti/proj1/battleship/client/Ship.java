@@ -1,26 +1,23 @@
 package ch.bfh.ti.proj1.battleship.client;
 
-public enum Ship {
-
-	BATTLESHIP(5), SUBMARINE(4), DESTROYER(3), CRUISER(2);
+public class Ship {
 
 	private int hits;
-	private int size;
+	private ShipType type;
 	private boolean sunk;
 	private boolean placed;
-	private int[][] positions;
-	
+	private int[][] positions;	
 
-	private Ship(int size) {
+	public Ship(ShipType type) {
 		this.hits = 0;
-		this.size = size;
+		this.type = type;
 		this.sunk = false;
 		this.placed = false;
 		this.positions = null;
 	}
 
 	public int size() {
-		return size;
+		return type.getSize();
 	}
 
 	public boolean isSunk(){
@@ -29,7 +26,7 @@ public enum Ship {
 	
 	public void shoot() {
 		++hits;
-		if(hits == size){
+		if(hits == type.getSize()){
 			sunk = true;
 		}
 	}
@@ -50,4 +47,7 @@ public enum Ship {
 		this.positions = positions;
 	}
 	
+	public ShipType getShipType(){
+		return type;
+	}
 }

@@ -195,17 +195,17 @@ public class Game {
 	
 	public void placeShip(Ship ship, int x, int y, int k) {
 		Field[][] fields = gameFrame.getYourField();
-		switch (ship) {
+		switch (ship.getShipType()) {
 		case BATTLESHIP:
 			if(k == 0){
 				for(int i = 0; i < ship.size(); i++){
-					fields[x][y+i].placeShip(Ship.BATTLESHIP);
+					fields[x][y+i].placeShip(ship);
 					fields[x][y+i].setSelected(true);
 					fields[x][y+i].setBackground(Color.black);
 				}
 			} else{
 				for(int i = 0; i < ship.size(); i++){
-					fields[x+i][y].placeShip(Ship.BATTLESHIP);
+					fields[x+i][y].placeShip(ship);
 					fields[x+i][y].setSelected(true);
 					fields[x+i][y].setBackground(Color.black);
 				}
@@ -216,13 +216,13 @@ public class Game {
 		case SUBMARINE:
 			if(k == 0){
 				for(int i = 0; i < ship.size(); i++){
-					fields[x][y+i].placeShip(Ship.SUBMARINE);
+					fields[x][y+i].placeShip(ship);
 					fields[x][y+i].setSelected(true);
 					fields[x][y+i].setBackground(Color.black);
 				}
 			} else{
 				for(int i = 0; i < ship.size(); i++){
-					fields[x+i][y].placeShip(Ship.SUBMARINE);
+					fields[x+i][y].placeShip(ship);
 					fields[x+i][y].setSelected(true);
 					fields[x+i][y].setBackground(Color.black);
 				}
@@ -233,13 +233,13 @@ public class Game {
 		case DESTROYER:
 			if(k == 0){
 				for(int i = 0; i < ship.size(); i++){
-					fields[x][y+i].placeShip(Ship.DESTROYER);
+					fields[x][y+i].placeShip(ship);
 					fields[x][y+i].setSelected(true);
 					fields[x][y+i].setBackground(Color.black);
 				}
 			} else{
 				for(int i = 0; i < ship.size(); i++){
-					fields[x+i][y].placeShip(Ship.DESTROYER);
+					fields[x+i][y].placeShip(ship);
 					fields[x+i][y].setSelected(true);
 					fields[x+i][y].setBackground(Color.black);
 				}
@@ -250,13 +250,13 @@ public class Game {
 		case CRUISER:
 			if(k == 0){
 				for(int i = 0; i < ship.size(); i++){
-					fields[x][y+i].placeShip(Ship.CRUISER);
+					fields[x][y+i].placeShip(ship);
 					fields[x][y+i].setSelected(true);
 					fields[x][y+i].setBackground(Color.black);
 				}
 			} else{
 				for(int i = 0; i < ship.size(); i++){
-					fields[x+i][y].placeShip(Ship.CRUISER);
+					fields[x+i][y].placeShip(ship);
 					fields[x+i][y].setSelected(true);
 					fields[x+i][y].setBackground(Color.black);
 				}

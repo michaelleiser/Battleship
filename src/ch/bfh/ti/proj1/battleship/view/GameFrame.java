@@ -28,6 +28,8 @@ import javax.swing.WindowConstants;
 
 import ch.bfh.ti.proj1.battleship.client.Field;
 import ch.bfh.ti.proj1.battleship.client.Ship;
+import ch.bfh.ti.proj1.battleship.client.ShipType;
+//import ch.bfh.ti.proj1.battleship.client.Ship.ShipType;
 import ch.bfh.ti.proj1.battleship.frame.Game;
 
 /**
@@ -103,9 +105,9 @@ public class GameFrame extends JFrame {
 
 	private void initComponents() {
 		this.setTitle("Battleship - Player " + game.getPlayer().getName());
-		this.setResizable(false);
 		this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-		//setName("FrameGame");
+		this.setResizable(false);
+		
 		jPanePlayingField = new JPanel();
 		jPanePlayingField.setBackground(new Color(255, 255, 255));
 		jPanePlayingField.setBorder(BorderFactory.createEtchedBorder());
@@ -372,13 +374,13 @@ public class GameFrame extends JFrame {
 							}
 							Ship ship = null;
 							if(jRadioButtonNbrOfBattleship.isSelected()){
-								ship = Ship.BATTLESHIP;
+								ship = new Ship(ShipType.BATTLESHIP);
 							} else if(jRadioButtonNbrOfSubmarine.isSelected()){
-								ship = Ship.SUBMARINE;
+								ship = new Ship(ShipType.SUBMARINE);
 							} else if(jRadioButtonNbrOfDestroyer.isSelected()){
-								ship = Ship.DESTROYER;
+								ship = new Ship(ShipType.DESTROYER);
 							} else{
-								ship = Ship.CRUISER;
+								ship = new Ship(ShipType.CRUISER);
 							}	
 							if(f.getShip() != null){
 								game.removeShip(x, y);
