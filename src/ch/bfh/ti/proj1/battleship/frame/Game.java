@@ -193,31 +193,59 @@ public class Game {
 	
 	
 	public void placeShip(Ship ship, int x, int y, int k) {
-		
 		Field[][] fields = gameFrame.getYourField();
-		
 		switch (ship) {
 		case BATTLESHIP:
 			if(k == 0){
 				for(int i = 0; i < ship.size(); i++){
-					System.out.println("placing1");
-					fields[x+i][y].placeShip(Ship.BATTLESHIP);
+					fields[x][y+i].placeShip(Ship.BATTLESHIP);
 				}
 			} else{
 				for(int i = 0; i < ship.size(); i++){
-					System.out.println("placing2");
-					fields[x][y+i].placeShip(Ship.BATTLESHIP);
+					fields[x+i][y].placeShip(Ship.BATTLESHIP);
 				}
 			}
+			this.nbrOfBattleships--;
+			this.gameFrame.setNbrOfBattleship(nbrOfBattleships);
 			break;
 		case SUBMARINE:
-			
+			if(k == 0){
+				for(int i = 0; i < ship.size(); i++){
+					fields[x][y+i].placeShip(Ship.SUBMARINE);
+				}
+			} else{
+				for(int i = 0; i < ship.size(); i++){
+					fields[x+i][y].placeShip(Ship.SUBMARINE);
+				}
+			}
+			this.nbrOfSubmarines--;
+			this.gameFrame.setNbrOfSubmarine(nbrOfSubmarines);
 			break;
 		case DESTROYER:
-			
+			if(k == 0){
+				for(int i = 0; i < ship.size(); i++){
+					fields[x][y+i].placeShip(Ship.DESTROYER);
+				}
+			} else{
+				for(int i = 0; i < ship.size(); i++){
+					fields[x+i][y].placeShip(Ship.DESTROYER);
+				}
+			}
+			this.nbrOfDestroyers--;
+			this.gameFrame.setNbrOfDestroyer(nbrOfDestroyers);
 			break;
 		case CRUISER:
-			
+			if(k == 0){
+				for(int i = 0; i < ship.size(); i++){
+					fields[x][y+i].placeShip(Ship.CRUISER);
+				}
+			} else{
+				for(int i = 0; i < ship.size(); i++){
+					fields[x+i][y].placeShip(Ship.CRUISER);
+				}
+			}
+			this.nbrOfCruisers--;
+			this.gameFrame.setNbrOfCruiser(nbrOfCruisers);
 			break;
 		default:
 			break;
@@ -225,11 +253,11 @@ public class Game {
 	}
 
 	public void removeShip(int x, int y) {
-		// TODO
+		//TODO
 	}
 
 	public void shootAt(int x, int y) {
-		// TODO
+		myClient.sendMessage("Game " + "Shoot " + x + " " + y);
 	}
 
 }

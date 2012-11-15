@@ -362,7 +362,30 @@ public class GameFrame extends JFrame {
 					jtb.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent ae) {
 							Field f = (Field) ae.getSource();
-							game.placeShip(Ship.BATTLESHIP, f.getXPos()-1, f.getYPos()-1, 0);
+							int x = f.getXPos()-1;
+							int y = f.getYPos()-1;
+							int alignment = 0;
+							if(jRadioButtonHorizontal.isSelected()){
+								alignment = 0;
+							} else{
+								alignment = 1;
+							}
+							Ship ship = null;
+							if(jRadioButtonNbrOfBattleship.isSelected()){
+								ship = Ship.BATTLESHIP;
+							} else if(jRadioButtonNbrOfSubmarine.isSelected()){
+								ship = Ship.SUBMARINE;
+							} else if(jRadioButtonNbrOfDestroyer.isSelected()){
+								ship = Ship.DESTROYER;
+							} else{
+								ship = Ship.CRUISER;
+							}	
+							
+							if(f.getShip() != null){
+								game.removeShip(x, y);
+							} else{
+								game.placeShip(ship, x, y, alignment);
+							}
 						}
 					});
 					jPanelYourField.add(jtb);
@@ -372,7 +395,10 @@ public class GameFrame extends JFrame {
 					enemyField[i - 1][j - 1] = jtb1;
 					jtb1.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent ae) {
-							System.out.println(ae.getSource());
+							Field f = (Field) ae.getSource();
+							int x = f.getXPos()-1;
+							int y = f.getYPos()-1;
+							game.shootAt(x, y);
 						}
 					});
 					jPanelEnemyField.add(jtb1);
@@ -1014,4 +1040,19 @@ public class GameFrame extends JFrame {
 		return yourField;
 	}
 	
+	public void setNbrOfBattleship(int x){
+		jRadioButtonNbrOfBattleship.setText("x" + x);
+	}
+	
+	public void setNbrOfSubmarine(int x){
+		jRadioButtonNbrOfSubmarine.setText("x" + x);
+	}
+	
+	public void setNbrOfDestroyer(int x){
+		jRadioButtonNbrOfDestroyer.setText("x" + x);
+	}
+	
+	public void setNbrOfCruiser(int x){
+		jRadioButtonNbrOfCruiser.setText("x" + x);
+	}
 }
