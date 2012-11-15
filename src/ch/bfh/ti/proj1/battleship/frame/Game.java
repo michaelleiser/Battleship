@@ -1,5 +1,6 @@
 package ch.bfh.ti.proj1.battleship.frame;
 
+import java.awt.Color;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.UIManager;
@@ -199,10 +200,14 @@ public class Game {
 			if(k == 0){
 				for(int i = 0; i < ship.size(); i++){
 					fields[x][y+i].placeShip(Ship.BATTLESHIP);
+					fields[x][y+i].setSelected(true);
+					fields[x][y+i].setBackground(Color.black);
 				}
 			} else{
 				for(int i = 0; i < ship.size(); i++){
 					fields[x+i][y].placeShip(Ship.BATTLESHIP);
+					fields[x+i][y].setSelected(true);
+					fields[x+i][y].setBackground(Color.black);
 				}
 			}
 			this.nbrOfBattleships--;
@@ -212,10 +217,14 @@ public class Game {
 			if(k == 0){
 				for(int i = 0; i < ship.size(); i++){
 					fields[x][y+i].placeShip(Ship.SUBMARINE);
+					fields[x][y+i].setSelected(true);
+					fields[x][y+i].setBackground(Color.black);
 				}
 			} else{
 				for(int i = 0; i < ship.size(); i++){
 					fields[x+i][y].placeShip(Ship.SUBMARINE);
+					fields[x+i][y].setSelected(true);
+					fields[x+i][y].setBackground(Color.black);
 				}
 			}
 			this.nbrOfSubmarines--;
@@ -225,10 +234,14 @@ public class Game {
 			if(k == 0){
 				for(int i = 0; i < ship.size(); i++){
 					fields[x][y+i].placeShip(Ship.DESTROYER);
+					fields[x][y+i].setSelected(true);
+					fields[x][y+i].setBackground(Color.black);
 				}
 			} else{
 				for(int i = 0; i < ship.size(); i++){
 					fields[x+i][y].placeShip(Ship.DESTROYER);
+					fields[x+i][y].setSelected(true);
+					fields[x+i][y].setBackground(Color.black);
 				}
 			}
 			this.nbrOfDestroyers--;
@@ -238,10 +251,14 @@ public class Game {
 			if(k == 0){
 				for(int i = 0; i < ship.size(); i++){
 					fields[x][y+i].placeShip(Ship.CRUISER);
+					fields[x][y+i].setSelected(true);
+					fields[x][y+i].setBackground(Color.black);
 				}
 			} else{
 				for(int i = 0; i < ship.size(); i++){
 					fields[x+i][y].placeShip(Ship.CRUISER);
+					fields[x+i][y].setSelected(true);
+					fields[x+i][y].setBackground(Color.black);
 				}
 			}
 			this.nbrOfCruisers--;
