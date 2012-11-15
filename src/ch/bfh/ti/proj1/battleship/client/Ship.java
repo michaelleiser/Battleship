@@ -1,7 +1,9 @@
 package ch.bfh.ti.proj1.battleship.client;
 
-public class Ship {
-	
+public enum Ship {
+
+	BATTLESHIP(5), SUBMARINE(4), DESTROYER(3), CRUISER(2);
+
 	private int hits;
 	private int size;
 	private boolean sunk;
@@ -9,7 +11,7 @@ public class Ship {
 	private int[][] positions;
 	
 
-	public Ship(int size) {
+	private Ship(int size) {
 		this.hits = 0;
 		this.size = size;
 		this.sunk = false;
@@ -47,5 +49,5 @@ public class Ship {
 	public void setPositions(int[][] positions) {
 		this.positions = positions;
 	}
-
+	
 }

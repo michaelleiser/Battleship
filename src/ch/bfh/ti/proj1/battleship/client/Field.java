@@ -7,10 +7,14 @@ public class Field extends JToggleButton {
 
 	private static final long serialVersionUID = 3616779595167692632L;
 	
-	Ship ship;
-	boolean hit = false;
+	private Ship ship;
+	private boolean hit = false;
+	private int x;
+	private int y;	
 	
-	public Field() {
+	public Field(int x, int y) {
+		this.x = x;
+		this.y = y;
 	}
 	
 	public void placeShip(Ship ship) {
@@ -28,6 +32,14 @@ public class Field extends JToggleButton {
 	
 	public Ship getShip() {
 		return this.ship;
+	}
+
+	public int getX() {
+		return x;
+	}
+
+	public int getY() {
+		return y;
 	}
 
 }

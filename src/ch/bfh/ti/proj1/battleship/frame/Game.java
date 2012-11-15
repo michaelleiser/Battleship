@@ -4,7 +4,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.UIManager;
 
+import org.state.Context;
+
 import ch.bfh.ti.proj1.battleship.client.Player;
+import ch.bfh.ti.proj1.battleship.client.Ship;
 import ch.bfh.ti.proj1.battleship.exception.BattleshipException;
 import ch.bfh.ti.proj1.battleship.view.CoordinateFrame;
 import ch.bfh.ti.proj1.battleship.view.GameFrame;
@@ -22,6 +25,8 @@ public class Game {
 	GameFrame gameFrame;
 	Player player;
 	
+	Context c;
+	
 	// initialize standard values
 	private int nbrOfRows = 10;
 	private int nbrOfColoumns = 10;
@@ -33,6 +38,8 @@ public class Game {
 	
 	public Game(){
 		showNetworkFrame();
+		c = new Context();
+		c.handle(Context.EventType.Start);
 	}
 	
 	public void hostGame(final int port) {
@@ -184,4 +191,41 @@ public class Game {
 	public Player getPlayer() {
 		return this.player;
 	}
+	
+	
+	public void placeShip(Ship ship, int x, int y, int k) {
+		switch (ship) {
+		case BATTLESHIP:
+			if(k == 0){
+				for(int i = 0; i < ship.size(); i++){
+					
+				}
+			} else{
+				for(int i = 0; i < ship.size(); i++){
+					
+				}
+			}
+			break;
+		case SUBMARINE:
+			
+			break;
+		case DESTROYER:
+			
+			break;
+		case CRUISER:
+			
+			break;
+		default:
+			break;
+		}
+	}
+
+	public void removeShip(int x, int y) {
+		// TODO
+	}
+
+	public void shootAt(int x, int y) {
+		// TODO
+	}
+
 }
