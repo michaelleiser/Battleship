@@ -9,8 +9,8 @@ public class Field extends JToggleButton {
 	
 	private Ship ship;
 	private boolean hit = false;
-	private int x;
-	private int y;	
+	int x;
+	int y;
 	
 	public Field(int x, int y) {
 		this.x = x;
@@ -32,14 +32,6 @@ public class Field extends JToggleButton {
 	
 	public Ship getShip() {
 		return this.ship;
-	}
-
-	public int getX() {
-		return x;
-	}
-
-	public int getY() {
-		return y;
 	}
 
 }

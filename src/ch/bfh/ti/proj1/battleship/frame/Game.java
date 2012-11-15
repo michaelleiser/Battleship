@@ -46,7 +46,6 @@ public class Game {
 		try {
 			player = new Player(this.networkFrame.getPlayerName());
 		} catch (BattleshipException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		new MyServer(port);
@@ -58,7 +57,6 @@ public class Game {
 		try {
 			player = new Player(this.networkFrame.getPlayerName());
 		} catch (BattleshipException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		myClient = new MyClient(port, IP);
