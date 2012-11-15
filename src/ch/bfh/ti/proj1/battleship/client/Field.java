@@ -19,6 +19,7 @@ public class Field extends JToggleButton {
 	
 	public void placeShip(Ship ship) {
 		this.ship = ship;
+		this.setSelected(true);
 	}
 
 	public boolean isHit() {
@@ -33,5 +34,12 @@ public class Field extends JToggleButton {
 	public Ship getShip() {
 		return this.ship;
 	}
+	
+	public int getXPos(){
+		return x;
+	}
 
+	public int getYPos(){
+		return y;
+	}
 }

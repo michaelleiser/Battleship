@@ -6,6 +6,7 @@ import javax.swing.UIManager;
 
 import org.state.Context;
 
+import ch.bfh.ti.proj1.battleship.client.Field;
 import ch.bfh.ti.proj1.battleship.client.Player;
 import ch.bfh.ti.proj1.battleship.client.Ship;
 import ch.bfh.ti.proj1.battleship.exception.BattleshipException;
@@ -192,15 +193,20 @@ public class Game {
 	
 	
 	public void placeShip(Ship ship, int x, int y, int k) {
+		
+		Field[][] fields = gameFrame.getYourField();
+		
 		switch (ship) {
 		case BATTLESHIP:
 			if(k == 0){
 				for(int i = 0; i < ship.size(); i++){
-					
+					System.out.println("placing1");
+					fields[x+i][y].placeShip(Ship.BATTLESHIP);
 				}
 			} else{
 				for(int i = 0; i < ship.size(); i++){
-					
+					System.out.println("placing2");
+					fields[x][y+i].placeShip(Ship.BATTLESHIP);
 				}
 			}
 			break;

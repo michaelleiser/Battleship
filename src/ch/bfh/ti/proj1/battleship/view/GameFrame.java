@@ -27,6 +27,7 @@ import javax.swing.UIManager;
 import javax.swing.WindowConstants;
 
 import ch.bfh.ti.proj1.battleship.client.Field;
+import ch.bfh.ti.proj1.battleship.client.Ship;
 import ch.bfh.ti.proj1.battleship.frame.Game;
 
 /**
@@ -360,7 +361,8 @@ public class GameFrame extends JFrame {
 					yourField[i - 1][j - 1] = jtb;
 					jtb.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent ae) {
-							System.out.println(ae.getSource());
+							Field f = (Field) ae.getSource();
+							game.placeShip(Ship.BATTLESHIP, f.getXPos()-1, f.getYPos()-1, 0);
 						}
 					});
 					jPanelYourField.add(jtb);
@@ -1006,6 +1008,10 @@ public class GameFrame extends JFrame {
 				enemyField[i][j].setEnabled(false);
 			}
 		}
+	}
+
+	public Field[][] getYourField() {
+		return yourField;
 	}
 	
 }
