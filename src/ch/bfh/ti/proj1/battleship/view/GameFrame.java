@@ -357,9 +357,9 @@ public class GameFrame extends JFrame {
 					x1.setText((char) (i + 64) + "");
 					jPanelEnemyField.add(x1);
 				} else {
-					Field jtb = new Field(i, j);
-					yourField[i - 1][j - 1] = jtb;
-					jtb.addActionListener(new ActionListener() {
+					Field field1 = new Field(i, j);
+					yourField[i - 1][j - 1] = field1;
+					field1.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent ae) {
 							Field f = (Field) ae.getSource();
 							int x = f.getXPos()-1;
@@ -380,7 +380,6 @@ public class GameFrame extends JFrame {
 							} else{
 								ship = Ship.CRUISER;
 							}	
-							
 							if(f.getShip() != null){
 								game.removeShip(x, y);
 							} else{
@@ -388,12 +387,12 @@ public class GameFrame extends JFrame {
 							}
 						}
 					});
-					jPanelYourField.add(jtb);
+					jPanelYourField.add(field1);
 					
-					Field jtb1 = new Field(i, j);
-					jtb1.setEnabled(false);
-					enemyField[i - 1][j - 1] = jtb1;
-					jtb1.addActionListener(new ActionListener() {
+					Field field2 = new Field(i, j);
+					field2.setEnabled(false);
+					enemyField[i - 1][j - 1] = field2;
+					field2.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent ae) {
 							Field f = (Field) ae.getSource();
 							int x = f.getXPos()-1;
@@ -401,7 +400,7 @@ public class GameFrame extends JFrame {
 							game.shootAt(x, y);
 						}
 					});
-					jPanelEnemyField.add(jtb1);
+					jPanelEnemyField.add(field2);
 				}
 			}
 		}
@@ -1014,7 +1013,7 @@ public class GameFrame extends JFrame {
 		for(int i = 0; i < game.getNbrOfRows(); i++){
 			for(int j = 0; j < game.getNbrOfColoumns(); j++){
 				yourField[i][j].setEnabled(false);
-//				enemyField[i][j].setEnabled(true);
+				enemyField[i][j].setEnabled(true);
 			}
 		}
 		jButtonReady.setEnabled(false);
@@ -1038,6 +1037,10 @@ public class GameFrame extends JFrame {
 
 	public Field[][] getYourField() {
 		return yourField;
+	}
+	
+	public Field[][] getEnemyField() {
+		return enemyField;
 	}
 	
 	public void setNbrOfBattleship(int x){

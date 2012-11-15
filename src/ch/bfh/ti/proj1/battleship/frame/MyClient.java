@@ -1,9 +1,12 @@
 package ch.bfh.ti.proj1.battleship.frame;
 
+import java.awt.Color;
 import java.io.DataInputStream;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.net.Socket;
+
+import ch.bfh.ti.proj1.battleship.client.Field;
 
 /**
  * @author Daniel Kotlàris
@@ -89,6 +92,25 @@ public class MyClient implements Runnable{
 						game.setOptions(Integer.parseInt(s[2]), Integer.parseInt(s[3]), Integer.parseInt(s[4]), Integer.parseInt(s[5]), Integer.parseInt(s[6]), Integer.parseInt(s[7]), s[8]);
 					}
 					if(line.contains("Game Shoot")){
+						String[] s = line.split(" ");
+						game.checkShoot(Integer.parseInt(s[2]), Integer.parseInt(s[3]));
+					}
+					if(line.contains("Game Hit")){
+						String[] s = line.split(" " );
+						Field[][]f = game.gameFrame.getEnemyField();
+						f[Integer.parseInt(s[2])][Integer.parseInt(s[3])].setBackground(Color.red);
+					}
+					if(line.contains("Game Water")){
+						String[] s = line.split(" " );
+						Field[][]f = game.gameFrame.getEnemyField();
+						f[Integer.parseInt(s[2])][Integer.parseInt(s[3])].setBackground(Color.blue);
+					}
+					if(line.contains("Game Sunk")){
+						String[] s = line.split(" " );
+						Field[][]f = game.gameFrame.getEnemyField();
+						f[Integer.parseInt(s[2])][Integer.parseInt(s[3])].setBackground(Color.green);
+					}
+					if(line.contains("Game Won")){
 						// TODO
 					}
 				}

@@ -259,5 +259,19 @@ public class Game {
 	public void shootAt(int x, int y) {
 		myClient.sendMessage("Game " + "Shoot " + x + " " + y);
 	}
+	
+	public void checkShoot(int x, int y){
+		Field[][] f = this.gameFrame.getYourField();
+		if(f[x][y].getShip() != null){
+			f[x][y].shoot();
+			if(f[x][y].getShip().isSunk()){
+				this.myClient.sendMessage("Game " + "Sunk " + x + " " + y);
+			} else{
+				this.myClient.sendMessage("Game " + "Hit " + x + " " + y);
+			}
+		} else {
+			this.myClient.sendMessage("Game " + "Water " + x + " " + y);
+		}
+	}
 
 }
