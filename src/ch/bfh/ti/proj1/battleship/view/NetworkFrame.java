@@ -148,369 +148,180 @@ public class NetworkFrame extends JFrame {
 			}
 		});
 
-		GroupLayout jPanelHostGameLayout = new GroupLayout(jPanelHostGame);
-		jPanelHostGame.setLayout(jPanelHostGameLayout);
-		jPanelHostGameLayout
-				.setHorizontalGroup(jPanelHostGameLayout
-						.createParallelGroup(GroupLayout.Alignment.LEADING)
-						.addGroup(
-								jPanelHostGameLayout
-										.createSequentialGroup()
-										.addContainerGap()
-										.addGroup(
-												jPanelHostGameLayout
-														.createParallelGroup(
-																GroupLayout.Alignment.LEADING)
-														.addGroup(
-																jPanelHostGameLayout
-																		.createSequentialGroup()
-																		.addComponent(
-																				jLabelHostGame)
-																		.addGap(26,
-																				26,
-																				26)
-																		.addComponent(
-																				jRadioButtonHostGame))
-														.addGroup(
-																jPanelHostGameLayout
-																		.createSequentialGroup()
-																		.addComponent(
-																				jLabelFreePort)
-																		.addPreferredGap(
-																				LayoutStyle.ComponentPlacement.RELATED,
-																				52,
-																				Short.MAX_VALUE)
-																		.addComponent(
-																				jTextFieldFreePort,
-																				GroupLayout.PREFERRED_SIZE,
-																				77,
-																				GroupLayout.PREFERRED_SIZE)))
-										.addContainerGap()));
-		jPanelHostGameLayout
-				.setVerticalGroup(jPanelHostGameLayout
-						.createParallelGroup(GroupLayout.Alignment.LEADING)
-						.addGroup(
-								jPanelHostGameLayout
-										.createSequentialGroup()
-										.addContainerGap()
-										.addGroup(
-												jPanelHostGameLayout
-														.createParallelGroup(
-																GroupLayout.Alignment.TRAILING)
-														.addComponent(
-																jLabelHostGame)
-														.addComponent(
-																jRadioButtonHostGame))
-										.addGap(25, 25, 25)
-										.addGroup(
-												jPanelHostGameLayout
-														.createParallelGroup(
-																GroupLayout.Alignment.BASELINE)
-														.addComponent(
-																jLabelFreePort)
-														.addComponent(
-																jTextFieldFreePort,
-																GroupLayout.PREFERRED_SIZE,
-																GroupLayout.DEFAULT_SIZE,
-																GroupLayout.PREFERRED_SIZE))
-										.addContainerGap(52, Short.MAX_VALUE)));
 
-		GroupLayout jPanelJoinGameLayout = new GroupLayout(jPanelJoinGame);
-		jPanelJoinGame.setLayout(jPanelJoinGameLayout);
-		jPanelJoinGameLayout
-				.setHorizontalGroup(jPanelJoinGameLayout
-						.createParallelGroup(GroupLayout.Alignment.LEADING)
-						.addGroup(
-								jPanelJoinGameLayout
-										.createSequentialGroup()
-										.addContainerGap()
-										.addGroup(
-												jPanelJoinGameLayout
-														.createParallelGroup(
-																GroupLayout.Alignment.LEADING)
-														.addGroup(
-																jPanelJoinGameLayout
-																		.createSequentialGroup()
-																		.addGroup(
-																				jPanelJoinGameLayout
-																						.createParallelGroup(
-																								GroupLayout.Alignment.LEADING)
-																						.addComponent(
-																								jLabelSharedPort)
-																						.addComponent(
-																								jLabeIPAddress))
-																		.addGap(18,
-																				18,
-																				18)
-																		.addGroup(
-																				jPanelJoinGameLayout
-																						.createParallelGroup(
-																								GroupLayout.Alignment.LEADING)
-																						.addComponent(
-																								jTextFieldIPAddress,
-																								GroupLayout.DEFAULT_SIZE,
-																								84,
-																								Short.MAX_VALUE)
-																						.addComponent(
-																								jTextFieldSharedPort,
-																								GroupLayout.DEFAULT_SIZE,
-																								84,
-																								Short.MAX_VALUE)))
-														.addGroup(
-																jPanelJoinGameLayout
-																		.createSequentialGroup()
-																		.addComponent(
-																				jLabelJoinGame)
-																		.addGap(29,
-																				29,
-																				29)
-																		.addComponent(
-																				jRadioButtonJoinGame)))
-										.addContainerGap()));
-		jPanelJoinGameLayout
-				.setVerticalGroup(jPanelJoinGameLayout
-						.createParallelGroup(GroupLayout.Alignment.LEADING)
-						.addGroup(
-								jPanelJoinGameLayout
-										.createSequentialGroup()
-										.addContainerGap()
-										.addGroup(
-												jPanelJoinGameLayout
-														.createParallelGroup(
-																GroupLayout.Alignment.TRAILING)
-														.addComponent(
-																jLabelJoinGame)
-														.addComponent(
-																jRadioButtonJoinGame,
-																GroupLayout.PREFERRED_SIZE,
-																21,
-																GroupLayout.PREFERRED_SIZE))
-										.addGap(25, 25, 25)
-										.addGroup(
-												jPanelJoinGameLayout
-														.createParallelGroup(
-																GroupLayout.Alignment.BASELINE)
-														.addComponent(
-																jLabelSharedPort)
-														.addComponent(
-																jTextFieldSharedPort,
-																GroupLayout.PREFERRED_SIZE,
-																GroupLayout.DEFAULT_SIZE,
-																GroupLayout.PREFERRED_SIZE))
-										.addGap(18, 18, 18)
-										.addGroup(
-												jPanelJoinGameLayout
-														.createParallelGroup(
-																GroupLayout.Alignment.BASELINE)
-														.addComponent(
-																jLabeIPAddress)
-														.addComponent(
-																jTextFieldIPAddress,
-																GroupLayout.PREFERRED_SIZE,
-																GroupLayout.DEFAULT_SIZE,
-																GroupLayout.PREFERRED_SIZE))
-										.addContainerGap(
-												GroupLayout.DEFAULT_SIZE,
-												Short.MAX_VALUE)));
 
-		GroupLayout jPanelHostOrJoinGameLayout = new GroupLayout(
-				jPanelHostOrJoinGame);
-		jPanelHostOrJoinGame.setLayout(jPanelHostOrJoinGameLayout);
-		jPanelHostOrJoinGameLayout
-				.setHorizontalGroup(jPanelHostOrJoinGameLayout
-						.createParallelGroup(GroupLayout.Alignment.LEADING)
-						.addGroup(
-								jPanelHostOrJoinGameLayout
-										.createSequentialGroup()
-										.addContainerGap()
-										.addGroup(
-												jPanelHostOrJoinGameLayout
-														.createParallelGroup(
-																GroupLayout.Alignment.LEADING)
-														.addGroup(
-																jPanelHostOrJoinGameLayout
-																		.createSequentialGroup()
-																		.addComponent(
-																				jPanelHostGame,
-																				GroupLayout.PREFERRED_SIZE,
-																				GroupLayout.DEFAULT_SIZE,
-																				GroupLayout.PREFERRED_SIZE)
-																		.addGap(18,
-																				18,
-																				18)
-																		.addComponent(
-																				jPanelJoinGame,
-																				GroupLayout.PREFERRED_SIZE,
-																				GroupLayout.DEFAULT_SIZE,
-																				GroupLayout.PREFERRED_SIZE))
-														.addComponent(
-																jLabelHostOrJoinGame))
-										.addContainerGap(
-												GroupLayout.DEFAULT_SIZE,
-												Short.MAX_VALUE)));
-		jPanelHostOrJoinGameLayout
-				.setVerticalGroup(jPanelHostOrJoinGameLayout
-						.createParallelGroup(GroupLayout.Alignment.LEADING)
-						.addGroup(
-								GroupLayout.Alignment.TRAILING,
-								jPanelHostOrJoinGameLayout
-										.createSequentialGroup()
-										.addContainerGap()
-										.addComponent(jLabelHostOrJoinGame)
-										.addGap(18, 18, 18)
-										.addGroup(
-												jPanelHostOrJoinGameLayout
-														.createParallelGroup(
-																GroupLayout.Alignment.LEADING)
-														.addComponent(
-																jPanelHostGame,
-																GroupLayout.DEFAULT_SIZE,
-																GroupLayout.DEFAULT_SIZE,
-																Short.MAX_VALUE)
-														.addComponent(
-																jPanelJoinGame,
-																GroupLayout.PREFERRED_SIZE,
-																GroupLayout.DEFAULT_SIZE,
-																GroupLayout.PREFERRED_SIZE))
-										.addContainerGap()));
+        GroupLayout jPanelEnterYourNameLayout = new GroupLayout(jPanelEnterYourName);
+        jPanelEnterYourName.setLayout(jPanelEnterYourNameLayout);
+        jPanelEnterYourNameLayout.setHorizontalGroup(
+            jPanelEnterYourNameLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelEnterYourNameLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelEnterYourNameLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelEnterYourName)
+                    .addGroup(jPanelEnterYourNameLayout.createSequentialGroup()
+                        .addComponent(jLabelPlayerName)
+                        .addGap(18, 18, 18)
+                        .addComponent(jTextFieldPlayerName, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanelEnterYourNameLayout.setVerticalGroup(
+            jPanelEnterYourNameLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelEnterYourNameLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabelEnterYourName)
+                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelEnterYourNameLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextFieldPlayerName, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelPlayerName))
+                .addContainerGap())
+        );
 
-		GroupLayout jPanelEnterYourNameLayout = new GroupLayout(
-				jPanelEnterYourName);
-		jPanelEnterYourName.setLayout(jPanelEnterYourNameLayout);
-		jPanelEnterYourNameLayout
-				.setHorizontalGroup(jPanelEnterYourNameLayout
-						.createParallelGroup(GroupLayout.Alignment.LEADING)
-						.addGroup(
-								jPanelEnterYourNameLayout
-										.createSequentialGroup()
-										.addContainerGap()
-										.addGroup(
-												jPanelEnterYourNameLayout
-														.createParallelGroup(
-																GroupLayout.Alignment.LEADING)
-														.addComponent(
-																jLabelEnterYourName)
-														.addGroup(
-																jPanelEnterYourNameLayout
-																		.createSequentialGroup()
-																		.addComponent(
-																				jLabelPlayerName)
-																		.addGap(18,
-																				18,
-																				18)
-																		.addComponent(
-																				jTextFieldPlayerName,
-																				GroupLayout.PREFERRED_SIZE,
-																				113,
-																				GroupLayout.PREFERRED_SIZE)))
-										.addContainerGap(249, Short.MAX_VALUE)));
-		jPanelEnterYourNameLayout
-				.setVerticalGroup(jPanelEnterYourNameLayout
-						.createParallelGroup(GroupLayout.Alignment.LEADING)
-						.addGroup(
-								jPanelEnterYourNameLayout
-										.createSequentialGroup()
-										.addContainerGap()
-										.addComponent(jLabelEnterYourName)
-										.addGap(18, 18, 18)
-										.addGroup(
-												jPanelEnterYourNameLayout
-														.createParallelGroup(
-																GroupLayout.Alignment.BASELINE)
-														.addComponent(
-																jLabelPlayerName)
-														.addComponent(
-																jTextFieldPlayerName,
-																GroupLayout.PREFERRED_SIZE,
-																20,
-																GroupLayout.PREFERRED_SIZE))
-										.addContainerGap(
-												GroupLayout.DEFAULT_SIZE,
-												Short.MAX_VALUE)));
+      
 
-		GroupLayout layout = new GroupLayout(getContentPane());
-		getContentPane().setLayout(layout);
-		layout.setHorizontalGroup(layout
-				.createParallelGroup(GroupLayout.Alignment.LEADING)
-				.addGroup(
-						layout.createSequentialGroup()
-								.addGroup(
-										layout.createParallelGroup(
-												GroupLayout.Alignment.LEADING)
-												.addGroup(
-														layout.createSequentialGroup()
-																.addGap(20, 20,
-																		20)
-																.addComponent(
-																		jLabelStep1of2))
-												.addGroup(
-														layout.createSequentialGroup()
-																.addContainerGap()
-																.addGroup(
-																		layout.createParallelGroup(
-																				GroupLayout.Alignment.TRAILING,
-																				false)
-																				.addComponent(
-																						jPanelEnterYourName,
-																						GroupLayout.Alignment.LEADING,
-																						GroupLayout.DEFAULT_SIZE,
-																						GroupLayout.DEFAULT_SIZE,
-																						Short.MAX_VALUE)
-																				.addComponent(
-																						jPanelHostOrJoinGame,
-																						GroupLayout.Alignment.LEADING,
-																						GroupLayout.DEFAULT_SIZE,
-																						GroupLayout.DEFAULT_SIZE,
-																						Short.MAX_VALUE)))
-												.addGroup(
-														GroupLayout.Alignment.TRAILING,
-														layout.createSequentialGroup()
-																.addContainerGap()
-																.addComponent(
-																		jButtonConnect,
-																		GroupLayout.DEFAULT_SIZE,
-																		214,
-																		Short.MAX_VALUE)
-																.addGap(18, 18,
-																		18)
-																.addComponent(
-																		jButtonCancel,
-																		GroupLayout.PREFERRED_SIZE,
-																		229,
-																		GroupLayout.PREFERRED_SIZE))
-												.addGroup(
-														layout.createSequentialGroup()
-																.addContainerGap()
-																.addComponent(
-																		jLabelStatus)))
-								.addContainerGap()));
-		layout.setVerticalGroup(layout.createParallelGroup(
-				GroupLayout.Alignment.LEADING).addGroup(
-				layout.createSequentialGroup()
-						.addContainerGap()
-						.addComponent(jLabelStep1of2)
-						.addGap(18, 18, 18)
-						.addComponent(jPanelEnterYourName,
-								GroupLayout.PREFERRED_SIZE,
-								GroupLayout.DEFAULT_SIZE,
-								GroupLayout.PREFERRED_SIZE)
-						.addGap(18, 18, 18)
-						.addComponent(jPanelHostOrJoinGame,
-								GroupLayout.PREFERRED_SIZE,
-								GroupLayout.DEFAULT_SIZE,
-								GroupLayout.PREFERRED_SIZE)
-						.addGap(18, 18, 18)
-						.addComponent(jLabelStatus)
-						.addGap(18, 18, 18)
-						.addGroup(
-								layout.createParallelGroup(
-										GroupLayout.Alignment.BASELINE)
-										.addComponent(jButtonConnect)
-										.addComponent(jButtonCancel))
-						.addContainerGap(GroupLayout.DEFAULT_SIZE,
-								Short.MAX_VALUE)));
+        GroupLayout jPanelHostGameLayout = new GroupLayout(jPanelHostGame);
+        jPanelHostGame.setLayout(jPanelHostGameLayout);
+        jPanelHostGameLayout.setHorizontalGroup(
+            jPanelHostGameLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelHostGameLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelHostGameLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelHostGameLayout.createSequentialGroup()
+                        .addComponent(jLabelHostGame)
+                        .addGap(18, 18, 18)
+                        .addComponent(jRadioButtonHostGame))
+                    .addGroup(jPanelHostGameLayout.createSequentialGroup()
+                        .addComponent(jLabelFreePort)
+                        .addGap(18, 18, 18)
+                        .addComponent(jTextFieldFreePort, GroupLayout.PREFERRED_SIZE, 97, GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        jPanelHostGameLayout.setVerticalGroup(
+            jPanelHostGameLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelHostGameLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelHostGameLayout.createParallelGroup(GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabelHostGame)
+                    .addComponent(jRadioButtonHostGame))
+                .addGap(25, 25, 25)
+                .addGroup(jPanelHostGameLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelFreePort)
+                    .addComponent(jTextFieldFreePort, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(52, Short.MAX_VALUE))
+        );
 
-		pack();
+      
+
+
+        GroupLayout jPanelJoinGameLayout = new GroupLayout(jPanelJoinGame);
+        jPanelJoinGame.setLayout(jPanelJoinGameLayout);
+        jPanelJoinGameLayout.setHorizontalGroup(
+            jPanelJoinGameLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelJoinGameLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelJoinGameLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelJoinGameLayout.createSequentialGroup()
+                        .addGroup(jPanelJoinGameLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelSharedPort)
+                            .addComponent(jLabeIPAddress))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanelJoinGameLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextFieldIPAddress, GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
+                            .addComponent(jTextFieldSharedPort)))
+                    .addGroup(jPanelJoinGameLayout.createSequentialGroup()
+                        .addComponent(jLabelJoinGame)
+                        .addGap(18, 18, 18)
+                        .addComponent(jRadioButtonJoinGame)))
+                .addContainerGap())
+        );
+        jPanelJoinGameLayout.setVerticalGroup(
+            jPanelJoinGameLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelJoinGameLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelJoinGameLayout.createParallelGroup(GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabelJoinGame)
+                    .addComponent(jRadioButtonJoinGame, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE))
+                .addGap(25, 25, 25)
+                .addGroup(jPanelJoinGameLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelSharedPort)
+                    .addComponent(jTextFieldSharedPort, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanelJoinGameLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabeIPAddress)
+                    .addComponent(jTextFieldIPAddress, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        GroupLayout jPanelHostOrJoinGameLayout = new GroupLayout(jPanelHostOrJoinGame);
+        jPanelHostOrJoinGame.setLayout(jPanelHostOrJoinGameLayout);
+        jPanelHostOrJoinGameLayout.setHorizontalGroup(
+            jPanelHostOrJoinGameLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelHostOrJoinGameLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelHostOrJoinGameLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelHostOrJoinGameLayout.createSequentialGroup()
+                        .addComponent(jPanelHostGame, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanelJoinGame, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabelHostOrJoinGame))
+                .addContainerGap(18, Short.MAX_VALUE))
+        );
+        jPanelHostOrJoinGameLayout.setVerticalGroup(
+            jPanelHostOrJoinGameLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .addGroup(GroupLayout.Alignment.TRAILING, jPanelHostOrJoinGameLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabelHostOrJoinGame)
+                .addGap(18, 18, 18)
+                .addGroup(jPanelHostOrJoinGameLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanelHostGame, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanelJoinGame, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+
+      
+
+        GroupLayout layout = new GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jLabelStep1of2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jPanelHostOrJoinGame, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanelEnterYourName, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jButtonConnect, GroupLayout.PREFERRED_SIZE, 232, GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonCancel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabelStatus)))
+                .addContainerGap())
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabelStep1of2)
+                .addGap(18, 18, 18)
+                .addComponent(jPanelEnterYourName, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jPanelHostOrJoinGame, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabelStatus)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonConnect)
+                    .addComponent(jButtonCancel))
+                .addContainerGap(18, Short.MAX_VALUE))
+        );
+
+        pack();
 	}
 
 	private void jRadioButtonHostGameActionPerformed(ActionEvent evt) {
