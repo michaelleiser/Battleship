@@ -356,7 +356,7 @@ public class GameFrame extends JFrame {
 					x1.setText((char) (i + 64) + "");
 					jPanelEnemyField.add(x1);
 				} else {
-					Field jtb = new Field(i, j);
+					Field jtb = new Field();
 					yourField[i - 1][j - 1] = jtb;
 					jtb.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent ae) {
@@ -365,7 +365,7 @@ public class GameFrame extends JFrame {
 					});
 					jPanelYourField.add(jtb);
 					
-					Field jtb1 = new Field(i, j);
+					Field jtb1 = new Field();
 					jtb1.setEnabled(false);
 					enemyField[i - 1][j - 1] = jtb1;
 					jtb1.addActionListener(new ActionListener() {
