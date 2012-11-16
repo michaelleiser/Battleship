@@ -70,10 +70,7 @@ public class MyClient implements Runnable{
 						String s = line.substring(10, line.length());
 						game.gameFrame.jTextPaneChat.setText(game.gameFrame.jTextPaneChat.getText().concat(s + "\n"));
 					}
-					if(line.contains("Coordinate Validate")){
-						String[] s = line.split(" ");
-						game.clientFrame.setComponents(s[2], s[3], s[4], s[5], s[6], s[7], s[8]);
-					}
+
 					if(line.contains("Game Show")){
 						game.networkFrame.dispose();
 						game.showCoordinateFrame();
