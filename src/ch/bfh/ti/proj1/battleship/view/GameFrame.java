@@ -68,6 +68,7 @@ public class GameFrame extends JFrame {
 
 	private JLabel jLabelYou;
 	private JLabel jLabelYouHits;
+
 	private JLabel jLabelYouWater;
 	private JLabel jLabelYouSunk;
 	private JLabel jLabelYouShots;
@@ -1060,4 +1061,44 @@ public class GameFrame extends JFrame {
 	public void setNbrOfCruiser(int x){
 		jRadioButtonNbrOfCruiser.setText(x + "x");
 	}
+	
+	
+	
+	
+	
+	
+	
+	public void setjLabelYouHits() {
+		this.jLabelYouHits.setText((1+Integer.parseInt(jLabelYouHits.getText())) + "");
+	}
+
+	public void setjLabelYouWater() {
+		this.jLabelYouWater.setText((1+Integer.parseInt(jLabelYouWater.getText())) + "");
+	}
+
+	public void setjLabelYouSunk() {
+		this.jLabelYouSunk.setText((1+Integer.parseInt(jLabelYouSunk.getText())) + "");
+	}
+
+	public void setjLabelYouShots() {
+		this.jLabelYouShots.setText((1+Integer.parseInt(jLabelYouShots.getText())) + "");
+	}
+
+	public void setjLabelEnemyHits() {
+		this.jLabelEnemyHits.setText((1+Integer.parseInt(jLabelEnemyHits.getText())) + "");
+	}
+
+	public void setjLabelEnemyWater() {
+		this.jLabelEnemyWater.setText((1+Integer.parseInt(jLabelEnemyWater.getText())) + "");
+	}
+
+	public void setjLabelEnemySunk() {
+		this.jLabelEnemySunk.setText((1+Integer.parseInt(jLabelEnemySunk.getText())) + "");
+	}
+
+	public void setjLabelEnemyShots() {
+		this.jLabelEnemyShots.setText((1+Integer.parseInt(jLabelEnemyShots.getText())) + "");
+	}
+	
+	
 }

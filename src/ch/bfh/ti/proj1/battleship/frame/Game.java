@@ -1,5 +1,6 @@
 package ch.bfh.ti.proj1.battleship.frame;
 
+import java.awt.Color;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -283,8 +284,13 @@ public class Game {
 		if(f[x][y].getShip() != null){
 			f[x][y].shoot();
 			if(f[x][y].getShip().isSunk()){
+				gameFrame.setjLabelEnemyHits();
+				gameFrame.setjLabelEnemySunk();
+				gameFrame.setjLabelEnemyShots();
 				this.myClient.sendMessage("Game " + "Sunk " + x + " " + y);
 			} else{
+				gameFrame.setjLabelEnemyHits();
+				gameFrame.setjLabelEnemyShots();
 				this.myClient.sendMessage("Game " + "Hit " + x + " " + y);
 				try {
 					Sound.playingSound(Sounds.DEATH);
@@ -293,6 +299,8 @@ public class Game {
 				}
 			}
 		} else {
+			gameFrame.setjLabelEnemyWater();
+			gameFrame.setjLabelEnemyShots();
 			this.myClient.sendMessage("Game " + "Water " + x + " " + y);
 		}
 	}
@@ -303,6 +311,33 @@ public class Game {
 		} catch (BattleshipException e) {
 			e.printStackTrace();
 		}
+	}
+
+	public void hit(String x, String y) {
+		Field[][]f = gameFrame.getEnemyField();
+		f[Integer.parseInt(x)][Integer.parseInt(y)].setBackground(Color.red);
+		gameFrame.setjLabelYouHits();
+		gameFrame.setjLabelYouShots();
+	}
+
+	public void water(String x, String y) {
+		Field[][]f = gameFrame.getEnemyField();
+		f[Integer.parseInt(x)][Integer.parseInt(y)].setBackground(Color.blue);
+		gameFrame.setjLabelYouWater();
+		gameFrame.setjLabelYouShots();
+	}
+
+	public void sunk(String x, String y) {
+		Field[][]f = gameFrame.getEnemyField();
+		f[Integer.parseInt(x)][Integer.parseInt(y)].setBackground(Color.green);
+		gameFrame.setjLabelYouHits();
+		gameFrame.setjLabelYouSunk();
+		gameFrame.setjLabelYouShots();
+	}
+
+	public void won() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
