@@ -1046,18 +1046,18 @@ public class GameFrame extends JFrame {
 	}
 	
 	public void setNbrOfBattleship(int x){
-		jRadioButtonNbrOfBattleship.setText("x" + x);
+		jRadioButtonNbrOfBattleship.setText(x + "x");
 	}
 	
 	public void setNbrOfSubmarine(int x){
-		jRadioButtonNbrOfSubmarine.setText("x" + x);
+		jRadioButtonNbrOfSubmarine.setText(x + "x");
 	}
 	
 	public void setNbrOfDestroyer(int x){
-		jRadioButtonNbrOfDestroyer.setText("x" + x);
+		jRadioButtonNbrOfDestroyer.setText(x + "x");
 	}
 	
 	public void setNbrOfCruiser(int x){
-		jRadioButtonNbrOfCruiser.setText("x" + x);
+		jRadioButtonNbrOfCruiser.setText(x + "x");
 	}
 }

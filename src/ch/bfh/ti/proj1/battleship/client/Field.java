@@ -1,5 +1,7 @@
 package ch.bfh.ti.proj1.battleship.client;
 
+import java.awt.Color;
+
 import javax.swing.JToggleButton;
 
 public class Field extends JToggleButton {
@@ -19,11 +21,15 @@ public class Field extends JToggleButton {
 	public void placeShip(Ship ship) {
 		this.ship = ship;
 		this.ship.setPlaced();
-		this.ship.addPositions(this);
+		this.ship.addPosition(this);
+		this.setSelected(true);
+		this.setBackground(Color.black);
 	}
 	
 	public void removeShip(){
-		this.ship.removePositions(this);
+		this.setBackground(Color.lightGray);
+		this.setSelected(false);
+		this.ship.removePosition(this);
 		this.ship.setUnplaced();
 		this.ship = null;
 	}

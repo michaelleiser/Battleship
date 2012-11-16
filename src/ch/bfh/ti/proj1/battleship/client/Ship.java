@@ -46,11 +46,11 @@ public class Ship {
 		return this.placed;
 	}
 	
-	public void addPositions(Field f) {
+	public void addPosition(Field f) {
 		positions.add(f);
 	}
 	
-	public void removePositions(Field f){
+	public void removePosition(Field f){
 //		positions.remove(f);								// TODO funktioniert nicht?
 		this.positions = new ArrayList<Field>();
 	}

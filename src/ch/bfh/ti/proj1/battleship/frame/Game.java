@@ -1,6 +1,5 @@
 package ch.bfh.ti.proj1.battleship.frame;
 
-import java.awt.Color;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -193,15 +192,10 @@ public class Game {
 			if(k == 0){
 				for(int i = 0; i < ship.size(); i++){
 					fields[x][y+i].placeShip(ship);
-					fields[x][y+i].setSelected(true);
-					fields[x][y+i].setBackground(Color.black);
 				}
 			} else{
 				for(int i = 0; i < ship.size(); i++){
 					fields[x+i][y].placeShip(ship);
-					fields[x+i][y].setSelected(true);
-					fields[x+i][y].setBackground(Color.black);
-					System.out.println(fields[x+i][y]);
 				}
 			}			
 			this.nbrOfBattleships--;
@@ -211,14 +205,10 @@ public class Game {
 			if(k == 0){
 				for(int i = 0; i < ship.size(); i++){
 					fields[x][y+i].placeShip(ship);
-					fields[x][y+i].setSelected(true);
-					fields[x][y+i].setBackground(Color.black);
 				}
 			} else{
 				for(int i = 0; i < ship.size(); i++){
 					fields[x+i][y].placeShip(ship);
-					fields[x+i][y].setSelected(true);
-					fields[x+i][y].setBackground(Color.black);
 				}
 			}
 			this.nbrOfSubmarines--;
@@ -228,14 +218,10 @@ public class Game {
 			if(k == 0){
 				for(int i = 0; i < ship.size(); i++){
 					fields[x][y+i].placeShip(ship);
-					fields[x][y+i].setSelected(true);
-					fields[x][y+i].setBackground(Color.black);
 				}
 			} else{
 				for(int i = 0; i < ship.size(); i++){
 					fields[x+i][y].placeShip(ship);
-					fields[x+i][y].setSelected(true);
-					fields[x+i][y].setBackground(Color.black);
 				}
 			}
 			this.nbrOfDestroyers--;
@@ -245,14 +231,10 @@ public class Game {
 			if(k == 0){
 				for(int i = 0; i < ship.size(); i++){
 					fields[x][y+i].placeShip(ship);
-					fields[x][y+i].setSelected(true);
-					fields[x][y+i].setBackground(Color.black);
 				}
 			} else{
 				for(int i = 0; i < ship.size(); i++){
 					fields[x+i][y].placeShip(ship);
-					fields[x+i][y].setSelected(true);
-					fields[x+i][y].setBackground(Color.black);
 				}
 			}
 			this.nbrOfCruisers--;
@@ -269,8 +251,6 @@ public class Game {
 		List<Field> positions = ship.getPositions();
 		for(Field f : positions){
 			f.removeShip();
-			f.setSelected(false);
-			f.setBackground(Color.lightGray);
 		}
 		switch (ship.getShipType()) {
 		case BATTLESHIP:
