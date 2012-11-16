@@ -272,6 +272,26 @@ public class Game {
 			f.setSelected(false);
 			f.setBackground(Color.lightGray);
 		}
+		switch (ship.getShipType()) {
+		case BATTLESHIP:
+			this.nbrOfBattleships++;
+			this.gameFrame.setNbrOfCruiser(nbrOfBattleships);
+			break;
+		case SUBMARINE:
+			this.nbrOfSubmarines++;
+			this.gameFrame.setNbrOfCruiser(nbrOfSubmarines);
+			break;
+		case DESTROYER:
+			this.nbrOfDestroyers++;
+			this.gameFrame.setNbrOfCruiser(nbrOfDestroyers);
+			break;
+		case CRUISER:
+			this.nbrOfCruisers++;
+			this.gameFrame.setNbrOfCruiser(nbrOfCruisers);
+			break;
+		default:
+			break;
+		}
 	}
 
 	public void shootAt(int x, int y) {
