@@ -87,9 +87,11 @@ public class MyClient implements Runnable{
 					if(line.contains("Coordinate Dispose")){
 						game.clientFrame.dispose();
 					}
-					if(line.contains("Coordinate Options")){
+					if(line.contains("Coordinate")){
 						String[] s = line.split(" ");
-						game.setOptions(Integer.parseInt(s[2]), Integer.parseInt(s[3]), Integer.parseInt(s[4]), Integer.parseInt(s[5]), Integer.parseInt(s[6]), Integer.parseInt(s[7]), s[8]);
+						game.setOptions(Integer.parseInt(s[1]), Integer.parseInt(s[2]),
+								Integer.parseInt(s[3]), Integer.parseInt(s[4]),
+								Integer.parseInt(s[5]), Integer.parseInt(s[6]), s[7]);
 					}
 					if(line.contains("Game Shoot")){
 						String[] s = line.split(" ");
