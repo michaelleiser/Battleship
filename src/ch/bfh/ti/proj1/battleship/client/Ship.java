@@ -51,7 +51,8 @@ public class Ship {
 	}
 	
 	public void removePositions(Field f){
-		positions.remove(f);
+//		positions.remove(f);								// TODO funktioniert nicht?
+		this.positions = new ArrayList<Field>();
 	}
 		
 	public List<Field> getPositions() {

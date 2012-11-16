@@ -48,4 +48,9 @@ public class Field extends JToggleButton {
 	public int getYPos(){
 		return y;
 	}
+	
+	@Override
+	public String toString(){
+		return x + ":" + y;
+	}
 }

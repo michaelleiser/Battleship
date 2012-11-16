@@ -201,8 +201,9 @@ public class Game {
 					fields[x+i][y].placeShip(ship);
 					fields[x+i][y].setSelected(true);
 					fields[x+i][y].setBackground(Color.black);
+					System.out.println(fields[x+i][y]);
 				}
-			}
+			}			
 			this.nbrOfBattleships--;
 			this.gameFrame.setNbrOfBattleship(nbrOfBattleships);
 			break;
@@ -268,6 +269,8 @@ public class Game {
 		List<Field> positions = ship.getPositions();
 		for(Field f : positions){
 			f.removeShip();
+			f.setSelected(false);
+			f.setBackground(Color.lightGray);
 		}
 	}
 
