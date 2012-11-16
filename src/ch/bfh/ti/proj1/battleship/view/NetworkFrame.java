@@ -349,6 +349,7 @@ public class NetworkFrame extends JFrame {
 	private void jButtonConnectActionPerformed(ActionEvent evt) {
 		if (jRadioButtonHostGame.isSelected()) {
 			if (validatePort(jTextFieldFreePort.getText())) {
+				g.enterPlayerName(jTextFieldPlayerName.getText());
 				final int port = Integer.parseInt(jTextFieldFreePort.getText());
 				g.hostGame(port);
 				jLabelStatus.setText("Connecting...Please start application of second player if it is not started yet.");
@@ -359,6 +360,7 @@ public class NetworkFrame extends JFrame {
 		} else if (jRadioButtonJoinGame.isSelected()) {
 			if (validatePort(jTextFieldSharedPort.getText()) && 
 							validateIPAddress(jTextFieldIPAddress.getText())) {
+				g.enterPlayerName(jTextFieldPlayerName.getText());
 				final int port = Integer.parseInt(jTextFieldSharedPort.getText());
 				final String IP = jTextFieldIPAddress.getText();
 				g.joinGame(port, IP);

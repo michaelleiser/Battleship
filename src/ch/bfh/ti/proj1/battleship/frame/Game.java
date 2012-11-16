@@ -47,22 +47,12 @@ public class Game {
 	}
 	
 	public void hostGame(final int port) {
-		try {
-			player = new Player(this.networkFrame.getPlayerName());
-		} catch (BattleshipException e) {
-			e.printStackTrace();
-		}
 		new MyServer(port);
 		myClient = new MyClient(port, "localhost");
 		myClient.setGame(this);
 	}
 
 	public void joinGame(final int port, final String IP) {
-		try {
-			player = new Player(this.networkFrame.getPlayerName());
-		} catch (BattleshipException e) {
-			e.printStackTrace();
-		}
 		myClient = new MyClient(port, IP);
 		myClient.setGame(this);
 		if(myClient.isConnected()){
@@ -295,6 +285,14 @@ public class Game {
 			}
 		} else {
 			this.myClient.sendMessage("Game " + "Water " + x + " " + y);
+		}
+	}
+
+	public void enterPlayerName(String name) {
+		try {
+			player = new Player(name);
+		} catch (BattleshipException e) {
+			e.printStackTrace();
 		}
 	}
 

@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import ch.bfh.ti.proj1.battleship.client.Field;
 import ch.bfh.ti.proj1.battleship.client.Ship;
 import ch.bfh.ti.proj1.battleship.client.ShipType;
 import ch.bfh.ti.proj1.battleship.frame.Game;
@@ -56,6 +57,32 @@ public class TESTER {
 		
 		Ship cruiser = new Ship(ShipType.CRUISER);
 		assertEquals(cruiser.size(), 2);
+	}
+	
+	@Test
+	public void testField(){
+		Field f = new Field(0, 0);
+		f.placeShip(new Ship(ShipType.BATTLESHIP));
+		assertFalse(f.isHit());
+		f.shoot();
+		assertTrue(f.isHit());
+	}
+	
+	@Test
+	public void testGame(){
+		Game g = new Game();
+		g.showNetworkFrame();
+		g.enterPlayerName("hell");
+		g.hostGame(4444);
+		Game g2 = new Game();
+		g2.showNetworkFrame();
+		g2.enterPlayerName("he");
+		
+		assertFalse(g2.myClient.isConnected());
+		g2.joinGame(4444, "localhost");
+		assertTrue(g2.myClient.isConnected());
+		
+		
 	}
 
 }
