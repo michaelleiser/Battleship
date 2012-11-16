@@ -64,7 +64,7 @@ public class MyClient implements Runnable{
 				if (line != null){
 					if(line.contains("Coordinate Chat")){
 						String s = line.substring(16, line.length());
-						game.clientFrame.jTextPaneChat.setText(game.clientFrame.jTextPaneChat.getText().concat(s + "\n"));
+						game.coordinateFrame.jTextPaneChat.setText(game.coordinateFrame.jTextPaneChat.getText().concat(s + "\n"));
 					}
 					if(line.contains("Game Chat")){
 						String s = line.substring(10, line.length());
@@ -76,19 +76,20 @@ public class MyClient implements Runnable{
 						game.showCoordinateFrame();
 					}
 					if(line.contains("Coordinate Enable")){
-						game.clientFrame.enableComponents();
+						game.coordinateFrame.enableComponents();
 					}
 					if(line.contains("Coordinate ShowGameFrame")){
 						game.showGameFrame();
 					}
 					if(line.contains("Coordinate Dispose")){
-						game.clientFrame.dispose();
+						game.coordinateFrame.dispose();
 					}
 					if(line.contains("Coordinate Options")){
 						String[] s = line.split(" ");
 						game.setOptions(Integer.parseInt(s[2]), Integer.parseInt(s[3]),
 								Integer.parseInt(s[4]), Integer.parseInt(s[5]),
 								Integer.parseInt(s[6]), Integer.parseInt(s[7]), s[8]);
+						game.coordinateFrame.setComponents(s[2], s[3], s[4], s[5], s[6], s[7], s[8]);
 					}
 					if(line.contains("Game Shoot")){
 						String[] s = line.split(" ");

@@ -654,6 +654,8 @@ public class CoordinateFrame extends JFrame{
 
 	private void jButtonValidateAndCoordinateActionPerformed(ActionEvent evt) {
 
+		String errString = "";
+		
 		try {
 			int nbrOfRows = Integer.parseInt(jTextFieldNbrOfRows.getText());
 			int nbrOfColoumns = Integer.parseInt(jTextFieldNbrOfColoumns.getText());
@@ -675,10 +677,10 @@ public class CoordinateFrame extends JFrame{
 
 			// validates the input when the strings in the text fields are valid integers (Integer.parseInt successful)
 			
-			String errString = validateSettings(nbrOfRows, nbrOfColoumns, nbrOfBattleships,
+			errString = validateSettings(nbrOfRows, nbrOfColoumns, nbrOfBattleships,
 					nbrOfSubmarines, nbrOfDestroyers, nbrOfCruisers);
 			
-			if (errString == "") {
+			if (errString.equals("")) {
 				
 				
 				System.out.println("2");
@@ -686,7 +688,7 @@ public class CoordinateFrame extends JFrame{
 				
 				
 				
-				game.myClient.sendMessage("Coordinate " + "Options" + nbrOfRows + " "
+				game.myClient.sendMessage("Coordinate " + "Options " + nbrOfRows + " "
 						+ nbrOfColoumns + " " + nbrOfBattleships + " " + nbrOfSubmarines + " "
 						+ nbrOfDestroyers + " " + nbrOfCruisers + " " + gameMode);
 				game.myClient.sendMessage("Coordinate " + "Enable ");
@@ -730,9 +732,9 @@ public class CoordinateFrame extends JFrame{
 		} catch(NumberFormatException e) {
 			
 			System.out.println("7");
-			
-			
-			JOptionPane.showMessageDialog(this, "Entered numbers are no valid positive integer values!");
+			e.printStackTrace();
+			errString = errString.concat("Entered numbers are no valid positive integer values!\n");
+			JOptionPane.showMessageDialog(this, errString);
 		}
 	}
 
@@ -754,7 +756,7 @@ public class CoordinateFrame extends JFrame{
 			
 			System.out.println("9");
 			
-			errorString = errorString + "Values are not valid. Some values are too high or too low! \n";
+			errorString = errorString.concat("Values are not valid. Some values are too high or too low! \n");
 			//JOptionPane.showMessageDialog(this, "Values are not valid. Some values are too high or too low!");
 			//return false;
 		}
@@ -777,7 +779,7 @@ public class CoordinateFrame extends JFrame{
 		// ships must cover 10%-30% of the fields
 		if ((0.3 * totalFields) < totalCoveredFieldsByShips){
 			
-			errorString = errorString + "Ships cover too many fields! \n";
+			errorString = errorString.concat("Ships cover too many fields! \n");
 			//JOptionPane.showMessageDialog(this, "Ships cover too many fields!");
 			//return false;
 		}
@@ -786,7 +788,7 @@ public class CoordinateFrame extends JFrame{
 		
 		
 		if ((0.1 * totalFields) > totalCoveredFieldsByShips){
-			errorString = errorString + "Ships do not cover enough fields! \n";
+			errorString = errorString.concat("Ships do not cover enough fields! \n");
 			//JOptionPane.showMessageDialog(this, "Ships do not cover enough fields!");
 			//return false;
 		}

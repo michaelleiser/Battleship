@@ -26,7 +26,7 @@ public class Game {
 	
 	public MyClient myClient;
 	NetworkFrame networkFrame;
-	CoordinateFrame clientFrame;
+	CoordinateFrame coordinateFrame;
 	GameFrame gameFrame;
 	Player player;
 	
@@ -59,7 +59,7 @@ public class Game {
 		if(myClient.isConnected()){
 			networkFrame.dispose();
 			showCoordinateFrame();	
-			clientFrame.disableComponents();
+			coordinateFrame.disableComponents();
 			myClient.sendMessage("Game " + "Show ");
 		}
 	}
@@ -90,8 +90,8 @@ public class Game {
 		} catch (Exception ex) {
 			Logger.getLogger(CoordinateFrame.class.getName()).log(Level.SEVERE, null, ex);
 		}
-		clientFrame = new CoordinateFrame(this);
-		clientFrame.setVisible(true);
+		coordinateFrame = new CoordinateFrame(this);
+		coordinateFrame.setVisible(true);
 	}
 	
 	public void showGameFrame(){
