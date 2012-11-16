@@ -275,15 +275,15 @@ public class Game {
 		switch (ship.getShipType()) {
 		case BATTLESHIP:
 			this.nbrOfBattleships++;
-			this.gameFrame.setNbrOfCruiser(nbrOfBattleships);
+			this.gameFrame.setNbrOfBattleship(nbrOfBattleships);
 			break;
 		case SUBMARINE:
 			this.nbrOfSubmarines++;
-			this.gameFrame.setNbrOfCruiser(nbrOfSubmarines);
+			this.gameFrame.setNbrOfSubmarine(nbrOfSubmarines);
 			break;
 		case DESTROYER:
 			this.nbrOfDestroyers++;
-			this.gameFrame.setNbrOfCruiser(nbrOfDestroyers);
+			this.gameFrame.setNbrOfDestroyer(nbrOfDestroyers);
 			break;
 		case CRUISER:
 			this.nbrOfCruisers++;
