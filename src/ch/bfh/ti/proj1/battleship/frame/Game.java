@@ -11,6 +11,7 @@ import org.state.Context;
 import ch.bfh.ti.proj1.battleship.client.Field;
 import ch.bfh.ti.proj1.battleship.client.Player;
 import ch.bfh.ti.proj1.battleship.client.Ship;
+import ch.bfh.ti.proj1.battleship.client.ShipType;
 import ch.bfh.ti.proj1.battleship.exception.BattleshipException;
 import ch.bfh.ti.proj1.battleship.sound.Sound;
 import ch.bfh.ti.proj1.battleship.sound.Sound.Sounds;
@@ -185,18 +186,18 @@ public class Game {
 		return this.player;
 	}
 	
-	
-	public void placeShip(Ship ship, int x, int y, int k) {
+	public void placeShip(ShipType type, int x, int y, int k) {
 		Field[][] fields = gameFrame.getYourField();
-		switch (ship.getShipType()) {
+		Ship s = new Ship(type);
+		switch (type) {
 		case BATTLESHIP:
 			if(k == 0){
-				for(int i = 0; i < ship.size(); i++){
-					fields[x][y+i].placeShip(ship);
+				for(int i = 0; i < type.getSize(); i++){
+					fields[x][y+i].placeShip(s);
 				}
 			} else{
-				for(int i = 0; i < ship.size(); i++){
-					fields[x+i][y].placeShip(ship);
+				for(int i = 0; i < type.getSize(); i++){
+					fields[x+i][y].placeShip(s);
 				}
 			}			
 			this.nbrOfBattleships--;
@@ -204,12 +205,12 @@ public class Game {
 			break;
 		case SUBMARINE:
 			if(k == 0){
-				for(int i = 0; i < ship.size(); i++){
-					fields[x][y+i].placeShip(ship);
+				for(int i = 0; i < type.getSize(); i++){
+					fields[x][y+i].placeShip(s);
 				}
 			} else{
-				for(int i = 0; i < ship.size(); i++){
-					fields[x+i][y].placeShip(ship);
+				for(int i = 0; i < type.getSize(); i++){
+					fields[x+i][y].placeShip(s);
 				}
 			}
 			this.nbrOfSubmarines--;
@@ -217,12 +218,12 @@ public class Game {
 			break;
 		case DESTROYER:
 			if(k == 0){
-				for(int i = 0; i < ship.size(); i++){
-					fields[x][y+i].placeShip(ship);
+				for(int i = 0; i < type.getSize(); i++){
+					fields[x][y+i].placeShip(s);
 				}
 			} else{
-				for(int i = 0; i < ship.size(); i++){
-					fields[x+i][y].placeShip(ship);
+				for(int i = 0; i < type.getSize(); i++){
+					fields[x+i][y].placeShip(s);
 				}
 			}
 			this.nbrOfDestroyers--;
@@ -230,12 +231,12 @@ public class Game {
 			break;
 		case CRUISER:
 			if(k == 0){
-				for(int i = 0; i < ship.size(); i++){
-					fields[x][y+i].placeShip(ship);
+				for(int i = 0; i < type.getSize(); i++){
+					fields[x][y+i].placeShip(s);
 				}
 			} else{
-				for(int i = 0; i < ship.size(); i++){
-					fields[x+i][y].placeShip(ship);
+				for(int i = 0; i < type.getSize(); i++){
+					fields[x+i][y].placeShip(s);
 				}
 			}
 			this.nbrOfCruisers--;
@@ -337,7 +338,6 @@ public class Game {
 
 	public void won() {
 		// TODO Auto-generated method stub
-		
 	}
 
 }

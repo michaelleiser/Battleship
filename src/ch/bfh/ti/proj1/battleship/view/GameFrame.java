@@ -27,9 +27,7 @@ import javax.swing.UIManager;
 import javax.swing.WindowConstants;
 
 import ch.bfh.ti.proj1.battleship.client.Field;
-import ch.bfh.ti.proj1.battleship.client.Ship;
 import ch.bfh.ti.proj1.battleship.client.ShipType;
-//import ch.bfh.ti.proj1.battleship.client.Ship.ShipType;
 import ch.bfh.ti.proj1.battleship.frame.Game;
 
 /**
@@ -373,18 +371,18 @@ public class GameFrame extends JFrame {
 							} else{
 								alignment = 1;
 							}
-							Ship ship = null;
+							ShipType type = null;
 							if(jRadioButtonNbrOfBattleship.isSelected()){
-								ship = new Ship(ShipType.BATTLESHIP);
+								type = ShipType.BATTLESHIP;
 							} else if(jRadioButtonNbrOfSubmarine.isSelected()){
-								ship = new Ship(ShipType.SUBMARINE);
+								type = ShipType.SUBMARINE;
 							} else if(jRadioButtonNbrOfDestroyer.isSelected()){
-								ship = new Ship(ShipType.DESTROYER);
+								type = ShipType.DESTROYER;
 							} else{
-								ship = new Ship(ShipType.CRUISER);
+								type = ShipType.CRUISER;
 							}	
 							if(f.getShip() == null){
-								game.placeShip(ship, x, y, alignment);
+								game.placeShip(type, x, y, alignment);
 							} else{
 								game.removeShip(x, y);
 							}
