@@ -5,7 +5,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.InputMismatchException;
 
 import javax.swing.BorderFactory;
 import javax.swing.GroupLayout;
@@ -675,8 +674,11 @@ public class CoordinateFrame extends JFrame{
 			System.out.println("1");
 
 			// validates the input when the strings in the text fields are valid integers (Integer.parseInt successful)
-			if (validateSettings(nbrOfRows, nbrOfColoumns, nbrOfBattleships,
-					nbrOfSubmarines, nbrOfDestroyers, nbrOfCruisers)) {
+			
+			String errString = validateSettings(nbrOfRows, nbrOfColoumns, nbrOfBattleships,
+					nbrOfSubmarines, nbrOfDestroyers, nbrOfCruisers);
+			
+			if (errString == "") {
 				
 				
 				System.out.println("2");
@@ -684,7 +686,7 @@ public class CoordinateFrame extends JFrame{
 				
 				
 				
-				game.myClient.sendMessage("Coordinate " + nbrOfRows + " "
+				game.myClient.sendMessage("Coordinate " + "Options" + nbrOfRows + " "
 						+ nbrOfColoumns + " " + nbrOfBattleships + " " + nbrOfSubmarines + " "
 						+ nbrOfDestroyers + " " + nbrOfCruisers + " " + gameMode);
 				game.myClient.sendMessage("Coordinate " + "Enable ");
@@ -720,8 +722,9 @@ public class CoordinateFrame extends JFrame{
 				
 				System.out.println("6");
 				
+				JOptionPane.showMessageDialog(this, errString);
 				
-				throw new InputMismatchException();
+				//throw new InputMismatchException();
 			}
 
 		} catch(NumberFormatException e) {
@@ -729,16 +732,16 @@ public class CoordinateFrame extends JFrame{
 			System.out.println("7");
 			
 			
-			JOptionPane.showMessageDialog(this, "Entered Credentials are not valid!");
+			JOptionPane.showMessageDialog(this, "Entered numbers are no valid positive integer values!");
 		}
 	}
 
-	private final boolean validateSettings(int nbrOfRows, int nbrOfColoumns, int nbrOfBattleships, 
+	private final String validateSettings(int nbrOfRows, int nbrOfColoumns, int nbrOfBattleships, 
 			int nbrOfSubmarines, int nbrOfDestroyers, int nbrOfCruisers) {
 
 		System.out.println("8");
 		
-		
+		String errorString = "";
 		
 		// test if input is valid. Numbers between 1 and 20
 		if (	(nbrOfRows < 10) && (nbrOfRows > 20) &&
@@ -751,9 +754,9 @@ public class CoordinateFrame extends JFrame{
 			
 			System.out.println("9");
 			
-			
-			JOptionPane.showMessageDialog(this, "Values are not valid. Some values are too high or too low!");
-			return false;
+			errorString = errorString + "Values are not valid. Some values are too high or too low! \n";
+			//JOptionPane.showMessageDialog(this, "Values are not valid. Some values are too high or too low!");
+			//return false;
 		}
 
 		
@@ -773,23 +776,25 @@ public class CoordinateFrame extends JFrame{
 		
 		// ships must cover 10%-30% of the fields
 		if ((0.3 * totalFields) < totalCoveredFieldsByShips){
-			JOptionPane.showMessageDialog(this, "Ships cover too many fields!");
-			return false;
+			
+			errorString = errorString + "Ships cover too many fields! \n";
+			//JOptionPane.showMessageDialog(this, "Ships cover too many fields!");
+			//return false;
 		}
 
 		System.out.println("12");
 		
 		
 		if ((0.1 * totalFields) > totalCoveredFieldsByShips){
-			JOptionPane.showMessageDialog(this, "Ships do not cover enough fields!");
-			return false;
+			errorString = errorString + "Ships do not cover enough fields! \n";
+			//JOptionPane.showMessageDialog(this, "Ships do not cover enough fields!");
+			//return false;
 		}
 		
 		
 		System.out.println("13");
-		
-		
-		return true;
+
+		return errorString;
 	}
 	
 	
