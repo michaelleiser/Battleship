@@ -18,6 +18,14 @@ public class Field extends JToggleButton {
 	
 	public void placeShip(Ship ship) {
 		this.ship = ship;
+		this.ship.setPlaced();
+		this.ship.addPositions(this);
+	}
+	
+	public void removeShip(){
+		this.ship.removePositions(this);
+		this.ship.setUnplaced();
+		this.ship = null;
 	}
 
 	public boolean isHit() {
