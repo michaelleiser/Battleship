@@ -72,11 +72,11 @@ public class TESTER {
 	public void testGame(){
 		Game g = new Game();
 		g.showNetworkFrame();
-		g.enterPlayerName("hell");
+		g.enterName("hell");
 		g.hostGame(4444);
 		Game g2 = new Game();
 		g2.showNetworkFrame();
-		g2.enterPlayerName("he");
+		g2.enterName("he");
 		
 		assertFalse(g2.myClient.isConnected());
 		g2.joinGame(4444, "localhost");

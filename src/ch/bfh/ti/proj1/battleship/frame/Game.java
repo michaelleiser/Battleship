@@ -1,6 +1,7 @@
 package ch.bfh.ti.proj1.battleship.frame;
 
 import java.awt.Color;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.UIManager;
@@ -262,7 +263,12 @@ public class Game {
 	}
 
 	public void removeShip(int x, int y) {
-		//TODO
+		Field[][] fields = gameFrame.getYourField();
+		Ship ship = fields[x][y].getShip();
+		List<Field> positions = ship.getPositions();
+		for(Field f : positions){
+			f.removeShip();
+		}
 	}
 
 	public void shootAt(int x, int y) {
@@ -288,7 +294,7 @@ public class Game {
 		}
 	}
 
-	public void enterPlayerName(String name) {
+	public void enterName(String name) {
 		try {
 			player = new Player(name);
 		} catch (BattleshipException e) {

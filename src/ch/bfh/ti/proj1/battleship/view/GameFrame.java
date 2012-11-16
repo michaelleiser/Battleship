@@ -382,10 +382,10 @@ public class GameFrame extends JFrame {
 							} else{
 								ship = new Ship(ShipType.CRUISER);
 							}	
-							if(f.getShip() != null){
-								game.removeShip(x, y);
-							} else{
+							if(f.getShip() == null){
 								game.placeShip(ship, x, y, alignment);
+							} else{
+								game.removeShip(x, y);
 							}
 						}
 					});

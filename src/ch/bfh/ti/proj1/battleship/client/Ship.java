@@ -1,19 +1,22 @@
 package ch.bfh.ti.proj1.battleship.client;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Ship {
 
 	private int hits;
 	private ShipType type;
 	private boolean sunk;
 	private boolean placed;
-	private int[][] positions;	
+	private List<Field> positions;	
 
 	public Ship(ShipType type) {
 		this.hits = 0;
 		this.type = type;
 		this.sunk = false;
 		this.placed = false;
-		this.positions = null;
+		this.positions = new ArrayList<Field>();
 	}
 
 	public int size() {
@@ -35,19 +38,28 @@ public class Ship {
 		this.placed = true;
 	}
 	
+	public void setUnplaced(){
+		this.placed  = false;
+	}
+	
 	public boolean isPlaced() {
 		return this.placed;
 	}
 	
-	public int[][] getPositions() {
+	public void addPositions(Field f) {
+		positions.add(f);
+	}
+	
+	public void removePositions(Field f){
+		positions.remove(f);
+	}
+		
+	public List<Field> getPositions() {
 		return positions;
 	}
 
-	public void setPositions(int[][] positions) {
-		this.positions = positions;
-	}
-	
 	public ShipType getShipType(){
 		return type;
 	}
+
 }
