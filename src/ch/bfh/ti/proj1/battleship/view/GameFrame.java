@@ -1018,6 +1018,10 @@ public class GameFrame extends JFrame {
 			}
 		}
 		jButtonReady.setEnabled(false);
+		
+		if(game.getPlayer().getName().equals("L1r")){
+			disableComponents();
+		}
 	}
 	
 	public void enableComponents(){

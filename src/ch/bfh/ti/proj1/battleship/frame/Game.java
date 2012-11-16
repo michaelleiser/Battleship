@@ -297,12 +297,20 @@ public class Game {
 					Sound.playingSound(Sounds.DEATH);
 				} catch (Exception e) {
 					e.printStackTrace();
-				}
+				}	
 			}
 		} else {
 			gameFrame.setjLabelEnemyWater();
 			gameFrame.setjLabelEnemyShots();
 			this.myClient.sendMessage("Game " + "Water " + x + " " + y);
+			if(gameMode.equals("UntilWater")){
+				this.myClient.sendMessage("Game " + "Disable ");
+				this.gameFrame.enableComponents();
+			}
+		}
+		if(gameMode.equals("Alternatively")){
+			this.myClient.sendMessage("Game " + "Disable ");
+			this.gameFrame.enableComponents();
 		}
 	}
 

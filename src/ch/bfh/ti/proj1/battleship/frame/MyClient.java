@@ -74,6 +74,9 @@ public class MyClient implements Runnable{
 					if(line.contains("Coordinate Enable")){
 						game.coordinateFrame.enableComponents();
 					}
+					if(line.contains("Game Disable ")){
+						game.gameFrame.disableComponents();
+					}
 					if(line.contains("Coordinate ShowGameFrame")){
 						game.showGameFrame();
 					}
