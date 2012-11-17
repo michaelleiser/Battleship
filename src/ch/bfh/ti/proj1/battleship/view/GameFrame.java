@@ -1014,14 +1014,10 @@ public class GameFrame extends JFrame {
 		for(int i = 0; i < game.getNbrOfRows(); i++){
 			for(int j = 0; j < game.getNbrOfColoumns(); j++){
 				yourField[i][j].setEnabled(false);
-				enemyField[i][j].setEnabled(true);
 			}
 		}
 		jButtonReady.setEnabled(false);
-		
-		if(game.getPlayer().getName().equals("L1r")){
-			disableComponents();
-		}
+		game.ready();
 	}
 	
 	public void enableComponents(){

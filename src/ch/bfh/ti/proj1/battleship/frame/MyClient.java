@@ -109,6 +109,9 @@ public class MyClient implements Runnable{
 					if(line.contains("Game Won")){
 						game.won();
 					}
+					if(line.contains("Game Start")){
+						game.setStartToFalse();
+					}
 				}
 			}
 		} catch (IOException e) {

@@ -42,6 +42,8 @@ public class Game {
 	private int nbrOfCruisers = 4;
 	private String gameMode = "Alternatively";
 	
+	private boolean canStart = true;
+	
 	public Game(){
 		showNetworkFrame();
 		c = new Context();
@@ -346,6 +348,17 @@ public class Game {
 
 	public void won() {
 		// TODO Auto-generated method stub
+	}
+	
+	public void ready() {
+		if(canStart){
+			this.gameFrame.enableComponents();
+			this.myClient.sendMessage("Game " + "Start ");
+		}
+	}
+	
+	public void setStartToFalse(){
+		this.canStart = false;
 	}
 
 }
