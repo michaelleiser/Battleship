@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
 import org.state.Context;
@@ -319,6 +321,10 @@ public class Game {
 				gameFrame.setjLabelEnemySunk();
 				gameFrame.setjLabelEnemyShots();
 				this.myClient.sendMessage("Game " + "Sunk " + x + " " + y);
+				if(allShipsSunk()){
+					this.myClient.sendMessage("Game " + "Won ");
+					JOptionPane.showMessageDialog(null, "You lost");
+				}
 			} else{
 				gameFrame.setjLabelEnemyHits();
 				gameFrame.setjLabelEnemyShots();
@@ -342,6 +348,11 @@ public class Game {
 			this.myClient.sendMessage("Game " + "Disable ");
 			this.gameFrame.enableComponents();
 		}
+	}
+
+	private boolean allShipsSunk() {
+		// TODO
+		return false;
 	}
 
 	public void enterName(String name) {
@@ -375,7 +386,7 @@ public class Game {
 	}
 
 	public void won() {
-		// TODO Auto-generated method stub
+		JOptionPane.showMessageDialog(null, "You Won");
 	}
 	
 	public void ready() {
