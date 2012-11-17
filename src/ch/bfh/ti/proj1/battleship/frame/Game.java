@@ -191,62 +191,90 @@ public class Game {
 	public void placeShip(ShipType type, int x, int y, int k) {
 		Field[][] fields = gameFrame.getYourField();
 		Ship s = new Ship(type);
-		switch (type) {
-		case BATTLESHIP:
-			if(k == 0){
-				for(int i = 0; i < type.getSize(); i++){
-					fields[x][y+i].placeShip(s);
+		if(checkConstraints(fields, s, x, y, k)){
+			switch (type) {
+			case BATTLESHIP:
+				if(this.nbrOfBattleships > 0){
+					if(k == 0){
+						for(int i = 0; i < type.getSize(); i++){
+							fields[x][y+i].placeShip(s);
+						}
+					} else{
+						for(int i = 0; i < type.getSize(); i++){
+							fields[x+i][y].placeShip(s);
+						}
+					}			
+					this.nbrOfBattleships--;
+					this.gameFrame.setNbrOfBattleship(nbrOfBattleships);
 				}
-			} else{
-				for(int i = 0; i < type.getSize(); i++){
-					fields[x+i][y].placeShip(s);
+				break;
+			case SUBMARINE:
+				if(this.nbrOfSubmarines > 0){
+					if(k == 0){
+						for(int i = 0; i < type.getSize(); i++){
+							fields[x][y+i].placeShip(s);
+						}
+					} else{
+						for(int i = 0; i < type.getSize(); i++){
+							fields[x+i][y].placeShip(s);
+						}
+					}
+					this.nbrOfSubmarines--;
+					this.gameFrame.setNbrOfSubmarine(nbrOfSubmarines);
 				}
-			}			
-			this.nbrOfBattleships--;
-			this.gameFrame.setNbrOfBattleship(nbrOfBattleships);
-			break;
-		case SUBMARINE:
-			if(k == 0){
-				for(int i = 0; i < type.getSize(); i++){
-					fields[x][y+i].placeShip(s);
+				break;
+			case DESTROYER:
+				if(this.nbrOfDestroyers > 0){
+					if(k == 0){
+						for(int i = 0; i < type.getSize(); i++){
+							fields[x][y+i].placeShip(s);
+						}
+					} else{
+						for(int i = 0; i < type.getSize(); i++){
+							fields[x+i][y].placeShip(s);
+						}
+					}
+					this.nbrOfDestroyers--;
+					this.gameFrame.setNbrOfDestroyer(nbrOfDestroyers);
 				}
-			} else{
-				for(int i = 0; i < type.getSize(); i++){
-					fields[x+i][y].placeShip(s);
+				break;
+			case CRUISER:
+				if(this.nbrOfCruisers > 0){
+					if(k == 0){
+						for(int i = 0; i < type.getSize(); i++){
+							fields[x][y+i].placeShip(s);
+						}
+					} else{
+						for(int i = 0; i < type.getSize(); i++){
+							fields[x+i][y].placeShip(s);
+						}
+					}
+					this.nbrOfCruisers--;
+					this.gameFrame.setNbrOfCruiser(nbrOfCruisers);
 				}
+				break;
+			default:
+				break;
 			}
-			this.nbrOfSubmarines--;
-			this.gameFrame.setNbrOfSubmarine(nbrOfSubmarines);
-			break;
-		case DESTROYER:
-			if(k == 0){
-				for(int i = 0; i < type.getSize(); i++){
-					fields[x][y+i].placeShip(s);
-				}
-			} else{
-				for(int i = 0; i < type.getSize(); i++){
-					fields[x+i][y].placeShip(s);
-				}
-			}
-			this.nbrOfDestroyers--;
-			this.gameFrame.setNbrOfDestroyer(nbrOfDestroyers);
-			break;
-		case CRUISER:
-			if(k == 0){
-				for(int i = 0; i < type.getSize(); i++){
-					fields[x][y+i].placeShip(s);
-				}
-			} else{
-				for(int i = 0; i < type.getSize(); i++){
-					fields[x+i][y].placeShip(s);
-				}
-			}
-			this.nbrOfCruisers--;
-			this.gameFrame.setNbrOfCruiser(nbrOfCruisers);
-			break;
-		default:
-			break;
 		}
+	}
+
+	private boolean checkConstraints(Field[][] fields, Ship s, int x, int y, int k) {
+		boolean placeable = true;
+		if(k == 0){
+			for(int i = 0; i < s.size(); i++){
+				if(fields[x][y+i].getShip() != null){
+					placeable = false;
+				}
+			}
+		} else{
+			for(int i = 0; i < s.size(); i++){
+				if(fields[x+i][y].getShip() != null){
+					placeable = false;
+				}
+			}
+		}
+		return placeable;
 	}
 
 	public void removeShip(int x, int y) {
