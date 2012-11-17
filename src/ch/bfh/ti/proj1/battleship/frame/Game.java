@@ -265,13 +265,27 @@ public class Game {
 		boolean placeable = true;
 		if(k == 0){
 			for(int i = 0; i < s.size(); i++){
-				if(fields[x][y+i].getShip() != null){
+				if(		(x < 1) || (x >= nbrOfRows) ||
+						(((y+i) < 1) || ((y+i) >= nbrOfColoumns)) ||
+						(fields[x][y+i].getShip() != null)
+//						(fields[x-1][y+i].getShip() != null) ||
+//						(fields[x+1][y+i].getShip() != null) ||
+//						(fields[x][y+i-1].getShip() != null) ||
+//						(fields[x][y+i+1].getShip() != null) 
+						){
 					placeable = false;
 				}
 			}
 		} else{
 			for(int i = 0; i < s.size(); i++){
-				if(fields[x+i][y].getShip() != null){
+				if(		(((x+i) < 1)) || ((x+i) >= nbrOfRows) ||
+						(y < 1) || (y >= nbrOfColoumns) ||
+						(fields[x+i][y].getShip() != null)
+//						(fields[x+i-1][y].getShip() != null) ||
+//						(fields[x+i+1][y].getShip() != null) ||
+//						(fields[x+i][y-1].getShip() != null) ||
+//						(fields[x+i][y+1].getShip() != null) 
+						){
 					placeable = false;
 				}
 			}
