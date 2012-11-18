@@ -272,63 +272,46 @@ public class Game {
 	}
 
 	private boolean checkConstraints(Field[][] fields, Ship s, int x, int y, int k) {
-//		System.out.println("x: " + x + " : y: " + y + " : k: " + k);
-		boolean placeable = true;
 		if(k == 0){
 			for(int i = 0; i < s.size(); i++){
 				if(((x+i) >= this.nbrOfColoumns) || (fields[y][x+i].getShip() != null)){
-					placeable = false;
+					return false;
 				}
 			
-//				if(((x+i) > 0) && ((x+i) < nbrOfColoumns-1)){
-//					if((fields[y][x+i-1].getShip() != null) || (fields[y][x+i+1].getShip() != null)){
-//						placeable = false;
-//					}
-//				}
-//				else if(((x+i) <= 0)){
-//					if((fields[y][x+i-1].getShip() != null)){
-//						placeable = false;
-//					}
-//				}
-//				else if(((x+i) >= nbrOfColoumns-1)){
-//					if((fields[y][x+i+1].getShip() != null)){
-//						placeable = false;
-//					}
-//				}
-//				if(((x+i) > 0) && (fields[y][x+i-1].getShip() != null)){
-//					placeable = false;
-//				}
-//				if(((x+i) < nbrOfColoumns-1) && (fields[y][x+i+1].getShip() != null)){
-//					placeable = false;
-//				}
-//				if((y > 0) && (fields[y-1][x+i].getShip() != null)){
-//					placeable = false;
-//				}
-//				if((y < nbrOfRows-1) && (fields[y+1][x+i].getShip() != null)){
-//					placeable = false;
-//				}
+				if(((x+i) > 0) && (fields[y][x+i-1].getShip() != null)){
+					return false;
+				}
+				if(((x+i) < nbrOfColoumns-1) && (fields[y][x+i+1].getShip() != null)){
+					return false;
+				}
+				if((y > 0) && (fields[y-1][x+i].getShip() != null)){
+					return false;
+				}
+				if((y < nbrOfRows-1) && (fields[y+1][x+i].getShip() != null)){
+					return false;
+				}
 			}
 		} else{
 			for(int i = 0; i < s.size(); i++){
 				if(((y+i) >= this.nbrOfRows) || (fields[y+i][x].getShip() != null)){
-					placeable = false;
+					return false;
 				}
 				
-//				if((x > 0) && (fields[y+i][x-1].getShip() != null)){
-//					placeable = false;
-//				}
-//				if((x < nbrOfColoumns-1) && (fields[y+i][x+1].getShip() != null)){
-//					placeable = false;
-//				}
-//				if(((y+i) > 0) && (fields[y+i-1][x].getShip() != null)){
-//					placeable = false;
-//				}
-//				if(((y+i) < nbrOfRows-1) && (fields[y+i+1][x].getShip() != null)){
-//					placeable = false;
-//				}
+				if((x > 0) && (fields[y+i][x-1].getShip() != null)){
+					return false;
+				}
+				if((x < nbrOfColoumns-1) && (fields[y+i][x+1].getShip() != null)){
+					return false;
+				}
+				if(((y+i) > 0) && (fields[y+i-1][x].getShip() != null)){
+					return false;
+				}
+				if(((y+i) < nbrOfRows-1) && (fields[y+i+1][x].getShip() != null)){
+					return false;
+				}
 			}
 		}
-		return placeable;
+		return true;
 	}
 
 	public void removeShip(int x, int y) {
