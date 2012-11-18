@@ -199,11 +199,11 @@ public class Game {
 				if(this.nbrOfBattleships > 0){
 					if(k == 0){
 						for(int i = 0; i < type.getSize(); i++){
-							fields[x][y+i].placeShip(s);
+							fields[x+i][y].placeShip(s);
 						}
 					} else{
 						for(int i = 0; i < type.getSize(); i++){
-							fields[x+i][y].placeShip(s);
+							fields[x][y+i].placeShip(s);
 						}
 					}			
 					this.nbrOfBattleships--;
@@ -214,11 +214,11 @@ public class Game {
 				if(this.nbrOfSubmarines > 0){
 					if(k == 0){
 						for(int i = 0; i < type.getSize(); i++){
-							fields[x][y+i].placeShip(s);
+							fields[x+i][y].placeShip(s);
 						}
 					} else{
 						for(int i = 0; i < type.getSize(); i++){
-							fields[x+i][y].placeShip(s);
+							fields[x][y+i].placeShip(s);
 						}
 					}
 					this.nbrOfSubmarines--;
@@ -229,11 +229,11 @@ public class Game {
 				if(this.nbrOfDestroyers > 0){
 					if(k == 0){
 						for(int i = 0; i < type.getSize(); i++){
-							fields[x][y+i].placeShip(s);
+							fields[x+i][y].placeShip(s);
 						}
 					} else{
 						for(int i = 0; i < type.getSize(); i++){
-							fields[x+i][y].placeShip(s);
+							fields[x][y+i].placeShip(s);
 						}
 					}
 					this.nbrOfDestroyers--;
@@ -244,11 +244,11 @@ public class Game {
 				if(this.nbrOfCruisers > 0){
 					if(k == 0){
 						for(int i = 0; i < type.getSize(); i++){
-							fields[x][y+i].placeShip(s);
+							fields[x+i][y].placeShip(s);
 						}
 					} else{
 						for(int i = 0; i < type.getSize(); i++){
-							fields[x+i][y].placeShip(s);
+							fields[x][y+i].placeShip(s);
 						}
 					}
 					this.nbrOfCruisers--;
@@ -265,27 +265,39 @@ public class Game {
 		boolean placeable = true;
 		if(k == 0){
 			for(int i = 0; i < s.size(); i++){
-				if(		(x < 1) || (x >= nbrOfRows) ||
-						(((y+i) < 1) || ((y+i) >= nbrOfColoumns)) ||
-						(fields[x][y+i].getShip() != null)
-//						(fields[x-1][y+i].getShip() != null) ||
-//						(fields[x+1][y+i].getShip() != null) ||
-//						(fields[x][y+i-1].getShip() != null) ||
-//						(fields[x][y+i+1].getShip() != null) 
-						){
+				if(((x+i) >= nbrOfColoumns) || (fields[x+i][y].getShip() != null)){
+					placeable = false;
+				}
+				
+				if(((x+i) > 0) && (fields[x+i-1][y].getShip() != null)){
+					placeable = false;
+				}
+				if(((x+i) < nbrOfRows-1) && (fields[x+i+1][y].getShip() != null)){
+					placeable = false;
+				}
+				if((y > 0) && (fields[x+i][y-1].getShip() != null)){
+					placeable = false;
+				}
+				if((y < nbrOfColoumns-1) && (fields[x+i][y+1].getShip() != null)){
 					placeable = false;
 				}
 			}
 		} else{
 			for(int i = 0; i < s.size(); i++){
-				if(		(((x+i) < 1)) || ((x+i) >= nbrOfRows) ||
-						(y < 1) || (y >= nbrOfColoumns) ||
-						(fields[x+i][y].getShip() != null)
-//						(fields[x+i-1][y].getShip() != null) ||
-//						(fields[x+i+1][y].getShip() != null) ||
-//						(fields[x+i][y-1].getShip() != null) ||
-//						(fields[x+i][y+1].getShip() != null) 
-						){
+				if(((y+i) >= nbrOfRows) || (fields[x][y+i].getShip() != null)){
+					placeable = false;
+				}
+				
+				if((x > 0) && (fields[x-1][y+i].getShip() != null)){
+					placeable = false;
+				}
+				if((x < nbrOfRows-1) && (fields[x+1][y+i].getShip() != null)){
+					placeable = false;
+				}
+				if(((y+i) > 0) && (fields[x][y+i-1].getShip() != null)){
+					placeable = false;
+				}
+				if(((y+i) < nbrOfColoumns-1) && (fields[x][y+i+1].getShip() != null)){
 					placeable = false;
 				}
 			}

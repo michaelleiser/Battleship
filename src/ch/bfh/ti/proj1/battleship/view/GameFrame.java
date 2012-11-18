@@ -358,8 +358,8 @@ public class GameFrame extends JFrame {
 					x1.setText((char) (i + 64) + "");
 					jPanelEnemyField.add(x1);
 				} else {
-					Field field1 = new Field(i, j);
-					yourField[i - 1][j - 1] = field1;
+					Field field1 = new Field(j, i);
+					yourField[j - 1][i - 1] = field1;
 					field1.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent ae) {
 							Field f = (Field) ae.getSource();
@@ -390,9 +390,9 @@ public class GameFrame extends JFrame {
 					});
 					jPanelYourField.add(field1);
 					
-					Field field2 = new Field(i, j);
+					Field field2 = new Field(j, i);
 					field2.setEnabled(false);
-					enemyField[i - 1][j - 1] = field2;
+					enemyField[j - 1][i - 1] = field2;
 					field2.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent ae) {
 							Field f = (Field) ae.getSource();
