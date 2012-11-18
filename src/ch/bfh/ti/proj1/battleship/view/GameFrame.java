@@ -358,13 +358,13 @@ public class GameFrame extends JFrame {
 					x1.setText((char) (i + 64) + "");
 					jPanelEnemyField.add(x1);
 				} else {
-					Field field1 = new Field(i, j);
-					yourField[i - 1][j - 1] = field1;
+					Field field1 = new Field(i-1, j-1);
+					yourField[i-1][j-1] = field1;
 					field1.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent ae) {
 							Field f = (Field) ae.getSource();
-							int x = f.getXPos()-1;
-							int y = f.getYPos()-1;
+							int x = f.getXPos();
+							int y = f.getYPos();
 							int alignment = 0;
 							if(jRadioButtonHorizontal.isSelected()){
 								alignment = 0;
@@ -390,14 +390,14 @@ public class GameFrame extends JFrame {
 					});
 					jPanelYourField.add(field1);
 					
-					Field field2 = new Field(i, j);
+					Field field2 = new Field(i-1, j-1);
 					field2.setEnabled(false);
-					enemyField[i - 1][j - 1] = field2;
+					enemyField[i-1][j-1] = field2;
 					field2.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent ae) {
 							Field f = (Field) ae.getSource();
-							int x = f.getXPos()-1;
-							int y = f.getYPos()-1;
+							int x = f.getXPos();
+							int y = f.getYPos();
 							game.shootAt(x, y);
 						}
 					});
