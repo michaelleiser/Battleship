@@ -199,11 +199,11 @@ public class Game {
 				if(this.nbrOfBattleships > 0){
 					if(k == 0){
 						for(int i = 0; i < type.getSize(); i++){
-							fields[x][y+i].placeShip(s);
+							fields[y][x+i].placeShip(s);
 						}
 					} else{
 						for(int i = 0; i < type.getSize(); i++){
-							fields[x+i][y].placeShip(s);
+							fields[y+i][x].placeShip(s);
 						}
 					}			
 					this.nbrOfBattleships--;
@@ -214,11 +214,11 @@ public class Game {
 				if(this.nbrOfSubmarines > 0){
 					if(k == 0){
 						for(int i = 0; i < type.getSize(); i++){
-							fields[x][y+i].placeShip(s);
+							fields[y][x+i].placeShip(s);
 						}
 					} else{
 						for(int i = 0; i < type.getSize(); i++){
-							fields[x+i][y].placeShip(s);
+							fields[y+i][x].placeShip(s);
 						}
 					}
 					this.nbrOfSubmarines--;
@@ -229,11 +229,11 @@ public class Game {
 				if(this.nbrOfDestroyers > 0){
 					if(k == 0){
 						for(int i = 0; i < type.getSize(); i++){
-							fields[x][y+i].placeShip(s);
+							fields[y][x+i].placeShip(s);
 						}
 					} else{
 						for(int i = 0; i < type.getSize(); i++){
-							fields[x+i][y].placeShip(s);
+							fields[y+i][x].placeShip(s);
 						}
 					}
 					this.nbrOfDestroyers--;
@@ -244,11 +244,11 @@ public class Game {
 				if(this.nbrOfCruisers > 0){
 					if(k == 0){
 						for(int i = 0; i < type.getSize(); i++){
-							fields[x][y+i].placeShip(s);
+							fields[y][x+i].placeShip(s);
 						}
 					} else{
 						for(int i = 0; i < type.getSize(); i++){
-							fields[x+i][y].placeShip(s);
+							fields[y+i][x].placeShip(s);
 						}
 					}
 					this.nbrOfCruisers--;
@@ -263,12 +263,12 @@ public class Game {
 
 	private boolean checkConstraints(Field[][] fields, Ship s, int x, int y, int k) {
 		boolean placeable = true;
-//		if(k == 0){
-//			for(int i = 0; i < s.size(); i++){
-//				if(((x+i) >= nbrOfColoumns) || (fields[x+i][y].getShip() != null)){
-//					placeable = false;
-//				}
-//				
+		if(k == 0){
+			for(int i = 0; i < s.size(); i++){
+				if(((x+i) >= nbrOfColoumns) || (fields[y][x+i].getShip() != null)){
+					placeable = false;
+				}
+				
 //				if(((x+i) > 0) && (fields[x+i-1][y].getShip() != null)){
 //					placeable = false;
 //				}
@@ -281,13 +281,13 @@ public class Game {
 //				if((y < nbrOfColoumns-1) && (fields[x+i][y+1].getShip() != null)){
 //					placeable = false;
 //				}
-//			}
-//		} else{
-//			for(int i = 0; i < s.size(); i++){
-//				if(((y+i) >= nbrOfRows) || (fields[x][y+i].getShip() != null)){
-//					placeable = false;
-//				}
-//				
+			}
+		} else{
+			for(int i = 0; i < s.size(); i++){
+				if(((y+i) >= nbrOfRows) || (fields[y+i][x].getShip() != null)){
+					placeable = false;
+				}
+				
 //				if((x > 0) && (fields[x-1][y+i].getShip() != null)){
 //					placeable = false;
 //				}
@@ -300,14 +300,14 @@ public class Game {
 //				if(((y+i) < nbrOfColoumns-1) && (fields[x][y+i+1].getShip() != null)){
 //					placeable = false;
 //				}
-//			}
-//		}
+			}
+		}
 		return placeable;
 	}
 
 	public void removeShip(int x, int y) {
 		Field[][] fields = gameFrame.getYourField();
-		Ship ship = fields[x][y].getShip();
+		Ship ship = fields[y][x].getShip();
 		List<Field> positions = ship.getPositions();
 		for(Field f : positions){
 			f.removeShip();
@@ -340,9 +340,9 @@ public class Game {
 	
 	public void checkShoot(int x, int y){
 		Field[][] f = this.gameFrame.getYourField();
-		if(f[x][y].getShip() != null){
-			f[x][y].shoot();
-			if(f[x][y].getShip().isSunk()){
+		if(f[y][x].getShip() != null){
+			f[y][x].shoot();
+			if(f[y][x].getShip().isSunk()){
 				gameFrame.setjLabelEnemyHits();
 				gameFrame.setjLabelEnemySunk();
 				gameFrame.setjLabelEnemyShots();
@@ -391,21 +391,21 @@ public class Game {
 
 	public void hit(String x, String y) {
 		Field[][]f = gameFrame.getEnemyField();
-		f[Integer.parseInt(x)][Integer.parseInt(y)].setBackground(Color.red);
+		f[Integer.parseInt(y)][Integer.parseInt(x)].setBackground(Color.red);
 		gameFrame.setjLabelYouHits();
 		gameFrame.setjLabelYouShots();
 	}
 
 	public void water(String x, String y) {
 		Field[][]f = gameFrame.getEnemyField();
-		f[Integer.parseInt(x)][Integer.parseInt(y)].setBackground(Color.blue);
+		f[Integer.parseInt(y)][Integer.parseInt(x)].setBackground(Color.blue);
 		gameFrame.setjLabelYouWater();
 		gameFrame.setjLabelYouShots();
 	}
 
 	public void sunk(String x, String y) {
 		Field[][]f = gameFrame.getEnemyField();
-		f[Integer.parseInt(x)][Integer.parseInt(y)].setBackground(Color.green);
+		f[Integer.parseInt(y)][Integer.parseInt(x)].setBackground(Color.green);
 		gameFrame.setjLabelYouHits();
 		gameFrame.setjLabelYouSunk();
 		gameFrame.setjLabelYouShots();

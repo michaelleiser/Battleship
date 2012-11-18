@@ -313,9 +313,9 @@ public class GameFrame extends JFrame {
 		jPanelEnemyField.setLayout(new GridLayout(rows, coloumns));
 		enemyField = new Field[rows][coloumns];
 		
-		for (int i = 0; i < rows; i++) {
-			for (int j = 0; j < coloumns; j++) {
-				if (i == 0 && j == 0) {
+		for (int yCoord = 0; yCoord < rows; yCoord++) {
+			for (int xCoord = 0; xCoord < coloumns; xCoord++) {
+				if (yCoord == 0 && xCoord == 0) {
 					JLabel x = new JLabel();
 					x.setFont(new Font("Tahoma", 1, 14));
 					x.setHorizontalAlignment(SwingConstants.CENTER);
@@ -329,37 +329,37 @@ public class GameFrame extends JFrame {
 					x1.setBorder(BorderFactory.createEtchedBorder());
 					x1.setText("/");
 					jPanelEnemyField.add(x1);
-				} else if (i == 0) {
+				} else if (yCoord == 0) {
 					JLabel x = new JLabel();
 					x.setFont(new Font("Tahoma", 1, 14));
 					x.setHorizontalAlignment(SwingConstants.CENTER);
 					x.setBorder(BorderFactory.createEtchedBorder());
-					x.setText(j + "");
+					x.setText(xCoord + "");
 					jPanelYourField.add(x);
 					
 					JLabel x1 = new JLabel();
 					x1.setFont(new Font("Tahoma", 1, 14));
 					x1.setHorizontalAlignment(SwingConstants.CENTER);
 					x1.setBorder(BorderFactory.createEtchedBorder());
-					x1.setText(j + "");
+					x1.setText(xCoord + "");
 					jPanelEnemyField.add(x1);
-				} else if (j == 0) {
+				} else if (xCoord == 0) {
 					JLabel x = new JLabel();
 					x.setFont(new Font("Tahoma", 1, 14));
 					x.setHorizontalAlignment(SwingConstants.CENTER);
 					x.setBorder(BorderFactory.createEtchedBorder());
-					x.setText((char) (i + 64) + "");
+					x.setText((char) (yCoord + 64) + "");
 					jPanelYourField.add(x);
 					
 					JLabel x1 = new JLabel();
 					x1.setFont(new Font("Tahoma", 1, 14));
 					x1.setHorizontalAlignment(SwingConstants.CENTER);
 					x1.setBorder(BorderFactory.createEtchedBorder());
-					x1.setText((char) (i + 64) + "");
+					x1.setText((char) (yCoord + 64) + "");
 					jPanelEnemyField.add(x1);
 				} else {
-					Field field1 = new Field(i-1, j-1);
-					yourField[i-1][j-1] = field1;
+					Field field1 = new Field(xCoord-1, yCoord-1);
+					yourField[yCoord-1][xCoord-1] = field1;
 					field1.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent ae) {
 							Field f = (Field) ae.getSource();
@@ -390,9 +390,9 @@ public class GameFrame extends JFrame {
 					});
 					jPanelYourField.add(field1);
 					
-					Field field2 = new Field(i-1, j-1);
+					Field field2 = new Field(xCoord-1, yCoord-1);
 					field2.setEnabled(false);
-					enemyField[i-1][j-1] = field2;
+					enemyField[yCoord-1][xCoord-1] = field2;
 					field2.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent ae) {
 							Field f = (Field) ae.getSource();
