@@ -1011,13 +1011,17 @@ public class GameFrame extends JFrame {
 	}
 
 	private void jButtonReadyActionPerformed(ActionEvent evt) {
-		for(int i = 0; i < game.getNbrOfRows(); i++){
-			for(int j = 0; j < game.getNbrOfColoumns(); j++){
-				yourField[i][j].setEnabled(false);
+		if(game.allShipsPlaced()){
+			for(int i = 0; i < game.getNbrOfRows(); i++){
+				for(int j = 0; j < game.getNbrOfColoumns(); j++){
+					yourField[i][j].setEnabled(false);
+				}
 			}
+			jButtonReady.setEnabled(false);
+			game.ready();
+		} else{
+			// TODO JOptionPane....
 		}
-		jButtonReady.setEnabled(false);
-		game.ready();
 	}
 	
 	public void enableComponents(){
