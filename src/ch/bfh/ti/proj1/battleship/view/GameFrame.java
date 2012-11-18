@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.BorderFactory;
@@ -359,11 +360,12 @@ public class GameFrame extends JFrame {
 					x1.setText((char) (yCoord + 64) + "");
 					jPanelEnemyField.add(x1);
 				} else {
-					Field field1 = new Field(xCoord-1, yCoord-1);
+					final Field field1 = new Field(xCoord-1, yCoord-1);
 					yourField[yCoord-1][xCoord-1] = field1;
-					field1.addActionListener(new ActionListener() {
-						public void actionPerformed(ActionEvent ae) {
-							Field f = (Field) ae.getSource();
+					field1.addMouseListener(new MouseListener(){
+						@Override
+						public void mouseClicked(MouseEvent e) {
+							Field f = (Field) e.getSource();
 							int x = f.getXPos();
 							int y = f.getYPos();
 							int alignment = 0;
@@ -388,20 +390,51 @@ public class GameFrame extends JFrame {
 								game.removeShip(x, y);
 							}
 						}
-					});
+						@Override
+						public void mousePressed(MouseEvent e) {
+							// TODO Auto-generated method stub
+						}
+						@Override
+						public void mouseReleased(MouseEvent e) {
+							// TODO Auto-generated method stub
+						}
+						@Override
+						public void mouseEntered(MouseEvent e) {
+							field1.setBackground(Color.orange);
+						}
+						@Override
+						public void mouseExited(MouseEvent e) {
+//							field1.setBackground(Color.lightGray);
+						}});
 					jPanelYourField.add(field1);
 					
 					Field field2 = new Field(xCoord-1, yCoord-1);
 					field2.setEnabled(false);
 					enemyField[yCoord-1][xCoord-1] = field2;
-					field2.addActionListener(new ActionListener() {
-						public void actionPerformed(ActionEvent ae) {
-							Field f = (Field) ae.getSource();
+					field2.addMouseListener(new MouseListener(){
+						@Override
+						public void mouseClicked(MouseEvent e) {
+							Field f = (Field) e.getSource();
 							int x = f.getXPos();
 							int y = f.getYPos();
 							game.shootAt(x, y);
 						}
-					});
+						@Override
+						public void mousePressed(MouseEvent e) {
+							// TODO Auto-generated method stub
+						}
+						@Override
+						public void mouseReleased(MouseEvent e) {
+							// TODO Auto-generated method stub
+						}
+						@Override
+						public void mouseEntered(MouseEvent e) {
+							// TODO Auto-generated method stub	
+						}
+						@Override
+						public void mouseExited(MouseEvent e) {
+							// TODO Auto-generated method stub
+						}});
 					jPanelEnemyField.add(field2);
 				}
 			}
