@@ -400,7 +400,7 @@ public class GameFrame extends JFrame {
 						}
 						@Override
 						public void mouseEntered(MouseEvent e) {
-							field1.setBackground(Color.orange);
+//							field1.setBackground(Color.orange);
 						}
 						@Override
 						public void mouseExited(MouseEvent e) {

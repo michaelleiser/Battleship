@@ -14,6 +14,7 @@ public class Field extends JToggleButton {
 	int y;
 	
 	public Field(int x, int y) {
+		this.setBackground(Color.white);
 		this.x = x;
 		this.y = y;
 	}
@@ -27,7 +28,7 @@ public class Field extends JToggleButton {
 	}
 	
 	public void removeShip(){
-		this.setBackground(Color.lightGray);
+		this.setBackground(Color.white);
 		this.setSelected(false);
 		this.ship.removePosition(this);
 		this.ship.setUnplaced();
