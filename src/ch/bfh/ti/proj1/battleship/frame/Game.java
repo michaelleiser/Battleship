@@ -1,6 +1,7 @@
 package ch.bfh.ti.proj1.battleship.frame;
 
 import java.awt.Color;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -45,6 +46,11 @@ public class Game {
 	private String gameMode = "Alternatively";
 	
 	private boolean canStart = true;
+	
+	private List<Ship> battleships = new ArrayList<Ship>();
+	private List<Ship> submarines = new ArrayList<Ship>();
+	private List<Ship> destroyers = new ArrayList<Ship>();
+	private List<Ship> cruisers = new ArrayList<Ship>();
 	
 	public Game(){
 		showNetworkFrame();
@@ -196,6 +202,7 @@ public class Game {
 		if(checkConstraints(fields, s, x, y, k)){
 			switch (type) {
 			case BATTLESHIP:
+				this.battleships.add(s);
 				if(this.nbrOfBattleships > 0){
 					if(k == 0){
 						for(int i = 0; i < type.getSize(); i++){
@@ -207,10 +214,11 @@ public class Game {
 						}
 					}			
 					this.nbrOfBattleships--;
-					this.gameFrame.setNbrOfBattleship(nbrOfBattleships);
+					this.gameFrame.setNbrOfBattleship(this.nbrOfBattleships);
 				}
 				break;
 			case SUBMARINE:
+				this.submarines.add(s);
 				if(this.nbrOfSubmarines > 0){
 					if(k == 0){
 						for(int i = 0; i < type.getSize(); i++){
@@ -222,10 +230,11 @@ public class Game {
 						}
 					}
 					this.nbrOfSubmarines--;
-					this.gameFrame.setNbrOfSubmarine(nbrOfSubmarines);
+					this.gameFrame.setNbrOfSubmarine(this.nbrOfSubmarines);
 				}
 				break;
 			case DESTROYER:
+				this.destroyers.add(s);
 				if(this.nbrOfDestroyers > 0){
 					if(k == 0){
 						for(int i = 0; i < type.getSize(); i++){
@@ -237,10 +246,11 @@ public class Game {
 						}
 					}
 					this.nbrOfDestroyers--;
-					this.gameFrame.setNbrOfDestroyer(nbrOfDestroyers);
+					this.gameFrame.setNbrOfDestroyer(this.nbrOfDestroyers);
 				}
 				break;
 			case CRUISER:
+				this.cruisers.add(s);
 				if(this.nbrOfCruisers > 0){
 					if(k == 0){
 						for(int i = 0; i < type.getSize(); i++){
@@ -252,7 +262,7 @@ public class Game {
 						}
 					}
 					this.nbrOfCruisers--;
-					this.gameFrame.setNbrOfCruiser(nbrOfCruisers);
+					this.gameFrame.setNbrOfCruiser(this.nbrOfCruisers);
 				}
 				break;
 			default:
@@ -266,7 +276,7 @@ public class Game {
 		boolean placeable = true;
 		if(k == 0){
 			for(int i = 0; i < s.size(); i++){
-				if(((x+i) >= nbrOfColoumns) || (fields[y][x+i].getShip() != null)){
+				if(((x+i) >= this.nbrOfColoumns) || (fields[y][x+i].getShip() != null)){
 					placeable = false;
 				}
 			
@@ -300,7 +310,7 @@ public class Game {
 			}
 		} else{
 			for(int i = 0; i < s.size(); i++){
-				if(((y+i) >= nbrOfRows) || (fields[y+i][x].getShip() != null)){
+				if(((y+i) >= this.nbrOfRows) || (fields[y+i][x].getShip() != null)){
 					placeable = false;
 				}
 				
@@ -330,20 +340,24 @@ public class Game {
 		}
 		switch (ship.getShipType()) {
 		case BATTLESHIP:
+			this.battleships.remove(ship);
 			this.nbrOfBattleships++;
-			this.gameFrame.setNbrOfBattleship(nbrOfBattleships);
+			this.gameFrame.setNbrOfBattleship(this.nbrOfBattleships);
 			break;
 		case SUBMARINE:
+			this.submarines.remove(ship);
 			this.nbrOfSubmarines++;
-			this.gameFrame.setNbrOfSubmarine(nbrOfSubmarines);
+			this.gameFrame.setNbrOfSubmarine(this.nbrOfSubmarines);
 			break;
 		case DESTROYER:
+			this.destroyers.remove(ship);
 			this.nbrOfDestroyers++;
-			this.gameFrame.setNbrOfDestroyer(nbrOfDestroyers);
+			this.gameFrame.setNbrOfDestroyer(this.nbrOfDestroyers);
 			break;
 		case CRUISER:
+			this.cruisers.remove(ship);
 			this.nbrOfCruisers++;
-			this.gameFrame.setNbrOfCruiser(nbrOfCruisers);
+			this.gameFrame.setNbrOfCruiser(this.nbrOfCruisers);
 			break;
 		default:
 			break;
@@ -438,13 +452,35 @@ public class Game {
 	}
 
 	public boolean allShipsPlaced() {
-		// TODO Auto-generated method stub
-		return true;
+		if((nbrOfBattleships == 0) && (nbrOfSubmarines == 0) && (nbrOfDestroyers == 0) && (nbrOfCruisers == 0)){
+			return true;
+		} else{
+			return false;
+		}	
 	}
 	
 	public boolean allShipsSunk(){
-		// TODO
-		return false;
+		for(Ship s : battleships){
+			if(!s.isSunk()){
+				return false;
+			}
+		}
+		for(Ship s : submarines){
+			if(!s.isSunk()){
+				return false;
+			}
+		}
+		for(Ship s : destroyers){
+			if(!s.isSunk()){
+				return false;
+			}
+		}
+		for(Ship s : cruisers){
+			if(!s.isSunk()){
+				return false;
+			}
+		}
+		return true;
 	}
 
 }

@@ -17,6 +17,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
@@ -1020,7 +1021,7 @@ public class GameFrame extends JFrame {
 			jButtonReady.setEnabled(false);
 			game.ready();
 		} else{
-			// TODO JOptionPane....
+			JOptionPane.showMessageDialog(null, "Not all Ships are placed");
 		}
 	}
 	
