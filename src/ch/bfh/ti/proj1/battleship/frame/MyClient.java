@@ -19,6 +19,8 @@ public class MyClient implements Runnable{
 	private PrintStream out;
 	private Thread thread;
 	
+	private Game game;
+	
 	public MyClient(int port, String IP) {
 		this.port = port;
 		this.IP = IP;
@@ -125,8 +127,6 @@ public class MyClient implements Runnable{
 	public void setGame(Game game) {
 		this.game = game;
 	}
-	
-	private Game game;
 
 	public boolean isConnected() {
 		if(socket == null){

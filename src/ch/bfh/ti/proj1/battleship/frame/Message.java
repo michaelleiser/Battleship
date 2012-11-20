@@ -6,6 +6,10 @@ package ch.bfh.ti.proj1.battleship.frame;
  */
 public class Message {
 
+	
+	//TODO: Class needed???
+	
+	
 	private String message;
 	
 	public Message(String message) {

@@ -34,7 +34,7 @@ public class Game {
 	GameFrame gameFrame;
 	Player player;
 	
-	Context c;
+	Context context;
 	
 	// initialize standard values
 	private int nbrOfRows = 10;
@@ -54,8 +54,8 @@ public class Game {
 	
 	public Game(){
 		showNetworkFrame();
-		c = new Context();
-		c.handle(Context.EventType.Start);
+		context = new Context();
+		context.handle(Context.EventType.Start);
 	}
 	
 	public void hostGame(final int port) {
@@ -196,21 +196,21 @@ public class Game {
 		return this.player;
 	}
 	
-	public void placeShip(ShipType type, int x, int y, int k) {
+	public void placeShip(ShipType type, int x, int y, int horizontalOrVertical) {
 		Field[][] fields = gameFrame.getYourField();
-		Ship s = new Ship(type);
-		if(checkConstraints(fields, s, x, y, k)){
+		Ship ship = new Ship(type);
+		if(checkConstraints(fields, ship, x, y, horizontalOrVertical)){
 			switch (type) {
 			case BATTLESHIP:
-				this.battleships.add(s);
+				this.battleships.add(ship);
 				if(this.nbrOfBattleships > 0){
-					if(k == 0){
+					if(horizontalOrVertical == 0){
 						for(int i = 0; i < type.getSize(); i++){
-							fields[y][x+i].placeShip(s);
+							fields[y][x+i].placeShip(ship);
 						}
 					} else{
 						for(int i = 0; i < type.getSize(); i++){
-							fields[y+i][x].placeShip(s);
+							fields[y+i][x].placeShip(ship);
 						}
 					}			
 					this.nbrOfBattleships--;
@@ -218,15 +218,15 @@ public class Game {
 				}
 				break;
 			case SUBMARINE:
-				this.submarines.add(s);
+				this.submarines.add(ship);
 				if(this.nbrOfSubmarines > 0){
-					if(k == 0){
+					if(horizontalOrVertical == 0){
 						for(int i = 0; i < type.getSize(); i++){
-							fields[y][x+i].placeShip(s);
+							fields[y][x+i].placeShip(ship);
 						}
 					} else{
 						for(int i = 0; i < type.getSize(); i++){
-							fields[y+i][x].placeShip(s);
+							fields[y+i][x].placeShip(ship);
 						}
 					}
 					this.nbrOfSubmarines--;
@@ -234,15 +234,15 @@ public class Game {
 				}
 				break;
 			case DESTROYER:
-				this.destroyers.add(s);
+				this.destroyers.add(ship);
 				if(this.nbrOfDestroyers > 0){
-					if(k == 0){
+					if(horizontalOrVertical == 0){
 						for(int i = 0; i < type.getSize(); i++){
-							fields[y][x+i].placeShip(s);
+							fields[y][x+i].placeShip(ship);
 						}
 					} else{
 						for(int i = 0; i < type.getSize(); i++){
-							fields[y+i][x].placeShip(s);
+							fields[y+i][x].placeShip(ship);
 						}
 					}
 					this.nbrOfDestroyers--;
@@ -250,15 +250,15 @@ public class Game {
 				}
 				break;
 			case CRUISER:
-				this.cruisers.add(s);
+				this.cruisers.add(ship);
 				if(this.nbrOfCruisers > 0){
-					if(k == 0){
+					if(horizontalOrVertical == 0){
 						for(int i = 0; i < type.getSize(); i++){
-							fields[y][x+i].placeShip(s);
+							fields[y][x+i].placeShip(ship);
 						}
 					} else{
 						for(int i = 0; i < type.getSize(); i++){
-							fields[y+i][x].placeShip(s);
+							fields[y+i][x].placeShip(ship);
 						}
 					}
 					this.nbrOfCruisers--;
@@ -435,7 +435,10 @@ public class Game {
 	}
 
 	public boolean allShipsPlaced() {
-		if((nbrOfBattleships == 0) && (nbrOfSubmarines == 0) && (nbrOfDestroyers == 0) && (nbrOfCruisers == 0)){
+		if((nbrOfBattleships == 0) &&
+				(nbrOfSubmarines == 0) &&
+				(nbrOfDestroyers == 0) &&
+				(nbrOfCruisers == 0)){
 			return true;
 		} else{
 			return false;
