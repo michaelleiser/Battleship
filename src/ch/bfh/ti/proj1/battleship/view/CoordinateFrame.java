@@ -135,7 +135,7 @@ public class CoordinateFrame extends JFrame{
 		jRadioButtonShootAlternatively.setToolTipText("Tooltip");
 		jRadioButtonShootAlternatively.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
-				jRadioButtonShootAlternativelyActionPerformed(evt);
+				jRadioButtonShootAlternativelyActionPerformed();
 			}
 		});
 		jRadioButtonShootUntilWater = new JRadioButton();
@@ -143,7 +143,7 @@ public class CoordinateFrame extends JFrame{
 		jRadioButtonShootUntilWater.setToolTipText("Tooltip");
 		jRadioButtonShootUntilWater.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
-				jRadioButtonShootUntilWaterActionPerformed(evt);
+				jRadioButtonShootUntilWaterActionPerformed();
 			}
 		});
 		
@@ -160,14 +160,15 @@ public class CoordinateFrame extends JFrame{
 		jTextPaneYourMessage.setText("{Your message}");
 		jTextPaneYourMessage.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent evt) {
-				jTextPaneYourMessageMouseClicked(evt);
+				jTextPaneYourMessageMouseClicked();
 			}
 		});
+		
 		jButtonSend = new JButton();
 		jButtonSend.setText("Send");
 		jButtonSend.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
-				jButtonSendActionPerformed(evt);
+				jButtonSendActionPerformed();
 			}
 		});
 		
@@ -175,14 +176,14 @@ public class CoordinateFrame extends JFrame{
 		jButtonValidateAndCoordinate.setText("Validate & Coordinate");
 		jButtonValidateAndCoordinate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
-				jButtonValidateAndCoordinateActionPerformed(evt);
+				jButtonValidateAndCoordinateActionPerformed();
 			}
 		});
 		jButtonCancel = new JButton();
 		jButtonCancel.setText("Cancel");
 		jButtonCancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
-				jButtonCancelActionPerformed(evt);
+				jButtonCancelActionPerformed();
 			}
 		});
 		
@@ -630,30 +631,33 @@ public class CoordinateFrame extends JFrame{
 		pack();
 	}
 
-	private void jRadioButtonShootAlternativelyActionPerformed(ActionEvent evt) {
+	private void jRadioButtonShootAlternativelyActionPerformed() {
 		jRadioButtonShootUntilWater.setSelected(false);
 		jRadioButtonShootAlternatively.setSelected(true);
 		game.setGameMode("Alternatively");
 	}
 
-	private void jRadioButtonShootUntilWaterActionPerformed(ActionEvent evt) {
+	private void jRadioButtonShootUntilWaterActionPerformed() {
 		jRadioButtonShootAlternatively.setSelected(false);
 		jRadioButtonShootUntilWater.setSelected(true);
 		game.setGameMode("UntilWater");
 	}
 
-	private void jButtonCancelActionPerformed(ActionEvent evt) {
+	private void jButtonCancelActionPerformed() {
 		System.exit(0);
 	}
 
-	private void jButtonSendActionPerformed(ActionEvent evt) {
+	private void jButtonSendActionPerformed() {
 		String name = game.getPlayer().getName();
 		String text = jTextPaneYourMessage.getText();
-		game.myClient.sendMessage("Coordinate " + "Chat " + name + ": " + text);
-		jTextPaneChat.setText(jTextPaneChat.getText().concat(name + ": " + text + "\n"));
+		if(!text.equals("")){
+			game.myClient.sendMessage("Coordinate " + "Chat " + name + ": " + text);
+			jTextPaneChat.setText(jTextPaneChat.getText().concat(name + ": " + text + "\n"));
+			jTextPaneYourMessage.setText("");
+		}
 	}
 
-	private void jButtonValidateAndCoordinateActionPerformed(ActionEvent evt) {
+	private void jButtonValidateAndCoordinateActionPerformed() {
 		String errString = "";
 		try {
 			int nbrOfRows = Integer.parseInt(jTextFieldNbrOfRows.getText());
@@ -741,7 +745,7 @@ public class CoordinateFrame extends JFrame{
 	}
 	
 	
-	private void jTextPaneYourMessageMouseClicked(MouseEvent evt) {
+	private void jTextPaneYourMessageMouseClicked() {
 		jTextPaneYourMessage.setText(null);
 	}	
 

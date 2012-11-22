@@ -132,7 +132,7 @@ public class GameFrame extends JFrame {
 		jRadioButtonNbrOfBattleship.setSelected(true);
 		jRadioButtonNbrOfBattleship.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
-				jRadioButtonNbrOfBattleshipActionPerformed(evt);
+				jRadioButtonNbrOfBattleshipActionPerformed();
 			}
 		});
 		jLabelBattleship = new JLabel();
@@ -143,7 +143,7 @@ public class GameFrame extends JFrame {
 		jRadioButtonNbrOfSubmarine.setFont(new Font("Tahoma", 1, 11));
 		jRadioButtonNbrOfSubmarine.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
-				jRadioButtonNbrOfSubmarineActionPerformed(evt);
+				jRadioButtonNbrOfSubmarineActionPerformed();
 			}
 		});
 		jLabelSubmarine = new JLabel();
@@ -154,7 +154,7 @@ public class GameFrame extends JFrame {
 		jRadioButtonNbrOfDestroyer.setFont(new Font("Tahoma", 1, 11));
 		jRadioButtonNbrOfDestroyer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
-				jRadioButtonNbrOfDestroyerActionPerformed(evt);
+				jRadioButtonNbrOfDestroyerActionPerformed();
 			}
 		});
 		jLabelDestroyer = new JLabel();
@@ -165,7 +165,7 @@ public class GameFrame extends JFrame {
 		jRadioButtonNbrOfCruiser.setFont(new Font("Tahoma", 1, 11));
 		jRadioButtonNbrOfCruiser.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
-				jRadioButtonNbrOfCruiserActionPerformed(evt);
+				jRadioButtonNbrOfCruiserActionPerformed();
 			}
 		});
 		jLabelCruiser = new JLabel();
@@ -177,7 +177,7 @@ public class GameFrame extends JFrame {
 		jRadioButtonHorizontal.setText("horizontal");
 		jRadioButtonHorizontal.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
-				jRadioButtonHorizontalActionPerformed(evt);
+				jRadioButtonHorizontalActionPerformed();
 			}
 		});
 		jRadioButtonVertical = new JRadioButton();
@@ -186,7 +186,7 @@ public class GameFrame extends JFrame {
 		jRadioButtonVertical.setText("vertical");
 		jRadioButtonVertical.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
-				jRadioButtonVerticalActionPerformed(evt);
+				jRadioButtonVerticalActionPerformed();
 			}
 		});
 
@@ -277,14 +277,14 @@ public class GameFrame extends JFrame {
 		jTextPaneYourMessage.setText("{Your Message}");
 		jTextPaneYourMessage.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent evt) {
-				jTextPaneYourMessageMouseClicked(evt);
+				jTextPaneYourMessageMouseClicked();
 			}
 		});
 		jButtonSend = new JButton();
 		jButtonSend.setText("Send");
 		jButtonSend.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
-				jButtonSendActionPerformed(evt);
+				jButtonSendActionPerformed();
 			}
 		});
 		
@@ -292,14 +292,14 @@ public class GameFrame extends JFrame {
 		jButtonRestart.setText("Restart");
 		jButtonRestart.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
-				jButtonRestartActionPerformed(evt);
+				jButtonRestartActionPerformed();
 			}
 		});
 		jButtonReady = new JButton();
 		jButtonReady.setText("Ready");
 		jButtonReady.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
-				jButtonReadyActionPerformed(evt);
+				jButtonReadyActionPerformed();
 			}
 		});
 		
@@ -976,73 +976,74 @@ public class GameFrame extends JFrame {
 		pack();
 	}
 
-	private void jRadioButtonHorizontalActionPerformed(ActionEvent evt) {
+	private void jRadioButtonHorizontalActionPerformed() {
 		jRadioButtonVertical.setSelected(false);
 		jRadioButtonHorizontal.setSelected(true);
 	}
 
-	private void jRadioButtonVerticalActionPerformed(ActionEvent evt) {
+	private void jRadioButtonVerticalActionPerformed() {
 		jRadioButtonHorizontal.setSelected(false);
 		jRadioButtonVertical.setSelected(true);
 	}
 
-	private void jRadioButtonNbrOfSubmarineActionPerformed(ActionEvent evt) {
+	private void jRadioButtonNbrOfSubmarineActionPerformed() {
 		jRadioButtonNbrOfBattleship.setSelected(false);
 		jRadioButtonNbrOfDestroyer.setSelected(false);
 		jRadioButtonNbrOfCruiser.setSelected(false);
 		jRadioButtonNbrOfSubmarine.setSelected(true);
 	}
 
-	private void jRadioButtonNbrOfBattleshipActionPerformed(ActionEvent evt) {
+	private void jRadioButtonNbrOfBattleshipActionPerformed() {
 		jRadioButtonNbrOfSubmarine.setSelected(false);
 		jRadioButtonNbrOfDestroyer.setSelected(false);
 		jRadioButtonNbrOfCruiser.setSelected(false);
 		jRadioButtonNbrOfBattleship.setSelected(true);
 	}
 
-	private void jRadioButtonNbrOfDestroyerActionPerformed(ActionEvent evt) {
+	private void jRadioButtonNbrOfDestroyerActionPerformed() {
 		jRadioButtonNbrOfSubmarine.setSelected(false);
 		jRadioButtonNbrOfBattleship.setSelected(false);
 		jRadioButtonNbrOfCruiser.setSelected(false);
 		jRadioButtonNbrOfDestroyer.setSelected(true);
 	}
 
-	private void jRadioButtonNbrOfCruiserActionPerformed(ActionEvent evt) {
+	private void jRadioButtonNbrOfCruiserActionPerformed() {
 		jRadioButtonNbrOfSubmarine.setSelected(false);
 		jRadioButtonNbrOfBattleship.setSelected(false);
 		jRadioButtonNbrOfDestroyer.setSelected(false);
 		jRadioButtonNbrOfCruiser.setSelected(true);
 	}
 
-	private void jButtonSendActionPerformed(ActionEvent evt) {
+	private void jButtonSendActionPerformed() {
 		String name = game.getPlayer().getName();
 		String text = jTextPaneYourMessage.getText(); 
-		game.myClient.sendMessage("Game " + "Chat " + name + ": " + text);
-		jTextPaneChat.setText(jTextPaneChat.getText().concat(name + ": " + text + "\n"));
+		if(!text.equals("")){
+			game.myClient.sendMessage("Game " + "Chat " + name + ": " + text);
+			jTextPaneChat.setText(jTextPaneChat.getText().concat(name + ": " + text + "\n"));
+			jTextPaneYourMessage.setText("");
+		}
 	}
 
-	private void jTextPaneYourMessageMouseClicked(MouseEvent evt) {
+	private void jTextPaneYourMessageMouseClicked() {
 		jTextPaneYourMessage.setText(null);
 	}
 
-	private void jButtonRestartActionPerformed(ActionEvent evt) {
+	private void jButtonRestartActionPerformed() {
 		try {
-			for (UIManager.LookAndFeelInfo info : UIManager
-					.getInstalledLookAndFeels()) {
+			for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
 				if ("Nimbus".equals(info.getName())) {
 					UIManager.setLookAndFeel(info.getClassName());
 					break;
 				}
 			}
 		} catch (Exception ex) {
-			Logger.getLogger(CoordinateFrame.class.getName()).log(Level.SEVERE,
-					null, ex);
+			Logger.getLogger(CoordinateFrame.class.getName()).log(Level.SEVERE,null, ex);
 		}
 		game.showCoordinateFrame();
 		this.dispose();
 	}
 
-	private void jButtonReadyActionPerformed(ActionEvent evt) {
+	private void jButtonReadyActionPerformed() {
 		if(game.allShipsPlaced()){
 			for(int i = 0; i < game.getNbrOfRows(); i++){
 				for(int j = 0; j < game.getNbrOfColoumns(); j++){

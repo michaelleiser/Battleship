@@ -90,8 +90,7 @@ public class NetworkFrame extends JFrame {
 		jPanelHostOrJoinGame.setBorder(BorderFactory.createEtchedBorder());
 		jLabelHostOrJoinGame = new JLabel();
 		jLabelHostOrJoinGame.setFont(new Font("Tahoma", 1, 11));
-		jLabelHostOrJoinGame
-				.setText("Would you like to host a game or to join a hosted game?");
+		jLabelHostOrJoinGame.setText("Would you like to host a game or to join a hosted game?");
 
 		jPanelHostGame = new JPanel();
 		jPanelHostGame.setBorder(BorderFactory.createEtchedBorder());
@@ -103,7 +102,7 @@ public class NetworkFrame extends JFrame {
 		jRadioButtonHostGame.setToolTipText("Tooltip");
 		jRadioButtonHostGame.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
-				jRadioButtonHostGameActionPerformed(evt);
+				jRadioButtonHostGameActionPerformed();
 			}
 		});
 		jLabelFreePort = new JLabel();
@@ -120,7 +119,7 @@ public class NetworkFrame extends JFrame {
 		jRadioButtonJoinGame.setToolTipText("Tooltip");
 		jRadioButtonJoinGame.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
-				jRadioButtonJoinGameActionPerformed(evt);
+				jRadioButtonJoinGameActionPerformed();
 			}
 		});
 		jLabelSharedPort = new JLabel();
@@ -140,19 +139,18 @@ public class NetworkFrame extends JFrame {
 		jButtonConnect.setText("connect");
 		jButtonConnect.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
-				jButtonConnectActionPerformed(evt);
+				jButtonConnectActionPerformed();
 			}
 		});
 		jButtonCancel = new JButton();
 		jButtonCancel.setText("Cancel");
 		jButtonCancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
-				jButtonCancelActionPerformed(evt);
+				jButtonCancelActionPerformed();
 			}
 		});
 
-		GroupLayout jPanelEnterYourNameLayout = new GroupLayout(
-				jPanelEnterYourName);
+		GroupLayout jPanelEnterYourNameLayout = new GroupLayout(jPanelEnterYourName);
 		jPanelEnterYourName.setLayout(jPanelEnterYourNameLayout);
 		jPanelEnterYourNameLayout
 				.setHorizontalGroup(jPanelEnterYourNameLayout
@@ -367,8 +365,7 @@ public class NetworkFrame extends JFrame {
 												GroupLayout.DEFAULT_SIZE,
 												Short.MAX_VALUE)));
 
-		GroupLayout jPanelHostOrJoinGameLayout = new GroupLayout(
-				jPanelHostOrJoinGame);
+		GroupLayout jPanelHostOrJoinGameLayout = new GroupLayout(jPanelHostOrJoinGame);
 		jPanelHostOrJoinGame.setLayout(jPanelHostOrJoinGameLayout);
 		jPanelHostOrJoinGameLayout
 				.setHorizontalGroup(jPanelHostOrJoinGameLayout
@@ -508,7 +505,7 @@ public class NetworkFrame extends JFrame {
 		pack();
 	}
 
-	private void jRadioButtonHostGameActionPerformed(ActionEvent evt) {
+	private void jRadioButtonHostGameActionPerformed() {
 		jRadioButtonHostGame.setSelected(true);
 		jRadioButtonJoinGame.setSelected(false);
 
@@ -517,7 +514,7 @@ public class NetworkFrame extends JFrame {
 		jTextFieldSharedPort.setEnabled(false);
 	}
 
-	private void jRadioButtonJoinGameActionPerformed(ActionEvent evt) {
+	private void jRadioButtonJoinGameActionPerformed() {
 		jRadioButtonHostGame.setSelected(false);
 		jRadioButtonJoinGame.setSelected(true);
 
@@ -526,11 +523,11 @@ public class NetworkFrame extends JFrame {
 		jTextFieldSharedPort.setEnabled(true);
 	}
 
-	private void jButtonCancelActionPerformed(ActionEvent evt) {
+	private void jButtonCancelActionPerformed() {
 		System.exit(0);
 	}
 
-	private void jButtonConnectActionPerformed(ActionEvent evt) {
+	private void jButtonConnectActionPerformed() {
 		if (jRadioButtonHostGame.isSelected()) {
 			if (validatePort(jTextFieldFreePort.getText())) {
 				g.enterName(jTextFieldPlayerName.getText());
