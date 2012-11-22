@@ -33,6 +33,7 @@ public class MyClient implements Runnable{
 			in = new DataInputStream(socket.getInputStream());
 			out = new PrintStream(socket.getOutputStream());
 		} catch (IOException e) {
+			e.printStackTrace();
 		}
 		if (thread == null) {
 			thread = new Thread(this);
@@ -46,6 +47,7 @@ public class MyClient implements Runnable{
 		try {
 			socket.close();
 		} catch (IOException e) {
+			e.printStackTrace();
 		}
 		if ((thread != null) && thread.isAlive()) {
 			thread.stop();
@@ -116,6 +118,7 @@ public class MyClient implements Runnable{
 				}
 			}
 		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 	

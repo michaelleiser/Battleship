@@ -98,8 +98,8 @@ public class Game {
 					break;
 				}
 			}
-		} catch (Exception ex) {
-			Logger.getLogger(CoordinateFrame.class.getName()).log(Level.SEVERE, null, ex);
+		} catch (Exception e) {
+			Logger.getLogger(CoordinateFrame.class.getName()).log(Level.SEVERE, null, e);
 		}
 		coordinateFrame = new CoordinateFrame(this);
 		coordinateFrame.setVisible(true);
@@ -113,8 +113,8 @@ public class Game {
 					break;
 				}
 			}
-		} catch (Exception ex) {
-			Logger.getLogger(GameFrame.class.getName()).log(Level.SEVERE, null,	ex);
+		} catch (Exception e) {
+			Logger.getLogger(GameFrame.class.getName()).log(Level.SEVERE, null,	e);
 		}
 		gameFrame = new GameFrame(this);
 		gameFrame.setVisible(true);

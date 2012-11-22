@@ -1036,8 +1036,8 @@ public class GameFrame extends JFrame {
 					break;
 				}
 			}
-		} catch (Exception ex) {
-			Logger.getLogger(CoordinateFrame.class.getName()).log(Level.SEVERE,null, ex);
+		} catch (Exception e) {
+			Logger.getLogger(CoordinateFrame.class.getName()).log(Level.SEVERE,null, e);
 		}
 		game.showCoordinateFrame();
 		this.dispose();

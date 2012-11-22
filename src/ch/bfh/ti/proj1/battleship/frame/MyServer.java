@@ -23,6 +23,7 @@ public class MyServer implements Runnable {
 		try {
 			serverSocket = new ServerSocket(this.portNbr);
 		} catch (IOException e) {
+			e.printStackTrace();
 		}
 		connections = new Vector<MyConnection>();
 		connectionThread = new Thread(this);
@@ -37,17 +38,22 @@ public class MyServer implements Runnable {
 				connections.addElement(c);
 			}
 		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 
-	public void broadcast(String msg, Socket client) throws IOException {
-		if(connections.get(0).getClient() == client){
-			PrintWriter out = new PrintWriter(connections.get(1).getClient().getOutputStream(), true);
-			out.println(msg);
-		}
-		else{
-			PrintWriter out = new PrintWriter(connections.get(0).getClient().getOutputStream(), true);
-			out.println(msg);
+	public void broadcast(String msg, Socket client){
+		try {
+			if(connections.get(0).getClient() == client){
+				PrintWriter out = new PrintWriter(connections.get(1).getClient().getOutputStream(), true);
+				out.println(msg);
+			}
+			else{
+				PrintWriter out = new PrintWriter(connections.get(0).getClient().getOutputStream(), true);
+				out.println(msg);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 }

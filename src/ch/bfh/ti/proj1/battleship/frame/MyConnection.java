@@ -26,6 +26,7 @@ class MyConnection extends Thread {
 			try {
 				client.close();
 			} catch (IOException e2) {
+				e2.printStackTrace();
 			}
 		}
 		this.start();
@@ -41,6 +42,7 @@ class MyConnection extends Thread {
 					server.broadcast(line, client);
 			}
 		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 	
