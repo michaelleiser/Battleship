@@ -653,9 +653,7 @@ public class CoordinateFrame extends JFrame{
 	}
 
 	private void jButtonValidateAndCoordinateActionPerformed(ActionEvent evt) {
-
 		String errString = "";
-		
 		try {
 			int nbrOfRows = Integer.parseInt(jTextFieldNbrOfRows.getText());
 			int nbrOfColoumns = Integer.parseInt(jTextFieldNbrOfColoumns.getText());
@@ -670,34 +668,16 @@ public class CoordinateFrame extends JFrame{
 			else if(jRadioButtonShootUntilWater.isSelected()){
 				gameMode = "UntilWater";
 			}
-			
-			
-			
-//			System.out.println("1");
-
-			// validates the input when the strings in the text fields are valid integers (Integer.parseInt successful)
-			
+		
+			// validates the input when the strings in the text fields are valid integers (Integer.parseInt successful)	
 			errString = validateSettings(nbrOfRows, nbrOfColoumns, nbrOfBattleships,
 					nbrOfSubmarines, nbrOfDestroyers, nbrOfCruisers);
 			
 			if (errString.equals("")) {
-				
-				
-//				System.out.println("2");
-				
-				
-				
-				
 				game.myClient.sendMessage("Coordinate " + "Options " + nbrOfRows + " "
 						+ nbrOfColoumns + " " + nbrOfBattleships + " " + nbrOfSubmarines + " "
 						+ nbrOfDestroyers + " " + nbrOfCruisers + " " + gameMode);
 				game.myClient.sendMessage("Coordinate " + "Enable ");
-
-				
-//				System.out.println("3");
-				
-				
-				
 				if (	(game.getNbrOfRows() == nbrOfRows) && 
 						(game.getNbrOfColoumns() == nbrOfColoumns) &&
 						(game.getNbrOfBattleships() == nbrOfBattleships) &&
@@ -710,28 +690,15 @@ public class CoordinateFrame extends JFrame{
 					game.myClient.sendMessage("Coordinate " + "ShowGameFrame ");
 					game.myClient.sendMessage("Coordinate " + "Dispose ");
 				}
-				
-//				System.out.println("4");
-				
-				
 				game.setOptions(nbrOfRows, nbrOfColoumns, nbrOfBattleships, 
 						nbrOfSubmarines, nbrOfDestroyers, nbrOfCruisers, gameMode);
-				disableComponents();
-				
-//				System.out.println("5");
-				
+				disableComponents();		
 			} else {
-				
-//				System.out.println("6");
-				
 				JOptionPane.showMessageDialog(this, errString);
-				
 				//throw new InputMismatchException();
 			}
 
 		} catch(NumberFormatException e) {
-			
-//			System.out.println("7");
 			e.printStackTrace();
 			errString = errString.concat("Entered numbers are no valid positive integer values!\n");
 			JOptionPane.showMessageDialog(this, errString);
@@ -740,11 +707,7 @@ public class CoordinateFrame extends JFrame{
 
 	private final String validateSettings(int nbrOfRows, int nbrOfColoumns, int nbrOfBattleships, 
 			int nbrOfSubmarines, int nbrOfDestroyers, int nbrOfCruisers) {
-
-//		System.out.println("8");
-		
 		String errorString = "";
-		
 		// test if input is valid. Numbers between 1 and 20
 		if (	(nbrOfRows < 10) && (nbrOfRows > 20) &&
 				(nbrOfColoumns < 10) && (nbrOfColoumns > 20) &&
@@ -753,49 +716,26 @@ public class CoordinateFrame extends JFrame{
 				(nbrOfDestroyers < 1) && (nbrOfDestroyers > 20) &&
 				(nbrOfCruisers < 1) && (nbrOfCruisers > 20) 	)
 		{
-			
-//			System.out.println("9");
-			
 			errorString = errorString.concat("Values are not valid. Some values are too high or too low! \n");
 			//JOptionPane.showMessageDialog(this, "Values are not valid. Some values are too high or too low!");
 			//return false;
 		}
-
-		
-//		System.out.println("10");
-		
-		
 		int totalFields = nbrOfRows * nbrOfColoumns;	
 		int totalCoveredFieldsByShips = (ShipType.BATTLESHIP.getSize() * nbrOfBattleships)
 				+ (ShipType.SUBMARINE.getSize() * nbrOfSubmarines)
 				+ (ShipType.DESTROYER.getSize() * nbrOfDestroyers)
 				+ (ShipType.CRUISER.getSize() * nbrOfCruisers);
-
-		
-//		System.out.println("11");
-		
-		
-		
 		// ships must cover 10%-30% of the fields
 		if ((0.3 * totalFields) < totalCoveredFieldsByShips){
-			
 			errorString = errorString.concat("Ships cover too many fields! \n");
 			//JOptionPane.showMessageDialog(this, "Ships cover too many fields!");
 			//return false;
 		}
-
-//		System.out.println("12");
-		
-		
 		if ((0.1 * totalFields) > totalCoveredFieldsByShips){
 			errorString = errorString.concat("Ships do not cover enough fields! \n");
 			//JOptionPane.showMessageDialog(this, "Ships do not cover enough fields!");
 			//return false;
 		}
-		
-		
-//		System.out.println("13");
-
 		return errorString;
 	}
 	

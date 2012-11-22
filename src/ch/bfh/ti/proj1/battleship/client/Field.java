@@ -60,4 +60,8 @@ public class Field extends JToggleButton {
 	public String toString(){
 		return x + ":" + y;
 	}
+
+	public void hit() {
+		this.hit = true;
+	}
 }

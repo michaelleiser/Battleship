@@ -392,11 +392,9 @@ public class GameFrame extends JFrame {
 						}
 						@Override
 						public void mousePressed(MouseEvent e) {
-							// TODO Auto-generated method stub
 						}
 						@Override
 						public void mouseReleased(MouseEvent e) {
-							// TODO Auto-generated method stub
 						}
 						@Override
 						public void mouseEntered(MouseEvent e) {
@@ -415,25 +413,24 @@ public class GameFrame extends JFrame {
 						@Override
 						public void mouseClicked(MouseEvent e) {
 							Field f = (Field) e.getSource();
-							int x = f.getXPos();
-							int y = f.getYPos();
-							game.shootAt(x, y);
+							if(!f.isHit()){
+								int x = f.getXPos();
+								int y = f.getYPos();
+								game.shootAt(x, y);
+							}
+							f.hit();
 						}
 						@Override
 						public void mousePressed(MouseEvent e) {
-							// TODO Auto-generated method stub
 						}
 						@Override
 						public void mouseReleased(MouseEvent e) {
-							// TODO Auto-generated method stub
 						}
 						@Override
 						public void mouseEntered(MouseEvent e) {
-							// TODO Auto-generated method stub	
 						}
 						@Override
 						public void mouseExited(MouseEvent e) {
-							// TODO Auto-generated method stub
 						}});
 					jPanelEnemyField.add(field2);
 				}
