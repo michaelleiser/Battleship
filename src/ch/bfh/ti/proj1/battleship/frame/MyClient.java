@@ -34,7 +34,6 @@ public class MyClient implements Runnable{
 			out = new PrintStream(socket.getOutputStream());
 		} catch (IOException e) {
 		}
-
 		if (thread == null) {
 			thread = new Thread(this);
 			thread.setPriority(Thread.MIN_PRIORITY);
@@ -63,11 +62,11 @@ public class MyClient implements Runnable{
 				if (line != null){
 					if(line.contains("Coordinate Chat")){
 						String s = line.substring(16, line.length());
-						game.coordinateFrame.jTextPaneChat.setText(game.coordinateFrame.jTextPaneChat.getText().concat(s + "\n"));
+						game.coordinateFrame.setjTextPaneChat(game.coordinateFrame.getjTextPaneChat().concat(s + "\n"));
 					}
 					if(line.contains("Game Chat")){
 						String s = line.substring(10, line.length());
-						game.gameFrame.jTextPaneChat.setText(game.gameFrame.jTextPaneChat.getText().concat(s + "\n"));
+						game.gameFrame.setjTextPaneChat(game.gameFrame.getjTextPaneChat().concat(s + "\n"));
 					}
 					if(line.contains("Game Show")){
 						game.networkFrame.dispose();

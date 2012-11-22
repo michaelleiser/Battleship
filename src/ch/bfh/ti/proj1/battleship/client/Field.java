@@ -10,8 +10,8 @@ public class Field extends JToggleButton {
 	
 	private Ship ship;
 	private boolean hit = false;
-	int x;
-	int y;
+	private int x;
+	private int y;
 	
 	public Field(int x, int y) {
 		this.setBackground(Color.white);

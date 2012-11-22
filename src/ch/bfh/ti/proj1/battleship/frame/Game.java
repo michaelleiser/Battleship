@@ -32,9 +32,9 @@ public class Game {
 	NetworkFrame networkFrame;
 	CoordinateFrame coordinateFrame;
 	GameFrame gameFrame;
-	Player player;
+	private Player player;
 	
-	Context context;
+	private Context context;
 	
 	// initialize standard values
 	private int nbrOfRows = 10;
@@ -369,7 +369,7 @@ public class Game {
 				gameFrame.setjLabelEnemyShots();
 				this.myClient.sendMessage("Game " + "Hit " + x + " " + y);
 				try {
-					Sound.playingSound(Sounds.DEATH);
+//					Sound.playingSound(Sounds.DEATH);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}	

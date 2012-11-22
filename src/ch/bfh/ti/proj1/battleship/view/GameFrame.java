@@ -86,7 +86,8 @@ public class GameFrame extends JFrame {
 	private JPanel jPanelChat;
 	private JLabel jLabelChat;
 	private JScrollPane jScrollPaneChat;
-	public JTextPane jTextPaneChat;
+	private JTextPane jTextPaneChat;
+
 	private JScrollPane jScrollPaneYourMessage;
 	private JTextPane jTextPaneYourMessage;
 	private JButton jButtonSend;
@@ -1133,5 +1134,13 @@ public class GameFrame extends JFrame {
 		this.jLabelEnemyShots.setText((1+Integer.parseInt(jLabelEnemyShots.getText())) + "");
 	}
 	
+	
+	public String getjTextPaneChat() {
+		return jTextPaneChat.getText();
+	}
+
+	public void setjTextPaneChat(String s) {
+		this.jTextPaneChat.setText(s);
+	}
 	
 }

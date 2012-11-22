@@ -61,9 +61,10 @@ public class CoordinateFrame extends JFrame{
 	private JPanel jPanelChat;
 	private JLabel jLabelChat;
 	private JScrollPane jScrollPaneChat;
-	public JTextPane jTextPaneChat;
+	private JTextPane jTextPaneChat;
 	private JScrollPane jScrollPaneYourMessage;
-	JTextPane jTextPaneYourMessage;
+	private JTextPane jTextPaneYourMessage;
+
 	private JButton jButtonSend;
 
 	private JButton jButtonValidateAndCoordinate;
@@ -785,4 +786,13 @@ public class CoordinateFrame extends JFrame{
 			jRadioButtonShootUntilWater.setSelected(true);
 		}
 	}	
+	
+	
+	public String getjTextPaneChat() {
+		return jTextPaneChat.getText();
+	}
+
+	public void setjTextPaneChat(String s) {
+		this.jTextPaneChat.setText(s);
+	}
 }
