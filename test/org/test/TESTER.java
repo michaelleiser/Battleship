@@ -80,9 +80,9 @@ public class TESTER {
 		g2.showNetworkFrame();
 		g2.enterName("he");
 		
-		assertFalse(g2.myClient.isConnected());
+		assertFalse(g2.getClient().isConnected());
 		g2.joinGame(4444, "localhost");
-		assertTrue(g2.myClient.isConnected());
+		assertTrue(g2.getClient().isConnected());
 		
 		
 	}

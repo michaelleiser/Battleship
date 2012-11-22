@@ -1018,7 +1018,7 @@ public class GameFrame extends JFrame {
 		String name = game.getPlayer().getName();
 		String text = jTextPaneYourMessage.getText(); 
 		if(!text.equals("")){
-			game.myClient.sendMessage("Game " + "Chat " + name + ": " + text);
+			game.getClient().sendMessage("Game " + "Chat " + name + ": " + text);
 			jTextPaneChat.setText(jTextPaneChat.getText().concat(name + ": " + text + "\n"));
 			jTextPaneYourMessage.setText("");
 		}

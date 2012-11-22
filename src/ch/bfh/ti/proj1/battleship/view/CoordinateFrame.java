@@ -651,7 +651,7 @@ public class CoordinateFrame extends JFrame{
 		String name = game.getPlayer().getName();
 		String text = jTextPaneYourMessage.getText();
 		if(!text.equals("")){
-			game.myClient.sendMessage("Coordinate " + "Chat " + name + ": " + text);
+			game.getClient().sendMessage("Coordinate " + "Chat " + name + ": " + text);
 			jTextPaneChat.setText(jTextPaneChat.getText().concat(name + ": " + text + "\n"));
 			jTextPaneYourMessage.setText("");
 		}
@@ -679,10 +679,10 @@ public class CoordinateFrame extends JFrame{
 					nbrOfSubmarines, nbrOfDestroyers, nbrOfCruisers);
 			
 			if (errString.equals("")) {
-				game.myClient.sendMessage("Coordinate " + "Options " + nbrOfRows + " "
+				game.getClient().sendMessage("Coordinate " + "Options " + nbrOfRows + " "
 						+ nbrOfColoumns + " " + nbrOfBattleships + " " + nbrOfSubmarines + " "
 						+ nbrOfDestroyers + " " + nbrOfCruisers + " " + gameMode);
-				game.myClient.sendMessage("Coordinate " + "Enable ");
+				game.getClient().sendMessage("Coordinate " + "Enable ");
 				if (	(game.getNbrOfRows() == nbrOfRows) && 
 						(game.getNbrOfColoumns() == nbrOfColoumns) &&
 						(game.getNbrOfBattleships() == nbrOfBattleships) &&
@@ -692,8 +692,8 @@ public class CoordinateFrame extends JFrame{
 						(game.getGameMode().equals(gameMode))){
 					game.showGameFrame();
 					this.dispose();
-					game.myClient.sendMessage("Coordinate " + "ShowGameFrame ");
-					game.myClient.sendMessage("Coordinate " + "Dispose ");
+					game.getClient().sendMessage("Coordinate " + "ShowGameFrame ");
+					game.getClient().sendMessage("Coordinate " + "Dispose ");
 				}
 				game.setOptions(nbrOfRows, nbrOfColoumns, nbrOfBattleships, 
 						nbrOfSubmarines, nbrOfDestroyers, nbrOfCruisers, gameMode);

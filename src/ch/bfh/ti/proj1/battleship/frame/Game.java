@@ -28,10 +28,10 @@ import ch.bfh.ti.proj1.battleship.view.NetworkFrame;
  */
 public class Game {
 	
-	public MyClient myClient;
-	NetworkFrame networkFrame;
-	CoordinateFrame coordinateFrame;
-	GameFrame gameFrame;
+	private MyClient myClient;
+	private NetworkFrame networkFrame;
+	private CoordinateFrame coordinateFrame;
+	private GameFrame gameFrame;
 	private Player player;
 	
 	private Context context;
@@ -467,6 +467,22 @@ public class Game {
 			}
 		}
 		return true;
+	}
+
+	public MyClient getClient() {
+		return myClient;
+	}
+
+	public NetworkFrame getNetworkFrame() {
+		return networkFrame;
+	}
+	
+	public CoordinateFrame getCoordinateFrame(){
+		return coordinateFrame;
+	}
+	
+	public GameFrame getGameFrame(){
+		return gameFrame;
 	}
 
 }
