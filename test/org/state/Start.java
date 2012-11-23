@@ -9,7 +9,7 @@ public class Start extends State{
 	
 	@Override
 	protected void handleStart(){
-		super.c.setState(new Player1Turn(super.c));
+		super.context.setState(new Player1Turn(super.context));
 	}
 
 }

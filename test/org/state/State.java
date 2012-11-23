@@ -2,10 +2,10 @@ package org.state;
 
 public abstract class State {
 	
-	protected Context c;
+	protected Context context;
 	
-	protected State(Context c){
-		this.c = c;
+	protected State(Context context){
+		this.context = context;
 	}
 	
 	final void entry(){
@@ -78,7 +78,4 @@ public abstract class State {
 		// TODO Auto-generated method stub
 		
 	}
-	
-	
-
 }

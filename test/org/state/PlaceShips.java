@@ -9,7 +9,7 @@ public class PlaceShips extends State{
 
 	@Override
 	protected void handleReady(){
-		super.c.setState(new Start(super.c));
+		super.context.setState(new Start(super.context));
 	}
 	
 }

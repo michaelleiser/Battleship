@@ -10,6 +10,6 @@ public class GameOver extends State{
 	
 	@Override
 	protected void handleRestart(){
-		super.c.setState(new Idle(super.c));
+		super.context.setState(new Idle(super.context));
 	}
 }

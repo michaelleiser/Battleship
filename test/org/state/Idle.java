@@ -8,7 +8,7 @@ public class Idle extends State {
 	
 	@Override
 	protected void handleSelectGameType(){
-		super.c.setState(new PlaceShips(super.c));
+		super.context.setState(new PlaceShips(super.context));
 	}
 
 }

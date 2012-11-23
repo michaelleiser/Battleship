@@ -10,22 +10,22 @@ public class Player2Turn extends State{
 
 	@Override
 	protected void handleHit(){
-		super.c.setState(new Player2Turn(super.c));
+		super.context.setState(new Player2Turn(super.context));
 	}
 	
 	@Override
 	protected void handleSunk(){
-		super.c.setState(new Player2Turn(super.c));
+		super.context.setState(new Player2Turn(super.context));
 	}
 	
 	@Override
 	protected void handleWater(){
-		super.c.setState(new Player1Turn(super.c));
+		super.context.setState(new Player1Turn(super.context));
 	}
 	
 	@Override
 	protected void handleWon(){
-		super.c.setState(new GameOver(super.c));
+		super.context.setState(new GameOver(super.context));
 	}
 	
 }
