@@ -248,21 +248,7 @@ public class GameFrame extends JFrame {
 		jTextPaneHistory.setEditable(false);
 		jTextPaneHistory.setText(	"************************************\n" +
 									"********* BATTLESHIP ***********\n" +
-									"************************************\n" +
-									"\n" +
-									"\n" +
-									"* Player 1 Turn *\n" +
-									"\n" +
-									"\n" +
-									"\n" +
-									"Player 1 Shoot at B3 and hits a battleship\n" +
-									"\n" +
-									"\n" +
-									"Player 2 Shoot at B1 and hits the water\n" +
-									"\n" +
-									"\n" +
-									"\n" +
-									"* Player 2 Turn *");
+									"************************************\n");
 		
 		jPanelChat = new JPanel();
 		jPanelChat.setBorder(BorderFactory.createEtchedBorder());
@@ -1019,7 +1005,7 @@ public class GameFrame extends JFrame {
 		String text = jTextPaneYourMessage.getText(); 
 		if(!text.equals("")){
 			game.getClient().sendMessage("Game " + "Chat " + name + ": " + text);
-			jTextPaneChat.setText(jTextPaneChat.getText().concat(name + ": " + text + "\n"));
+			concatjTextPaneChat(name + ": " + text + "\n");
 			jTextPaneYourMessage.setText("");
 		}
 	}
@@ -1135,13 +1121,13 @@ public class GameFrame extends JFrame {
 		this.jLabelEnemyShots.setText((1+Integer.parseInt(jLabelEnemyShots.getText())) + "");
 	}
 	
-	
-	public String getjTextPaneChat() {
-		return jTextPaneChat.getText();
-	}
-
-	public void setjTextPaneChat(String s) {
-		this.jTextPaneChat.setText(s);
+	public void concatjTextPaneChat(String text) {
+		String s = jTextPaneChat.getText();
+		jTextPaneChat.setText(s + text);
 	}
 	
+	public void concatjTextPaneHistory(String text){
+		String s = jTextPaneHistory.getText();
+		jTextPaneHistory.setText(s + text);
+	}
 }

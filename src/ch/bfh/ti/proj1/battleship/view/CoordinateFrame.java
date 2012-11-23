@@ -652,7 +652,7 @@ public class CoordinateFrame extends JFrame{
 		String text = jTextPaneYourMessage.getText();
 		if(!text.equals("")){
 			game.getClient().sendMessage("Coordinate " + "Chat " + name + ": " + text);
-			jTextPaneChat.setText(jTextPaneChat.getText().concat(name + ": " + text + "\n"));
+			concatjTextPaneChat(name + ": " + text + "\n");
 			jTextPaneYourMessage.setText("");
 		}
 	}
@@ -741,7 +741,7 @@ public class CoordinateFrame extends JFrame{
 		} else if ((0.3 * totalFields) < totalCoveredFieldsByShips) {
 			JOptionPane.showMessageDialog(this, "Ships cover TOO MANY fields");
 			return false;
-		} else if ((0.3 * totalFields) > totalCoveredFieldsByShips) {
+		} else if ((0.1 * totalFields) > totalCoveredFieldsByShips) {
 			JOptionPane.showMessageDialog(this, "Ships do NOT cover ENOUGH fields");
 			return false;
 		} else {
@@ -833,13 +833,9 @@ public class CoordinateFrame extends JFrame{
 			jRadioButtonShootUntilWater.setSelected(true);
 		}
 	}	
-	
-	
-	public String getjTextPaneChat() {
-		return jTextPaneChat.getText();
-	}
 
-	public void setjTextPaneChat(String s) {
-		this.jTextPaneChat.setText(s);
+	public void concatjTextPaneChat(String text) {
+		String s = jTextPaneChat.getText();
+		jTextPaneChat.setText(s + text);
 	}
 }

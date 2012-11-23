@@ -360,7 +360,7 @@ public class Game {
 				this.myClient.sendMessage("Game " + "Sunk " + x + " " + y);
 				if(allShipsSunk()){
 					this.myClient.sendMessage("Game " + "Won ");
-					JOptionPane.showMessageDialog(null, "You lost");
+					lost();
 				}
 			} else{
 				gameFrame.setjLabelEnemyHits();
@@ -400,6 +400,9 @@ public class Game {
 		f[Integer.parseInt(y)][Integer.parseInt(x)].setBackground(Color.red);
 		gameFrame.setjLabelYouHits();
 		gameFrame.setjLabelYouShots();
+		
+		myClient.sendMessage("Game " + "History " + getPlayer().getName() + " hits : " + x + " " + y + "\n");
+		gameFrame.concatjTextPaneHistory(getPlayer().getName() + " hits : " + x + " " + y + "\n");
 	}
 
 	public void water(String x, String y) {
@@ -407,6 +410,9 @@ public class Game {
 		f[Integer.parseInt(y)][Integer.parseInt(x)].setBackground(Color.blue);
 		gameFrame.setjLabelYouWater();
 		gameFrame.setjLabelYouShots();
+		
+		myClient.sendMessage("Game " + "History " + getPlayer().getName() + " water : " + x + " " + y + "\n");
+		gameFrame.concatjTextPaneHistory(getPlayer().getName() + " water : " + x + " " + y + "\n");
 	}
 
 	public void sunk(String x, String y) {
@@ -415,16 +421,26 @@ public class Game {
 		gameFrame.setjLabelYouHits();
 		gameFrame.setjLabelYouSunk();
 		gameFrame.setjLabelYouShots();
+		
+		myClient.sendMessage("Game " + "History " + getPlayer().getName() + " sunk : " + x + " " + y + "\n");
+		gameFrame.concatjTextPaneHistory(getPlayer().getName() + " sunk : " + x + " " + y + "\n");
 	}
 
 	public void won() {
 		JOptionPane.showMessageDialog(null, "You Won");
 	}
 	
+	public void lost(){
+		JOptionPane.showMessageDialog(null, "You lost");
+	}
+	
 	public void ready() {
 		if(canStart){
 			this.gameFrame.enableComponents();
 			this.myClient.sendMessage("Game " + "Start ");
+			
+			this.gameFrame.concatjTextPaneHistory(getPlayer().getName() + " turn");
+			this.myClient.sendMessage("Game " + "History " + getPlayer().getName() + " turn");
 		}
 	}
 	
