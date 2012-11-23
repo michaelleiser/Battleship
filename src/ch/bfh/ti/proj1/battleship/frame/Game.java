@@ -16,8 +16,6 @@ import ch.bfh.ti.proj1.battleship.client.Player;
 import ch.bfh.ti.proj1.battleship.client.Ship;
 import ch.bfh.ti.proj1.battleship.client.ShipType;
 import ch.bfh.ti.proj1.battleship.exception.BattleshipException;
-import ch.bfh.ti.proj1.battleship.sound.Sound;
-import ch.bfh.ti.proj1.battleship.sound.Sound.Sounds;
 import ch.bfh.ti.proj1.battleship.view.CoordinateFrame;
 import ch.bfh.ti.proj1.battleship.view.GameFrame;
 import ch.bfh.ti.proj1.battleship.view.NetworkFrame;
