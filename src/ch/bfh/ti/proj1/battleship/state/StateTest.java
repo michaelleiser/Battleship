@@ -1,4 +1,4 @@
-package org.state;
+package ch.bfh.ti.proj1.battleship.state;
 
 import org.junit.Test;
 import static org.junit.Assert.*;

@@ -9,13 +9,13 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
-import org.state.Context;
 
 import ch.bfh.ti.proj1.battleship.client.Field;
 import ch.bfh.ti.proj1.battleship.client.Player;
 import ch.bfh.ti.proj1.battleship.client.Ship;
 import ch.bfh.ti.proj1.battleship.client.ShipType;
 import ch.bfh.ti.proj1.battleship.exception.BattleshipException;
+import ch.bfh.ti.proj1.battleship.state.Context;
 import ch.bfh.ti.proj1.battleship.view.CoordinateFrame;
 import ch.bfh.ti.proj1.battleship.view.GameFrame;
 import ch.bfh.ti.proj1.battleship.view.NetworkFrame;

@@ -1,4 +1,4 @@
-package org.state;
+package ch.bfh.ti.proj1.battleship.state;
 
 public abstract class State {
 	

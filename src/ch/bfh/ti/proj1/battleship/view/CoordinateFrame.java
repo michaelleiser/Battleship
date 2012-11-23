@@ -658,7 +658,6 @@ public class CoordinateFrame extends JFrame{
 	}
 
 	private void jButtonValidateAndCoordinateActionPerformed() {
-		String errString = "";
 		try {
 			int nbrOfRows = Integer.parseInt(jTextFieldNbrOfRows.getText());
 			int nbrOfColoumns = Integer.parseInt(jTextFieldNbrOfColoumns.getText());
@@ -674,11 +673,9 @@ public class CoordinateFrame extends JFrame{
 				gameMode = "UntilWater";
 			}
 		
-			// validates the input when the strings in the text fields are valid integers (Integer.parseInt successful)	
-			errString = validateSettings(nbrOfRows, nbrOfColoumns, nbrOfBattleships,
-					nbrOfSubmarines, nbrOfDestroyers, nbrOfCruisers);
 			
-			if (errString.equals("")) {
+			if (validateSettings(nbrOfRows, nbrOfColoumns, nbrOfBattleships, 
+					nbrOfSubmarines, nbrOfDestroyers, nbrOfCruisers)) {
 				game.getClient().sendMessage("Coordinate " + "Options " + nbrOfRows + " "
 						+ nbrOfColoumns + " " + nbrOfBattleships + " " + nbrOfSubmarines + " "
 						+ nbrOfDestroyers + " " + nbrOfCruisers + " " + gameMode);
@@ -699,49 +696,95 @@ public class CoordinateFrame extends JFrame{
 						nbrOfSubmarines, nbrOfDestroyers, nbrOfCruisers, gameMode);
 				disableComponents();		
 			} else {
-				JOptionPane.showMessageDialog(this, errString);
-				//throw new InputMismatchException();
+				// do nothing
+				return;
 			}
 
 		} catch(NumberFormatException e) {
-			e.printStackTrace();
-			errString = errString.concat("Entered numbers are no valid positive integer values!\n");
-			JOptionPane.showMessageDialog(this, errString);
+			JOptionPane.showMessageDialog(this, "Some of the entered credentials are no valid numbers");
+			// do nothing
+			return;
 		}
 	}
 
-	private final String validateSettings(int nbrOfRows, int nbrOfColoumns, int nbrOfBattleships, 
+	private final boolean validateSettings(int nbrOfRows, int nbrOfColoumns, int nbrOfBattleships, 
 			int nbrOfSubmarines, int nbrOfDestroyers, int nbrOfCruisers) {
-		String errorString = "";
-		// test if input is valid. Numbers between 1 and 20
-		if (	(nbrOfRows < 10) && (nbrOfRows > 20) &&
-				(nbrOfColoumns < 10) && (nbrOfColoumns > 20) &&
-				(nbrOfBattleships < 1) && (nbrOfBattleships > 20) &&
-				(nbrOfSubmarines < 1) && (nbrOfSubmarines > 20) &&
-				(nbrOfDestroyers < 1) && (nbrOfDestroyers > 20) &&
-				(nbrOfCruisers < 1) && (nbrOfCruisers > 20) 	)
-		{
-			errorString = errorString.concat("Values are not valid. Some values are too high or too low! \n");
-			//JOptionPane.showMessageDialog(this, "Values are not valid. Some values are too high or too low!");
-			//return false;
-		}
+		
+		// calculate the total covered fields by the ships
 		int totalFields = nbrOfRows * nbrOfColoumns;	
 		int totalCoveredFieldsByShips = (ShipType.BATTLESHIP.getSize() * nbrOfBattleships)
 				+ (ShipType.SUBMARINE.getSize() * nbrOfSubmarines)
 				+ (ShipType.DESTROYER.getSize() * nbrOfDestroyers)
 				+ (ShipType.CRUISER.getSize() * nbrOfCruisers);
+		
+		
+		// test if the entered credentials fit the system's constraints
+		if((nbrOfRows < 10) || (nbrOfRows > 20)) {
+			JOptionPane.showMessageDialog(this, "Number of rows too high or too low");
+			return false;
+		} else if((nbrOfColoumns < 10) || (nbrOfColoumns > 20)) {
+			JOptionPane.showMessageDialog(this, "Number of columns too high or too low");
+			return false;
+		} else if ((nbrOfBattleships < 1) || (nbrOfBattleships > 20)) {
+			JOptionPane.showMessageDialog(this, "Number of battleships too high or too low");
+			return false;
+		} else if ((nbrOfSubmarines < 1) || (nbrOfSubmarines > 20)) {
+			JOptionPane.showMessageDialog(this, "Number of submarines too high or too low");
+			return false;
+		} else if ((nbrOfDestroyers < 1) || (nbrOfDestroyers > 20)) {
+			JOptionPane.showMessageDialog(this, "Number of destroyers too high or too low");
+			return false;
+		} else if ((nbrOfCruisers < 1) || (nbrOfCruisers > 20)) {
+			JOptionPane.showMessageDialog(this, "Number of cruisers too high or too low");
+			return false;
 		// ships must cover 10%-30% of the fields
-		if ((0.3 * totalFields) < totalCoveredFieldsByShips){
-			errorString = errorString.concat("Ships cover too many fields! \n");
-			//JOptionPane.showMessageDialog(this, "Ships cover too many fields!");
-			//return false;
+		} else if ((0.3 * totalFields) < totalCoveredFieldsByShips) {
+			JOptionPane.showMessageDialog(this, "Ships cover TOO MANY fields");
+			return false;
+		} else if ((0.3 * totalFields) > totalCoveredFieldsByShips) {
+			JOptionPane.showMessageDialog(this, "Ships do NOT cover ENOUGH fields");
+			return false;
+		} else {
+			return true;
 		}
-		if ((0.1 * totalFields) > totalCoveredFieldsByShips){
-			errorString = errorString.concat("Ships do not cover enough fields! \n");
-			//JOptionPane.showMessageDialog(this, "Ships do not cover enough fields!");
-			//return false;
-		}
-		return errorString;
+		
+		
+		
+		
+		
+		
+		
+		
+//		// test if input is valid. Numbers between 1 and 20
+//		if (	(nbrOfRows < 10) && (nbrOfRows > 20) &&
+//				(nbrOfColoumns < 10) && (nbrOfColoumns > 20) &&
+//				(nbrOfBattleships < 1) && (nbrOfBattleships > 20) &&
+//				(nbrOfSubmarines < 1) && (nbrOfSubmarines > 20) &&
+//				(nbrOfDestroyers < 1) && (nbrOfDestroyers > 20) &&
+//				(nbrOfCruisers < 1) && (nbrOfCruisers > 20) 	)
+//		{
+//			errorString = errorString.concat("Values are not valid. Some values are too high or too low! \n");
+//			//JOptionPane.showMessageDialog(this, "Values are not valid. Some values are too high or too low!");
+//			//return false;
+//		}
+//		
+//		int totalFields = nbrOfRows * nbrOfColoumns;	
+//		int totalCoveredFieldsByShips = (ShipType.BATTLESHIP.getSize() * nbrOfBattleships)
+//				+ (ShipType.SUBMARINE.getSize() * nbrOfSubmarines)
+//				+ (ShipType.DESTROYER.getSize() * nbrOfDestroyers)
+//				+ (ShipType.CRUISER.getSize() * nbrOfCruisers);
+//		// ships must cover 10%-30% of the fields
+//		if ((0.3 * totalFields) < totalCoveredFieldsByShips){
+//			errorString = errorString.concat("Ships cover too many fields! \n");
+//			//JOptionPane.showMessageDialog(this, "Ships cover too many fields!");
+//			//return false;
+//		}
+//		if ((0.1 * totalFields) > totalCoveredFieldsByShips){
+//			errorString = errorString.concat("Ships do not cover enough fields! \n");
+//			//JOptionPane.showMessageDialog(this, "Ships do not cover enough fields!");
+//			//return false;
+//		}
+//		return errorString;
 	}
 	
 	
