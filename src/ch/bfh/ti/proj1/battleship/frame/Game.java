@@ -63,7 +63,7 @@ public class Game {
 		myClient = new MyClient(port, IP);
 		myClient.setGame(this);
 		if(myClient.isConnected()){
-			networkFrame.dispose();
+			networkFrame.setVisible(false);
 			showCoordinateFrame();	
 			coordinateFrame.disableComponents();
 			myClient.sendMessage("Game " + "Show ");
@@ -411,10 +411,26 @@ public class Game {
 	}
 
 	public void won() {
+		canStart = true;
+		battleships = new ArrayList<Ship>();
+		submarines = new ArrayList<Ship>();
+		destroyers = new ArrayList<Ship>();
+		cruisers = new ArrayList<Ship>();
+		gameFrame.setVisible(false);
+		coordinateFrame.setVisible(true);
+		coordinateFrame.disableComponents();
 		JOptionPane.showMessageDialog(null, "You Won");
 	}
 	
 	public void lost(){
+		canStart = true;
+		battleships = new ArrayList<Ship>();
+		submarines = new ArrayList<Ship>();
+		destroyers = new ArrayList<Ship>();
+		cruisers = new ArrayList<Ship>();
+		gameFrame.setVisible(false);
+		coordinateFrame.setVisible(true);
+		coordinateFrame.enableComponents();
 		JOptionPane.showMessageDialog(null, "You lost");
 	}
 	
