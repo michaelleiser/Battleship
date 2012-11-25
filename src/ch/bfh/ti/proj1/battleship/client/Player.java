@@ -1,7 +1,5 @@
 package ch.bfh.ti.proj1.battleship.client;
 
-import ch.bfh.ti.proj1.battleship.exception.BattleshipException;
-
 /**
  * One of the two players who plays the battleship game.
  * 
@@ -15,7 +13,7 @@ public class Player {
 	/**
 	 * Constructor for remote player
 	 */
-	public Player(String name) throws BattleshipException {
+	public Player(String name) {
 		this.name = name;
 	}
 	

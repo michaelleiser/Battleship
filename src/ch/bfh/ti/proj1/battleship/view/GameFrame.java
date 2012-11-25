@@ -259,7 +259,7 @@ public class GameFrame extends JFrame {
 		jTextPaneHistory.setEditable(false);
 		jTextPaneHistory.setText(	"************************************\n" +
 									"********* BATTLESHIP ***********\n" +
-									"************************************\n");
+									"************************************\n\n\n");
 		
 		jPanelChat = new JPanel();
 		jPanelChat.setBorder(BorderFactory.createEtchedBorder());

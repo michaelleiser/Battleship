@@ -13,7 +13,6 @@ import ch.bfh.ti.proj1.battleship.client.Field;
 import ch.bfh.ti.proj1.battleship.client.Player;
 import ch.bfh.ti.proj1.battleship.client.Ship;
 import ch.bfh.ti.proj1.battleship.client.ShipType;
-import ch.bfh.ti.proj1.battleship.exception.BattleshipException;
 import ch.bfh.ti.proj1.battleship.state.Context;
 import ch.bfh.ti.proj1.battleship.view.CoordinateFrame;
 import ch.bfh.ti.proj1.battleship.view.GameFrame;
@@ -368,20 +367,20 @@ public class Game {
 			if(gameMode.equals("UntilWater")){
 				this.myClient.sendMessage("Game " + "Disable ");
 				this.gameFrame.enableComponents();
+				this.gameFrame.concatjTextPaneHistory(">>> " + getPlayer().getName() + " <<<\n");
+				this.myClient.sendMessage("Game " + "History " + ">>> " + getPlayer().getName() + " <<<\n");
 			}
 		}
 		if(gameMode.equals("Alternatively")){
 			this.myClient.sendMessage("Game " + "Disable ");
 			this.gameFrame.enableComponents();
+			this.gameFrame.concatjTextPaneHistory(">>> " + getPlayer().getName() + " <<<\n");
+			this.myClient.sendMessage("Game " + "History " + ">>> " + getPlayer().getName() + " <<<\n");
 		}
 	}
 
 	public void enterName(String name) {
-		try {
-			player = new Player(name);
-		} catch (BattleshipException e) {
-			e.printStackTrace();
-		}
+		player = new Player(name);
 	}
 
 	public void hit(String x, String y) {
@@ -389,9 +388,8 @@ public class Game {
 		f[Integer.parseInt(y)][Integer.parseInt(x)].setBackground(Color.red);
 		gameFrame.setjLabelYouHits();
 		gameFrame.setjLabelYouShots();
-		
-		myClient.sendMessage("Game " + "History " + getPlayer().getName() + " hits : " + x + " " + y + "\n");
 		gameFrame.concatjTextPaneHistory(getPlayer().getName() + " hits : " + x + " " + y + "\n");
+		myClient.sendMessage("Game " + "History " + getPlayer().getName() + " hits : " + x + " " + y + "\n");
 	}
 
 	public void water(String x, String y) {
@@ -399,9 +397,8 @@ public class Game {
 		f[Integer.parseInt(y)][Integer.parseInt(x)].setBackground(Color.blue);
 		gameFrame.setjLabelYouWater();
 		gameFrame.setjLabelYouShots();
-		
-		myClient.sendMessage("Game " + "History " + getPlayer().getName() + " water : " + x + " " + y + "\n");
 		gameFrame.concatjTextPaneHistory(getPlayer().getName() + " water : " + x + " " + y + "\n");
+		myClient.sendMessage("Game " + "History " + getPlayer().getName() + " water : " + x + " " + y + "\n");
 	}
 
 	public void sunk(String x, String y) {
@@ -410,9 +407,8 @@ public class Game {
 		gameFrame.setjLabelYouHits();
 		gameFrame.setjLabelYouSunk();
 		gameFrame.setjLabelYouShots();
-		
-		myClient.sendMessage("Game " + "History " + getPlayer().getName() + " sunk : " + x + " " + y + "\n");
 		gameFrame.concatjTextPaneHistory(getPlayer().getName() + " sunk : " + x + " " + y + "\n");
+		myClient.sendMessage("Game " + "History " + getPlayer().getName() + " sunk : " + x + " " + y + "\n");
 	}
 
 	public void won() {
@@ -428,8 +424,8 @@ public class Game {
 			this.gameFrame.enableComponents();
 			this.myClient.sendMessage("Game " + "Start ");
 			
-			this.gameFrame.concatjTextPaneHistory(getPlayer().getName() + " turn");
-			this.myClient.sendMessage("Game " + "History " + getPlayer().getName() + " turn");
+			this.gameFrame.concatjTextPaneHistory(">>> " + getPlayer().getName() + " <<<\n");
+			this.myClient.sendMessage("Game " + "History " + ">>> " + getPlayer().getName() + " <<<\n");
 		}
 	}
 	
