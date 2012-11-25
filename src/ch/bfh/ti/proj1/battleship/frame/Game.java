@@ -13,7 +13,6 @@ import ch.bfh.ti.proj1.battleship.client.Field;
 import ch.bfh.ti.proj1.battleship.client.Player;
 import ch.bfh.ti.proj1.battleship.client.Ship;
 import ch.bfh.ti.proj1.battleship.client.ShipType;
-import ch.bfh.ti.proj1.battleship.state.Context;
 import ch.bfh.ti.proj1.battleship.view.CoordinateFrame;
 import ch.bfh.ti.proj1.battleship.view.GameFrame;
 import ch.bfh.ti.proj1.battleship.view.NetworkFrame;
@@ -30,7 +29,7 @@ public class Game {
 	private GameFrame gameFrame;
 	private Player player;
 	
-	private Context context;
+//	private Context context;
 	
 	// initialize standard values
 	private int nbrOfRows = 10;
@@ -41,17 +40,17 @@ public class Game {
 	private int nbrOfCruisers = 4;
 	private String gameMode = "Alternatively";
 	
-	private boolean canStart = true;
-	
 	private List<Ship> battleships = new ArrayList<Ship>();
 	private List<Ship> submarines = new ArrayList<Ship>();
 	private List<Ship> destroyers = new ArrayList<Ship>();
 	private List<Ship> cruisers = new ArrayList<Ship>();
 	
+	private boolean canStart = true;
+	
 	public Game(){
 		showNetworkFrame();
-		context = new Context();
-		context.handle(Context.EventType.Start);
+//		context = new Context();
+//		context.handle(Context.EventType.Start);
 	}
 	
 	public void hostGame(final int port) {
