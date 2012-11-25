@@ -9,7 +9,6 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
-
 import ch.bfh.ti.proj1.battleship.client.Field;
 import ch.bfh.ti.proj1.battleship.client.Player;
 import ch.bfh.ti.proj1.battleship.client.Ship;
@@ -200,8 +199,8 @@ public class Game {
 		if(checkConstraints(fields, ship, x, y, horizontalOrVertical)){
 			switch (type) {
 			case BATTLESHIP:
-				this.battleships.add(ship);
-				if(this.nbrOfBattleships > 0){
+				if((this.nbrOfBattleships - this.battleships.size()) > 0){
+					this.battleships.add(ship);
 					if(horizontalOrVertical == 0){
 						for(int i = 0; i < type.getSize(); i++){
 							fields[y][x+i].placeShip(ship);
@@ -211,13 +210,12 @@ public class Game {
 							fields[y+i][x].placeShip(ship);
 						}
 					}			
-					this.nbrOfBattleships--;
-					this.gameFrame.setNbrOfBattleship(this.nbrOfBattleships);
+					this.gameFrame.setNbrOfBattleship(this.nbrOfBattleships - this.battleships.size());
 				}
 				break;
 			case SUBMARINE:
-				this.submarines.add(ship);
-				if(this.nbrOfSubmarines > 0){
+				if((this.nbrOfSubmarines - this.submarines.size()) > 0){
+					this.submarines.add(ship);
 					if(horizontalOrVertical == 0){
 						for(int i = 0; i < type.getSize(); i++){
 							fields[y][x+i].placeShip(ship);
@@ -227,13 +225,12 @@ public class Game {
 							fields[y+i][x].placeShip(ship);
 						}
 					}
-					this.nbrOfSubmarines--;
-					this.gameFrame.setNbrOfSubmarine(this.nbrOfSubmarines);
+					this.gameFrame.setNbrOfSubmarine(this.nbrOfSubmarines - this.submarines.size());
 				}
 				break;
 			case DESTROYER:
-				this.destroyers.add(ship);
-				if(this.nbrOfDestroyers > 0){
+				if((this.nbrOfDestroyers - this.destroyers.size()) > 0){
+					this.destroyers.add(ship);
 					if(horizontalOrVertical == 0){
 						for(int i = 0; i < type.getSize(); i++){
 							fields[y][x+i].placeShip(ship);
@@ -243,13 +240,12 @@ public class Game {
 							fields[y+i][x].placeShip(ship);
 						}
 					}
-					this.nbrOfDestroyers--;
-					this.gameFrame.setNbrOfDestroyer(this.nbrOfDestroyers);
+					this.gameFrame.setNbrOfDestroyer(this.nbrOfDestroyers - this.destroyers.size());
 				}
 				break;
 			case CRUISER:
-				this.cruisers.add(ship);
-				if(this.nbrOfCruisers > 0){
+				if((this.nbrOfCruisers - this.cruisers.size()) > 0){
+					this.cruisers.add(ship);
 					if(horizontalOrVertical == 0){
 						for(int i = 0; i < type.getSize(); i++){
 							fields[y][x+i].placeShip(ship);
@@ -259,8 +255,7 @@ public class Game {
 							fields[y+i][x].placeShip(ship);
 						}
 					}
-					this.nbrOfCruisers--;
-					this.gameFrame.setNbrOfCruiser(this.nbrOfCruisers);
+					this.gameFrame.setNbrOfCruiser(this.nbrOfCruisers - this.cruisers.size());
 				}
 				break;
 			default:
@@ -275,7 +270,6 @@ public class Game {
 				if(((x+i) >= this.nbrOfColoumns) || (fields[y][x+i].getShip() != null)){
 					return false;
 				}
-			
 				if(((x+i) > 0) && (fields[y][x+i-1].getShip() != null)){
 					return false;
 				}
@@ -294,7 +288,6 @@ public class Game {
 				if(((y+i) >= this.nbrOfRows) || (fields[y+i][x].getShip() != null)){
 					return false;
 				}
-				
 				if((x > 0) && (fields[y+i][x-1].getShip() != null)){
 					return false;
 				}
@@ -322,23 +315,19 @@ public class Game {
 		switch (ship.getShipType()) {
 		case BATTLESHIP:
 			this.battleships.remove(ship);
-			this.nbrOfBattleships++;
-			this.gameFrame.setNbrOfBattleship(this.nbrOfBattleships);
+			this.gameFrame.setNbrOfBattleship(this.nbrOfBattleships - this.battleships.size());
 			break;
 		case SUBMARINE:
 			this.submarines.remove(ship);
-			this.nbrOfSubmarines++;
-			this.gameFrame.setNbrOfSubmarine(this.nbrOfSubmarines);
+			this.gameFrame.setNbrOfSubmarine(this.nbrOfSubmarines - this.submarines.size());
 			break;
 		case DESTROYER:
 			this.destroyers.remove(ship);
-			this.nbrOfDestroyers++;
-			this.gameFrame.setNbrOfDestroyer(this.nbrOfDestroyers);
+			this.gameFrame.setNbrOfDestroyer(this.nbrOfDestroyers - this.destroyers.size());
 			break;
 		case CRUISER:
 			this.cruisers.remove(ship);
-			this.nbrOfCruisers++;
-			this.gameFrame.setNbrOfCruiser(this.nbrOfCruisers);
+			this.gameFrame.setNbrOfCruiser(this.nbrOfCruisers - this.cruisers.size());
 			break;
 		default:
 			break;
@@ -449,10 +438,10 @@ public class Game {
 	}
 
 	public boolean allShipsPlaced() {
-		if((nbrOfBattleships == 0) &&
-				(nbrOfSubmarines == 0) &&
-				(nbrOfDestroyers == 0) &&
-				(nbrOfCruisers == 0)){
+		if((nbrOfBattleships == this.battleships.size()) &&
+				(nbrOfSubmarines == this.submarines.size()) &&
+				(nbrOfDestroyers == this.destroyers.size()) &&
+				(nbrOfCruisers == this.cruisers.size())){
 			return true;
 		} else{
 			return false;
