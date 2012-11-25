@@ -65,19 +65,21 @@ public class GameFrame extends JFrame {
 	private JLabel jLabelWater;
 	private JLabel jLabelSunk;
 	private JLabel jLabelShots;
+	private JLabel jLabelAccuracy;
 
 	private JLabel jLabelYou;
 	private JLabel jLabelYouHits;
-
 	private JLabel jLabelYouWater;
 	private JLabel jLabelYouSunk;
 	private JLabel jLabelYouShots;
+	private JLabel jLabelYouAccuracy;
 
 	private JLabel jLabelEnemy;
 	private JLabel jLabelEnemyHits;
 	private JLabel jLabelEnemyWater;
 	private JLabel jLabelEnemySunk;
 	private JLabel jLabelEnemyShots;
+	private JLabel jLabelEnemyAccuracy;
 
 	private JPanel jPanelHistory;
 	private JLabel jLabelHistory;
@@ -207,6 +209,9 @@ public class GameFrame extends JFrame {
 		jLabelShots = new JLabel();
 		jLabelShots.setFont(new Font("Tahoma", 1, 11));
 		jLabelShots.setText("Shots");
+		jLabelAccuracy = new JLabel();
+		jLabelAccuracy.setFont(new Font("Tahoma", 1, 11));
+        jLabelAccuracy.setText("Accuracy");
 		jLabelYou = new JLabel();
 		jLabelYou.setFont(new Font("Tahoma", 1, 11));
 		jLabelYou.setText("You");
@@ -222,6 +227,9 @@ public class GameFrame extends JFrame {
 		jLabelYouShots = new JLabel();
 		jLabelYouShots.setFont(new Font("Tahoma", 1, 11));
 		jLabelYouShots.setText("0");
+		jLabelYouAccuracy = new JLabel();
+		jLabelYouAccuracy.setFont(new Font("Tahoma", 1, 11)); // NOI18N
+        jLabelYouAccuracy.setText("0");
 		jLabelEnemy = new JLabel();
 		jLabelEnemy.setFont(new Font("Tahoma", 1, 11));
 		jLabelEnemy.setText("Enemy");
@@ -237,6 +245,9 @@ public class GameFrame extends JFrame {
 		jLabelEnemyShots = new JLabel();
 		jLabelEnemyShots.setFont(new Font("Tahoma", 1, 11));
 		jLabelEnemyShots.setText("0");	
+		jLabelEnemyAccuracy = new JLabel();
+		jLabelEnemyAccuracy.setFont(new Font("Tahoma", 1, 11));
+        jLabelEnemyAccuracy.setText("0");
 		
 		jPanelHistory = new JPanel();
 		jPanelHistory.setBorder(BorderFactory.createEtchedBorder());
@@ -614,144 +625,75 @@ public class GameFrame extends JFrame {
 										.addContainerGap()));
 
 		GroupLayout jPanelStatisticsLayout = new GroupLayout(jPanelStatistics);
-		jPanelStatistics.setLayout(jPanelStatisticsLayout);
-		jPanelStatisticsLayout
-				.setHorizontalGroup(jPanelStatisticsLayout
-						.createParallelGroup(GroupLayout.Alignment.LEADING)
-						.addGroup(
-								jPanelStatisticsLayout
-										.createSequentialGroup()
-										.addGroup(
-												jPanelStatisticsLayout
-														.createParallelGroup(
-																GroupLayout.Alignment.LEADING)
-														.addGroup(
-																jPanelStatisticsLayout
-																		.createSequentialGroup()
-																		.addContainerGap()
-																		.addComponent(
-																				jLabelStatistics))
-														.addGroup(
-																jPanelStatisticsLayout
-																		.createSequentialGroup()
-																		.addGap(30,
-																				30,
-																				30)
-																		.addGroup(
-																				jPanelStatisticsLayout
-																						.createParallelGroup(
-																								GroupLayout.Alignment.LEADING)
-																						.addGroup(
-																								jPanelStatisticsLayout
-																										.createSequentialGroup()
-																										.addGroup(
-																												jPanelStatisticsLayout
-																														.createParallelGroup(
-																																GroupLayout.Alignment.LEADING)
-																														.addComponent(
-																																jLabelYouHits)
-																														.addComponent(
-																																jLabelYouWater)
-																														.addComponent(
-																																jLabelYouSunk)
-																														.addComponent(
-																																jLabelYouShots))
-																										.addGap(50,
-																												50,
-																												50)
-																										.addGroup(
-																												jPanelStatisticsLayout
-																														.createParallelGroup(
-																																GroupLayout.Alignment.LEADING)
-																														.addComponent(
-																																jLabelWater)
-																														.addComponent(
-																																jLabelHits)
-																														.addComponent(
-																																jLabelSunk)
-																														.addComponent(
-																																jLabelShots)))
-																						.addComponent(
-																								jLabelYou))
-																		.addGap(27,
-																				27,
-																				27)
-																		.addGroup(
-																				jPanelStatisticsLayout
-																						.createParallelGroup(
-																								GroupLayout.Alignment.LEADING)
-																						.addComponent(
-																								jLabelEnemyHits)
-																						.addComponent(
-																								jLabelEnemy)
-																						.addComponent(
-																								jLabelEnemyWater)
-																						.addComponent(
-																								jLabelEnemySunk)
-																						.addComponent(
-																								jLabelEnemyShots))))
-										.addContainerGap(95, Short.MAX_VALUE)));
-		jPanelStatisticsLayout
-				.setVerticalGroup(jPanelStatisticsLayout
-						.createParallelGroup(GroupLayout.Alignment.LEADING)
-						.addGroup(
-								jPanelStatisticsLayout
-										.createSequentialGroup()
-										.addContainerGap()
-										.addComponent(jLabelStatistics)
-										.addGap(18, 18, 18)
-										.addGroup(
-												jPanelStatisticsLayout
-														.createParallelGroup(
-																GroupLayout.Alignment.BASELINE)
-														.addComponent(jLabelYou)
-														.addComponent(
-																jLabelEnemy))
-										.addGap(18, 18, 18)
-										.addGroup(
-												jPanelStatisticsLayout
-														.createParallelGroup(
-																GroupLayout.Alignment.BASELINE)
-														.addComponent(
-																jLabelYouHits)
-														.addComponent(
-																jLabelHits)
-														.addComponent(
-																jLabelEnemyHits))
-										.addGap(18, 18, 18)
-										.addGroup(
-												jPanelStatisticsLayout
-														.createParallelGroup(
-																GroupLayout.Alignment.BASELINE)
-														.addComponent(
-																jLabelYouWater)
-														.addComponent(
-																jLabelWater)
-														.addComponent(
-																jLabelEnemyWater))
-										.addGap(30, 30, 30)
-										.addGroup(
-												jPanelStatisticsLayout
-														.createParallelGroup(
-																GroupLayout.Alignment.BASELINE)
-														.addComponent(
-																jLabelYouSunk)
-														.addComponent(
-																jLabelSunk)
-														.addComponent(
-																jLabelEnemySunk))
-										.addGap(26, 26, 26)
-										.addGroup(
-												jPanelStatisticsLayout
-														.createParallelGroup(
-																GroupLayout.Alignment.BASELINE)
-														.addComponent(
-																jLabelYouShots)
-														.addComponent(
-																jLabelShots)
-														.addComponent(
-																jLabelEnemyShots))
-										.addContainerGap(16, Short.MAX_VALUE)));
+        jPanelStatistics.setLayout(jPanelStatisticsLayout);
+        jPanelStatisticsLayout.setHorizontalGroup(
+            jPanelStatisticsLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelStatisticsLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabelStatistics)
+                .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanelStatisticsLayout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addGroup(jPanelStatisticsLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelYouWater)
+                    .addComponent(jLabelYou)
+                    .addComponent(jLabelYouSunk)
+                    .addComponent(jLabelYouShots)
+                    .addComponent(jLabelYouAccuracy)
+                    .addComponent(jLabelYouHits))
+                .addGap(49, 49, 49)
+                .addGroup(jPanelStatisticsLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelWater)
+                    .addComponent(jLabelSunk)
+                    .addComponent(jLabelShots)
+                    .addComponent(jLabelAccuracy)
+                    .addComponent(jLabelHits))
+                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                .addGroup(jPanelStatisticsLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelEnemy)
+                    .addComponent(jLabelEnemyWater)
+                    .addComponent(jLabelEnemySunk)
+                    .addComponent(jLabelEnemyShots)
+                    .addComponent(jLabelEnemyAccuracy)
+                    .addComponent(jLabelEnemyHits))
+                .addGap(39, 39, 39))
+        );
+        jPanelStatisticsLayout.setVerticalGroup(
+            jPanelStatisticsLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelStatisticsLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabelStatistics)
+                .addGap(18, 18, 18)
+                .addGroup(jPanelStatisticsLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelYou)
+                    .addComponent(jLabelEnemy))
+                .addGap(9, 9, 9)
+                .addGroup(jPanelStatisticsLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelWater)
+                    .addComponent(jLabelYouWater)
+                    .addComponent(jLabelEnemyWater))
+                .addGap(18, 18, 18)
+                .addGroup(jPanelStatisticsLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelHits)
+                    .addComponent(jLabelYouHits)
+                    .addComponent(jLabelEnemyHits))
+                .addGap(18, 18, 18)
+                .addGroup(jPanelStatisticsLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelSunk)
+                    .addComponent(jLabelYouSunk)
+                    .addComponent(jLabelEnemySunk))
+                .addGap(18, 18, 18)
+                .addGroup(jPanelStatisticsLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelYouShots)
+                    .addComponent(jLabelShots)
+                    .addComponent(jLabelEnemyShots))
+                .addGap(18, 18, 18)
+                .addGroup(jPanelStatisticsLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelAccuracy)
+                    .addComponent(jLabelYouAccuracy)
+                    .addComponent(jLabelEnemyAccuracy))
+                .addContainerGap(13, Short.MAX_VALUE))
+        );
 
 		jScrollPaneChat.setViewportView(jTextPaneChat);
 
