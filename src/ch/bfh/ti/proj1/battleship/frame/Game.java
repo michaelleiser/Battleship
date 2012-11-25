@@ -114,82 +114,6 @@ public class Game {
 		gameFrame = new GameFrame(this);
 		gameFrame.setVisible(true);
 	}
-
-	public int getNbrOfRows() {
-		return nbrOfRows;
-	}
-
-	public void setNbrOfRows(int nbrOfRows) {
-		this.nbrOfRows = nbrOfRows;
-	}
-
-	public int getNbrOfColoumns() {
-		return nbrOfColoumns;
-	}
-
-	public void setNbrOfColoumns(int nbrOfColoumns) {
-		this.nbrOfColoumns = nbrOfColoumns;
-	}
-
-	public int getNbrOfBattleships() {
-		return nbrOfBattleships;
-	}
-
-	public void setNbrOfBattleships(int nbrOfBattleships) {
-		this.nbrOfBattleships = nbrOfBattleships;
-	}
-
-	public int getNbrOfSubmarines() {
-		return nbrOfSubmarines;
-	}
-
-	public void setNbrOfSubmarines(int nbrOfSubmarines) {
-		this.nbrOfSubmarines = nbrOfSubmarines;
-	}
-
-	public int getNbrOfDestroyers() {
-		return nbrOfDestroyers;
-	}
-
-	public void setNbrOfDestroyers(int nbrOfDestroyers) {
-		this.nbrOfDestroyers = nbrOfDestroyers;
-	}
-
-	public int getNbrOfCruisers() {
-		return nbrOfCruisers;
-	}
-
-	public void setNbrOfCruisers(int nbrOfCruisers) {
-		this.nbrOfCruisers = nbrOfCruisers;
-	}
-
-	public String getGameMode() {
-		return gameMode;
-	}
-
-	public void setGameMode(String gameMode) {
-		this.gameMode = gameMode;
-	}
-	
-	public void setOptions(int nbrOfRows, int nbrOfColoumns, int nbrOfBattleships,
-			int nbrOfSubmarines, int nbrOfDestroyers, int nbrOfCruisers, String gameMode){
-		this.nbrOfRows = nbrOfRows;
-		this.nbrOfColoumns = nbrOfColoumns;
-		this.nbrOfBattleships = nbrOfBattleships;
-		this.nbrOfSubmarines = nbrOfSubmarines;
-		this.nbrOfDestroyers = nbrOfDestroyers;
-		this.nbrOfCruisers = nbrOfCruisers;
-		if(gameMode.equals("Alternatively")){
-			this.gameMode = "Alternatively";
-		}
-		else if (gameMode.equals("UntilWater")){
-			this.gameMode = "UntilWater";
-		}
-	}
-
-	public Player getPlayer() {
-		return this.player;
-	}
 	
 	public void placeShip(ShipType type, int x, int y, int horizontalOrVertical) {
 		Field[][] fields = gameFrame.getYourField();
@@ -483,6 +407,82 @@ public class Game {
 		return true;
 	}
 
+	public int getNbrOfRows() {
+		return nbrOfRows;
+	}
+
+	public void setNbrOfRows(int nbrOfRows) {
+		this.nbrOfRows = nbrOfRows;
+	}
+
+	public int getNbrOfColoumns() {
+		return nbrOfColoumns;
+	}
+
+	public void setNbrOfColoumns(int nbrOfColoumns) {
+		this.nbrOfColoumns = nbrOfColoumns;
+	}
+
+	public int getNbrOfBattleships() {
+		return nbrOfBattleships;
+	}
+
+	public void setNbrOfBattleships(int nbrOfBattleships) {
+		this.nbrOfBattleships = nbrOfBattleships;
+	}
+
+	public int getNbrOfSubmarines() {
+		return nbrOfSubmarines;
+	}
+
+	public void setNbrOfSubmarines(int nbrOfSubmarines) {
+		this.nbrOfSubmarines = nbrOfSubmarines;
+	}
+
+	public int getNbrOfDestroyers() {
+		return nbrOfDestroyers;
+	}
+
+	public void setNbrOfDestroyers(int nbrOfDestroyers) {
+		this.nbrOfDestroyers = nbrOfDestroyers;
+	}
+
+	public int getNbrOfCruisers() {
+		return nbrOfCruisers;
+	}
+
+	public void setNbrOfCruisers(int nbrOfCruisers) {
+		this.nbrOfCruisers = nbrOfCruisers;
+	}
+
+	public String getGameMode() {
+		return gameMode;
+	}
+
+	public void setGameMode(String gameMode) {
+		this.gameMode = gameMode;
+	}
+	
+	public void setOptions(int nbrOfRows, int nbrOfColoumns, int nbrOfBattleships,
+			int nbrOfSubmarines, int nbrOfDestroyers, int nbrOfCruisers, String gameMode){
+		this.nbrOfRows = nbrOfRows;
+		this.nbrOfColoumns = nbrOfColoumns;
+		this.nbrOfBattleships = nbrOfBattleships;
+		this.nbrOfSubmarines = nbrOfSubmarines;
+		this.nbrOfDestroyers = nbrOfDestroyers;
+		this.nbrOfCruisers = nbrOfCruisers;
+		if(gameMode.equals("Alternatively")){
+			this.gameMode = "Alternatively";
+		}
+		else if (gameMode.equals("UntilWater")){
+			this.gameMode = "UntilWater";
+		}
+	}
+
+	public Player getPlayer() {
+		return this.player;
+	}
+	
 	public MyClient getClient() {
 		return myClient;
 	}
