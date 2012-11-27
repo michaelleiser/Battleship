@@ -21,7 +21,6 @@ public class STARTER {
 * - Fields im Spiel immer sichtbar
 * - Fields eventuell als JPanel statt JToggleButton
 * - YourFields im Spiel, Status(farben) darstellen
-* - Sounds einbinden
 * - Statistik aktiver Player verdreht
 * - Sounds einbinden
 * 		- Startmusik vom Starten des Programms bis zum Beginn des Spiels
@@ -33,6 +32,5 @@ public class STARTER {
 * 		- Game won (kurzer Jingle und dann Sigesmusik bis Spieler auf Ok gedrückt hat)
 * 		- Game lost (kurzer Jingle und dann Losermusik bis Sieger auf Ok gedrückt hat)
 * - Chat mit VK_ENTER
-* - Beim gewinnen / verlieren nicht sofort wieder in CoordinateFrame, sondern erst nach klick auf ok
 *
 */
