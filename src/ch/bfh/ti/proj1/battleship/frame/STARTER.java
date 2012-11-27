@@ -23,6 +23,15 @@ public class STARTER {
 * - YourFields im Spiel, Status(farben) darstellen
 * - Sounds einbinden
 * - Statistik aktiver Player verdreht
+* - Sounds einbinden
+* 		- Startmusik vom Starten des Programms bis zum Beginn des Spiels
+* 		- Fehlersound wenn falsch geklickt
+* 		- Ocean Sound während Spiel (zufällig) [Möven, Strand, Wellen,...]
+* 		- Ship sink
+* 		- Ship hit
+* 		- Water hit
+* 		- Game won (kurzer Jingle und dann Sigesmusik bis Spieler auf Ok gedrückt hat)
+* 		- Game lost (kurzer Jingle und dann Losermusik bis Sieger auf Ok gedrückt hat)
 * - Chat mit VK_ENTER
 * - Beim gewinnen / verlieren nicht sofort wieder in CoordinateFrame, sondern erst nach klick auf ok
 *
