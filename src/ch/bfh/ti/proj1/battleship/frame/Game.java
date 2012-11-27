@@ -335,6 +335,7 @@ public class Game {
 	}
 
 	public void won() {
+		JOptionPane.showMessageDialog(null, "You won");
 		canStart = true;
 		battleships = new ArrayList<Ship>();
 		submarines = new ArrayList<Ship>();
@@ -344,10 +345,10 @@ public class Game {
 		coordinateFrame.setVisible(true);
 		coordinateFrame.disableComponents();
 		coordinateFrame.setFirst(true);
-		JOptionPane.showMessageDialog(null, "You Won");
 	}
 	
 	public void lost(){
+		JOptionPane.showMessageDialog(null, "You lost");
 		canStart = true;
 		battleships = new ArrayList<Ship>();
 		submarines = new ArrayList<Ship>();
@@ -357,7 +358,6 @@ public class Game {
 		coordinateFrame.setVisible(true);
 		coordinateFrame.enableComponents();
 		coordinateFrame.setFirst(true);
-		JOptionPane.showMessageDialog(null, "You lost");
 	}
 	
 	public void ready() {
