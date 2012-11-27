@@ -657,6 +657,16 @@ public class CoordinateFrame extends JFrame{
 		}
 	}
 
+	public static boolean first = true;
+	
+	public boolean getFirst(){
+		return first;
+	}
+	
+	public void setFirst(boolean f){
+		first = f;
+	}
+	
 	private void jButtonValidateAndCoordinateActionPerformed() {
 		try {
 			int nbrOfRows = Integer.parseInt(jTextFieldNbrOfRows.getText());
@@ -680,7 +690,8 @@ public class CoordinateFrame extends JFrame{
 						+ nbrOfColoumns + " " + nbrOfBattleships + " " + nbrOfSubmarines + " "
 						+ nbrOfDestroyers + " " + nbrOfCruisers + " " + gameMode);
 				game.getClient().sendMessage("Coordinate " + "Enable ");
-				if (	(game.getNbrOfRows() == nbrOfRows) && 
+				if (	!first &&
+						(game.getNbrOfRows() == nbrOfRows) && 
 						(game.getNbrOfColoumns() == nbrOfColoumns) &&
 						(game.getNbrOfBattleships() == nbrOfBattleships) &&
 						(game.getNbrOfSubmarines() == nbrOfSubmarines) &&
@@ -692,18 +703,14 @@ public class CoordinateFrame extends JFrame{
 					game.getClient().sendMessage("Coordinate " + "ShowGameFrame ");
 					game.getClient().sendMessage("Coordinate " + "Dispose ");
 				}
+				setFirst(false);
+				game.getClient().sendMessage("Coordinate " + "SetFirst ");
 				game.setOptions(nbrOfRows, nbrOfColoumns, nbrOfBattleships, 
 						nbrOfSubmarines, nbrOfDestroyers, nbrOfCruisers, gameMode);
 				disableComponents();		
-			} else {
-				// do nothing
-				return;
 			}
-
 		} catch(NumberFormatException e) {
 			JOptionPane.showMessageDialog(this, "Some of the entered credentials are no valid numbers");
-			// do nothing
-			return;
 		}
 	}
 
@@ -747,46 +754,7 @@ public class CoordinateFrame extends JFrame{
 		} else {
 			return true;
 		}
-		
-		
-		
-		
-		
-		
-		
-		
-//		// test if input is valid. Numbers between 1 and 20
-//		if (	(nbrOfRows < 10) && (nbrOfRows > 20) &&
-//				(nbrOfColoumns < 10) && (nbrOfColoumns > 20) &&
-//				(nbrOfBattleships < 1) && (nbrOfBattleships > 20) &&
-//				(nbrOfSubmarines < 1) && (nbrOfSubmarines > 20) &&
-//				(nbrOfDestroyers < 1) && (nbrOfDestroyers > 20) &&
-//				(nbrOfCruisers < 1) && (nbrOfCruisers > 20) 	)
-//		{
-//			errorString = errorString.concat("Values are not valid. Some values are too high or too low! \n");
-//			//JOptionPane.showMessageDialog(this, "Values are not valid. Some values are too high or too low!");
-//			//return false;
-//		}
-//		
-//		int totalFields = nbrOfRows * nbrOfColoumns;	
-//		int totalCoveredFieldsByShips = (ShipType.BATTLESHIP.getSize() * nbrOfBattleships)
-//				+ (ShipType.SUBMARINE.getSize() * nbrOfSubmarines)
-//				+ (ShipType.DESTROYER.getSize() * nbrOfDestroyers)
-//				+ (ShipType.CRUISER.getSize() * nbrOfCruisers);
-//		// ships must cover 10%-30% of the fields
-//		if ((0.3 * totalFields) < totalCoveredFieldsByShips){
-//			errorString = errorString.concat("Ships cover too many fields! \n");
-//			//JOptionPane.showMessageDialog(this, "Ships cover too many fields!");
-//			//return false;
-//		}
-//		if ((0.1 * totalFields) > totalCoveredFieldsByShips){
-//			errorString = errorString.concat("Ships do not cover enough fields! \n");
-//			//JOptionPane.showMessageDialog(this, "Ships do not cover enough fields!");
-//			//return false;
-//		}
-//		return errorString;
 	}
-	
 	
 	private void jTextPaneYourMessageMouseClicked() {
 		jTextPaneYourMessage.setText(null);

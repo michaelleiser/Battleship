@@ -343,6 +343,7 @@ public class Game {
 		gameFrame.setVisible(false);
 		coordinateFrame.setVisible(true);
 		coordinateFrame.disableComponents();
+		coordinateFrame.setFirst(true);
 		JOptionPane.showMessageDialog(null, "You Won");
 	}
 	
@@ -355,6 +356,7 @@ public class Game {
 		gameFrame.setVisible(false);
 		coordinateFrame.setVisible(true);
 		coordinateFrame.enableComponents();
+		coordinateFrame.setFirst(true);
 		JOptionPane.showMessageDialog(null, "You lost");
 	}
 	

@@ -97,6 +97,9 @@ public class MyClient implements Runnable{
 								Integer.parseInt(s[6]), Integer.parseInt(s[7]), s[8]);
 						game.getCoordinateFrame().setComponents(s[2], s[3], s[4], s[5], s[6], s[7], s[8]);
 					}
+					if(line.contains("Coordinate SetFirst")){
+						game.getCoordinateFrame().setFirst(false);
+					}
 					if(line.contains("Game Shoot")){
 						String[] s = line.split(" ");
 						game.checkShoot(Integer.parseInt(s[2]), Integer.parseInt(s[3]));
