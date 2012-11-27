@@ -953,7 +953,7 @@ public class GameFrame extends JFrame {
 
 	private void jButtonSendActionPerformed() {
 		String name = game.getPlayer().getName();
-		String text = jTextPaneYourMessage.getText(); 
+		String text = jTextPaneYourMessage.getText().trim(); 
 		if(!text.equals("")){
 			game.getClient().sendMessage("Game " + "Chat " + name + ": " + text + "\n");
 			concatjTextPaneChat(name + ": " + text + "\n");

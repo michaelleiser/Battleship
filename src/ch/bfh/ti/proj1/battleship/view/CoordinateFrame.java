@@ -168,7 +168,7 @@ public class CoordinateFrame extends JFrame{
 			}
 		});
 		jTextPaneYourMessage.addKeyListener(new KeyAdapter(){
-			public void keyTyped(KeyEvent e){
+			public void keyReleased(KeyEvent e){
 				if(e.getKeyCode() == KeyEvent.VK_ENTER){
 					jButtonSendActionPerformed();
 				}
@@ -660,7 +660,7 @@ public class CoordinateFrame extends JFrame{
 
 	private void jButtonSendActionPerformed() {
 		String name = game.getPlayer().getName();
-		String text = jTextPaneYourMessage.getText();
+		String text = jTextPaneYourMessage.getText().trim();
 		if(!text.equals("")){
 			game.getClient().sendMessage("Coordinate " + "Chat " + name + ": " + text + "\n");
 			concatjTextPaneChat(name + ": " + text + "\n");
