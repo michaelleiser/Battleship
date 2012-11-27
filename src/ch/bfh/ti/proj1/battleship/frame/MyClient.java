@@ -64,15 +64,15 @@ public class MyClient implements Runnable{
 				if (line != null){
 					if(line.contains("Coordinate Chat")){
 						String s = line.substring(16, line.length());
-						game.getCoordinateFrame().concatjTextPaneChat(s + "\n");
+						game.getCoordinateFrame().concatjTextPaneChat(s);
 					}
 					if(line.contains("Game Chat")){
 						String s = line.substring(10, line.length());
-						game.getGameFrame().concatjTextPaneChat(s + "\n");
+						game.getGameFrame().concatjTextPaneChat(s);
 					}
 					if(line.contains("Game History")){
 						String s = line.substring(13, line.length());
-						game.getGameFrame().concatjTextPaneHistory(s + "\n");
+						game.getGameFrame().concatjTextPaneHistory(s);
 					}
 					if(line.contains("Game Show")){
 						game.getNetworkFrame().dispose();

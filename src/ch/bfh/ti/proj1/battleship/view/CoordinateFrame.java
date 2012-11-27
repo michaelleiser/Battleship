@@ -74,6 +74,8 @@ public class CoordinateFrame extends JFrame{
 
 	private Game game;
 	
+	public boolean firstCoordinate = true;
+	
 	public CoordinateFrame(Game game) {
 		this.game = game;
 		initComponents();
@@ -166,7 +168,7 @@ public class CoordinateFrame extends JFrame{
 			}
 		});
 		jTextPaneYourMessage.addKeyListener(new KeyAdapter(){
-			public void keyPressed(KeyEvent e){
+			public void keyTyped(KeyEvent e){
 				if(e.getKeyCode() == KeyEvent.VK_ENTER){
 					jButtonSendActionPerformed();
 				}
@@ -660,22 +662,13 @@ public class CoordinateFrame extends JFrame{
 		String name = game.getPlayer().getName();
 		String text = jTextPaneYourMessage.getText();
 		if(!text.equals("")){
-			game.getClient().sendMessage("Coordinate " + "Chat " + name + ": " + text);
+			game.getClient().sendMessage("Coordinate " + "Chat " + name + ": " + text + "\n");
 			concatjTextPaneChat(name + ": " + text + "\n");
 		}
 		jTextPaneYourMessage.setText("");
 	}
-
-	public static boolean first = true;
 	
-	public boolean getFirst(){
-		return first;
-	}
-	
-	public void setFirst(boolean f){
-		first = f;
-	}
-	
+		
 	private void jButtonValidateAndCoordinateActionPerformed() {
 		try {
 			int nbrOfRows = Integer.parseInt(jTextFieldNbrOfRows.getText());
@@ -690,8 +683,7 @@ public class CoordinateFrame extends JFrame{
 			}
 			else if(jRadioButtonShootUntilWater.isSelected()){
 				gameMode = "UntilWater";
-			}
-		
+			}		
 			
 			if (validateSettings(nbrOfRows, nbrOfColoumns, nbrOfBattleships, 
 					nbrOfSubmarines, nbrOfDestroyers, nbrOfCruisers)) {
@@ -699,7 +691,7 @@ public class CoordinateFrame extends JFrame{
 						+ nbrOfColoumns + " " + nbrOfBattleships + " " + nbrOfSubmarines + " "
 						+ nbrOfDestroyers + " " + nbrOfCruisers + " " + gameMode);
 				game.getClient().sendMessage("Coordinate " + "Enable ");
-				if (	!first &&
+				if (	!firstCoordinate &&
 						(game.getNbrOfRows() == nbrOfRows) && 
 						(game.getNbrOfColoumns() == nbrOfColoumns) &&
 						(game.getNbrOfBattleships() == nbrOfBattleships) &&
@@ -811,6 +803,10 @@ public class CoordinateFrame extends JFrame{
 		}
 	}	
 
+	public void setFirst(boolean f){
+		firstCoordinate = f;
+	}
+	
 	public void concatjTextPaneChat(String text) {
 		String s = jTextPaneChat.getText();
 		jTextPaneChat.setText(s + text);
