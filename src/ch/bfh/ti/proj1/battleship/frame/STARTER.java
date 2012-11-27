@@ -31,6 +31,5 @@ public class STARTER {
 * 		- Water hit
 * 		- Game won (kurzer Jingle und dann Sigesmusik bis Spieler auf Ok gedrückt hat)
 * 		- Game lost (kurzer Jingle und dann Losermusik bis Sieger auf Ok gedrückt hat)
-* - Chat mit VK_ENTER
 *
 */
