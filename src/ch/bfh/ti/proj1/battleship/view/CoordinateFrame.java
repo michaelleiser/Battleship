@@ -3,6 +3,8 @@ package ch.bfh.ti.proj1.battleship.view;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -161,6 +163,13 @@ public class CoordinateFrame extends JFrame{
 		jTextPaneYourMessage.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent evt) {
 				jTextPaneYourMessageMouseClicked();
+			}
+		});
+		jTextPaneYourMessage.addKeyListener(new KeyAdapter(){
+			public void keyPressed(KeyEvent e){
+				if(e.getKeyCode() == KeyEvent.VK_ENTER){
+					jButtonSendActionPerformed();
+				}
 			}
 		});
 		
@@ -653,8 +662,8 @@ public class CoordinateFrame extends JFrame{
 		if(!text.equals("")){
 			game.getClient().sendMessage("Coordinate " + "Chat " + name + ": " + text);
 			concatjTextPaneChat(name + ": " + text + "\n");
-			jTextPaneYourMessage.setText("");
 		}
+		jTextPaneYourMessage.setText("");
 	}
 
 	public static boolean first = true;

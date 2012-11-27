@@ -7,6 +7,8 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -275,6 +277,13 @@ public class GameFrame extends JFrame {
 		jTextPaneYourMessage.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent evt) {
 				jTextPaneYourMessageMouseClicked();
+			}
+		});
+		jTextPaneYourMessage.addKeyListener(new KeyAdapter(){
+			public void keyPressed(KeyEvent e){
+				if(e.getKeyCode() == KeyEvent.VK_ENTER){
+					jButtonSendActionPerformed();
+				}
 			}
 		});
 		jButtonSend = new JButton();
@@ -948,8 +957,8 @@ public class GameFrame extends JFrame {
 		if(!text.equals("")){
 			game.getClient().sendMessage("Game " + "Chat " + name + ": " + text);
 			concatjTextPaneChat(name + ": " + text + "\n");
-			jTextPaneYourMessage.setText("");
 		}
+		jTextPaneYourMessage.setText("");
 	}
 
 	private void jTextPaneYourMessageMouseClicked() {
