@@ -40,17 +40,26 @@ public class Game {
 	private int nbrOfCruisers = 4;
 	private String gameMode = "Alternatively";
 	
-	private List<Ship> battleships = new ArrayList<Ship>();
-	private List<Ship> submarines = new ArrayList<Ship>();
-	private List<Ship> destroyers = new ArrayList<Ship>();
-	private List<Ship> cruisers = new ArrayList<Ship>();
+	private List<Ship> battleships;
+	private List<Ship> submarines;
+	private List<Ship> destroyers;
+	private List<Ship> cruisers;
 	
-	private boolean canStart = true;
+	private boolean canStart;
 	
 	public Game(){
+		init();
 		showNetworkFrame();
 //		context = new Context();
 //		context.handle(Context.EventType.Start);
+	}
+	
+	public void init(){
+		canStart = true;
+		battleships = new ArrayList<Ship>();
+		submarines = new ArrayList<Ship>();
+		destroyers = new ArrayList<Ship>();
+		cruisers = new ArrayList<Ship>();
 	}
 	
 	public void hostGame(final int port) {
@@ -336,11 +345,7 @@ public class Game {
 
 	public void won() {
 		JOptionPane.showMessageDialog(null, "You won");
-		canStart = true;
-		battleships = new ArrayList<Ship>();
-		submarines = new ArrayList<Ship>();
-		destroyers = new ArrayList<Ship>();
-		cruisers = new ArrayList<Ship>();
+		init();
 		gameFrame.setVisible(false);
 		coordinateFrame.setVisible(true);
 		coordinateFrame.disableComponents();
@@ -349,11 +354,7 @@ public class Game {
 	
 	public void lost(){
 		JOptionPane.showMessageDialog(null, "You lost");
-		canStart = true;
-		battleships = new ArrayList<Ship>();
-		submarines = new ArrayList<Ship>();
-		destroyers = new ArrayList<Ship>();
-		cruisers = new ArrayList<Ship>();
+		init();
 		gameFrame.setVisible(false);
 		coordinateFrame.setVisible(true);
 		coordinateFrame.enableComponents();
