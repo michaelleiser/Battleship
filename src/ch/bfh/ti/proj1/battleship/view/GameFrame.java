@@ -984,7 +984,10 @@ public class GameFrame extends JFrame {
 		if(game.allShipsPlaced()){
 			for(int i = 0; i < game.getNbrOfRows(); i++){
 				for(int j = 0; j < game.getNbrOfColoumns(); j++){
-					yourField[i][j].setEnabled(false);
+					MouseListener[] listeners = yourField[i][j].getMouseListeners();
+					for(MouseListener l : listeners){
+						yourField[i][j].removeMouseListener(l);
+					}
 				}
 			}
 			jButtonReady.setEnabled(false);

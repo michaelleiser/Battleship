@@ -18,7 +18,8 @@ public class STARTER {
 *TODO Liste
 *
 * - Beim Platzieren des Schiffes, auf dem Spielfeld bereits andeuten
-* - Fields im Spiel immer sichtbar
+* - EnemyFields im Spiel immer sichtbar
+* - YourFields Farben bei shoot, water, sunk aktualisieren
 * - Fields eventuell als JPanel statt JToggleButton
 * - YourFields im Spiel, Status(farben) darstellen
 * - Statistik aktiver Player verdreht
