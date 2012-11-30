@@ -3,6 +3,7 @@ package ch.bfh.ti.proj1.battleship.frame;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -30,6 +31,8 @@ public class Game {
 	private CoordinateFrame coordinateFrame;
 	private GameFrame gameFrame;
 	private Player player;
+	private Thread bgSoundThread;
+	
 	
 //	private Context context;
 	
@@ -127,6 +130,21 @@ public class Game {
 		}
 		gameFrame = new GameFrame(this);
 		gameFrame.setVisible(true);
+		this.bgSoundThread = new Thread(new Runnable() {
+			
+			@Override
+			public void run() {
+				Random random = new Random(3);
+				Sound.playBackgroundSound(random.nextInt());
+				
+				try {
+					Thread.sleep(5000);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}
+		});
+		this.bgSoundThread.start();
 	}
 	
 	public void placeShip(ShipType type, int x, int y, int horizontalOrVertical) {
@@ -294,7 +312,7 @@ public class Game {
 				this.myClient.sendMessage("Game " + "Hit " + x + " " + y);
 				f[y][x].setBackground(Color.red);
 				try {
-					Sound.playingSound(Sounds.DEATH);
+					Sound.playingSound(Sounds.SUNK);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}	
@@ -360,6 +378,7 @@ public class Game {
 		coordinateFrame.setVisible(true);
 		coordinateFrame.disableComponents();
 		coordinateFrame.setFirst(true);
+		this.bgSoundThread.interrupt();
 	}
 	
 	public void lost(){
@@ -369,6 +388,7 @@ public class Game {
 		coordinateFrame.setVisible(true);
 		coordinateFrame.enableComponents();
 		coordinateFrame.setFirst(true);
+		this.bgSoundThread.interrupt();
 	}
 	
 	public void ready() {

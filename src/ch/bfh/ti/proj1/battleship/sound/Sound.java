@@ -9,10 +9,10 @@ import javax.sound.sampled.Clip;
 public class Sound {
 
 	public enum Sounds {
-		BEGIN, DEATH, UMBRELLA
+		WATER, HIT, SUNK, GAMESOUND_0, GAMESOUND_1, GAMESOUND_2, WINNER, LOSER
 	}
 
-	public static void playSound(File f) throws Exception {
+	public static void playGameSound(File f) throws Exception {
 		Clip clip = AudioSystem.getClip();
 		AudioInputStream ais;
 		ais = AudioSystem.getAudioInputStream(f);
@@ -23,16 +23,81 @@ public class Sound {
 		Thread.sleep(l / 1000);
 		clip.stop();
 	}
-
-	public static void playingSound(Sounds sound) throws Exception {
+	
+	public static void playingSound(Sounds sound) {
+		File soundFile;
 		switch (sound) {
-		case BEGIN:
-			File f = new File("wav/begin.wav");
-			playSound(f);
+		case HIT:
+			soundFile = new File("wav/hit.wav");
+			try {
+				playGameSound(soundFile);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 			break;
-		case DEATH:
-			File f2 = new File("wav/death.wav");
-			playSound(f2);
+		case SUNK:
+			soundFile = new File("wav/sunk.wav");
+			try {
+				playGameSound(soundFile);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			break;
+		case WATER:
+			soundFile = new File("wav/water.wav");
+			try {
+				playGameSound(soundFile);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			break;
+		case WINNER:
+			soundFile = new File("wav/win.wav");
+			try {
+				playGameSound(soundFile);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			break;
+		case LOSER:
+			soundFile = new File("wav/lose.wav");
+			try {
+				playGameSound(soundFile);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			break;
+		default:
+			break;
+		}
+	}
+	
+	public static void playBackgroundSound(int random) {		
+		File soundFile;
+		switch (random) {
+		case 0:
+			soundFile = new File("wav/background0.wav");
+			try {
+				playGameSound(soundFile);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			break;
+		case 1:
+			soundFile = new File("wav/background1.wav");
+			try {
+				playGameSound(soundFile);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			break;
+		case 2:
+			soundFile = new File("wav/background2.wav");
+			try {
+				playGameSound(soundFile);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 			break;
 		default:
 			break;
