@@ -128,6 +128,10 @@ public class MyClient implements Runnable{
 					if(line.contains("Game Start background sound ")){
 						game.startBackgroundSound();
 					}
+					if(line.contains("GameFrame Restart")){
+						game.getGameFrame().dispose();
+						game.showCoordinateFrame();
+					}
 				}
 			}
 		} catch (IOException e) {

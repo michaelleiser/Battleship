@@ -980,6 +980,7 @@ public class GameFrame extends JFrame {
 		}
 		game.showCoordinateFrame();
 		this.dispose();
+		game.getClient().sendMessage("GameFrame " + "Restart");
 	}
 
 	private void jButtonReadyActionPerformed() {
