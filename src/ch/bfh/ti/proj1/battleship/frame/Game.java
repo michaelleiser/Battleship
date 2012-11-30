@@ -302,6 +302,7 @@ public class Game {
 				gameFrame.setjLabelEnemyShots();
 				this.myClient.sendMessage("Game " + "Sunk " + x + " " + y);
 				f[y][x].setBackground(Color.green);
+				Sound.playingSound(Sounds.SUNK);
 				if(allShipsSunk()){
 					this.myClient.sendMessage("Game " + "Won ");
 					lost();
@@ -311,17 +312,14 @@ public class Game {
 				gameFrame.setjLabelEnemyShots();
 				this.myClient.sendMessage("Game " + "Hit " + x + " " + y);
 				f[y][x].setBackground(Color.red);
-				try {
-					Sound.playingSound(Sounds.SUNK);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}	
+				Sound.playingSound(Sounds.HIT);
 			}
 		} else {
 			gameFrame.setjLabelEnemyWater();
 			gameFrame.setjLabelEnemyShots();
 			this.myClient.sendMessage("Game " + "Water " + x + " " + y);
 			f[y][x].setBackground(Color.blue);
+			Sound.playingSound(Sounds.WATER);
 			if(gameMode.equals("UntilWater")){
 				this.myClient.sendMessage("Game " + "Disable ");
 //				this.gameFrame.enableComponents();
@@ -373,6 +371,7 @@ public class Game {
 
 	public void won() {
 		JOptionPane.showMessageDialog(null, "You won");
+		Sound.playingSound(Sounds.WINNER);
 		init();
 		gameFrame.setVisible(false);
 		coordinateFrame.setVisible(true);
@@ -383,6 +382,7 @@ public class Game {
 	
 	public void lost(){
 		JOptionPane.showMessageDialog(null, "You lost");
+		Sound.playingSound(Sounds.LOSER);
 		init();
 		gameFrame.setVisible(false);
 		coordinateFrame.setVisible(true);
