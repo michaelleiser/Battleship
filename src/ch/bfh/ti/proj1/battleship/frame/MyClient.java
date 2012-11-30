@@ -131,6 +131,7 @@ public class MyClient implements Runnable{
 					if(line.contains("GameFrame Restart")){
 						game.getGameFrame().dispose();
 						game.showCoordinateFrame();
+						game.getCoordinateFrame().disableComponents();
 					}
 				}
 			}

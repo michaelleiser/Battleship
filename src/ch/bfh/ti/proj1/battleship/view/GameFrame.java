@@ -979,6 +979,7 @@ public class GameFrame extends JFrame {
 			Logger.getLogger(CoordinateFrame.class.getName()).log(Level.SEVERE,null, e);
 		}
 		game.showCoordinateFrame();
+		game.getCoordinateFrame().enableComponents();
 		this.dispose();
 		game.getClient().sendMessage("GameFrame " + "Restart");
 	}
