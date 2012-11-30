@@ -14,6 +14,7 @@ import ch.bfh.ti.proj1.battleship.client.Field;
 import ch.bfh.ti.proj1.battleship.client.Player;
 import ch.bfh.ti.proj1.battleship.client.Ship;
 import ch.bfh.ti.proj1.battleship.client.ShipType;
+import ch.bfh.ti.proj1.battleship.sound.GameSound;
 import ch.bfh.ti.proj1.battleship.sound.Sound;
 import ch.bfh.ti.proj1.battleship.sound.Sound.Sounds;
 import ch.bfh.ti.proj1.battleship.view.CoordinateFrame;
@@ -53,6 +54,7 @@ public class Game {
 	private boolean canStart;
 	
 	private boolean yourTurn;
+	private Thread gameSoundThread;
 	
 	public Game(){
 		init();
@@ -115,6 +117,8 @@ public class Game {
 		}
 		coordinateFrame = new CoordinateFrame(this);
 		coordinateFrame.setVisible(true);
+		gameSoundThread = new Thread(new GameSound());
+		gameSoundThread.start();
 	}
 	
 	public void showGameFrame(){
@@ -389,12 +393,17 @@ public class Game {
 		}
 		if(!canStart){
 			this.myClient.sendMessage("Game " + "Enable ");
-			this.myClient.sendMessage("Game " + "Start background sound ");
+			this.myClient.sendMessage("Game " + "Sound ");
 			this.getGameFrame().enableComponents();
+			stopGameSound();
 			startBackgroundSound();
 		}
 	}
 	
+	public void stopGameSound() {
+		gameSoundThread.stop();
+	}
+
 	public void startBackgroundSound() {
 		this.bgSoundThread = new Thread(new Runnable() {
 

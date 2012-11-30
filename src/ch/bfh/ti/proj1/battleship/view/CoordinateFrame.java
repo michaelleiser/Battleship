@@ -24,12 +24,16 @@ import javax.swing.WindowConstants;
 
 import ch.bfh.ti.proj1.battleship.client.ShipType;
 import ch.bfh.ti.proj1.battleship.frame.Game;
+import ch.bfh.ti.proj1.battleship.sound.GameSound;
 
 /**
  * @author Daniel Kotlàris
  * @author Michael Leiser
  */
 public class CoordinateFrame extends JFrame{
+	
+	
+	
 
 	private static final long serialVersionUID = 1L;
 
@@ -76,7 +80,7 @@ public class CoordinateFrame extends JFrame{
 	
 	public boolean firstCoordinate = true;
 	
-	public CoordinateFrame(Game game) {
+	public CoordinateFrame(Game game) {		
 		this.game = game;
 		initComponents();
 	}

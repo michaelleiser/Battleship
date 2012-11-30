@@ -125,8 +125,9 @@ public class MyClient implements Runnable{
 					if(line.contains("Game Start")){
 						game.setStartToFalse();
 					}
-					if(line.contains("Game Start background sound ")){
+					if(line.contains("Game Sound ")){
 						game.startBackgroundSound();
+						game.stopGameSound();
 					}
 					if(line.contains("GameFrame Restart")){
 						game.getGameFrame().dispose();
