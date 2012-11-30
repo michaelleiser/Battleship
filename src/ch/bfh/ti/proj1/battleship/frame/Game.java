@@ -366,11 +366,13 @@ public class Game {
 	
 	public void ready() {
 		if(canStart){
-			this.gameFrame.enableComponents();
 			this.myClient.sendMessage("Game " + "Start ");
 			
 			this.gameFrame.concatjTextPaneHistory(">>> " + getPlayer().getName() + " <<<\n");
 			this.myClient.sendMessage("Game " + "History " + ">>> " + getPlayer().getName() + " <<<\n");
+		}
+		if(!canStart){
+			this.myClient.sendMessage("Game " + "Enable ");
 		}
 	}
 	
