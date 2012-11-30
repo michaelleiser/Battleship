@@ -131,22 +131,24 @@ public class Game {
 		gameFrame = new GameFrame(this);
 		gameFrame.setVisible(true);
 		this.bgSoundThread = new Thread(new Runnable() {
-			
+
 			@Override
 			public void run() {
-				Random random = new Random();
-				Sound.playBackgroundSound(random.nextInt(3));
-				
-				try {
-					Thread.sleep(5000);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
+				while(true) {
+					Random random = new Random();
+					Sound.playBackgroundSound(random.nextInt(3));
+
+					try {
+						Thread.sleep(5000);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
 				}
 			}
 		});
 		this.bgSoundThread.start();
 	}
-	
+
 	public void placeShip(ShipType type, int x, int y, int horizontalOrVertical) {
 		Field[][] fields = gameFrame.getYourField();
 		Ship ship = new Ship(type);
