@@ -134,8 +134,8 @@ public class Game {
 			
 			@Override
 			public void run() {
-				Random random = new Random(3);
-				Sound.playBackgroundSound(random.nextInt());
+				Random random = new Random();
+				Sound.playBackgroundSound(random.nextInt(3));
 				
 				try {
 					Thread.sleep(5000);
@@ -348,6 +348,7 @@ public class Game {
 		gameFrame.setjLabelYouShots();
 		gameFrame.concatjTextPaneHistory(getPlayer().getName() + " hits : " + x + " " + y + "\n");
 		myClient.sendMessage("Game " + "History " + getPlayer().getName() + " hits : " + x + " " + y + "\n");
+		Sound.playingSound(Sounds.HIT);
 	}
 
 	public void water(String x, String y) {
@@ -357,6 +358,7 @@ public class Game {
 		gameFrame.setjLabelYouShots();
 		gameFrame.concatjTextPaneHistory(getPlayer().getName() + " water : " + x + " " + y + "\n");
 		myClient.sendMessage("Game " + "History " + getPlayer().getName() + " water : " + x + " " + y + "\n");
+		Sound.playingSound(Sounds.WATER);
 	}
 
 	public void sunk(String x, String y) {
@@ -367,6 +369,7 @@ public class Game {
 		gameFrame.setjLabelYouShots();
 		gameFrame.concatjTextPaneHistory(getPlayer().getName() + " sunk : " + x + " " + y + "\n");
 		myClient.sendMessage("Game " + "History " + getPlayer().getName() + " sunk : " + x + " " + y + "\n");
+		Sound.playingSound(Sounds.SUNK);
 	}
 
 	public void won() {
