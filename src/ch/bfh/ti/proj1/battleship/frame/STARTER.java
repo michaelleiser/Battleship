@@ -17,6 +17,7 @@ public class STARTER {
 *
 *TODO Liste
 *
+* - Wenn ready bei Spieler 1 noch warten mit aufdecken des EnemyFields, erst wenn spieler 2 bereit
 * - Beim Platzieren des Schiffes, auf dem Spielfeld bereits andeuten
 * - EnemyFields im Spiel immer sichtbar
 * - YourFields Farben bei shoot, water, sunk aktualisieren

@@ -278,6 +278,7 @@ public class Game {
 				gameFrame.setjLabelEnemySunk();
 				gameFrame.setjLabelEnemyShots();
 				this.myClient.sendMessage("Game " + "Sunk " + x + " " + y);
+				f[y][x].setBackground(Color.green);
 				if(allShipsSunk()){
 					this.myClient.sendMessage("Game " + "Won ");
 					lost();
@@ -286,6 +287,7 @@ public class Game {
 				gameFrame.setjLabelEnemyHits();
 				gameFrame.setjLabelEnemyShots();
 				this.myClient.sendMessage("Game " + "Hit " + x + " " + y);
+				f[y][x].setBackground(Color.red);
 				try {
 //					Sound.playingSound(Sounds.DEATH);
 				} catch (Exception e) {
@@ -296,6 +298,7 @@ public class Game {
 			gameFrame.setjLabelEnemyWater();
 			gameFrame.setjLabelEnemyShots();
 			this.myClient.sendMessage("Game " + "Water " + x + " " + y);
+			f[y][x].setBackground(Color.blue);
 			if(gameMode.equals("UntilWater")){
 				this.myClient.sendMessage("Game " + "Disable ");
 				this.gameFrame.enableComponents();
