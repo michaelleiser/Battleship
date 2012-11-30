@@ -419,13 +419,15 @@ public class GameFrame extends JFrame {
 					field2.addMouseListener(new MouseListener(){
 						@Override
 						public void mouseClicked(MouseEvent e) {
-							Field f = (Field) e.getSource();
-							if(!f.isHit()){
-								int x = f.getXPos();
-								int y = f.getYPos();
-								game.shootAt(x, y);
+							if(game.isYourTurn()){
+								Field f = (Field) e.getSource();
+								if(!f.isHit()){
+									int x = f.getXPos();
+									int y = f.getYPos();
+									game.shootAt(x, y);
+								}
+								f.hit();
 							}
-							f.hit();
 						}
 						@Override
 						public void mousePressed(MouseEvent e) {

@@ -18,7 +18,6 @@ public class STARTER {
 *TODO Liste
 *
 * - Beim Platzieren des Schiffes, auf dem Spielfeld bereits andeuten
-* - EnemyFields im Spiel immer sichtbar
 * - Fields eventuell als JPanel statt JToggleButton
 * - Statistik aktiver Player verdreht
 * - Sounds einbinden

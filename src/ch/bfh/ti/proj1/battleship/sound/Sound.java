@@ -18,7 +18,8 @@ public class Sound {
 		ais = AudioSystem.getAudioInputStream(f);
 		clip.open(ais);
 		Long l = clip.getMicrosecondLength();
-		clip.loop(Clip.LOOP_CONTINUOUSLY);
+//		clip.loop(Clip.LOOP_CONTINUOUSLY);
+		clip.start();
 		Thread.sleep(l / 1000);
 		clip.stop();
 	}

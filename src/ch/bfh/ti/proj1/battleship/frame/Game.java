@@ -13,6 +13,8 @@ import ch.bfh.ti.proj1.battleship.client.Field;
 import ch.bfh.ti.proj1.battleship.client.Player;
 import ch.bfh.ti.proj1.battleship.client.Ship;
 import ch.bfh.ti.proj1.battleship.client.ShipType;
+import ch.bfh.ti.proj1.battleship.sound.Sound;
+import ch.bfh.ti.proj1.battleship.sound.Sound.Sounds;
 import ch.bfh.ti.proj1.battleship.view.CoordinateFrame;
 import ch.bfh.ti.proj1.battleship.view.GameFrame;
 import ch.bfh.ti.proj1.battleship.view.NetworkFrame;
@@ -47,6 +49,8 @@ public class Game {
 	
 	private boolean canStart;
 	
+	private boolean yourTurn;
+	
 	public Game(){
 		init();
 		showNetworkFrame();
@@ -56,6 +60,7 @@ public class Game {
 	
 	public void init(){
 		canStart = true;
+		yourTurn = false;
 		battleships = new ArrayList<Ship>();
 		submarines = new ArrayList<Ship>();
 		destroyers = new ArrayList<Ship>();
@@ -289,7 +294,7 @@ public class Game {
 				this.myClient.sendMessage("Game " + "Hit " + x + " " + y);
 				f[y][x].setBackground(Color.red);
 				try {
-//					Sound.playingSound(Sounds.DEATH);
+					Sound.playingSound(Sounds.DEATH);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}	
@@ -301,14 +306,16 @@ public class Game {
 			f[y][x].setBackground(Color.blue);
 			if(gameMode.equals("UntilWater")){
 				this.myClient.sendMessage("Game " + "Disable ");
-				this.gameFrame.enableComponents();
+//				this.gameFrame.enableComponents();
+				setYourTurn(true);
 				this.gameFrame.concatjTextPaneHistory(">>> " + getPlayer().getName() + " <<<\n");
 				this.myClient.sendMessage("Game " + "History " + ">>> " + getPlayer().getName() + " <<<\n");
 			}
 		}
 		if(gameMode.equals("Alternatively")){
 			this.myClient.sendMessage("Game " + "Disable ");
-			this.gameFrame.enableComponents();
+//			this.gameFrame.enableComponents();
+			setYourTurn(true);
 			this.gameFrame.concatjTextPaneHistory(">>> " + getPlayer().getName() + " <<<\n");
 			this.myClient.sendMessage("Game " + "History " + ">>> " + getPlayer().getName() + " <<<\n");
 		}
@@ -366,6 +373,7 @@ public class Game {
 	
 	public void ready() {
 		if(canStart){
+			setYourTurn(true);
 			this.myClient.sendMessage("Game " + "Start ");
 			
 			this.gameFrame.concatjTextPaneHistory(">>> " + getPlayer().getName() + " <<<\n");
@@ -373,6 +381,7 @@ public class Game {
 		}
 		if(!canStart){
 			this.myClient.sendMessage("Game " + "Enable ");
+			this.getGameFrame().enableComponents();
 		}
 	}
 	
@@ -506,5 +515,14 @@ public class Game {
 	public GameFrame getGameFrame(){
 		return gameFrame;
 	}
+	
+	public boolean isYourTurn() {
+		return yourTurn;
+	}
+
+	public void setYourTurn(boolean yourTurn) {
+		this.yourTurn = yourTurn;
+	}
+
 
 }
