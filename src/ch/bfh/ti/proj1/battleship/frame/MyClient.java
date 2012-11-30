@@ -132,6 +132,8 @@ public class MyClient implements Runnable{
 						game.getGameFrame().dispose();
 						game.showCoordinateFrame();
 						game.getCoordinateFrame().disableComponents();
+						game.init();
+						game.getBgSoundThread().stop();
 					}
 				}
 			}

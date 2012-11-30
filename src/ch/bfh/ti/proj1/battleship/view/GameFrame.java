@@ -982,6 +982,9 @@ public class GameFrame extends JFrame {
 		game.getCoordinateFrame().enableComponents();
 		this.dispose();
 		game.getClient().sendMessage("GameFrame " + "Restart");
+		
+		game.init();
+		game.getBgSoundThread().stop();
 	}
 
 	private void jButtonReadyActionPerformed() {

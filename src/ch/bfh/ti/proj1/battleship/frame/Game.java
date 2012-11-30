@@ -555,5 +555,8 @@ public class Game {
 		this.yourTurn = yourTurn;
 	}
 
+	public Thread getBgSoundThread() {
+		return bgSoundThread;
+	}
 
 }
