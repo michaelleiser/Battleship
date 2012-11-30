@@ -125,6 +125,9 @@ public class MyClient implements Runnable{
 					if(line.contains("Game Start")){
 						game.setStartToFalse();
 					}
+					if(line.contains("Game Start background sound ")){
+						game.startBackgroundSound();
+					}
 				}
 			}
 		} catch (IOException e) {

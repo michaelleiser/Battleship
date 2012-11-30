@@ -130,23 +130,6 @@ public class Game {
 		}
 		gameFrame = new GameFrame(this);
 		gameFrame.setVisible(true);
-		this.bgSoundThread = new Thread(new Runnable() {
-
-			@Override
-			public void run() {
-				while(true) {
-					Random random = new Random();
-					Sound.playBackgroundSound(random.nextInt(3));
-
-					try {
-						Thread.sleep(5000);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-				}
-			}
-		});
-		this.bgSoundThread.start();
 	}
 
 	public void placeShip(ShipType type, int x, int y, int horizontalOrVertical) {
@@ -382,7 +365,7 @@ public class Game {
 		coordinateFrame.setVisible(true);
 		coordinateFrame.disableComponents();
 		coordinateFrame.setFirst(true);
-		this.bgSoundThread.interrupt();
+		this.bgSoundThread.stop();
 	}
 	
 	public void lost(){
@@ -393,7 +376,7 @@ public class Game {
 		coordinateFrame.setVisible(true);
 		coordinateFrame.enableComponents();
 		coordinateFrame.setFirst(true);
-		this.bgSoundThread.interrupt();
+		this.bgSoundThread.stop();
 	}
 	
 	public void ready() {
@@ -406,9 +389,32 @@ public class Game {
 		}
 		if(!canStart){
 			this.myClient.sendMessage("Game " + "Enable ");
+			this.myClient.sendMessage("Game " + "Start background sound ");
 			this.getGameFrame().enableComponents();
+			startBackgroundSound();
 		}
 	}
+	
+	public void startBackgroundSound() {
+		this.bgSoundThread = new Thread(new Runnable() {
+
+			@Override
+			public void run() {
+				while(true) {
+					Random random = new Random();
+					Sound.playBackgroundSound(random.nextInt(3));
+
+					try {
+						Thread.sleep(5000);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+		});
+		this.bgSoundThread.start();
+	}
+	
 	
 	public void setStartToFalse(){
 		this.canStart = false;
