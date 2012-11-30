@@ -370,8 +370,8 @@ public class Game {
 	}
 
 	public void won() {
-		JOptionPane.showMessageDialog(null, "You won");
 		Sound.playingSound(Sounds.WINNER);
+		JOptionPane.showMessageDialog(null, "You won");
 		init();
 		gameFrame.setVisible(false);
 		coordinateFrame.setVisible(true);
@@ -381,8 +381,8 @@ public class Game {
 	}
 	
 	public void lost(){
-		JOptionPane.showMessageDialog(null, "You lost");
 		Sound.playingSound(Sounds.LOSER);
+		JOptionPane.showMessageDialog(null, "You lost");
 		init();
 		gameFrame.setVisible(false);
 		coordinateFrame.setVisible(true);
