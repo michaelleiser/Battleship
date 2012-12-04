@@ -104,4 +104,21 @@ public class Sound {
 		}
 	}
 
+	public static void playGameSound() {
+		try {
+			File f = new File("wav/gamesound0.wav");
+			Clip clip = AudioSystem.getClip();
+			AudioInputStream ais;
+			ais = AudioSystem.getAudioInputStream(f);
+			clip.open(ais);
+			Long l = clip.getMicrosecondLength();
+//			clip.loop(Clip.LOOP_CONTINUOUSLY);
+			clip.start();
+			Thread.sleep(l / 1000);
+			clip.stop();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
 }

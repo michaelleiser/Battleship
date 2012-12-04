@@ -14,7 +14,6 @@ import ch.bfh.ti.proj1.battleship.client.Field;
 import ch.bfh.ti.proj1.battleship.client.Player;
 import ch.bfh.ti.proj1.battleship.client.Ship;
 import ch.bfh.ti.proj1.battleship.client.ShipType;
-import ch.bfh.ti.proj1.battleship.sound.GameSound;
 import ch.bfh.ti.proj1.battleship.sound.Sound;
 import ch.bfh.ti.proj1.battleship.sound.Sound.Sounds;
 import ch.bfh.ti.proj1.battleship.view.CoordinateFrame;
@@ -33,6 +32,7 @@ public class Game {
 	private GameFrame gameFrame;
 	private Player player;
 	private Thread bgSoundThread;
+	private Thread gameSoundThread;
 	
 	
 //	private Context context;
@@ -54,7 +54,6 @@ public class Game {
 	private boolean canStart;
 	
 	private boolean yourTurn;
-	private Thread gameSoundThread;
 	
 	public Game(){
 		init();
@@ -117,8 +116,7 @@ public class Game {
 		}
 		coordinateFrame = new CoordinateFrame(this);
 		coordinateFrame.setVisible(true);
-		gameSoundThread = new Thread(new GameSound());
-		gameSoundThread.start();
+		startGameSound();												// Start the game sound
 	}
 	
 	public void showGameFrame(){
@@ -311,7 +309,6 @@ public class Game {
 			Sound.playingSound(Sounds.WATER);
 			if(gameMode.equals("UntilWater")){
 				this.myClient.sendMessage("Game " + "Disable ");
-//				this.gameFrame.enableComponents();
 				setYourTurn(true);
 				this.gameFrame.concatjTextPaneHistory(">>> " + getPlayer().getName() + " <<<\n");
 				this.myClient.sendMessage("Game " + "History " + ">>> " + getPlayer().getName() + " <<<\n");
@@ -319,7 +316,6 @@ public class Game {
 		}
 		if(gameMode.equals("Alternatively")){
 			this.myClient.sendMessage("Game " + "Disable ");
-//			this.gameFrame.enableComponents();
 			setYourTurn(true);
 			this.gameFrame.concatjTextPaneHistory(">>> " + getPlayer().getName() + " <<<\n");
 			this.myClient.sendMessage("Game " + "History " + ">>> " + getPlayer().getName() + " <<<\n");
@@ -395,13 +391,25 @@ public class Game {
 			this.myClient.sendMessage("Game " + "Enable ");
 			this.myClient.sendMessage("Game " + "Sound ");
 			this.getGameFrame().enableComponents();
-			stopGameSound();
+			gameSoundThread.stop();
 			startBackgroundSound();
 		}
 	}
 	
-	public void stopGameSound() {
-		gameSoundThread.stop();
+	public void startGameSound() {
+		this.gameSoundThread = new Thread(new Runnable() {
+
+			@Override
+			public void run() {
+				while(true) {
+					
+					Sound.playGameSound();
+
+				}
+			}
+		});
+		this.gameSoundThread.start();
+
 	}
 
 	public void startBackgroundSound() {
@@ -568,4 +576,7 @@ public class Game {
 		return bgSoundThread;
 	}
 
+	public Thread getGameSoundThread() {
+		return gameSoundThread;
+	}
 }
