@@ -72,7 +72,7 @@ public class MyClient implements Runnable{
 					}
 					if(line.contains("Game History")){
 						String s = line.substring(13, line.length());
-						game.getGameFrame().concatjTextPaneHistory(s);
+						game.getGameFrame().concatjTextPaneHistory(s + "\n");
 					}
 					if(line.contains("Game Show")){
 						game.getNetworkFrame().dispose();

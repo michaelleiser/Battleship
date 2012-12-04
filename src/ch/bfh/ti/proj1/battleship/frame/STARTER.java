@@ -21,7 +21,8 @@ public class STARTER {
 * - Message an anderen, dass anderer geschlossen => Message und dann auch schliessen => JEDES FRAME!!!
 * - Beim Platzieren des Schiffes, auf dem Spielfeld bereits andeuten
 * - Fields eventuell als JPanel statt JToggleButton
-* - Statistik aktiver Player verdreht
+* - History aktiver Player beim gegner verdreht 
+* - History Feld richtig auflösen bsp b1 a3..
 * - Sounds einbinden
 * 		- Sounds bei sich selber implementieren
 * 		- Background Musik bei beiden
