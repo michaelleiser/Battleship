@@ -231,7 +231,7 @@ public class GameFrame extends JFrame {
 		jLabelYouShots.setText("0");
 		jLabelYouAccuracy = new JLabel();
 		jLabelYouAccuracy.setFont(new Font("Tahoma", 1, 11)); // NOI18N
-        jLabelYouAccuracy.setText("0");
+        jLabelYouAccuracy.setText("0%");
 		jLabelEnemy = new JLabel();
 		jLabelEnemy.setFont(new Font("Tahoma", 1, 11));
 		jLabelEnemy.setText("Enemy");
@@ -249,7 +249,7 @@ public class GameFrame extends JFrame {
 		jLabelEnemyShots.setText("0");	
 		jLabelEnemyAccuracy = new JLabel();
 		jLabelEnemyAccuracy.setFont(new Font("Tahoma", 1, 11));
-        jLabelEnemyAccuracy.setText("0");
+        jLabelEnemyAccuracy.setText("0%");
 		
 		jPanelHistory = new JPanel();
 		jPanelHistory.setBorder(BorderFactory.createEtchedBorder());
@@ -1064,8 +1064,17 @@ public class GameFrame extends JFrame {
 
 	public void setjLabelYouShots() {
 		this.jLabelYouShots.setText((1+Integer.parseInt(jLabelYouShots.getText())) + "");
+		setjLaberYouAccuracy();
 	}
 
+	public void setjLaberYouAccuracy(){
+		int hits = Integer.parseInt(jLabelYouHits.getText());
+		int shots = Integer.parseInt(jLabelYouShots.getText());
+		int accuracy = (100 * hits / shots);
+		this.jLabelYouAccuracy.setText(accuracy + "%");
+	}
+	
+	
 	public void setjLabelEnemyHits() {
 		this.jLabelEnemyHits.setText((1+Integer.parseInt(jLabelEnemyHits.getText())) + "");
 	}
@@ -1080,7 +1089,17 @@ public class GameFrame extends JFrame {
 
 	public void setjLabelEnemyShots() {
 		this.jLabelEnemyShots.setText((1+Integer.parseInt(jLabelEnemyShots.getText())) + "");
+		setjLabelEnemyAccuracy();
 	}
+	
+	public void setjLabelEnemyAccuracy(){
+		int hits = Integer.parseInt(jLabelEnemyHits.getText());
+		int shots = Integer.parseInt(jLabelEnemyShots.getText());
+		int accuracy = (100 * hits / shots);
+		this.jLabelEnemyAccuracy.setText(accuracy + "%");
+	}
+	
+	
 	
 	public void concatjTextPaneChat(String text) {
 		String s = jTextPaneChat.getText();

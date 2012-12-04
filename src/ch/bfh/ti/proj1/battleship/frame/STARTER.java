@@ -19,7 +19,6 @@ public class STARTER {
 * - Startbild und Endbild
 * - Winner/Loser Frame mit Sound
 * - Message an anderen, dass anderer geschlossen => Message und dann auch schliessen => JEDES FRAME!!!
-* - Beim Restart: Wieder Schiffe setzen und spielen können
 * - Beim Platzieren des Schiffes, auf dem Spielfeld bereits andeuten
 * - Fields eventuell als JPanel statt JToggleButton
 * - Statistik aktiver Player verdreht
