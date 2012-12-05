@@ -1050,24 +1050,24 @@ public class GameFrame extends JFrame {
 	
 	
 	
-	public void setjLabelYouHits() {
+	public void incjLabelYouHits() {
 		this.jLabelYouHits.setText((1+Integer.parseInt(jLabelYouHits.getText())) + "");
 	}
 
-	public void setjLabelYouWater() {
+	public void incjLabelYouWater() {
 		this.jLabelYouWater.setText((1+Integer.parseInt(jLabelYouWater.getText())) + "");
 	}
 
-	public void setjLabelYouSunk() {
+	public void incjLabelYouSunk() {
 		this.jLabelYouSunk.setText((1+Integer.parseInt(jLabelYouSunk.getText())) + "");
 	}
 
-	public void setjLabelYouShots() {
+	public void incjLabelYouShots() {
 		this.jLabelYouShots.setText((1+Integer.parseInt(jLabelYouShots.getText())) + "");
-		setjLaberYouAccuracy();
+		refreshjLabelYouAccuracy();
 	}
 
-	public void setjLaberYouAccuracy(){
+	public void refreshjLabelYouAccuracy(){
 		int hits = Integer.parseInt(jLabelYouHits.getText());
 		int shots = Integer.parseInt(jLabelYouShots.getText());
 		int accuracy = (100 * hits / shots);
@@ -1075,24 +1075,24 @@ public class GameFrame extends JFrame {
 	}
 	
 	
-	public void setjLabelEnemyHits() {
+	public void incjLabelEnemyHits() {
 		this.jLabelEnemyHits.setText((1+Integer.parseInt(jLabelEnemyHits.getText())) + "");
 	}
 
-	public void setjLabelEnemyWater() {
+	public void incjLabelEnemyWater() {
 		this.jLabelEnemyWater.setText((1+Integer.parseInt(jLabelEnemyWater.getText())) + "");
 	}
 
-	public void setjLabelEnemySunk() {
+	public void incjLabelEnemySunk() {
 		this.jLabelEnemySunk.setText((1+Integer.parseInt(jLabelEnemySunk.getText())) + "");
 	}
 
-	public void setjLabelEnemyShots() {
+	public void incjLabelEnemyShots() {
 		this.jLabelEnemyShots.setText((1+Integer.parseInt(jLabelEnemyShots.getText())) + "");
-		setjLabelEnemyAccuracy();
+		refreshjLabelEnemyAccuracy();
 	}
 	
-	public void setjLabelEnemyAccuracy(){
+	public void refreshjLabelEnemyAccuracy(){
 		int hits = Integer.parseInt(jLabelEnemyHits.getText());
 		int shots = Integer.parseInt(jLabelEnemyShots.getText());
 		int accuracy = (100 * hits / shots);

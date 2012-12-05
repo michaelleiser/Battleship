@@ -34,9 +34,6 @@ public class Game {
 	private Thread bgSoundThread;
 	private Thread gameSoundThread;
 	
-	
-//	private Context context;
-	
 	// initialize standard values
 	private int nbrOfRows = 10;
 	private int nbrOfColoumns = 10;
@@ -58,8 +55,6 @@ public class Game {
 	public Game(){
 		init();
 		showNetworkFrame();
-//		context = new Context();
-//		context.handle(Context.EventType.Start);
 	}
 	
 	public void init(){
@@ -284,9 +279,9 @@ public class Game {
 		if(f[y][x].getShip() != null){
 			f[y][x].shoot();
 			if(f[y][x].getShip().isSunk()){
-				gameFrame.setjLabelEnemyHits();
-				gameFrame.setjLabelEnemySunk();
-				gameFrame.setjLabelEnemyShots();
+				gameFrame.incjLabelEnemyHits();
+				gameFrame.incjLabelEnemySunk();
+				gameFrame.incjLabelEnemyShots();
 				this.myClient.sendMessage("Game " + "Sunk " + x + " " + y);
 				f[y][x].setBackground(Color.green);
 				Sound.playingSound(Sounds.SUNK);
@@ -295,30 +290,30 @@ public class Game {
 					lost();
 				}
 			} else{
-				gameFrame.setjLabelEnemyHits();
-				gameFrame.setjLabelEnemyShots();
+				gameFrame.incjLabelEnemyHits();
+				gameFrame.incjLabelEnemyShots();
 				this.myClient.sendMessage("Game " + "Hit " + x + " " + y);
 				f[y][x].setBackground(Color.red);
 				Sound.playingSound(Sounds.HIT);
 			}
 		} else {
-			gameFrame.setjLabelEnemyWater();
-			gameFrame.setjLabelEnemyShots();
+			gameFrame.incjLabelEnemyWater();
+			gameFrame.incjLabelEnemyShots();
 			this.myClient.sendMessage("Game " + "Water " + x + " " + y);
 			f[y][x].setBackground(Color.blue);
 			Sound.playingSound(Sounds.WATER);
 			if(gameMode.equals("UntilWater")){
 				this.myClient.sendMessage("Game " + "Disable ");
 				setYourTurn(true);
-				this.gameFrame.concatjTextPaneHistory(">>> " + getPlayer().getName() + " <<<\n");
-				this.myClient.sendMessage("Game " + "History " + ">>> " + getPlayer().getName() + " <<<\n");
+				this.gameFrame.concatjTextPaneHistory(">>> " + player.getName() + " <<<\n");
+				this.myClient.sendMessage("Game " + "History " + ">>> " + player.getName() + " <<<\n");
 			}
 		}
 		if(gameMode.equals("Alternatively")){
 			this.myClient.sendMessage("Game " + "Disable ");
 			setYourTurn(true);
-			this.gameFrame.concatjTextPaneHistory(">>> " + getPlayer().getName() + " <<<\n");
-			this.myClient.sendMessage("Game " + "History " + ">>> " + getPlayer().getName() + " <<<\n");
+			this.gameFrame.concatjTextPaneHistory(">>> " + player.getName() + " <<<\n");
+			this.myClient.sendMessage("Game " + "History " + ">>> " + player.getName() + " <<<\n");
 		}
 	}
 
@@ -329,31 +324,31 @@ public class Game {
 	public void hit(String x, String y) {
 		Field[][]f = gameFrame.getEnemyField();
 		f[Integer.parseInt(y)][Integer.parseInt(x)].setBackground(Color.red);
-		gameFrame.setjLabelYouHits();
-		gameFrame.setjLabelYouShots();
-		gameFrame.concatjTextPaneHistory(getPlayer().getName() + " hits : " + x + " " + y + "\n");
-		myClient.sendMessage("Game " + "History " + getPlayer().getName() + " hits : " + x + " " + y + "\n");
+		gameFrame.incjLabelYouHits();
+		gameFrame.incjLabelYouShots();
+		gameFrame.concatjTextPaneHistory(player.getName() + " hits : " + x + " " + y + "\n");
+		myClient.sendMessage("Game " + "History " + player.getName() + " hits : " + x + " " + y + "\n");
 		Sound.playingSound(Sounds.HIT);
 	}
 
 	public void water(String x, String y) {
 		Field[][]f = gameFrame.getEnemyField();
 		f[Integer.parseInt(y)][Integer.parseInt(x)].setBackground(Color.blue);
-		gameFrame.setjLabelYouWater();
-		gameFrame.setjLabelYouShots();
-		gameFrame.concatjTextPaneHistory(getPlayer().getName() + " water : " + x + " " + y + "\n");
-		myClient.sendMessage("Game " + "History " + getPlayer().getName() + " water : " + x + " " + y + "\n");
+		gameFrame.incjLabelYouWater();
+		gameFrame.incjLabelYouShots();
+		gameFrame.concatjTextPaneHistory(player.getName() + " water : " + x + " " + y + "\n");
+		myClient.sendMessage("Game " + "History " + player.getName() + " water : " + x + " " + y + "\n");
 		Sound.playingSound(Sounds.WATER);
 	}
 
 	public void sunk(String x, String y) {
 		Field[][]f = gameFrame.getEnemyField();
 		f[Integer.parseInt(y)][Integer.parseInt(x)].setBackground(Color.green);
-		gameFrame.setjLabelYouHits();
-		gameFrame.setjLabelYouSunk();
-		gameFrame.setjLabelYouShots();
-		gameFrame.concatjTextPaneHistory(getPlayer().getName() + " sunk : " + x + " " + y + "\n");
-		myClient.sendMessage("Game " + "History " + getPlayer().getName() + " sunk : " + x + " " + y + "\n");
+		gameFrame.incjLabelYouHits();
+		gameFrame.incjLabelYouSunk();
+		gameFrame.incjLabelYouShots();
+		gameFrame.concatjTextPaneHistory(player.getName() + " sunk : " + x + " " + y + "\n");
+		myClient.sendMessage("Game " + "History " + player.getName() + " sunk : " + x + " " + y + "\n");
 		Sound.playingSound(Sounds.SUNK);
 	}
 
@@ -384,8 +379,8 @@ public class Game {
 			setYourTurn(true);
 			this.myClient.sendMessage("Game " + "Start ");
 			
-			this.gameFrame.concatjTextPaneHistory(">>> " + getPlayer().getName() + " <<<\n");
-			this.myClient.sendMessage("Game " + "History " + ">>> " + getPlayer().getName() + " <<<\n");
+			this.gameFrame.concatjTextPaneHistory(">>> " + player.getName() + " <<<\n");
+			this.myClient.sendMessage("Game " + "History " + ">>> " + player.getName() + " <<<\n");
 		}
 		if(!canStart){
 			this.myClient.sendMessage("Game " + "Enable ");
