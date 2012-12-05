@@ -321,9 +321,9 @@ public class Game {
 		player = new Player(name);
 	}
 
-	public void hit(String x, String y) {
+	public void hit(int x, int y) {
 		Field[][]f = gameFrame.getEnemyField();
-		f[Integer.parseInt(y)][Integer.parseInt(x)].setBackground(Color.red);
+		f[y][x].setBackground(Color.red);
 		gameFrame.incjLabelYouHits();
 		gameFrame.incjLabelYouShots();
 		gameFrame.concatjTextPaneHistory(player.getName() + " hits : " + x + " " + y + "\n");
@@ -331,9 +331,9 @@ public class Game {
 		Sound.playingSound(Sounds.HIT);
 	}
 
-	public void water(String x, String y) {
+	public void water(int x, int y) {
 		Field[][]f = gameFrame.getEnemyField();
-		f[Integer.parseInt(y)][Integer.parseInt(x)].setBackground(Color.blue);
+		f[y][x].setBackground(Color.blue);
 		gameFrame.incjLabelYouWater();
 		gameFrame.incjLabelYouShots();
 		gameFrame.concatjTextPaneHistory(player.getName() + " water : " + x + " " + y + "\n");
@@ -341,9 +341,9 @@ public class Game {
 		Sound.playingSound(Sounds.WATER);
 	}
 
-	public void sunk(String x, String y) {
+	public void sunk(int x, int y) {
 		Field[][]f = gameFrame.getEnemyField();
-		f[Integer.parseInt(y)][Integer.parseInt(x)].setBackground(Color.green);
+		f[y][x].setBackground(Color.green);
 		gameFrame.incjLabelYouHits();
 		gameFrame.incjLabelYouSunk();
 		gameFrame.incjLabelYouShots();

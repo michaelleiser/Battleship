@@ -109,15 +109,15 @@ public class MyClient implements Runnable{
 					}
 					if(line.contains("Game Hit")){
 						String[] s = line.split(" " );
-						game.hit(s[2], s[3]);
+						game.hit(Integer.parseInt(s[2]), Integer.parseInt(s[3]));
 					}
 					if(line.contains("Game Water")){
 						String[] s = line.split(" " );
-						game.water(s[2], s[3]);
+						game.water(Integer.parseInt(s[2]), Integer.parseInt(s[3]));
 					}
 					if(line.contains("Game Sunk")){
 						String[] s = line.split(" " );
-						game.sunk(s[2], s[3]);
+						game.sunk(Integer.parseInt(s[2]), Integer.parseInt(s[3]));
 					}
 					if(line.contains("Game Won")){
 						game.won();
