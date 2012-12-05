@@ -326,8 +326,8 @@ public class Game {
 		f[y][x].setBackground(Color.red);
 		gameFrame.incjLabelYouHits();
 		gameFrame.incjLabelYouShots();
-		gameFrame.concatjTextPaneHistory(player.getName() + " hits : " + x + " " + y + "\n");
-		myClient.sendMessage("Game " + "History " + player.getName() + " hits : " + x + " " + y + "\n");
+		gameFrame.concatjTextPaneHistory(player.getName() + " hits : " + (x+1) + " " + ((char)(y+65)) + "\n");
+		myClient.sendMessage("Game " + "History " + player.getName() + " hits : " + (x+1) + " " + ((char)(y+65)) + "\n");
 		Sound.playingSound(Sounds.HIT);
 	}
 
@@ -336,8 +336,8 @@ public class Game {
 		f[y][x].setBackground(Color.blue);
 		gameFrame.incjLabelYouWater();
 		gameFrame.incjLabelYouShots();
-		gameFrame.concatjTextPaneHistory(player.getName() + " water : " + x + " " + y + "\n");
-		myClient.sendMessage("Game " + "History " + player.getName() + " water : " + x + " " + y + "\n");
+		gameFrame.concatjTextPaneHistory(player.getName() + " water : " + (x+1) + " " + ((char)(y+65)) + "\n");
+		myClient.sendMessage("Game " + "History " + player.getName() + " water : " + (x+1) + " " + ((char)(y+65)) + "\n");
 		Sound.playingSound(Sounds.WATER);
 	}
 
@@ -347,8 +347,8 @@ public class Game {
 		gameFrame.incjLabelYouHits();
 		gameFrame.incjLabelYouSunk();
 		gameFrame.incjLabelYouShots();
-		gameFrame.concatjTextPaneHistory(player.getName() + " sunk : " + x + " " + y + "\n");
-		myClient.sendMessage("Game " + "History " + player.getName() + " sunk : " + x + " " + y + "\n");
+		gameFrame.concatjTextPaneHistory(player.getName() + " sunk : " + (x+1) + " " + ((char)(y+65)) + "\n");
+		myClient.sendMessage("Game " + "History " + player.getName() + " sunk : " + (x+1) + " " + ((char)(y+65)) + "\n");
 		Sound.playingSound(Sounds.SUNK);
 	}
 
