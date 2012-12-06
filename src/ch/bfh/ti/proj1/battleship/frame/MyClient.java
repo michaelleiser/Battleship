@@ -62,74 +62,74 @@ public class MyClient implements Runnable{
 			while (true) {
 				line = in.readLine();
 				if (line != null){
-					if(line.contains("Coordinate Chat")){
+					if(line.startsWith("Coordinate Chat")){
 						String s = line.substring(16, line.length());
 						game.getCoordinateFrame().concatjTextPaneChat(s + "\n");
 					}
-					if(line.contains("Game Chat")){
+					if(line.startsWith("Game Chat")){
 						String s = line.substring(10, line.length());
 						game.getGameFrame().concatjTextPaneChat(s + "\n");
 					}
-					if(line.contains("Game History")){
+					if(line.startsWith("Game History")){
 						String s = line.substring(13, line.length());
 						game.getGameFrame().concatjTextPaneHistory(s + "\n");
 					}
-					if(line.contains("Game Show")){
+					if(line.startsWith("Game Show")){
 						game.getNetworkFrame().dispose();
 						game.showCoordinateFrame();
 					}
-					if(line.contains("Coordinate Enable")){
+					if(line.startsWith("Coordinate Enable")){
 						game.getCoordinateFrame().enableComponents();
 					}
-					if(line.contains("Game Enable")){
+					if(line.startsWith("Game Enable")){
 						game.getGameFrame().enableComponents();
 					}
-					if(line.contains("Game Disable ")){
+					if(line.startsWith("Game Disable ")){
 						game.setYourTurn(false);
 					}
-					if(line.contains("Coordinate ShowGameFrame")){
+					if(line.startsWith("Coordinate ShowGameFrame")){
 						game.showGameFrame();
 					}
-					if(line.contains("Coordinate Dispose")){
+					if(line.startsWith("Coordinate Dispose")){
 						game.getCoordinateFrame().dispose();
 					}
-					if(line.contains("Coordinate Options")){
+					if(line.startsWith("Coordinate Options")){
 						String[] s = line.split(" ");
 						game.setOptions(Integer.parseInt(s[2]), Integer.parseInt(s[3]),
 								Integer.parseInt(s[4]), Integer.parseInt(s[5]),
 								Integer.parseInt(s[6]), Integer.parseInt(s[7]), s[8]);
 						game.getCoordinateFrame().setComponents(s[2], s[3], s[4], s[5], s[6], s[7], s[8]);
 					}
-					if(line.contains("Coordinate SetFirst")){
+					if(line.startsWith("Coordinate SetFirst")){
 						game.getCoordinateFrame().setFirst(false);
 					}
-					if(line.contains("Game Shoot")){
+					if(line.startsWith("Game Shoot")){
 						String[] s = line.split(" ");
 						game.checkShoot(Integer.parseInt(s[2]), Integer.parseInt(s[3]));
 					}
-					if(line.contains("Game Hit")){
+					if(line.startsWith("Game Hit")){
 						String[] s = line.split(" " );
 						game.hit(Integer.parseInt(s[2]), Integer.parseInt(s[3]));
 					}
-					if(line.contains("Game Water")){
+					if(line.startsWith("Game Water")){
 						String[] s = line.split(" " );
 						game.water(Integer.parseInt(s[2]), Integer.parseInt(s[3]));
 					}
-					if(line.contains("Game Sunk")){
+					if(line.startsWith("Game Sunk")){
 						String[] s = line.split(" " );
 						game.sunk(Integer.parseInt(s[2]), Integer.parseInt(s[3]));
 					}
-					if(line.contains("Game Won")){
+					if(line.startsWith("Game Won")){
 						game.won();
 					}
-					if(line.contains("Game Start")){
+					if(line.startsWith("Game Start")){
 						game.setStartToFalse();
 					}
-					if(line.contains("Game Sound ")){
+					if(line.startsWith("Game Sound ")){
 						game.startBackgroundSound();
 						game.getGameSoundThread().stop();
 					}
-					if(line.contains("GameFrame Restart")){
+					if(line.startsWith("GameFrame Restart")){
 						game.getGameFrame().dispose();
 						game.showCoordinateFrame();
 						game.getCoordinateFrame().disableComponents();

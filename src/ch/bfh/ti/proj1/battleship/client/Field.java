@@ -2,9 +2,9 @@ package ch.bfh.ti.proj1.battleship.client;
 
 import java.awt.Color;
 
-import javax.swing.JToggleButton;
+import javax.swing.JButton;
 
-public class Field extends JToggleButton {
+public class Field extends JButton {
 
 	private static final long serialVersionUID = 3616779595167692632L;
 	
