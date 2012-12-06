@@ -62,74 +62,74 @@ public class MyClient implements Runnable{
 			while (true) {
 				line = in.readLine();
 				if (line != null){
-					if(line.startsWith("Coordinate Chat")){
+					if(line.startsWith(Message.COORDINATE_CHAT.toString())){
 						String s = line.substring(16, line.length());
 						game.getCoordinateFrame().concatjTextPaneChat(s + "\n");
 					}
-					if(line.startsWith("Game Chat")){
+					if(line.startsWith(Message.GAME_CHAT.toString())){
 						String s = line.substring(10, line.length());
 						game.getGameFrame().concatjTextPaneChat(s + "\n");
 					}
-					if(line.startsWith("Game History")){
+					if(line.startsWith(Message.GAME_HISTORY.toString())){
 						String s = line.substring(13, line.length());
 						game.getGameFrame().concatjTextPaneHistory(s + "\n");
 					}
-					if(line.startsWith("Game Show")){
+					if(line.startsWith(Message.GAME_SHOW.toString())){
 						game.getNetworkFrame().dispose();
 						game.showCoordinateFrame();
 					}
-					if(line.startsWith("Coordinate Enable")){
+					if(line.startsWith(Message.COORDINATE_ENABLE.toString())){
 						game.getCoordinateFrame().enableComponents();
 					}
-					if(line.startsWith("Game Enable")){
+					if(line.startsWith(Message.GAME_ENABLE.toString())){
 						game.getGameFrame().enableComponents();
 					}
-					if(line.startsWith("Game Disable ")){
+					if(line.startsWith(Message.GAME_DISABLE.toString())){
 						game.setYourTurn(false);
 					}
-					if(line.startsWith("Coordinate ShowGameFrame")){
+					if(line.startsWith(Message.COORDINATE_SHOWGAMEFRAME.toString())){
 						game.showGameFrame();
 					}
-					if(line.startsWith("Coordinate Dispose")){
+					if(line.startsWith(Message.COORDINATE_DISPOSE.toString())){
 						game.getCoordinateFrame().dispose();
 					}
-					if(line.startsWith("Coordinate Options")){
+					if(line.startsWith(Message.COORDINATE_OPTIONS.toString())){
 						String[] s = line.split(" ");
-						game.setOptions(Integer.parseInt(s[2]), Integer.parseInt(s[3]),
-								Integer.parseInt(s[4]), Integer.parseInt(s[5]),
-								Integer.parseInt(s[6]), Integer.parseInt(s[7]), GameMode.valueOf(s[8]));
-						game.getCoordinateFrame().setComponents(s[2], s[3], s[4], s[5], s[6], s[7], GameMode.valueOf(s[8]));
+						game.setOptions(Integer.parseInt(s[1]), Integer.parseInt(s[2]),
+								Integer.parseInt(s[3]), Integer.parseInt(s[4]),
+								Integer.parseInt(s[5]), Integer.parseInt(s[6]), GameMode.valueOf(s[7]));
+						game.getCoordinateFrame().setComponents(s[1], s[2], s[3], s[4], s[5], s[6], GameMode.valueOf(s[7]));
 					}
-					if(line.startsWith("Coordinate SetFirst")){
+					if(line.startsWith(Message.COORDINATE_SETFIRST.toString())){
 						game.getCoordinateFrame().setFirst(false);
 					}
-					if(line.startsWith("Game Shoot")){
+					if(line.startsWith(Message.GAME_SHOOT.toString())){
 						String[] s = line.split(" ");
-						game.checkShoot(Integer.parseInt(s[2]), Integer.parseInt(s[3]));
+						game.checkShoot(Integer.parseInt(s[1]), Integer.parseInt(s[2]));
 					}
-					if(line.startsWith("Game Hit")){
+					if(line.startsWith(Message.GAME_HIT.toString())){
 						String[] s = line.split(" " );
-						game.hit(Integer.parseInt(s[2]), Integer.parseInt(s[3]));
+						game.hit(Integer.parseInt(s[1]), Integer.parseInt(s[2]));
 					}
-					if(line.startsWith("Game Water")){
+					if(line.startsWith(Message.GAME_WATER.toString())){
 						String[] s = line.split(" " );
-						game.water(Integer.parseInt(s[2]), Integer.parseInt(s[3]));
+						game.water(Integer.parseInt(s[1]), Integer.parseInt(s[2]));
 					}
-					if(line.startsWith("Game Sunk")){
+					if(line.startsWith(Message.GAME_SUNK.toString())){
 						String[] s = line.split(" " );
-						game.sunk(Integer.parseInt(s[2]), Integer.parseInt(s[3]));
+						game.sunk(Integer.parseInt(s[1]), Integer.parseInt(s[2]));
 					}
-					if(line.startsWith("Game Won")){
+					if(line.startsWith(Message.GAME_WON.toString())){
 						game.won();
 					}
-					if(line.startsWith("Game Start")){
+					if(line.startsWith(Message.GAME_START.toString())){
 						game.setStartToFalse();
 					}
-					if(line.startsWith("Game Sound ")){
+					if(line.startsWith(Message.GAME_SOUND.toString())){
 						game.startBackgroundSound();
 						game.getGameSoundThread().stop();
 					}
-					if(line.startsWith("GameFrame Restart")){
+					if(line.startsWith(Message.GAME_RESTART.toString())){
 						game.restart();
 					}
 				}

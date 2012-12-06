@@ -79,7 +79,7 @@ public class Game {
 			networkFrame.setVisible(false);
 			showCoordinateFrame();	
 			coordinateFrame.disableComponents();
-			myClient.sendMessage("Game " + "Show ");
+			myClient.sendMessage(Message.GAME_SHOW.toString());
 		}
 	}
 	
@@ -271,7 +271,7 @@ public class Game {
 	}
 
 	public void shootAt(int x, int y) {
-		myClient.sendMessage("Game " + "Shoot " + x + " " + y);
+		myClient.sendMessage(Message.GAME_SHOOT.toString() + " " + x + " " + y);
 	}
 	
 	public void checkShoot(int x, int y){
@@ -282,38 +282,38 @@ public class Game {
 				gameFrame.incjLabelEnemyHits();
 				gameFrame.incjLabelEnemySunk();
 				gameFrame.incjLabelEnemyShots();
-				this.myClient.sendMessage("Game " + "Sunk " + x + " " + y);
+				this.myClient.sendMessage(Message.GAME_SUNK.toString() + " " + x + " " + y);
 				f[y][x].setBackground(Color.green);
 				Sound.playingSound(Sounds.SUNK);
 				if(allShipsSunk()){
-					this.myClient.sendMessage("Game " + "Won ");
+					this.myClient.sendMessage(Message.GAME_WON.toString());
 					lost();
 				}
 			} else{
 				gameFrame.incjLabelEnemyHits();
 				gameFrame.incjLabelEnemyShots();
-				this.myClient.sendMessage("Game " + "Hit " + x + " " + y);
+				this.myClient.sendMessage(Message.GAME_HIT.toString() + " " + x + " " + y);
 				f[y][x].setBackground(Color.red);
 				Sound.playingSound(Sounds.HIT);
 			}
 		} else {
 			gameFrame.incjLabelEnemyWater();
 			gameFrame.incjLabelEnemyShots();
-			this.myClient.sendMessage("Game " + "Water " + x + " " + y);
+			this.myClient.sendMessage(Message.GAME_WATER.toString() + " " + x + " " + y);
 			f[y][x].setBackground(Color.blue);
 			Sound.playingSound(Sounds.WATER);
 			if(gameMode.equals(GameMode.UNTILWATER)){
-				this.myClient.sendMessage("Game " + "Disable ");
+				this.myClient.sendMessage(Message.GAME_DISABLE.toString());
 				setYourTurn(true);
 				this.gameFrame.concatjTextPaneHistory(">>> " + player.getName() + " <<<\n");
-				this.myClient.sendMessage("Game " + "History " + ">>> " + player.getName() + " <<<\n");
+				this.myClient.sendMessage(Message.GAME_HISTORY.toString() + " " + ">>> " + player.getName() + " <<<\n");
 			}
 		}
 		if(gameMode.equals(GameMode.ALTERNATIVELY)){
-			this.myClient.sendMessage("Game " + "Disable ");
+			this.myClient.sendMessage(Message.GAME_DISABLE.toString());
 			setYourTurn(true);
 			this.gameFrame.concatjTextPaneHistory(">>> " + player.getName() + " <<<\n");
-			this.myClient.sendMessage("Game " + "History " + ">>> " + player.getName() + " <<<\n");
+			this.myClient.sendMessage(Message.GAME_HISTORY.toString() + " " + ">>> " + player.getName() + " <<<\n");
 		}
 	}
 
@@ -327,7 +327,7 @@ public class Game {
 		gameFrame.incjLabelYouHits();
 		gameFrame.incjLabelYouShots();
 		gameFrame.concatjTextPaneHistory(player.getName() + " hits : " + (x+1) + " " + ((char)(y+65)) + "\n");
-		myClient.sendMessage("Game " + "History " + player.getName() + " hits : " + (x+1) + " " + ((char)(y+65)) + "\n");
+		myClient.sendMessage(Message.GAME_HISTORY.toString() + " " + player.getName() + " hits : " + (x+1) + " " + ((char)(y+65)) + "\n");
 		Sound.playingSound(Sounds.HIT);
 	}
 
@@ -337,7 +337,7 @@ public class Game {
 		gameFrame.incjLabelYouWater();
 		gameFrame.incjLabelYouShots();
 		gameFrame.concatjTextPaneHistory(player.getName() + " water : " + (x+1) + " " + ((char)(y+65)) + "\n");
-		myClient.sendMessage("Game " + "History " + player.getName() + " water : " + (x+1) + " " + ((char)(y+65)) + "\n");
+		myClient.sendMessage(Message.GAME_HISTORY.toString() + " " + player.getName() + " water : " + (x+1) + " " + ((char)(y+65)) + "\n");
 		Sound.playingSound(Sounds.WATER);
 	}
 
@@ -348,7 +348,7 @@ public class Game {
 		gameFrame.incjLabelYouSunk();
 		gameFrame.incjLabelYouShots();
 		gameFrame.concatjTextPaneHistory(player.getName() + " sunk : " + (x+1) + " " + ((char)(y+65)) + "\n");
-		myClient.sendMessage("Game " + "History " + player.getName() + " sunk : " + (x+1) + " " + ((char)(y+65)) + "\n");
+		myClient.sendMessage(Message.GAME_HISTORY.toString() + " " + player.getName() + " sunk : " + (x+1) + " " + ((char)(y+65)) + "\n");
 		Sound.playingSound(Sounds.SUNK);
 	}
 
@@ -380,14 +380,14 @@ public class Game {
 	public void ready() {
 		if(canStart){
 			setYourTurn(true);
-			this.myClient.sendMessage("Game " + "Start ");
+			this.myClient.sendMessage(Message.GAME_START.toString());
 			
 			this.gameFrame.concatjTextPaneHistory(">>> " + player.getName() + " <<<\n");
-			this.myClient.sendMessage("Game " + "History " + ">>> " + player.getName() + " <<<\n");
+			this.myClient.sendMessage(Message.GAME_HISTORY.toString() + " " + ">>> " + player.getName() + " <<<\n");
 		}
 		if(!canStart){
-			this.myClient.sendMessage("Game " + "Enable ");
-			this.myClient.sendMessage("Game " + "Sound ");
+			this.myClient.sendMessage(Message.GAME_ENABLE.toString());
+			this.myClient.sendMessage(Message.GAME_SOUND.toString());
 			this.getGameFrame().enableComponents();
 			gameSoundThread.stop();
 			startBackgroundSound();

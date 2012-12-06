@@ -25,6 +25,7 @@ import javax.swing.WindowConstants;
 import ch.bfh.ti.proj1.battleship.client.ShipType;
 import ch.bfh.ti.proj1.battleship.frame.Game;
 import ch.bfh.ti.proj1.battleship.frame.GameMode;
+import ch.bfh.ti.proj1.battleship.frame.Message;
 
 /**
  * @author Daniel Kotlàris
@@ -663,7 +664,7 @@ public class CoordinateFrame extends JFrame{
 		String name = game.getPlayer().getName();
 		String text = jTextPaneYourMessage.getText().trim();
 		if(!text.equals("")){
-			game.getClient().sendMessage("Coordinate " + "Chat " + name + ": " + text + "\n");
+			game.getClient().sendMessage(Message.COORDINATE_CHAT.toString() + " " + name + ": " + text + "\n");
 			concatjTextPaneChat(name + ": " + text + "\n");
 		}
 		jTextPaneYourMessage.setText("");
@@ -688,10 +689,10 @@ public class CoordinateFrame extends JFrame{
 			
 			if (validateSettings(nbrOfRows, nbrOfColoumns, nbrOfBattleships, 
 					nbrOfSubmarines, nbrOfDestroyers, nbrOfCruisers)) {
-				game.getClient().sendMessage("Coordinate " + "Options " + nbrOfRows + " "
+				game.getClient().sendMessage(Message.COORDINATE_OPTIONS.toString() + " " + nbrOfRows + " "
 						+ nbrOfColoumns + " " + nbrOfBattleships + " " + nbrOfSubmarines + " "
 						+ nbrOfDestroyers + " " + nbrOfCruisers + " " + gameMode);
-				game.getClient().sendMessage("Coordinate " + "Enable ");
+				game.getClient().sendMessage(Message.COORDINATE_ENABLE.toString());
 				if (	!firstCoordinate &&
 						(game.getNbrOfRows() == nbrOfRows) && 
 						(game.getNbrOfColoumns() == nbrOfColoumns) &&
@@ -702,11 +703,11 @@ public class CoordinateFrame extends JFrame{
 						(game.getGameMode().equals(gameMode))){
 					game.showGameFrame();
 					this.dispose();
-					game.getClient().sendMessage("Coordinate " + "ShowGameFrame ");
-					game.getClient().sendMessage("Coordinate " + "Dispose ");
+					game.getClient().sendMessage(Message.COORDINATE_SHOWGAMEFRAME.toString());
+					game.getClient().sendMessage(Message.COORDINATE_DISPOSE.toString());
 				}
 				setFirst(false);
-				game.getClient().sendMessage("Coordinate " + "SetFirst ");
+				game.getClient().sendMessage(Message.COORDINATE_SETFIRST.toString());
 				game.setOptions(nbrOfRows, nbrOfColoumns, nbrOfBattleships, 
 						nbrOfSubmarines, nbrOfDestroyers, nbrOfCruisers, gameMode);
 				disableComponents();		

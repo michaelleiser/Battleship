@@ -33,6 +33,7 @@ import javax.swing.WindowConstants;
 import ch.bfh.ti.proj1.battleship.client.Field;
 import ch.bfh.ti.proj1.battleship.client.ShipType;
 import ch.bfh.ti.proj1.battleship.frame.Game;
+import ch.bfh.ti.proj1.battleship.frame.Message;
 
 /**
  * @author Daniel Kotlàris
@@ -957,7 +958,7 @@ public class GameFrame extends JFrame {
 		String name = game.getPlayer().getName();
 		String text = jTextPaneYourMessage.getText().trim(); 
 		if(!text.equals("")){
-			game.getClient().sendMessage("Game " + "Chat " + name + ": " + text + "\n");
+			game.getClient().sendMessage(Message.GAME_CHAT.toString() + " " + name + ": " + text + "\n");
 			concatjTextPaneChat(name + ": " + text + "\n");
 		}
 		jTextPaneYourMessage.setText("");
@@ -982,7 +983,7 @@ public class GameFrame extends JFrame {
 		game.showCoordinateFrame();
 		game.getCoordinateFrame().enableComponents();
 		this.dispose();
-		game.getClient().sendMessage("GameFrame " + "Restart");
+		game.getClient().sendMessage(Message.GAME_RESTART.toString());
 		
 		game.init();
 		game.getBgSoundThread().stop();
