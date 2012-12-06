@@ -41,7 +41,7 @@ public class Game {
 	private int nbrOfSubmarines = 2;
 	private int nbrOfDestroyers = 3;
 	private int nbrOfCruisers = 4;
-	private String gameMode = "Alternatively";
+	private GameMode gameMode = GameMode.ALTERNATIVELY;
 	
 	private List<Ship> battleships;
 	private List<Ship> submarines;
@@ -302,14 +302,14 @@ public class Game {
 			this.myClient.sendMessage("Game " + "Water " + x + " " + y);
 			f[y][x].setBackground(Color.blue);
 			Sound.playingSound(Sounds.WATER);
-			if(gameMode.equals("UntilWater")){
+			if(gameMode.equals(GameMode.UNTILWATER)){
 				this.myClient.sendMessage("Game " + "Disable ");
 				setYourTurn(true);
 				this.gameFrame.concatjTextPaneHistory(">>> " + player.getName() + " <<<\n");
 				this.myClient.sendMessage("Game " + "History " + ">>> " + player.getName() + " <<<\n");
 			}
 		}
-		if(gameMode.equals("Alternatively")){
+		if(gameMode.equals(GameMode.ALTERNATIVELY)){
 			this.myClient.sendMessage("Game " + "Disable ");
 			setYourTurn(true);
 			this.gameFrame.concatjTextPaneHistory(">>> " + player.getName() + " <<<\n");
@@ -526,27 +526,27 @@ public class Game {
 		this.nbrOfCruisers = nbrOfCruisers;
 	}
 
-	public String getGameMode() {
+	public GameMode getGameMode() {
 		return gameMode;
 	}
 
-	public void setGameMode(String gameMode) {
+	public void setGameMode(GameMode gameMode) {
 		this.gameMode = gameMode;
 	}
 	
 	public void setOptions(int nbrOfRows, int nbrOfColoumns, int nbrOfBattleships,
-			int nbrOfSubmarines, int nbrOfDestroyers, int nbrOfCruisers, String gameMode){
+			int nbrOfSubmarines, int nbrOfDestroyers, int nbrOfCruisers, GameMode gameMode){
 		this.nbrOfRows = nbrOfRows;
 		this.nbrOfColoumns = nbrOfColoumns;
 		this.nbrOfBattleships = nbrOfBattleships;
 		this.nbrOfSubmarines = nbrOfSubmarines;
 		this.nbrOfDestroyers = nbrOfDestroyers;
 		this.nbrOfCruisers = nbrOfCruisers;
-		if(gameMode.equals("Alternatively")){
-			this.gameMode = "Alternatively";
+		if(gameMode.equals(GameMode.ALTERNATIVELY)){
+			this.gameMode = GameMode.ALTERNATIVELY;
 		}
-		else if (gameMode.equals("UntilWater")){
-			this.gameMode = "UntilWater";
+		else if (gameMode.equals(GameMode.UNTILWATER)){
+			this.gameMode = GameMode.UNTILWATER;
 		}
 	}
 

@@ -24,6 +24,7 @@ import javax.swing.WindowConstants;
 
 import ch.bfh.ti.proj1.battleship.client.ShipType;
 import ch.bfh.ti.proj1.battleship.frame.Game;
+import ch.bfh.ti.proj1.battleship.frame.GameMode;
 
 /**
  * @author Daniel Kotlàris
@@ -648,13 +649,13 @@ public class CoordinateFrame extends JFrame{
 	private void jRadioButtonShootAlternativelyActionPerformed() {
 		jRadioButtonShootUntilWater.setSelected(false);
 		jRadioButtonShootAlternatively.setSelected(true);
-		game.setGameMode("Alternatively");
+		game.setGameMode(GameMode.ALTERNATIVELY);
 	}
 
 	private void jRadioButtonShootUntilWaterActionPerformed() {
 		jRadioButtonShootAlternatively.setSelected(false);
 		jRadioButtonShootUntilWater.setSelected(true);
-		game.setGameMode("UntilWater");
+		game.setGameMode(GameMode.UNTILWATER);
 	}
 
 	private void jButtonCancelActionPerformed() {
@@ -680,12 +681,12 @@ public class CoordinateFrame extends JFrame{
 			int nbrOfSubmarines = Integer.parseInt(jTextFieldNbrOfSubmarine.getText());
 			int nbrOfDestroyers = Integer.parseInt(jTextFieldNbrOfDestroyer.getText());
 			int nbrOfCruisers = Integer.parseInt(jTextFieldNbrOfCruiser.getText());
-			String gameMode = "";
+			GameMode gameMode = null;
 			if(jRadioButtonShootAlternatively.isSelected()){
-				gameMode = "Alternatively";
+				gameMode = GameMode.ALTERNATIVELY;
 			}
 			else if(jRadioButtonShootUntilWater.isSelected()){
-				gameMode = "UntilWater";
+				gameMode = GameMode.UNTILWATER;
 			}		
 			
 			if (validateSettings(nbrOfRows, nbrOfColoumns, nbrOfBattleships, 
@@ -789,18 +790,18 @@ public class CoordinateFrame extends JFrame{
 	}
 	
 	public void setComponents(String nbrOfRows, String nbrOfColoumns, String nbrOfBattleships,
-			String nbrOfSubmarines, String nbrOfDestroyers, String nbrOfCruisers, String gameMode){
+			String nbrOfSubmarines, String nbrOfDestroyers, String nbrOfCruisers, GameMode gameMode){
 		jTextFieldNbrOfRows.setText(nbrOfRows);
 		jTextFieldNbrOfColoumns.setText(nbrOfColoumns);
 		jTextFieldNbrOfBattleship.setText(nbrOfBattleships);
 		jTextFieldNbrOfSubmarine.setText(nbrOfSubmarines);
 		jTextFieldNbrOfDestroyer.setText(nbrOfDestroyers);
 		jTextFieldNbrOfCruiser.setText(nbrOfCruisers);
-		if(gameMode.equals("Alternatively")){
+		if(gameMode.equals(GameMode.ALTERNATIVELY)){
 			jRadioButtonShootUntilWater.setSelected(false);
 			jRadioButtonShootAlternatively.setSelected(true);
 		}
-		else if(gameMode.equals("UntilWater")){
+		else if(gameMode.equals(GameMode.UNTILWATER)){
 			jRadioButtonShootAlternatively.setSelected(false);
 			jRadioButtonShootUntilWater.setSelected(true);
 		}
