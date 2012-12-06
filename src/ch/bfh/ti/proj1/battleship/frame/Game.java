@@ -52,11 +52,17 @@ public class Game {
 	
 	private boolean yourTurn;
 	
+	/**
+	 * 
+	 */
 	public Game(){
 		init();
 		showNetworkFrame();
 	}
 	
+	/**
+	 * 
+	 */
 	public void init(){
 		canStart = true;
 		yourTurn = false;
@@ -66,12 +72,19 @@ public class Game {
 		cruisers = new ArrayList<Ship>();
 	}
 	
+	/**
+	 * @param port
+	 */
 	public void hostGame(final int port) {
 		new MyServer(port);
 		myClient = new MyClient(port, "localhost");
 		myClient.setGame(this);
 	}
 
+	/**
+	 * @param port
+	 * @param IP
+	 */
 	public void joinGame(final int port, final String IP) {
 		myClient = new MyClient(port, IP);
 		myClient.setGame(this);
@@ -83,6 +96,9 @@ public class Game {
 		}
 	}
 	
+	/**
+	 * 
+	 */
 	public void showNetworkFrame(){
 		try {
 			for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
@@ -98,6 +114,9 @@ public class Game {
 		networkFrame.setVisible(true);
 	}
 
+	/**
+	 * 
+	 */
 	public void showCoordinateFrame() {
 		try {
 			for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
@@ -114,6 +133,9 @@ public class Game {
 		startGameSound();												// Start the game sound
 	}
 	
+	/**
+	 * 
+	 */
 	public void showGameFrame(){
 		try {
 			for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
@@ -129,6 +151,12 @@ public class Game {
 		gameFrame.setVisible(true);
 	}
 
+	/**
+	 * @param type
+	 * @param x
+	 * @param y
+	 * @param horizontalOrVertical
+	 */
 	public void placeShip(ShipType type, int x, int y, int horizontalOrVertical) {
 		Field[][] fields = gameFrame.getYourField();
 		Ship ship = new Ship(type);
@@ -200,6 +228,14 @@ public class Game {
 		}
 	}
 
+	/**
+	 * @param fields
+	 * @param s
+	 * @param x
+	 * @param y
+	 * @param k
+	 * @return
+	 */
 	private boolean checkConstraints(Field[][] fields, Ship s, int x, int y, int k) {
 		if(k == 0){
 			for(int i = 0; i < s.getSize(); i++){
@@ -241,6 +277,10 @@ public class Game {
 		return true;
 	}
 
+	/**
+	 * @param x
+	 * @param y
+	 */
 	public void removeShip(int x, int y) {
 		Field[][] fields = gameFrame.getYourField();
 		Ship ship = fields[y][x].getShip();
@@ -270,10 +310,18 @@ public class Game {
 		}
 	}
 
+	/**
+	 * @param x
+	 * @param y
+	 */
 	public void shootAt(int x, int y) {
 		myClient.sendMessage(Message.GAME_SHOOT.toString() + " " + x + " " + y);
 	}
 	
+	/**
+	 * @param x
+	 * @param y
+	 */
 	public void checkShoot(int x, int y){
 		Field[][] f = this.gameFrame.getYourField();
 		if(f[y][x].getShip() != null){
@@ -317,10 +365,17 @@ public class Game {
 		}
 	}
 
+	/**
+	 * @param name
+	 */
 	public void enterName(String name) {
 		player = new Player(name);
 	}
 
+	/**
+	 * @param x
+	 * @param y
+	 */
 	public void hit(int x, int y) {
 		Field[][]f = gameFrame.getEnemyField();
 		f[y][x].setBackground(Color.red);
@@ -331,6 +386,10 @@ public class Game {
 		Sound.playingSound(Sounds.HIT);
 	}
 
+	/**
+	 * @param x
+	 * @param y
+	 */
 	public void water(int x, int y) {
 		Field[][]f = gameFrame.getEnemyField();
 		f[y][x].setBackground(Color.blue);
@@ -341,6 +400,10 @@ public class Game {
 		Sound.playingSound(Sounds.WATER);
 	}
 
+	/**
+	 * @param x
+	 * @param y
+	 */
 	public void sunk(int x, int y) {
 		Field[][]f = gameFrame.getEnemyField();
 		f[y][x].setBackground(Color.green);
@@ -352,6 +415,9 @@ public class Game {
 		Sound.playingSound(Sounds.SUNK);
 	}
 
+	/**
+	 * 
+	 */
 	@SuppressWarnings("deprecation")
 	public void won() {
 		Sound.playingSound(Sounds.WINNER);
@@ -364,6 +430,9 @@ public class Game {
 		this.bgSoundThread.stop();
 	}
 	
+	/**
+	 * 
+	 */
 	@SuppressWarnings("deprecation")
 	public void lost(){
 		Sound.playingSound(Sounds.LOSER);
@@ -376,6 +445,9 @@ public class Game {
 		this.bgSoundThread.stop();
 	}
 	
+	/**
+	 * 
+	 */
 	@SuppressWarnings("deprecation")
 	public void ready() {
 		if(canStart){
@@ -394,6 +466,9 @@ public class Game {
 		}
 	}
 	
+	/**
+	 * 
+	 */
 	public void startGameSound() {
 		this.gameSoundThread = new Thread(new Runnable() {
 
@@ -410,10 +485,16 @@ public class Game {
 
 	}
 
+	/**
+	 * @return
+	 */
 	public Thread getGameSoundThread() {
 		return gameSoundThread;
 	}
 
+	/**
+	 * 
+	 */
 	public void startBackgroundSound() {
 		this.bgSoundThread = new Thread(new Runnable() {
 
@@ -435,14 +516,23 @@ public class Game {
 	}
 	
 	
+	/**
+	 * @return
+	 */
 	public Thread getBgSoundThread() {
 		return bgSoundThread;
 	}
 
+	/**
+	 * 
+	 */
 	public void setStartToFalse(){
 		this.canStart = false;
 	}
 
+	/**
+	 * @return
+	 */
 	public boolean allShipsPlaced() {
 		if((nbrOfBattleships == this.battleships.size()) &&
 				(nbrOfSubmarines == this.submarines.size()) &&
@@ -454,6 +544,9 @@ public class Game {
 		}	
 	}
 	
+	/**
+	 * @return
+	 */
 	public boolean allShipsSunk(){
 		for(Ship s : battleships){
 			if(!s.isSunk()){
@@ -478,62 +571,113 @@ public class Game {
 		return true;
 	}
 
+	/**
+	 * @return
+	 */
 	public int getNbrOfRows() {
 		return nbrOfRows;
 	}
 
+	/**
+	 * @param nbrOfRows
+	 */
 	public void setNbrOfRows(int nbrOfRows) {
 		this.nbrOfRows = nbrOfRows;
 	}
 
+	/**
+	 * @return
+	 */
 	public int getNbrOfColoumns() {
 		return nbrOfColoumns;
 	}
 
+	/**
+	 * @param nbrOfColoumns
+	 */
 	public void setNbrOfColoumns(int nbrOfColoumns) {
 		this.nbrOfColoumns = nbrOfColoumns;
 	}
 
+	/**
+	 * @return
+	 */
 	public int getNbrOfBattleships() {
 		return nbrOfBattleships;
 	}
 
+	/**
+	 * @param nbrOfBattleships
+	 */
 	public void setNbrOfBattleships(int nbrOfBattleships) {
 		this.nbrOfBattleships = nbrOfBattleships;
 	}
 
+	/**
+	 * @return
+	 */
 	public int getNbrOfSubmarines() {
 		return nbrOfSubmarines;
 	}
 
+	/**
+	 * @param nbrOfSubmarines
+	 */
 	public void setNbrOfSubmarines(int nbrOfSubmarines) {
 		this.nbrOfSubmarines = nbrOfSubmarines;
 	}
 
+	/**
+	 * @return
+	 */
 	public int getNbrOfDestroyers() {
 		return nbrOfDestroyers;
 	}
 
+	/**
+	 * @param nbrOfDestroyers
+	 */
 	public void setNbrOfDestroyers(int nbrOfDestroyers) {
 		this.nbrOfDestroyers = nbrOfDestroyers;
 	}
 
+	/**
+	 * @return
+	 */
 	public int getNbrOfCruisers() {
 		return nbrOfCruisers;
 	}
 
+	/**
+	 * @param nbrOfCruisers
+	 */
 	public void setNbrOfCruisers(int nbrOfCruisers) {
 		this.nbrOfCruisers = nbrOfCruisers;
 	}
 
+	/**
+	 * @return
+	 */
 	public GameMode getGameMode() {
 		return gameMode;
 	}
 
+	/**
+	 * @param gameMode
+	 */
 	public void setGameMode(GameMode gameMode) {
 		this.gameMode = gameMode;
 	}
 	
+	/**
+	 * @param nbrOfRows
+	 * @param nbrOfColoumns
+	 * @param nbrOfBattleships
+	 * @param nbrOfSubmarines
+	 * @param nbrOfDestroyers
+	 * @param nbrOfCruisers
+	 * @param gameMode
+	 */
 	public void setOptions(int nbrOfRows, int nbrOfColoumns, int nbrOfBattleships,
 			int nbrOfSubmarines, int nbrOfDestroyers, int nbrOfCruisers, GameMode gameMode){
 		this.nbrOfRows = nbrOfRows;
@@ -550,34 +694,59 @@ public class Game {
 		}
 	}
 
+	/**
+	 * @return
+	 */
 	public Player getPlayer() {
 		return this.player;
 	}
 	
+	/**
+	 * @return
+	 */
 	public MyClient getClient() {
 		return myClient;
 	}
 
+	/**
+	 * @return
+	 */
 	public NetworkFrame getNetworkFrame() {
 		return networkFrame;
 	}
 	
+	/**
+	 * @return
+	 */
 	public CoordinateFrame getCoordinateFrame(){
 		return coordinateFrame;
 	}
 	
+	/**
+	 * @return
+	 */
 	public GameFrame getGameFrame(){
 		return gameFrame;
 	}
 	
+	/**
+	 * @return
+	 * 			true if it's your turn
+	 */
 	public boolean isYourTurn() {
 		return yourTurn;
 	}
 
+	/**
+	 * @param yourTurn
+	 */
 	public void setYourTurn(boolean yourTurn) {
 		this.yourTurn = yourTurn;
 	}
 
+	/**
+	 * 
+	 */
 	@SuppressWarnings("deprecation")
 	public void restart() {
 		this.gameFrame.dispose();

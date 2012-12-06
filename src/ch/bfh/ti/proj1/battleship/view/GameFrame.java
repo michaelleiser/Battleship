@@ -105,11 +105,17 @@ public class GameFrame extends JFrame {
 	private Field[][] yourField;
 	private Field[][] enemyField;
 	
+	/**
+	 * @param game
+	 */
 	public GameFrame(Game game) {
 		this.game = game;
 		initComponents();
 	}
 
+	/**
+	 * 
+	 */
 	private void initComponents() {
 		this.setTitle("Battleship - Player " + game.getPlayer().getName());
 		this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -916,16 +922,25 @@ public class GameFrame extends JFrame {
 		pack();
 	}
 
+	/**
+	 * 
+	 */
 	private void jRadioButtonHorizontalActionPerformed() {
 		jRadioButtonVertical.setSelected(false);
 		jRadioButtonHorizontal.setSelected(true);
 	}
 
+	/**
+	 * 
+	 */
 	private void jRadioButtonVerticalActionPerformed() {
 		jRadioButtonHorizontal.setSelected(false);
 		jRadioButtonVertical.setSelected(true);
 	}
 
+	/**
+	 * 
+	 */
 	private void jRadioButtonNbrOfSubmarineActionPerformed() {
 		jRadioButtonNbrOfBattleship.setSelected(false);
 		jRadioButtonNbrOfDestroyer.setSelected(false);
@@ -933,6 +948,9 @@ public class GameFrame extends JFrame {
 		jRadioButtonNbrOfSubmarine.setSelected(true);
 	}
 
+	/**
+	 * 
+	 */
 	private void jRadioButtonNbrOfBattleshipActionPerformed() {
 		jRadioButtonNbrOfSubmarine.setSelected(false);
 		jRadioButtonNbrOfDestroyer.setSelected(false);
@@ -940,6 +958,9 @@ public class GameFrame extends JFrame {
 		jRadioButtonNbrOfBattleship.setSelected(true);
 	}
 
+	/**
+	 * 
+	 */
 	private void jRadioButtonNbrOfDestroyerActionPerformed() {
 		jRadioButtonNbrOfSubmarine.setSelected(false);
 		jRadioButtonNbrOfBattleship.setSelected(false);
@@ -947,6 +968,9 @@ public class GameFrame extends JFrame {
 		jRadioButtonNbrOfDestroyer.setSelected(true);
 	}
 
+	/**
+	 * 
+	 */
 	private void jRadioButtonNbrOfCruiserActionPerformed() {
 		jRadioButtonNbrOfSubmarine.setSelected(false);
 		jRadioButtonNbrOfBattleship.setSelected(false);
@@ -954,6 +978,9 @@ public class GameFrame extends JFrame {
 		jRadioButtonNbrOfCruiser.setSelected(true);
 	}
 
+	/**
+	 * 
+	 */
 	private void jButtonSendActionPerformed() {
 		String name = game.getPlayer().getName();
 		String text = jTextPaneYourMessage.getText().trim(); 
@@ -964,10 +991,16 @@ public class GameFrame extends JFrame {
 		jTextPaneYourMessage.setText("");
 	}
 
+	/**
+	 * 
+	 */
 	private void jTextPaneYourMessageMouseClicked() {
 		jTextPaneYourMessage.setText(null);
 	}
 
+	/**
+	 * 
+	 */
 	@SuppressWarnings("deprecation")
 	private void jButtonRestartActionPerformed() {
 		try {
@@ -989,6 +1022,9 @@ public class GameFrame extends JFrame {
 		game.getBgSoundThread().stop();
 	}
 
+	/**
+	 * 
+	 */
 	private void jButtonReadyActionPerformed() {
 		if(game.allShipsPlaced()){
 			for(int i = 0; i < game.getNbrOfRows(); i++){
@@ -1006,6 +1042,9 @@ public class GameFrame extends JFrame {
 		}
 	}
 	
+	/**
+	 * 
+	 */
 	public void enableComponents(){
 		for(int i = 0; i < game.getNbrOfRows(); i++){
 			for(int j = 0; j < game.getNbrOfColoumns(); j++){
@@ -1014,6 +1053,9 @@ public class GameFrame extends JFrame {
 		}
 	}
 	
+	/**
+	 * 
+	 */
 	public void disableComponents(){
 		for(int i = 0; i < game.getNbrOfRows(); i++){
 			for(int j = 0; j < game.getNbrOfColoumns(); j++){
@@ -1022,26 +1064,44 @@ public class GameFrame extends JFrame {
 		}
 	}
 
+	/**
+	 * @return
+	 */
 	public Field[][] getYourField() {
 		return yourField;
 	}
 	
+	/**
+	 * @return
+	 */
 	public Field[][] getEnemyField() {
 		return enemyField;
 	}
 	
+	/**
+	 * @param x
+	 */
 	public void setNbrOfBattleship(int x){
 		jRadioButtonNbrOfBattleship.setText(x + "x");
 	}
 	
+	/**
+	 * @param x
+	 */
 	public void setNbrOfSubmarine(int x){
 		jRadioButtonNbrOfSubmarine.setText(x + "x");
 	}
 	
+	/**
+	 * @param x
+	 */
 	public void setNbrOfDestroyer(int x){
 		jRadioButtonNbrOfDestroyer.setText(x + "x");
 	}
 	
+	/**
+	 * @param x
+	 */
 	public void setNbrOfCruiser(int x){
 		jRadioButtonNbrOfCruiser.setText(x + "x");
 	}
@@ -1052,23 +1112,38 @@ public class GameFrame extends JFrame {
 	
 	
 	
+	/**
+	 * 
+	 */
 	public void incjLabelYouHits() {
 		this.jLabelYouHits.setText((1+Integer.parseInt(jLabelYouHits.getText())) + "");
 	}
 
+	/**
+	 * 
+	 */
 	public void incjLabelYouWater() {
 		this.jLabelYouWater.setText((1+Integer.parseInt(jLabelYouWater.getText())) + "");
 	}
 
+	/**
+	 * 
+	 */
 	public void incjLabelYouSunk() {
 		this.jLabelYouSunk.setText((1+Integer.parseInt(jLabelYouSunk.getText())) + "");
 	}
 
+	/**
+	 * 
+	 */
 	public void incjLabelYouShots() {
 		this.jLabelYouShots.setText((1+Integer.parseInt(jLabelYouShots.getText())) + "");
 		refreshjLabelYouAccuracy();
 	}
 
+	/**
+	 * 
+	 */
 	public void refreshjLabelYouAccuracy(){
 		int hits = Integer.parseInt(jLabelYouHits.getText());
 		int shots = Integer.parseInt(jLabelYouShots.getText());
@@ -1077,23 +1152,38 @@ public class GameFrame extends JFrame {
 	}
 	
 	
+	/**
+	 * 
+	 */
 	public void incjLabelEnemyHits() {
 		this.jLabelEnemyHits.setText((1+Integer.parseInt(jLabelEnemyHits.getText())) + "");
 	}
 
+	/**
+	 * 
+	 */
 	public void incjLabelEnemyWater() {
 		this.jLabelEnemyWater.setText((1+Integer.parseInt(jLabelEnemyWater.getText())) + "");
 	}
 
+	/**
+	 * 
+	 */
 	public void incjLabelEnemySunk() {
 		this.jLabelEnemySunk.setText((1+Integer.parseInt(jLabelEnemySunk.getText())) + "");
 	}
 
+	/**
+	 * 
+	 */
 	public void incjLabelEnemyShots() {
 		this.jLabelEnemyShots.setText((1+Integer.parseInt(jLabelEnemyShots.getText())) + "");
 		refreshjLabelEnemyAccuracy();
 	}
 	
+	/**
+	 * 
+	 */
 	public void refreshjLabelEnemyAccuracy(){
 		int hits = Integer.parseInt(jLabelEnemyHits.getText());
 		int shots = Integer.parseInt(jLabelEnemyShots.getText());
@@ -1103,11 +1193,17 @@ public class GameFrame extends JFrame {
 	
 	
 	
+	/**
+	 * @param newText
+	 */
 	public void concatjTextPaneChat(String newText) {
 		String oldText = jTextPaneChat.getText();
 		jTextPaneChat.setText(oldText + newText);
 	}
 	
+	/**
+	 * @param newText
+	 */
 	public void concatjTextPaneHistory(String newText){
 		String oldText = jTextPaneHistory.getText();
 		jTextPaneHistory.setText(oldText + newText);

@@ -78,11 +78,17 @@ public class CoordinateFrame extends JFrame{
 	
 	public boolean firstCoordinate = true;
 	
+	/**
+	 * @param game
+	 */
 	public CoordinateFrame(Game game) {		
 		this.game = game;
 		initComponents();
 	}
 
+	/**
+	 * 
+	 */
 	private void initComponents() {
 		this.setTitle("Battleship - Player " + game.getPlayer().getName());
 		this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -644,22 +650,34 @@ public class CoordinateFrame extends JFrame{
 		pack();
 	}
 
+	/**
+	 * 
+	 */
 	private void jRadioButtonShootAlternativelyActionPerformed() {
 		jRadioButtonShootUntilWater.setSelected(false);
 		jRadioButtonShootAlternatively.setSelected(true);
 		game.setGameMode(GameMode.ALTERNATIVELY);
 	}
 
+	/**
+	 * 
+	 */
 	private void jRadioButtonShootUntilWaterActionPerformed() {
 		jRadioButtonShootAlternatively.setSelected(false);
 		jRadioButtonShootUntilWater.setSelected(true);
 		game.setGameMode(GameMode.UNTILWATER);
 	}
 
+	/**
+	 * 
+	 */
 	private void jButtonCancelActionPerformed() {
 		System.exit(0);
 	}
 
+	/**
+	 * 
+	 */
 	private void jButtonSendActionPerformed() {
 		String name = game.getPlayer().getName();
 		String text = jTextPaneYourMessage.getText().trim();
@@ -671,6 +689,9 @@ public class CoordinateFrame extends JFrame{
 	}
 	
 		
+	/**
+	 * 
+	 */
 	private void jButtonValidateAndCoordinateActionPerformed() {
 		try {
 			int nbrOfRows = Integer.parseInt(jTextFieldNbrOfRows.getText());
@@ -717,6 +738,15 @@ public class CoordinateFrame extends JFrame{
 		}
 	}
 
+	/**
+	 * @param nbrOfRows
+	 * @param nbrOfColoumns
+	 * @param nbrOfBattleships
+	 * @param nbrOfSubmarines
+	 * @param nbrOfDestroyers
+	 * @param nbrOfCruisers
+	 * @return
+	 */
 	private final boolean validateSettings(int nbrOfRows, int nbrOfColoumns, int nbrOfBattleships, 
 			int nbrOfSubmarines, int nbrOfDestroyers, int nbrOfCruisers) {
 		
@@ -759,10 +789,16 @@ public class CoordinateFrame extends JFrame{
 		}
 	}
 	
+	/**
+	 * 
+	 */
 	private void jTextPaneYourMessageMouseClicked() {
 		jTextPaneYourMessage.setText(null);
 	}	
 
+	/**
+	 * 
+	 */
 	public void disableComponents() {
 		jTextFieldNbrOfBattleship.setEnabled(false);
 		jTextFieldNbrOfColoumns.setEnabled(false);
@@ -775,6 +811,9 @@ public class CoordinateFrame extends JFrame{
 		jButtonValidateAndCoordinate.setEnabled(false);
 	}
 	
+	/**
+	 * 
+	 */
 	public void enableComponents() {
 		jTextFieldNbrOfBattleship.setEnabled(true);
 		jTextFieldNbrOfColoumns.setEnabled(true);
@@ -787,6 +826,15 @@ public class CoordinateFrame extends JFrame{
 		jButtonValidateAndCoordinate.setEnabled(true);
 	}
 	
+	/**
+	 * @param nbrOfRows
+	 * @param nbrOfColoumns
+	 * @param nbrOfBattleships
+	 * @param nbrOfSubmarines
+	 * @param nbrOfDestroyers
+	 * @param nbrOfCruisers
+	 * @param gameMode
+	 */
 	public void setComponents(String nbrOfRows, String nbrOfColoumns, String nbrOfBattleships,
 			String nbrOfSubmarines, String nbrOfDestroyers, String nbrOfCruisers, GameMode gameMode){
 		jTextFieldNbrOfRows.setText(nbrOfRows);
@@ -805,10 +853,16 @@ public class CoordinateFrame extends JFrame{
 		}
 	}	
 
-	public void setFirst(boolean f){
-		firstCoordinate = f;
+	/**
+	 * @param first
+	 */
+	public void setFirst(boolean first){
+		firstCoordinate = first;
 	}
 	
+	/**
+	 * @param newText
+	 */
 	public void concatjTextPaneChat(String newText) {
 		String oldText = jTextPaneChat.getText();
 		jTextPaneChat.setText(oldText + newText);

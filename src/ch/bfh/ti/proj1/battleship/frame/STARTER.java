@@ -1,7 +1,6 @@
 package ch.bfh.ti.proj1.battleship.frame;
 
 /**
- * 
  * @author Daniel Kotlàris
  * @author Michael Leiser
  */
@@ -21,8 +20,8 @@ public class STARTER {
 * - Winner/Loser Frame mit Sound
 * - Message an anderen, dass anderer geschlossen => Message und dann auch schliessen => JEDES FRAME!!!
 * - Beim Platzieren des Schiffes, auf dem Spielfeld bereits andeuten
-* - Fields eventuell als JPanel statt JToggleButton
-* - History aktiver Player beim gegner verdreht 
+* - Fields eventuell als JPanel statt JButton
+* - History aktiver Player ist beim gegner verdreht 
 * - Sounds einbinden
 * 		- Sounds bei sich selber implementieren
 * 		- Background Musik bei beiden

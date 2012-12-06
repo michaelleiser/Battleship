@@ -21,12 +21,20 @@ public class MyClient implements Runnable{
 	
 	private Game game;
 	
+	/**
+	 * Constructor for a client that connects to a server with the {@code IP} address and the {@code port} address.
+	 * @param port
+	 * @param IP
+	 */
 	public MyClient(int port, String IP) {
 		this.port = port;
 		this.IP = IP;
 		start();
 	}
 
+	/**
+	 * Creates the connection to the server and starts a thread to listen for incoming messages.
+	 */
 	public void start() {
 		try {
 			socket = new Socket(IP, port);
@@ -42,6 +50,9 @@ public class MyClient implements Runnable{
 		}
 	}
 
+	/**
+	 * Stops the connection to the server.
+	 */
 	@SuppressWarnings("deprecation")
 	public void stop() {
 		try {
@@ -55,6 +66,9 @@ public class MyClient implements Runnable{
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Runnable#run()
+	 */
 	@SuppressWarnings("deprecation")
 	public void run() {
 		String line;
@@ -139,6 +153,11 @@ public class MyClient implements Runnable{
 		}
 	}
 	
+	/**
+	 * Returns the status if the client is connected to a server or not.
+	 * @return
+	 * 			{@code true} if the client is connected to a server.
+	 */
 	public boolean isConnected() {
 		if(socket == null){
 			return false;
@@ -148,11 +167,19 @@ public class MyClient implements Runnable{
 		}
 	}
 
+	/**
+	 * Sets the {@code game} to the client.
+	 * @param game
+	 */
 	public void setGame(Game game) {
 		this.game = game;
 	}
 
-	public void sendMessage(String s) {
-		out.println(s);
+	/**
+	 * Sends a {@code message} to the server.
+	 * @param message
+	 */
+	public void sendMessage(String message) {
+		out.println(message);
 	}
 }

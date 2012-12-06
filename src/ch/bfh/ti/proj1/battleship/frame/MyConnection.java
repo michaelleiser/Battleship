@@ -16,6 +16,11 @@ class MyConnection extends Thread {
 	protected PrintStream out;
 	protected MyServer server;
 
+	/**
+	 * Constructor for a connection between a {@code server} and a {@code client}.
+	 * @param server
+	 * @param client
+	 */
 	public MyConnection(MyServer server, Socket client) {
 		this.server = server;
 		this.client = client;
@@ -32,6 +37,9 @@ class MyConnection extends Thread {
 		this.start();
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Thread#run()
+	 */
 	@SuppressWarnings("deprecation")
 	public void run() {
 		String line;
@@ -39,13 +47,18 @@ class MyConnection extends Thread {
 			while (true) {
 				line = in.readLine();
 				if (line != null)
-					server.broadcast(line, client);
+					server.send(line, client);
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 	
+	/**
+	 * Returns the {@code client} of the connection between a server and a client.
+	 * @return
+	 * 			client
+	 */
 	public Socket getClient(){
 		return client;
 	}

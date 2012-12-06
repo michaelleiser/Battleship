@@ -11,15 +11,17 @@ public class Player {
 	private String name;
 	
 	/**
-	 * Constructor for remote player
+	 * Constructor for a Player.
+	 * @param name
+	 * 			the Player's name
 	 */
 	public Player(String name) {
 		this.name = name;
 	}
 	
 	/**
-	 * Get Player's name
-	 * @param name
+	 * Get Player's {@code name}.
+	 * @return
 	 * 			the Player's name
 	 */
 	public String getName() {
@@ -28,7 +30,7 @@ public class Player {
 
 
 	/**
-	 * Set Player's name
+	 * Set Player's {@code name}.
 	 * @param name
 	 * 			the Player's name
 	 */

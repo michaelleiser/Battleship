@@ -18,6 +18,10 @@ public class MyServer implements Runnable {
 	protected Vector<MyConnection> connections;
 	private Thread connectionThread;
 	
+	/**
+	 * Constructor for a server that opens a port with the {@code port} number and listens for an incoming connection.
+	 * @param port
+	 */
 	public MyServer(int port) {
 		this.portNbr = port;
 		try {
@@ -30,6 +34,9 @@ public class MyServer implements Runnable {
 		connectionThread.start();
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Runnable#run()
+	 */
 	public void run() {
 		try {
 			while (true) {
@@ -42,15 +49,20 @@ public class MyServer implements Runnable {
 		}
 	}
 
-	public void broadcast(String msg, Socket client){
+	/**
+	 * Sends the {@code message} to the {@code client}.
+	 * @param message
+	 * @param client
+	 */
+	public void send(String message, Socket client){
 		try {
 			if(connections.get(0).getClient() == client){
 				PrintWriter out = new PrintWriter(connections.get(1).getClient().getOutputStream(), true);
-				out.println(msg);
+				out.println(message);
 			}
 			else{
 				PrintWriter out = new PrintWriter(connections.get(0).getClient().getOutputStream(), true);
-				out.println(msg);
+				out.println(message);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

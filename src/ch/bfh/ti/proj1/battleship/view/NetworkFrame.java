@@ -62,11 +62,14 @@ public class NetworkFrame extends JFrame {
 	 * 
 	 * @param game
 	 */
-	public NetworkFrame(Game g) {
-		this.game = g;
+	public NetworkFrame(Game game) {
+		this.game = game;
 		initComponents();
 	}
 
+	/**
+	 * 
+	 */
 	private void initComponents() {
 		this.setTitle("Battleship");
 		this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -505,6 +508,9 @@ public class NetworkFrame extends JFrame {
 		pack();
 	}
 
+	/**
+	 * 
+	 */
 	private void jRadioButtonHostGameActionPerformed() {
 		jRadioButtonHostGame.setSelected(true);
 		jRadioButtonJoinGame.setSelected(false);
@@ -514,6 +520,9 @@ public class NetworkFrame extends JFrame {
 		jTextFieldSharedPort.setEnabled(false);
 	}
 
+	/**
+	 * 
+	 */
 	private void jRadioButtonJoinGameActionPerformed() {
 		jRadioButtonHostGame.setSelected(false);
 		jRadioButtonJoinGame.setSelected(true);
@@ -523,10 +532,16 @@ public class NetworkFrame extends JFrame {
 		jTextFieldSharedPort.setEnabled(true);
 	}
 
+	/**
+	 * 
+	 */
 	private void jButtonCancelActionPerformed() {
 		System.exit(0);
 	}
 
+	/**
+	 * 
+	 */
 	private void jButtonConnectActionPerformed() {
 		if (jRadioButtonHostGame.isSelected()) {
 			if (validatePort(jTextFieldFreePort.getText())) {
@@ -556,6 +571,10 @@ public class NetworkFrame extends JFrame {
 		}
 	}
 
+	/**
+	 * @param port
+	 * @return
+	 */
 	private final boolean validatePort(String port) {
 		if (Pattern.matches("\\d{4,5}", port)) {
 			int p = Integer.parseInt(port);
@@ -569,6 +588,10 @@ public class NetworkFrame extends JFrame {
 		}
 	}
 
+	/**
+	 * @param ipAddress
+	 * @return
+	 */
 	private final boolean validateIPAddress(String ipAddress) {
 		if (jTextFieldIPAddress.getText().equalsIgnoreCase("localhost")) {
 			return true;
@@ -586,6 +609,9 @@ public class NetworkFrame extends JFrame {
 			return false;
 	}
 
+	/**
+	 * 
+	 */
 	private void disableComponents() {
 		jTextFieldPlayerName.setEnabled(false);
 		jRadioButtonHostGame.setEnabled(false);
@@ -594,6 +620,9 @@ public class NetworkFrame extends JFrame {
 		jButtonConnect.setEnabled(false);
 	}
 
+	/**
+	 * @return
+	 */
 	public String getPlayerName() {
 		return jTextFieldPlayerName.getText();
 	}

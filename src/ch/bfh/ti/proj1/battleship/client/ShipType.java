@@ -6,10 +6,19 @@ public enum ShipType {
 	
 	private int size;
 
+	/**
+	 * Constructor for the ship type where size is the size of the ship type.
+	 * @param size
+	 */
 	private ShipType(int size) {
 		this.size = size;
 	}
 
+	/**
+	 * Returns the size of the ship type.
+	 * @return
+	 * 			the size of the ship type
+	 */
 	public int getSize() {
 		return this.size;
 	}
