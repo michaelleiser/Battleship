@@ -53,7 +53,7 @@ public class Game {
 	private boolean yourTurn;
 	
 	/**
-	 * 
+	 * Constructor for creating a new game.
 	 */
 	public Game(){
 		init();
@@ -61,7 +61,7 @@ public class Game {
 	}
 	
 	/**
-	 * 
+	 * Initializes some variables.
 	 */
 	public void init(){
 		canStart = true;
@@ -73,6 +73,7 @@ public class Game {
 	}
 	
 	/**
+	 * Host a game. This method creates a server and listens on the specified {@code port} number.
 	 * @param port
 	 */
 	public void hostGame(final int port) {
@@ -82,6 +83,7 @@ public class Game {
 	}
 
 	/**
+	 * Join a game. This method connects to the server with {@code IP} address and {@code port} number.
 	 * @param port
 	 * @param IP
 	 */
@@ -97,7 +99,7 @@ public class Game {
 	}
 	
 	/**
-	 * Creates a new NetworkFrame and shows it.
+	 * Creates a new NetworkFrame and displays it.
 	 */
 	public void showNetworkFrame(){
 		try {
@@ -115,7 +117,7 @@ public class Game {
 	}
 
 	/**
-	 *  Creates a new CoordinateFrame and shows it.
+	 *  Creates a new CoordinateFrame and displays it.
 	 */
 	public void showCoordinateFrame() {
 		try {
@@ -134,7 +136,7 @@ public class Game {
 	}
 	
 	/**
-	 *  Creates a new GameFrame and shows it.
+	 *  Creates a new GameFrame and displays it.
 	 */
 	public void showGameFrame(){
 		try {
@@ -230,7 +232,7 @@ public class Game {
 	}
 
 	/**
-	 * 
+	 * Checks if the {@code ship} can be placed at the {@code fields} with starting {@code x} and {@code y} position.
 	 * @param fields
 	 * @param ship
 	 * @param x
@@ -281,6 +283,7 @@ public class Game {
 	}
 
 	/**
+	 * Removes the ship that is placed on the field with {@code x} and {@code y} position.
 	 * @param x
 	 * @param y
 	 */
@@ -314,6 +317,7 @@ public class Game {
 	}
 
 	/**
+	 * The active player shoots at the field with {@code x} and {@code y} position. 
 	 * @param x
 	 * @param y
 	 */
@@ -322,6 +326,7 @@ public class Game {
 	}
 	
 	/**
+	 * The passive player checks the field with {@code x} and {@code y} position for a shoot in the water, hit a ship, sunk a ship and for wining the game. 
 	 * @param x
 	 * @param y
 	 */
@@ -369,6 +374,7 @@ public class Game {
 	}
 
 	/**
+	 * Creat a new Player with the entered {@code name}.
 	 * @param name
 	 */
 	public void enterName(String name) {
@@ -376,6 +382,7 @@ public class Game {
 	}
 
 	/**
+	 * The active player has hit a ship at the field with {@code x} and {@code y} position.
 	 * @param x
 	 * @param y
 	 */
@@ -390,6 +397,7 @@ public class Game {
 	}
 
 	/**
+	 * The active player has hit the water at the field with {@code x} and {@code y} position.
 	 * @param x
 	 * @param y
 	 */
@@ -404,6 +412,7 @@ public class Game {
 	}
 
 	/**
+	 * The active player has sunk a ship at the field with {@code x} and {@code y} position.
 	 * @param x
 	 * @param y
 	 */
@@ -419,7 +428,7 @@ public class Game {
 	}
 
 	/**
-	 * 
+	 * The active player has won the game.
 	 */
 	@SuppressWarnings("deprecation")
 	public void won() {
@@ -434,7 +443,7 @@ public class Game {
 	}
 	
 	/**
-	 * 
+	 * The passive player has lost the game.
 	 */
 	@SuppressWarnings("deprecation")
 	public void lost(){
@@ -449,7 +458,7 @@ public class Game {
 	}
 	
 	/**
-	 * 
+	 * This method sets the player to the ready state. The first player who calls this method can later start with shooting in the game.
 	 */
 	@SuppressWarnings("deprecation")
 	public void ready() {
@@ -470,7 +479,7 @@ public class Game {
 	}
 	
 	/**
-	 * 
+	 * Starts the game sound.
 	 */
 	public void startGameSound() {
 		this.gameSoundThread = new Thread(new Runnable() {
@@ -489,14 +498,16 @@ public class Game {
 	}
 
 	/**
+	 * Returns a thread of the game sound.
 	 * @return
+	 * 			game sound thread
 	 */
 	public Thread getGameSoundThread() {
 		return gameSoundThread;
 	}
 
 	/**
-	 * 
+	 * Starts the background sound.
 	 */
 	public void startBackgroundSound() {
 		this.bgSoundThread = new Thread(new Runnable() {
@@ -520,21 +531,25 @@ public class Game {
 	
 	
 	/**
+	 * Returns the background sound thread.
 	 * @return
+	 * 			background sound thread
 	 */
 	public Thread getBgSoundThread() {
 		return bgSoundThread;
 	}
 
 	/**
-	 * 
+	 * TODO
 	 */
 	public void setStartToFalse(){
 		this.canStart = false;
 	}
 
 	/**
+	 * Returns the status if all ships are placed or not.
 	 * @return
+	 * 			{@code true} if all ships are placed
 	 */
 	public boolean allShipsPlaced() {
 		if((nbrOfBattleships == this.battleships.size()) &&
@@ -548,7 +563,7 @@ public class Game {
 	}
 	
 	/**
-	 * Returns the status whether all ships are sunk or not.
+	 * Returns the status if all ships are sunk or not.
 	 * @return
 	 * 			{@code true} if all ships are sunk
 	 */
@@ -585,6 +600,7 @@ public class Game {
 	}
 
 	/**
+	 * Sets the number of rows.
 	 * @param nbrOfRows
 	 */
 	public void setNbrOfRows(int nbrOfRows) {
@@ -600,6 +616,7 @@ public class Game {
 	}
 
 	/**
+	 * Sets the number of coloumns.
 	 * @param nbrOfColoumns
 	 */
 	public void setNbrOfColoumns(int nbrOfColoumns) {
@@ -615,6 +632,7 @@ public class Game {
 	}
 
 	/**
+	 * Sets the number of battleships.
 	 * @param nbrOfBattleships
 	 */
 	public void setNbrOfBattleships(int nbrOfBattleships) {
@@ -630,6 +648,7 @@ public class Game {
 	}
 
 	/**
+	 * Sets the number of submarines.
 	 * @param nbrOfSubmarines
 	 */
 	public void setNbrOfSubmarines(int nbrOfSubmarines) {
@@ -645,6 +664,7 @@ public class Game {
 	}
 
 	/**
+	 * Sets the number of destroyers.
 	 * @param nbrOfDestroyers
 	 */
 	public void setNbrOfDestroyers(int nbrOfDestroyers) {
@@ -660,6 +680,7 @@ public class Game {
 	}
 
 	/**
+	 * Sets the number of cruisers.
 	 * @param nbrOfCruisers
 	 */
 	public void setNbrOfCruisers(int nbrOfCruisers) {
@@ -675,6 +696,7 @@ public class Game {
 	}
 
 	/**
+	 * Sets the game mode.
 	 * @param gameMode
 	 */
 	public void setGameMode(GameMode gameMode) {
@@ -682,6 +704,7 @@ public class Game {
 	}
 	
 	/**
+	 * This method sets the game options.
 	 * @param nbrOfRows
 	 * @param nbrOfColoumns
 	 * @param nbrOfBattleships
@@ -762,7 +785,7 @@ public class Game {
 	}
 
 	/**
-	 * 
+	 * Restarts a game.
 	 */
 	@SuppressWarnings("deprecation")
 	public void restart() {

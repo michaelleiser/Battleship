@@ -106,6 +106,8 @@ public class GameFrame extends JFrame {
 	private Field[][] enemyField;
 	
 	/**
+	 * Creates a new JFrame for the game.
+	 * 
 	 * @param game
 	 */
 	public GameFrame(Game game) {
@@ -114,7 +116,7 @@ public class GameFrame extends JFrame {
 	}
 
 	/**
-	 * 
+	 * Initializes the frame components.
 	 */
 	private void initComponents() {
 		this.setTitle("Battleship - Player " + game.getPlayer().getName());
@@ -1043,7 +1045,7 @@ public class GameFrame extends JFrame {
 	}
 	
 	/**
-	 * 
+	 * Enables the components of the enemy field, so the player can shoot on it.
 	 */
 	public void enableComponents(){
 		for(int i = 0; i < game.getNbrOfRows(); i++){
@@ -1054,7 +1056,7 @@ public class GameFrame extends JFrame {
 	}
 	
 	/**
-	 * 
+	 * Disables the components of the enemy field, so the player cannot shoot on it.
 	 */
 	public void disableComponents(){
 		for(int i = 0; i < game.getNbrOfRows(); i++){
@@ -1065,14 +1067,18 @@ public class GameFrame extends JFrame {
 	}
 
 	/**
+	 * Returns a two dimensional array of your fields.
 	 * @return
+	 * 			your fields
 	 */
 	public Field[][] getYourField() {
 		return yourField;
 	}
 	
 	/**
+	 * Returns a two dimensional array of the enemy fields.
 	 * @return
+	 * 			enemy fields
 	 */
 	public Field[][] getEnemyField() {
 		return enemyField;

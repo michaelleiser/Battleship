@@ -79,6 +79,8 @@ public class CoordinateFrame extends JFrame{
 	public boolean firstCoordinate = true;
 	
 	/**
+	 * Creates a new JFrame for the coordination of the game settings.
+	 * 
 	 * @param game
 	 */
 	public CoordinateFrame(Game game) {		
@@ -87,7 +89,7 @@ public class CoordinateFrame extends JFrame{
 	}
 
 	/**
-	 * 
+	 * Initializes the frame components.
 	 */
 	private void initComponents() {
 		this.setTitle("Battleship - Player " + game.getPlayer().getName());
@@ -651,7 +653,7 @@ public class CoordinateFrame extends JFrame{
 	}
 
 	/**
-	 * 
+	 * Toggle between shoot alternatively and until water.
 	 */
 	private void jRadioButtonShootAlternativelyActionPerformed() {
 		jRadioButtonShootUntilWater.setSelected(false);
@@ -660,7 +662,7 @@ public class CoordinateFrame extends JFrame{
 	}
 
 	/**
-	 * 
+	 * Toggle between shoot alternatively and until water.
 	 */
 	private void jRadioButtonShootUntilWaterActionPerformed() {
 		jRadioButtonShootAlternatively.setSelected(false);
@@ -669,14 +671,14 @@ public class CoordinateFrame extends JFrame{
 	}
 
 	/**
-	 * 
+	 * TODO
 	 */
 	private void jButtonCancelActionPerformed() {
 		System.exit(0);
 	}
 
 	/**
-	 * 
+	 * Sends the message to the other player.
 	 */
 	private void jButtonSendActionPerformed() {
 		String name = game.getPlayer().getName();
@@ -690,7 +692,7 @@ public class CoordinateFrame extends JFrame{
 	
 		
 	/**
-	 * 
+	 * Validate and coordinate settings. At first the entered options are checked for some constraints. If there are no mistakes the options are sent to the other player to do some changes or not.
 	 */
 	private void jButtonValidateAndCoordinateActionPerformed() {
 		try {
@@ -739,6 +741,9 @@ public class CoordinateFrame extends JFrame{
 	}
 
 	/**
+	 * The number of rows and coloumns have to be between 10 and 20.
+	 * The number of each ship have to be between 1 and 20.
+	 * The ships must cover more than 10% and less than 30% of the number of fields.
 	 * @param nbrOfRows
 	 * @param nbrOfColoumns
 	 * @param nbrOfBattleships
@@ -746,6 +751,7 @@ public class CoordinateFrame extends JFrame{
 	 * @param nbrOfDestroyers
 	 * @param nbrOfCruisers
 	 * @return
+	 * 			{@code true} if all the options are valid
 	 */
 	private final boolean validateSettings(int nbrOfRows, int nbrOfColoumns, int nbrOfBattleships, 
 			int nbrOfSubmarines, int nbrOfDestroyers, int nbrOfCruisers) {
@@ -790,14 +796,14 @@ public class CoordinateFrame extends JFrame{
 	}
 	
 	/**
-	 * 
+	 * Resets the jTextPaneYourMessage when clicked on it.
 	 */
 	private void jTextPaneYourMessageMouseClicked() {
 		jTextPaneYourMessage.setText(null);
 	}	
 
 	/**
-	 * 
+	 * Disable the components for the passive player, so he cannot manipulate the game options.
 	 */
 	public void disableComponents() {
 		jTextFieldNbrOfBattleship.setEnabled(false);
@@ -812,7 +818,7 @@ public class CoordinateFrame extends JFrame{
 	}
 	
 	/**
-	 * 
+	 * Enables the components for the active player, so he can manipulate the game options.
 	 */
 	public void enableComponents() {
 		jTextFieldNbrOfBattleship.setEnabled(true);
@@ -827,6 +833,7 @@ public class CoordinateFrame extends JFrame{
 	}
 	
 	/**
+	 * Sets the components
 	 * @param nbrOfRows
 	 * @param nbrOfColoumns
 	 * @param nbrOfBattleships
@@ -854,6 +861,7 @@ public class CoordinateFrame extends JFrame{
 	}	
 
 	/**
+	 * A flag that is used for the first coordination without a some game option changed.
 	 * @param first
 	 */
 	public void setFirst(boolean first){

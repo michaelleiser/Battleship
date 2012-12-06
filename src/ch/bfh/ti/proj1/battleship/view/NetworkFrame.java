@@ -58,7 +58,7 @@ public class NetworkFrame extends JFrame {
 	private Game game;
 
 	/**
-	 * Creates new form NewJFrame
+	 * Creates a new JFrame for the network establishment.
 	 * 
 	 * @param game
 	 */
@@ -68,7 +68,7 @@ public class NetworkFrame extends JFrame {
 	}
 
 	/**
-	 * 
+	 * Initializes the frame components.
 	 */
 	private void initComponents() {
 		this.setTitle("Battleship");
@@ -509,7 +509,7 @@ public class NetworkFrame extends JFrame {
 	}
 
 	/**
-	 * 
+	 * Toggle between host and join a game.
 	 */
 	private void jRadioButtonHostGameActionPerformed() {
 		jRadioButtonHostGame.setSelected(true);
@@ -521,7 +521,7 @@ public class NetworkFrame extends JFrame {
 	}
 
 	/**
-	 * 
+	 * Toggle between host and join a game.
 	 */
 	private void jRadioButtonJoinGameActionPerformed() {
 		jRadioButtonHostGame.setSelected(false);
@@ -533,14 +533,15 @@ public class NetworkFrame extends JFrame {
 	}
 
 	/**
-	 * 
+	 * TODO
 	 */
 	private void jButtonCancelActionPerformed() {
 		System.exit(0);
 	}
 
 	/**
-	 * 
+	 * If host is selected then a new server is created that listens for an incoming connection on the specified port number.
+	 * If join is selected then a new client is created that tries to connect to server with the specified IP address and port number.
 	 */
 	private void jButtonConnectActionPerformed() {
 		if (jRadioButtonHostGame.isSelected()) {
@@ -572,7 +573,7 @@ public class NetworkFrame extends JFrame {
 	}
 
 	/**
-	 * Validates the port number
+	 * Validates the port number. The port must be a number and also be between 1024 and 65535.
 	 * @param port
 	 * @return
 	 * 			{@code true} if the port is valid
@@ -591,7 +592,7 @@ public class NetworkFrame extends JFrame {
 	}
 
 	/**
-	 * Validates the ipAddress.
+	 * Validates the ipAddress. The ipAddress can either be "localhost" or in the format "x.x.x.x", where "x" is between 0 and 255.
 	 * @param ipAddress
 	 * @return
 	 * 			{@code true} if the ipAddress is valid
@@ -614,7 +615,7 @@ public class NetworkFrame extends JFrame {
 	}
 
 	/**
-	 * 
+	 * Disables the components for the hosting player, so he cannot manipulate the specified connection options.
 	 */
 	private void disableComponents() {
 		jTextFieldPlayerName.setEnabled(false);
@@ -625,7 +626,6 @@ public class NetworkFrame extends JFrame {
 	}
 
 	/**
-	 * Returns the player's name.
 	 * @return
 	 * 			the player's name
 	 */
