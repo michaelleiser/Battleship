@@ -32,9 +32,6 @@ import ch.bfh.ti.proj1.battleship.frame.GameMode;
  */
 public class CoordinateFrame extends JFrame{
 	
-	
-	
-
 	private static final long serialVersionUID = 1L;
 
 	private JLabel jLabelStep2of2;

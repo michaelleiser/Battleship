@@ -577,4 +577,13 @@ public class Game {
 	public void setYourTurn(boolean yourTurn) {
 		this.yourTurn = yourTurn;
 	}
+
+	@SuppressWarnings("deprecation")
+	public void restart() {
+		this.gameFrame.dispose();
+		this.showCoordinateFrame();
+		this.coordinateFrame.disableComponents();
+		this.init();
+		this.bgSoundThread.stop();
+	}
 }

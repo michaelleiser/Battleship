@@ -130,11 +130,7 @@ public class MyClient implements Runnable{
 						game.getGameSoundThread().stop();
 					}
 					if(line.startsWith("GameFrame Restart")){
-						game.getGameFrame().dispose();
-						game.showCoordinateFrame();
-						game.getCoordinateFrame().disableComponents();
-						game.init();
-						game.getBgSoundThread().stop();
+						game.restart();
 					}
 				}
 			}
