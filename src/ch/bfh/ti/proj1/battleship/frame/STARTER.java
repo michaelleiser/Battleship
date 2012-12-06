@@ -16,6 +16,7 @@ public class STARTER {
 /**
 *
 *TODO Liste
+* - Beim spielen, nach einem Schuss das Feld deaktivieren und erst vom Gegener aktivieren lassen
 * - Startbild und Endbild
 * - Winner/Loser Frame mit Sound
 * - Message an anderen, dass anderer geschlossen => Message und dann auch schliessen => JEDES FRAME!!!

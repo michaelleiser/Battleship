@@ -352,6 +352,7 @@ public class Game {
 		Sound.playingSound(Sounds.SUNK);
 	}
 
+	@SuppressWarnings("deprecation")
 	public void won() {
 		Sound.playingSound(Sounds.WINNER);
 		JOptionPane.showMessageDialog(null, "You won");
@@ -363,6 +364,7 @@ public class Game {
 		this.bgSoundThread.stop();
 	}
 	
+	@SuppressWarnings("deprecation")
 	public void lost(){
 		Sound.playingSound(Sounds.LOSER);
 		JOptionPane.showMessageDialog(null, "You lost");
@@ -374,6 +376,7 @@ public class Game {
 		this.bgSoundThread.stop();
 	}
 	
+	@SuppressWarnings("deprecation")
 	public void ready() {
 		if(canStart){
 			setYourTurn(true);

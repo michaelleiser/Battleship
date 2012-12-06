@@ -967,6 +967,7 @@ public class GameFrame extends JFrame {
 		jTextPaneYourMessage.setText(null);
 	}
 
+	@SuppressWarnings("deprecation")
 	private void jButtonRestartActionPerformed() {
 		try {
 			for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
