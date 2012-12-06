@@ -861,10 +861,11 @@ public class CoordinateFrame extends JFrame{
 	}
 	
 	/**
-	 * @param newText
+	 * Concats the actual text in the Chat with the new {@code newText}
+	 * @param text
 	 */
-	public void concatjTextPaneChat(String newText) {
+	public void concatjTextPaneChat(String text) {
 		String oldText = jTextPaneChat.getText();
-		jTextPaneChat.setText(oldText + newText);
+		jTextPaneChat.setText(oldText + text);
 	}
 }

@@ -1079,62 +1079,60 @@ public class GameFrame extends JFrame {
 	}
 	
 	/**
-	 * @param x
+	 * Sets the number of battleships.
+	 * @param number
 	 */
-	public void setNbrOfBattleship(int x){
-		jRadioButtonNbrOfBattleship.setText(x + "x");
+	public void setNbrOfBattleship(int number){
+		jRadioButtonNbrOfBattleship.setText(number + "x");
 	}
 	
 	/**
-	 * @param x
+	 * Sets the number of submarines.
+	 * @param number
 	 */
-	public void setNbrOfSubmarine(int x){
-		jRadioButtonNbrOfSubmarine.setText(x + "x");
+	public void setNbrOfSubmarine(int number){
+		jRadioButtonNbrOfSubmarine.setText(number + "x");
 	}
 	
 	/**
-	 * @param x
+	 * Sets the number of destroyers.
+	 * @param number
 	 */
-	public void setNbrOfDestroyer(int x){
-		jRadioButtonNbrOfDestroyer.setText(x + "x");
+	public void setNbrOfDestroyer(int number){
+		jRadioButtonNbrOfDestroyer.setText(number + "x");
 	}
 	
 	/**
-	 * @param x
+	 * Sets the number of cruisers.
+	 * @param number
 	 */
-	public void setNbrOfCruiser(int x){
-		jRadioButtonNbrOfCruiser.setText(x + "x");
+	public void setNbrOfCruiser(int number){
+		jRadioButtonNbrOfCruiser.setText(number + "x");
 	}
 	
-	
-	
-	
-	
-	
-	
 	/**
-	 * 
+	 * Increments the jLabelYouHits by one.
 	 */
 	public void incjLabelYouHits() {
 		this.jLabelYouHits.setText((1+Integer.parseInt(jLabelYouHits.getText())) + "");
 	}
 
 	/**
-	 * 
+	 * Increments the jLabelYouWater by one.
 	 */
 	public void incjLabelYouWater() {
 		this.jLabelYouWater.setText((1+Integer.parseInt(jLabelYouWater.getText())) + "");
 	}
 
 	/**
-	 * 
+	 * Increments the jLabelYouSunk by one.
 	 */
 	public void incjLabelYouSunk() {
 		this.jLabelYouSunk.setText((1+Integer.parseInt(jLabelYouSunk.getText())) + "");
 	}
 
 	/**
-	 * 
+	 * Increments the jLabelYouShots by one.
 	 */
 	public void incjLabelYouShots() {
 		this.jLabelYouShots.setText((1+Integer.parseInt(jLabelYouShots.getText())) + "");
@@ -1142,7 +1140,7 @@ public class GameFrame extends JFrame {
 	}
 
 	/**
-	 * 
+	 * Refreshes the jLabelYouAccuracy.
 	 */
 	public void refreshjLabelYouAccuracy(){
 		int hits = Integer.parseInt(jLabelYouHits.getText());
@@ -1151,30 +1149,29 @@ public class GameFrame extends JFrame {
 		this.jLabelYouAccuracy.setText(accuracy + "%");
 	}
 	
-	
 	/**
-	 * 
+	 * Increments the jLabelEnemyHits by one.
 	 */
 	public void incjLabelEnemyHits() {
 		this.jLabelEnemyHits.setText((1+Integer.parseInt(jLabelEnemyHits.getText())) + "");
 	}
 
 	/**
-	 * 
+	 * Increments the jLabelEnemyWater by one.
 	 */
 	public void incjLabelEnemyWater() {
 		this.jLabelEnemyWater.setText((1+Integer.parseInt(jLabelEnemyWater.getText())) + "");
 	}
 
 	/**
-	 * 
+	 * Increments the jLabelEnemySunk by one.
 	 */
 	public void incjLabelEnemySunk() {
 		this.jLabelEnemySunk.setText((1+Integer.parseInt(jLabelEnemySunk.getText())) + "");
 	}
 
 	/**
-	 * 
+	 * Increments the jLabelEnemyShots by one.
 	 */
 	public void incjLabelEnemyShots() {
 		this.jLabelEnemyShots.setText((1+Integer.parseInt(jLabelEnemyShots.getText())) + "");
@@ -1182,7 +1179,7 @@ public class GameFrame extends JFrame {
 	}
 	
 	/**
-	 * 
+	 * Refreshes the jLabelEnemyAccuracy.
 	 */
 	public void refreshjLabelEnemyAccuracy(){
 		int hits = Integer.parseInt(jLabelEnemyHits.getText());
@@ -1191,21 +1188,21 @@ public class GameFrame extends JFrame {
 		this.jLabelEnemyAccuracy.setText(accuracy + "%");
 	}
 	
-	
-	
 	/**
-	 * @param newText
+	 * Concats the actual text in the Chat with the new {@code text}
+	 * @param text
 	 */
-	public void concatjTextPaneChat(String newText) {
+	public void concatjTextPaneChat(String text) {
 		String oldText = jTextPaneChat.getText();
-		jTextPaneChat.setText(oldText + newText);
+		jTextPaneChat.setText(oldText + text);
 	}
 	
 	/**
-	 * @param newText
+	 * Concats the actual text in the History with the new {@code text}
+	 * @param text
 	 */
-	public void concatjTextPaneHistory(String newText){
+	public void concatjTextPaneHistory(String text){
 		String oldText = jTextPaneHistory.getText();
-		jTextPaneHistory.setText(oldText + newText);
+		jTextPaneHistory.setText(oldText + text);
 	}
 }

@@ -572,8 +572,10 @@ public class NetworkFrame extends JFrame {
 	}
 
 	/**
+	 * Validates the port number
 	 * @param port
 	 * @return
+	 * 			{@code true} if the port is valid
 	 */
 	private final boolean validatePort(String port) {
 		if (Pattern.matches("\\d{4,5}", port)) {
@@ -589,8 +591,10 @@ public class NetworkFrame extends JFrame {
 	}
 
 	/**
+	 * Validates the ipAddress.
 	 * @param ipAddress
 	 * @return
+	 * 			{@code true} if the ipAddress is valid
 	 */
 	private final boolean validateIPAddress(String ipAddress) {
 		if (jTextFieldIPAddress.getText().equalsIgnoreCase("localhost")) {
@@ -621,7 +625,9 @@ public class NetworkFrame extends JFrame {
 	}
 
 	/**
+	 * Returns the player's name.
 	 * @return
+	 * 			the player's name
 	 */
 	public String getPlayerName() {
 		return jTextFieldPlayerName.getText();

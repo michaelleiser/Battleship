@@ -97,7 +97,7 @@ public class Game {
 	}
 	
 	/**
-	 * 
+	 * Creates a new NetworkFrame and shows it.
 	 */
 	public void showNetworkFrame(){
 		try {
@@ -115,7 +115,7 @@ public class Game {
 	}
 
 	/**
-	 * 
+	 *  Creates a new CoordinateFrame and shows it.
 	 */
 	public void showCoordinateFrame() {
 		try {
@@ -134,7 +134,7 @@ public class Game {
 	}
 	
 	/**
-	 * 
+	 *  Creates a new GameFrame and shows it.
 	 */
 	public void showGameFrame(){
 		try {
@@ -152,6 +152,7 @@ public class Game {
 	}
 
 	/**
+	 * Places a ship with the specified {@code type} either horizontally or vertically at the position {@code x} and {@code y}.
 	 * @param type
 	 * @param x
 	 * @param y
@@ -229,16 +230,18 @@ public class Game {
 	}
 
 	/**
+	 * 
 	 * @param fields
-	 * @param s
+	 * @param ship
 	 * @param x
 	 * @param y
-	 * @param k
+	 * @param alignment
 	 * @return
+	 * 			{@code true} if the ship can be placed at this position
 	 */
-	private boolean checkConstraints(Field[][] fields, Ship s, int x, int y, int k) {
-		if(k == 0){
-			for(int i = 0; i < s.getSize(); i++){
+	private boolean checkConstraints(Field[][] fields, Ship ship, int x, int y, int alignment) {
+		if(alignment == 0){
+			for(int i = 0; i < ship.getSize(); i++){
 				if(((x+i) >= this.nbrOfColoumns) || (fields[y][x+i].getShip() != null)){
 					return false;
 				}
@@ -256,7 +259,7 @@ public class Game {
 				}
 			}
 		} else{
-			for(int i = 0; i < s.getSize(); i++){
+			for(int i = 0; i < ship.getSize(); i++){
 				if(((y+i) >= this.nbrOfRows) || (fields[y+i][x].getShip() != null)){
 					return false;
 				}
@@ -545,7 +548,9 @@ public class Game {
 	}
 	
 	/**
+	 * Returns the status whether all ships are sunk or not.
 	 * @return
+	 * 			{@code true} if all ships are sunk
 	 */
 	public boolean allShipsSunk(){
 		for(Ship s : battleships){
@@ -573,6 +578,7 @@ public class Game {
 
 	/**
 	 * @return
+	 * 			the number of rows
 	 */
 	public int getNbrOfRows() {
 		return nbrOfRows;
@@ -587,6 +593,7 @@ public class Game {
 
 	/**
 	 * @return
+	 * 			the number of coloumns
 	 */
 	public int getNbrOfColoumns() {
 		return nbrOfColoumns;
@@ -601,6 +608,7 @@ public class Game {
 
 	/**
 	 * @return
+	 * 			the number of battleships
 	 */
 	public int getNbrOfBattleships() {
 		return nbrOfBattleships;
@@ -615,6 +623,7 @@ public class Game {
 
 	/**
 	 * @return
+	 * 			the number of submarines
 	 */
 	public int getNbrOfSubmarines() {
 		return nbrOfSubmarines;
@@ -629,6 +638,7 @@ public class Game {
 
 	/**
 	 * @return
+	 * 			the number of destroyers
 	 */
 	public int getNbrOfDestroyers() {
 		return nbrOfDestroyers;
@@ -643,6 +653,7 @@ public class Game {
 
 	/**
 	 * @return
+	 * 			the number of cruisers
 	 */
 	public int getNbrOfCruisers() {
 		return nbrOfCruisers;
@@ -657,6 +668,7 @@ public class Game {
 
 	/**
 	 * @return
+	 * 			the game mode
 	 */
 	public GameMode getGameMode() {
 		return gameMode;
@@ -696,6 +708,7 @@ public class Game {
 
 	/**
 	 * @return
+	 * 			the player
 	 */
 	public Player getPlayer() {
 		return this.player;
@@ -703,6 +716,7 @@ public class Game {
 	
 	/**
 	 * @return
+	 * 			the client
 	 */
 	public MyClient getClient() {
 		return myClient;
@@ -710,6 +724,7 @@ public class Game {
 
 	/**
 	 * @return
+	 * 			the networkFrame
 	 */
 	public NetworkFrame getNetworkFrame() {
 		return networkFrame;
@@ -717,6 +732,7 @@ public class Game {
 	
 	/**
 	 * @return
+	 * 			the coordinateFrame
 	 */
 	public CoordinateFrame getCoordinateFrame(){
 		return coordinateFrame;
@@ -724,6 +740,7 @@ public class Game {
 	
 	/**
 	 * @return
+	 * 			the gameFrame
 	 */
 	public GameFrame getGameFrame(){
 		return gameFrame;
@@ -731,7 +748,7 @@ public class Game {
 	
 	/**
 	 * @return
-	 * 			true if it's your turn
+	 * 			{@code true} if it's your turn
 	 */
 	public boolean isYourTurn() {
 		return yourTurn;
