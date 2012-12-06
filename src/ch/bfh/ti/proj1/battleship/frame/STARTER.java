@@ -15,7 +15,7 @@ public class STARTER {
 /**
 *
 *TODO Liste
-* - JAVADOC - networkFrame     CoordinateFrame     GameFrame      Game
+*
 * - Beim spielen, nach einem Schuss das Feld deaktivieren und erst vom Gegener aktivieren lassen
 * - Startbild und Endbild
 * - Winner/Loser Frame mit Sound
