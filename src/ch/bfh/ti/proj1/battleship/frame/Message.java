@@ -24,6 +24,7 @@ public enum Message {
 	GAME_WON, 
 	GAME_START, 
 	GAME_SOUND, 
-	GAME_RESTART
+	GAME_RESTART, 
+	CLOSECONNECTION
 	
 }

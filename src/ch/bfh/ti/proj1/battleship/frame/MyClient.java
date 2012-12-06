@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.net.Socket;
 
+import javax.swing.JOptionPane;
+
 /**
  * @author Daniel Kotlàris
  * @author Michael Leiser
@@ -145,6 +147,9 @@ public class MyClient implements Runnable{
 					}
 					if(line.startsWith(Message.GAME_RESTART.toString())){
 						game.restart();
+					}
+					if(line.startsWith(Message.CLOSECONNECTION.toString())){
+						this.stop();
 					}
 				}
 			}

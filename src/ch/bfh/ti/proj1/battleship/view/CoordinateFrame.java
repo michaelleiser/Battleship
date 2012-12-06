@@ -674,11 +674,13 @@ public class CoordinateFrame extends JFrame{
 	 * TODO
 	 */
 	private void jButtonCancelActionPerformed() {
+		this.game.getClient().sendMessage(Message.CLOSECONNECTION.toString());
+		this.game.getClient().stop();
 		System.exit(0);
 	}
 
 	/**
-	 * Sends the message to the other player.
+	 * Sends the message in the jTextPaneYourMessage to the other player.
 	 */
 	private void jButtonSendActionPerformed() {
 		String name = game.getPlayer().getName();
@@ -876,4 +878,5 @@ public class CoordinateFrame extends JFrame{
 		String oldText = jTextPaneChat.getText();
 		jTextPaneChat.setText(oldText + text);
 	}
+	
 }
