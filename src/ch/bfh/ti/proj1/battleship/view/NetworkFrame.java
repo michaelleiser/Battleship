@@ -55,7 +55,7 @@ public class NetworkFrame extends JFrame {
 	private JButton jButtonConnect;
 	private JButton jButtonCancel;
 
-	private Game g;
+	private Game game;
 
 	/**
 	 * Creates new form NewJFrame
@@ -63,7 +63,7 @@ public class NetworkFrame extends JFrame {
 	 * @param game
 	 */
 	public NetworkFrame(Game g) {
-		this.g = g;
+		this.game = g;
 		initComponents();
 	}
 
@@ -530,9 +530,9 @@ public class NetworkFrame extends JFrame {
 	private void jButtonConnectActionPerformed() {
 		if (jRadioButtonHostGame.isSelected()) {
 			if (validatePort(jTextFieldFreePort.getText())) {
-				g.enterName(jTextFieldPlayerName.getText());
+				game.enterName(jTextFieldPlayerName.getText());
 				final int port = Integer.parseInt(jTextFieldFreePort.getText());
-				g.hostGame(port);
+				game.hostGame(port);
 				jLabelStatus
 						.setText("Connecting...Please start application of second player if it is not started yet.");
 				disableComponents();
@@ -543,11 +543,11 @@ public class NetworkFrame extends JFrame {
 		} else if (jRadioButtonJoinGame.isSelected()) {
 			if (validatePort(jTextFieldSharedPort.getText())
 					&& validateIPAddress(jTextFieldIPAddress.getText())) {
-				g.enterName(jTextFieldPlayerName.getText());
+				game.enterName(jTextFieldPlayerName.getText());
 				final int port = Integer.parseInt(jTextFieldSharedPort
 						.getText());
 				final String IP = jTextFieldIPAddress.getText();
-				g.joinGame(port, IP);
+				game.joinGame(port, IP);
 			} else {
 				JOptionPane
 						.showMessageDialog(this,

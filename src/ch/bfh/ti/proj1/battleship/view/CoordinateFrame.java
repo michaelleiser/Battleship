@@ -810,8 +810,8 @@ public class CoordinateFrame extends JFrame{
 		firstCoordinate = f;
 	}
 	
-	public void concatjTextPaneChat(String text) {
-		String s = jTextPaneChat.getText();
-		jTextPaneChat.setText(s + text);
+	public void concatjTextPaneChat(String newText) {
+		String oldText = jTextPaneChat.getText();
+		jTextPaneChat.setText(oldText + newText);
 	}
 }

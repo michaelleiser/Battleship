@@ -22,7 +22,6 @@ public class STARTER {
 * - Beim Platzieren des Schiffes, auf dem Spielfeld bereits andeuten
 * - Fields eventuell als JPanel statt JToggleButton
 * - History aktiver Player beim gegner verdreht 
-* - History Feld richtig auflösen bsp b1 a3..
 * - Sounds einbinden
 * 		- Sounds bei sich selber implementieren
 * 		- Background Musik bei beiden

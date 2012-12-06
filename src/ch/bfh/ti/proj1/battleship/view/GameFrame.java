@@ -1101,13 +1101,13 @@ public class GameFrame extends JFrame {
 	
 	
 	
-	public void concatjTextPaneChat(String text) {
-		String s = jTextPaneChat.getText();
-		jTextPaneChat.setText(s + text);
+	public void concatjTextPaneChat(String newText) {
+		String oldText = jTextPaneChat.getText();
+		jTextPaneChat.setText(oldText + newText);
 	}
 	
-	public void concatjTextPaneHistory(String text){
-		String s = jTextPaneHistory.getText();
-		jTextPaneHistory.setText(s + text);
+	public void concatjTextPaneHistory(String newText){
+		String oldText = jTextPaneHistory.getText();
+		jTextPaneHistory.setText(oldText + newText);
 	}
 }

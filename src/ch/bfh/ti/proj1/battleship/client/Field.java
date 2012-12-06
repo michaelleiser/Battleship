@@ -21,7 +21,7 @@ public class Field extends JToggleButton {
 	
 	public void placeShip(Ship ship) {
 		this.ship = ship;
-		this.ship.setPlaced();
+//		this.ship.setPlaced();
 		this.ship.addPosition(this);
 		this.setSelected(true);
 		this.setBackground(Color.black);
@@ -31,19 +31,23 @@ public class Field extends JToggleButton {
 		this.setBackground(Color.white);
 		this.setSelected(false);
 		this.ship.removePosition(this);
-		this.ship.setUnplaced();
+//		this.ship.setUnplaced();
 		this.ship = null;
-	}
-
-	public boolean isHit() {
-		return hit;
 	}
 
 	public void shoot() {
 		this.ship.shoot();
 		this.hit = true;
 	}
-	
+
+	public void hit() {
+		this.hit = true;
+	}
+
+	public boolean isHit() {
+		return hit;
+	}
+
 	public Ship getShip() {
 		return this.ship;
 	}
@@ -56,12 +60,4 @@ public class Field extends JToggleButton {
 		return y;
 	}
 	
-	@Override
-	public String toString(){
-		return x + ":" + y;
-	}
-
-	public void hit() {
-		this.hit = true;
-	}
 }

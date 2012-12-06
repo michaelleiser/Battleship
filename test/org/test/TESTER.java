@@ -38,7 +38,7 @@ public class TESTER {
 	@Test
 	public void testShip(){
 		Ship battleship = new Ship(ShipType.BATTLESHIP);
-		assertEquals(battleship.size(), 5);
+		assertEquals(battleship.getSize(), 5);
 		assertFalse(battleship.isSunk());
 		battleship.shoot();
 		assertFalse(battleship.isSunk());
@@ -52,13 +52,13 @@ public class TESTER {
 		assertTrue(battleship.isSunk());
 		
 		Ship submarine = new Ship(ShipType.SUBMARINE);
-		assertEquals(submarine.size(), 4);
+		assertEquals(submarine.getSize(), 4);
 		
 		Ship destroyer = new Ship(ShipType.DESTROYER);
-		assertEquals(destroyer.size(), 3);
+		assertEquals(destroyer.getSize(), 3);
 		
 		Ship cruiser = new Ship(ShipType.CRUISER);
-		assertEquals(cruiser.size(), 2);
+		assertEquals(cruiser.getSize(), 2);
 	}
 	
 	@Test

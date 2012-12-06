@@ -202,7 +202,7 @@ public class Game {
 
 	private boolean checkConstraints(Field[][] fields, Ship s, int x, int y, int k) {
 		if(k == 0){
-			for(int i = 0; i < s.size(); i++){
+			for(int i = 0; i < s.getSize(); i++){
 				if(((x+i) >= this.nbrOfColoumns) || (fields[y][x+i].getShip() != null)){
 					return false;
 				}
@@ -220,7 +220,7 @@ public class Game {
 				}
 			}
 		} else{
-			for(int i = 0; i < s.size(); i++){
+			for(int i = 0; i < s.getSize(); i++){
 				if(((y+i) >= this.nbrOfRows) || (fields[y+i][x].getShip() != null)){
 					return false;
 				}
@@ -407,6 +407,10 @@ public class Game {
 
 	}
 
+	public Thread getGameSoundThread() {
+		return gameSoundThread;
+	}
+
 	public void startBackgroundSound() {
 		this.bgSoundThread = new Thread(new Runnable() {
 
@@ -428,6 +432,10 @@ public class Game {
 	}
 	
 	
+	public Thread getBgSoundThread() {
+		return bgSoundThread;
+	}
+
 	public void setStartToFalse(){
 		this.canStart = false;
 	}
@@ -565,13 +573,5 @@ public class Game {
 
 	public void setYourTurn(boolean yourTurn) {
 		this.yourTurn = yourTurn;
-	}
-
-	public Thread getBgSoundThread() {
-		return bgSoundThread;
-	}
-
-	public Thread getGameSoundThread() {
-		return gameSoundThread;
 	}
 }

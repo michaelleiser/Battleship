@@ -143,14 +143,6 @@ public class MyClient implements Runnable{
 		}
 	}
 	
-	public void sendMessage(String s) {
-		out.println(s);
-	}
-
-	public void setGame(Game game) {
-		this.game = game;
-	}
-
 	public boolean isConnected() {
 		if(socket == null){
 			return false;
@@ -158,5 +150,13 @@ public class MyClient implements Runnable{
 		else{
 			return true;
 		}
+	}
+
+	public void setGame(Game game) {
+		this.game = game;
+	}
+
+	public void sendMessage(String s) {
+		out.println(s);
 	}
 }
