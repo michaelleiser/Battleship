@@ -9,17 +9,16 @@ package ch.bfh.ti.proj1.battleship.frame;
 public class STARTER {
 
 	public static void main(String[] args) {
-		new Game();
-	}	
+		new StarterFrame();
+	}
 }
 
 
 /**
 *
 *TODO Liste
-*
 * - Beim spielen, nach einem Schuss das Feld deaktivieren und erst vom Gegener aktivieren lassen
-* - Startbild und Endbild
+* - Startbild
 * - Winner/Loser Frame mit Sound
 * - Message an anderen, dass anderer geschlossen => Message und dann auch schliessen => JEDES FRAME!!!
 * - Beim Platzieren des Schiffes, auf dem Spielfeld bereits andeuten
@@ -27,7 +26,7 @@ public class STARTER {
 * - History aktiver Player ist beim gegner verdreht 
 * - Sounds einbinden
 * 		- Sounds bei sich selber implementieren
-* 		- Background Musik bei beiden
+* 		- Background Musik bei beiden (synchronisiert)
 * 		- Startmusik vom Starten des Programms bis zum Beginn des Spiels
 * 		- Fehlersound wenn falsch geklickt
 * 		- Ocean Sound während Spiel (zufällig) [Möven, Strand, Wellen,...]
