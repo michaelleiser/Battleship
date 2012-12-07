@@ -18,7 +18,9 @@ import ch.bfh.ti.proj1.battleship.sound.Sound;
 import ch.bfh.ti.proj1.battleship.sound.Sound.Sounds;
 import ch.bfh.ti.proj1.battleship.view.CoordinateFrame;
 import ch.bfh.ti.proj1.battleship.view.GameFrame;
+import ch.bfh.ti.proj1.battleship.view.LoserFrame;
 import ch.bfh.ti.proj1.battleship.view.NetworkFrame;
+import ch.bfh.ti.proj1.battleship.view.WinnerFrame;
 
 /**
  * @author Daniel Kotlàris
@@ -433,7 +435,8 @@ public class Game {
 	@SuppressWarnings("deprecation")
 	public void won() {
 		Sound.playingSound(Sounds.WINNER);
-		JOptionPane.showMessageDialog(null, "You won");
+		//JOptionPane.showMessageDialog(null, "You won");
+		new WinnerFrame(this);
 		init();
 		gameFrame.setVisible(false);
 		coordinateFrame.setVisible(true);
@@ -448,7 +451,8 @@ public class Game {
 	@SuppressWarnings("deprecation")
 	public void lost(){
 		Sound.playingSound(Sounds.LOSER);
-		JOptionPane.showMessageDialog(null, "You lost");
+		//JOptionPane.showMessageDialog(null, "You lost");
+		new LoserFrame(this);
 		init();
 		gameFrame.setVisible(false);
 		coordinateFrame.setVisible(true);

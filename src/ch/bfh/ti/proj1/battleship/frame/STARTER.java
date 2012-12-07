@@ -17,10 +17,9 @@ public class STARTER {
 
 
 /**
-*
 *TODO Liste
+* - RESTART game
 * - Beim spielen, nach einem Schuss das Feld deaktivieren und erst vom Gegener aktivieren lassen
-* - Startbild
 * - Winner/Loser Frame mit Sound
 * - Message an anderen, dass anderer geschlossen => Message und dann auch schliessen => JEDES FRAME!!!
 * - Beim Platzieren des Schiffes, auf dem Spielfeld bereits andeuten
