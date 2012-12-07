@@ -1,5 +1,7 @@
 package ch.bfh.ti.proj1.battleship.frame;
 
+import ch.bfh.ti.proj1.battleship.view.StarterFrame;
+
 /**
  * This class starts the application.
  * 

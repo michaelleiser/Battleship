@@ -1,4 +1,4 @@
-package ch.bfh.ti.proj1.battleship.frame;
+package ch.bfh.ti.proj1.battleship.view;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -11,22 +11,28 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
+import ch.bfh.ti.proj1.battleship.frame.Game;
+
 /**
  * This class displays the start screen.
  * 
  * @author Michael Leiser
  * @author Daniel Kotlàris
  */
-public class StarterFrame extends JFrame {
+public class LoserFrame extends JFrame {
 
+	private Game game;
 	/**
 	 * This is the serial for this class
 	 */
 	private static final long serialVersionUID = 243473051023764686L;
 
-	public StarterFrame() {
+	public LoserFrame(Game game) {
+	
+		this.game = game;
+		
 		JLabel label = new JLabel();
-		ImageIcon img = new ImageIcon("img\\start.jpg");
+		ImageIcon img = new ImageIcon("img\\loser.jpg");
 		label.setIcon(img);
 		this.add(label);
 		this.setSize(img.getIconWidth(), img.getIconHeight());
@@ -43,21 +49,19 @@ public class StarterFrame extends JFrame {
 		this.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				close();
-				new Game();
+				restartGame();
 			}
 		});
 		
 		this.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
-				close();
-				new Game();
+				restartGame();
 			}
 		});
 	}
 
-	private void close() {
-		this.dispose();	
+	private void restartGame() {
+		this.game.restart();
 	}
 }
