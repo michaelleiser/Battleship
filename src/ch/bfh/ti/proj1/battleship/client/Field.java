@@ -5,6 +5,9 @@ import java.awt.Color;
 import javax.swing.JButton;
 
 /**
+ * This is a field of the playing field.
+ * It can contain a ship and the other player can shoot on it. * 
+ * 
  * @author Daniel Kotlàris
  * @author Michael Leiser
  */
@@ -20,7 +23,9 @@ public class Field extends JButton {
 	/**
 	 * Constructor for the field where {@code x} and {@code y} are the position of the field.
 	 * @param x
+	 * 			the x-coordinate on the playing field
 	 * @param y
+	 * 			the y-coordinate on the playing field
 	 */
 	public Field(int x, int y) {
 		this.setBackground(Color.white);
@@ -31,6 +36,7 @@ public class Field extends JButton {
 	/**
 	 * Places a {@code ship} onto this field.
 	 * @param ship
+	 * 				the ship to place
 	 */
 	public void placeShip(Ship ship) {
 		this.ship = ship;
@@ -47,6 +53,7 @@ public class Field extends JButton {
 		this.setSelected(false);
 		this.ship.removePosition(this);
 		this.ship = null;
+		//TODO: return int if successful???
 	}
 
 	/**
@@ -77,16 +84,16 @@ public class Field extends JButton {
 	/**
 	 * Returns the {@code ship} that is placed on this field.
 	 * @return
-	 * 			ship
+	 * 			the ship covering this field
 	 */
 	public Ship getShip() {
 		return this.ship;
 	}
 	
 	/**
-	 * Returns the {@code x}-position of the field in the playingfield.
+	 * Returns the {@code x}-coordinate of the field in the playingfield.
 	 * @return
-	 * 			x-position
+	 * 			the x-coordinate on the playing field
 	 */
 	public int getXPos(){
 		return x;
@@ -95,7 +102,7 @@ public class Field extends JButton {
 	/**
 	 * Returns the {@code y}-position of the field in the playingfield.
 	 * @return
-	 * 			y-position
+	 * 			the y-coordinate on the playing field
 	 */
 	public int getYPos(){
 		return y;

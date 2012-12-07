@@ -1,6 +1,8 @@
 package ch.bfh.ti.proj1.battleship.frame;
 
 /**
+ * This class starts the application.
+ * 
  * @author Daniel Kotlàris
  * @author Michael Leiser
  */

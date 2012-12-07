@@ -6,16 +6,32 @@ import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 
+/**
+ * The class Sound is responsible for playing background music
+ * and for the sounds during the game.
+ * 
+ * @author Daniel Kotlàris
+ * @author Michael Leiser
+ */
 public class Sound {
 
 	public enum Sounds {
 		WATER, HIT, SUNK, GAMESOUND_0, GAMESOUND_1, GAMESOUND_2, WINNER, LOSER
 	}
 
-	public static void playGameSound(File f) throws Exception {
+	/**
+	 * Plays the background sound form the start of the application
+	 * until the player start to play the official game.
+	 * 
+	 * @param soundFile
+	 * 					the file to play
+	 * @throws Exception
+	 * 					if the file could not be read or anything else goes wrong
+	 */
+	public static void playGameSound(File soundFile) throws Exception {
 		Clip clip = AudioSystem.getClip();
 		AudioInputStream ais;
-		ais = AudioSystem.getAudioInputStream(f);
+		ais = AudioSystem.getAudioInputStream(soundFile);
 		clip.open(ais);
 		Long length = clip.getMicrosecondLength();
 //		clip.loop(Clip.LOOP_CONTINUOUSLY);
@@ -24,6 +40,12 @@ public class Sound {
 		clip.stop();
 	}
 	
+	/**
+	 * Plays the specific sounds during the game e.g. if a ship was hit.
+	 * 
+	 * @param sound
+	 * 				the sound to play
+	 */
 	public static void playingSound(Sounds sound) {
 		File soundFile;
 		switch (sound) {
@@ -72,6 +94,11 @@ public class Sound {
 		}
 	}
 	
+	/**
+	 * Plays the background sound during the battle (waves etc.)
+	 * @param random
+	 * 				a random number specifying the sound to play
+	 */
 	public static void playBackgroundSound(int random) {		
 		File soundFile;
 		switch (random) {
@@ -104,6 +131,9 @@ public class Sound {
 		}
 	}
 
+	/**
+	 * Plays the background music (before start of the battle)
+	 */
 	public static void playGameSound() {
 		try {
 			File f = new File("wav/gamesound0.wav");

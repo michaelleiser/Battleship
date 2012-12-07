@@ -8,8 +8,12 @@ import java.net.Socket;
 import javax.swing.JOptionPane;
 
 /**
- * @author Daniel Kotlàris
+ * The client is responsible to connect to the server.
+ * It sends and receives messages from the other client
+ * and acts as the controller for the corresponding actions.
+ * 
  * @author Michael Leiser
+ * @author Daniel Kotlàris
  */
 public class MyClient implements Runnable{
 

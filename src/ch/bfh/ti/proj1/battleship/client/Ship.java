@@ -3,6 +3,13 @@ package ch.bfh.ti.proj1.battleship.client;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * A ship has a type, is placed on the playing field,
+ * knows where it is placed and knows where it is hit (until sunk).
+ * 
+ * @author Michael Leiser
+ * @author Daniel Kotlàris
+ */
 public class Ship {
 
 	private ShipType type;
@@ -13,6 +20,7 @@ public class Ship {
 	/**
 	 * Constructor for a ship where type is the type of the ship.
 	 * @param type
+	 * 				the type of the ship including a certain size
 	 */
 	public Ship(ShipType type) {
 		this.type = type;
@@ -24,7 +32,7 @@ public class Ship {
 	/**
 	 * Returns the type of the ship.
 	 * @return
-	 * 			shiptype
+	 * 			the type of the ship
 	 */
 	public ShipType getShipType(){
 		return type;
@@ -33,7 +41,7 @@ public class Ship {
 	/**
 	 * Returns the size of the ship.
 	 * @return
-	 * 			size
+	 * 			the size of the ship
 	 */
 	public int getSize() {
 		return type.getSize();
@@ -49,7 +57,7 @@ public class Ship {
 	}
 
 	/**
-	 * Shoots at the ship.
+	 * Shoots at the ship. Counts the number of hits.
 	 */
 	public void shoot() {
 		++hits;
@@ -70,6 +78,7 @@ public class Ship {
 	/**
 	 * Adds the position of the {@code field} to the ship.
 	 * @param field
+	 * 				the field to add
 	 */
 	public void addPosition(Field field) {
 		positions.add(field);
@@ -78,6 +87,7 @@ public class Ship {
 	/**
 	 * Removes the position of the {@code field} from the ship.
 	 * @param field
+	 * 				the field to remove
 	 */
 	public void removePosition(Field field){
 //		positions.remove(field);								// TODO funktioniert nicht?
