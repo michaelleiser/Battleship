@@ -136,10 +136,10 @@ public class Sound {
 	 */
 	public static void playGameSound() {
 		try {
-			File f = new File("wav/gamesound0.wav");
+			File soundFile = new File("wav/gamesound0.wav");
 			Clip clip = AudioSystem.getClip();
 			AudioInputStream ais;
-			ais = AudioSystem.getAudioInputStream(f);
+			ais = AudioSystem.getAudioInputStream(soundFile);
 			clip.open(ais);
 			Long length = clip.getMicrosecondLength();
 //			clip.loop(Clip.LOOP_CONTINUOUSLY);
