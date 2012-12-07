@@ -5,6 +5,7 @@ import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
@@ -922,6 +923,11 @@ public class GameFrame extends JFrame {
 								.addContainerGap()));
 
 		pack();
+		
+		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();	
+		int xCoordinate = (int)(dim.getWidth() - this.getWidth()) / 2;
+		int yCoordinate = (int)(dim.getHeight() - this.getHeight()) / 2;
+		this.setLocation(xCoordinate, yCoordinate);
 	}
 
 	/**

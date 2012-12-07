@@ -1,6 +1,8 @@
 package ch.bfh.ti.proj1.battleship.view;
 
+import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
@@ -650,6 +652,11 @@ public class CoordinateFrame extends JFrame{
 						.addContainerGap()));
 
 		pack();
+		
+		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();	
+		int xCoord = (int)(dim.getWidth() - this.getWidth()) / 2;
+		int yCoord = (int)(dim.getHeight() - this.getHeight()) / 2;
+		this.setLocation(xCoord, yCoord);
 	}
 
 	/**

@@ -12,9 +12,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 /**
+ * This class displays the start screen.
  * 
- * @author Daniel
- *
+ * @author Michael Leiser
+ * @author Daniel Kotlàris
  */
 public class StarterFrame extends JFrame {
 

@@ -1,6 +1,8 @@
 package ch.bfh.ti.proj1.battleship.view;
 
+import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.regex.Pattern;
@@ -74,7 +76,7 @@ public class NetworkFrame extends JFrame {
 		this.setTitle("Battleship");
 		this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		this.setResizable(false);
-
+		
 		jLabelStep1of2 = new JLabel();
 		jLabelStep1of2.setFont(new Font("Tahoma", 0, 24));
 		jLabelStep1of2.setText("Step 1/2 - Establish network connection");
@@ -506,6 +508,11 @@ public class NetworkFrame extends JFrame {
 						.addContainerGap(18, Short.MAX_VALUE)));
 
 		pack();
+		
+		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();	
+		int xCoord = (int)(dim.getWidth() - this.getWidth()) / 2;
+		int yCoord = (int)(dim.getHeight() - this.getHeight()) / 2;
+		this.setLocation(xCoord, yCoord);
 	}
 
 	/**
