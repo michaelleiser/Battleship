@@ -17,10 +17,10 @@ public class Sound {
 		AudioInputStream ais;
 		ais = AudioSystem.getAudioInputStream(f);
 		clip.open(ais);
-		Long l = clip.getMicrosecondLength();
+		Long length = clip.getMicrosecondLength();
 //		clip.loop(Clip.LOOP_CONTINUOUSLY);
 		clip.start();
-		Thread.sleep(l / 1000);
+		Thread.sleep(length / 1000);
 		clip.stop();
 	}
 	
@@ -111,10 +111,10 @@ public class Sound {
 			AudioInputStream ais;
 			ais = AudioSystem.getAudioInputStream(f);
 			clip.open(ais);
-			Long l = clip.getMicrosecondLength();
+			Long length = clip.getMicrosecondLength();
 //			clip.loop(Clip.LOOP_CONTINUOUSLY);
 			clip.start();
-			Thread.sleep(l / 1000);
+			Thread.sleep(length / 1000);
 			clip.stop();
 		} catch (Exception e) {
 			e.printStackTrace();
