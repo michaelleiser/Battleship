@@ -436,11 +436,6 @@ public class Game {
 	public void won() {
 		new WinnerFrame(this);
 		Sound.playingSound(Sounds.WINNER);
-		//JOptionPane.showMessageDialog(null, "You won");
-
-//		init();
-//		gameFrame.setVisible(false);
-//		coordinateFrame.setVisible(true);
 		coordinateFrame.disableComponents();
 		coordinateFrame.setFirst(true);
 //		this.bgSoundThread.stop();
@@ -453,11 +448,6 @@ public class Game {
 	public void lost(){
 		new LoserFrame(this);
 		Sound.playingSound(Sounds.LOSER);
-		//JOptionPane.showMessageDialog(null, "You lost");
-
-//		init();
-//		gameFrame.setVisible(false);
-//		coordinateFrame.setVisible(true);
 		coordinateFrame.enableComponents();
 		coordinateFrame.setFirst(true);
 //		this.bgSoundThread.stop();
