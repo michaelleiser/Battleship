@@ -101,11 +101,14 @@ public class MyClient implements Runnable{
 					if(line.startsWith(Message.COORDINATE_ENABLE.toString())){
 						game.getCoordinateFrame().enableComponents();
 					}
-					if(line.startsWith(Message.GAME_ENABLE.toString())){
+					if(line.startsWith(Message.GAME_ENABLECOMPONENTS.toString())){
 						game.getGameFrame().enableComponents();
 					}
 					if(line.startsWith(Message.GAME_DISABLE.toString())){
 						game.setYourTurn(false);
+					}
+					if(line.startsWith(Message.GAME_ENABLE.toString())){
+						game.setYourTurn(true);
 					}
 					if(line.startsWith(Message.COORDINATE_SHOWGAMEFRAME.toString())){
 						game.showGameFrame();

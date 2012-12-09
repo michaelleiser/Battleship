@@ -324,6 +324,7 @@ public class Game {
 	 * @param y
 	 */
 	public void shootAt(int x, int y) {
+		setYourTurn(false);
 		myClient.sendMessage(Message.GAME_SHOOT.toString() + " " + x + " " + y);
 	}
 	
@@ -354,6 +355,12 @@ public class Game {
 				f[y][x].setBackground(Color.red);
 				Sound.playingSound(Sounds.HIT);
 			}
+			if(gameMode.equals(GameMode.UNTILWATER)){
+				this.myClient.sendMessage(Message.GAME_ENABLE.toString());
+			}
+			else{
+				setYourTurn(true);
+			}
 		} else {
 			gameFrame.incjLabelEnemyWater();
 			gameFrame.incjLabelEnemyShots();
@@ -361,15 +368,12 @@ public class Game {
 			f[y][x].setBackground(Color.blue);
 			Sound.playingSound(Sounds.WATER);
 			if(gameMode.equals(GameMode.UNTILWATER)){
-				this.myClient.sendMessage(Message.GAME_DISABLE.toString());
-				setYourTurn(true);
 				this.gameFrame.concatjTextPaneHistory(">>> " + player.getName() + " <<<\n");
 				this.myClient.sendMessage(Message.GAME_HISTORY.toString() + " " + ">>> " + player.getName() + " <<<\n");
 			}
+			setYourTurn(true);
 		}
 		if(gameMode.equals(GameMode.ALTERNATIVELY)){
-			this.myClient.sendMessage(Message.GAME_DISABLE.toString());
-			setYourTurn(true);
 			this.gameFrame.concatjTextPaneHistory(">>> " + player.getName() + " <<<\n");
 			this.myClient.sendMessage(Message.GAME_HISTORY.toString() + " " + ">>> " + player.getName() + " <<<\n");
 		}
@@ -466,7 +470,7 @@ public class Game {
 			this.myClient.sendMessage(Message.GAME_HISTORY.toString() + " " + ">>> " + player.getName() + " <<<\n");
 		}
 		if(!canStart){
-			this.myClient.sendMessage(Message.GAME_ENABLE.toString());
+			this.myClient.sendMessage(Message.GAME_ENABLECOMPONENTS.toString());
 			this.myClient.sendMessage(Message.GAME_SOUND.toString());
 			this.getGameFrame().enableComponents();
 			gameSoundThread.stop();
