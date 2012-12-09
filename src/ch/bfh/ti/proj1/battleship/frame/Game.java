@@ -434,15 +434,16 @@ public class Game {
 	 */
 	@SuppressWarnings("deprecation")
 	public void won() {
+		new WinnerFrame(this);
 		Sound.playingSound(Sounds.WINNER);
 		//JOptionPane.showMessageDialog(null, "You won");
-		new WinnerFrame(this);
-		init();
-		gameFrame.setVisible(false);
-		coordinateFrame.setVisible(true);
+
+//		init();
+//		gameFrame.setVisible(false);
+//		coordinateFrame.setVisible(true);
 		coordinateFrame.disableComponents();
 		coordinateFrame.setFirst(true);
-		this.bgSoundThread.stop();
+//		this.bgSoundThread.stop();
 	}
 	
 	/**
@@ -450,15 +451,16 @@ public class Game {
 	 */
 	@SuppressWarnings("deprecation")
 	public void lost(){
+		new LoserFrame(this);
 		Sound.playingSound(Sounds.LOSER);
 		//JOptionPane.showMessageDialog(null, "You lost");
-		new LoserFrame(this);
-		init();
-		gameFrame.setVisible(false);
-		coordinateFrame.setVisible(true);
+
+//		init();
+//		gameFrame.setVisible(false);
+//		coordinateFrame.setVisible(true);
 		coordinateFrame.enableComponents();
 		coordinateFrame.setFirst(true);
-		this.bgSoundThread.stop();
+//		this.bgSoundThread.stop();
 	}
 	
 	/**
@@ -797,6 +799,6 @@ public class Game {
 		this.showCoordinateFrame();
 		this.coordinateFrame.disableComponents();
 		this.init();
-		this.bgSoundThread.stop();
+//		this.bgSoundThread.stop();
 	}
 }

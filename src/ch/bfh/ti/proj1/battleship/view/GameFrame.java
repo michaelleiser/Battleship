@@ -1027,7 +1027,7 @@ public class GameFrame extends JFrame {
 		game.getClient().sendMessage(Message.GAME_RESTART.toString());
 		
 		game.init();
-		game.getBgSoundThread().stop();
+//		game.getBgSoundThread().stop();
 	}
 
 	/**
