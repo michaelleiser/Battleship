@@ -851,14 +851,14 @@ public class CoordinateFrame extends JFrame{
 	 * @param nbrOfCruisers
 	 * @param gameMode
 	 */
-	public void setComponents(String nbrOfRows, String nbrOfColoumns, String nbrOfBattleships,
-			String nbrOfSubmarines, String nbrOfDestroyers, String nbrOfCruisers, GameMode gameMode){
-		jTextFieldNbrOfRows.setText(nbrOfRows);
-		jTextFieldNbrOfColoumns.setText(nbrOfColoumns);
-		jTextFieldNbrOfBattleship.setText(nbrOfBattleships);
-		jTextFieldNbrOfSubmarine.setText(nbrOfSubmarines);
-		jTextFieldNbrOfDestroyer.setText(nbrOfDestroyers);
-		jTextFieldNbrOfCruiser.setText(nbrOfCruisers);
+	public void setComponents(int nbrOfRows, int nbrOfColoumns, int nbrOfBattleships,
+			int nbrOfSubmarines, int nbrOfDestroyers, int nbrOfCruisers, GameMode gameMode){
+		jTextFieldNbrOfRows.setText(nbrOfRows + "");
+		jTextFieldNbrOfColoumns.setText(nbrOfColoumns + "");
+		jTextFieldNbrOfBattleship.setText(nbrOfBattleships + "");
+		jTextFieldNbrOfSubmarine.setText(nbrOfSubmarines + "");
+		jTextFieldNbrOfDestroyer.setText(nbrOfDestroyers + "");
+		jTextFieldNbrOfCruiser.setText(nbrOfCruisers + "");
 		if(gameMode.equals(GameMode.ALTERNATIVELY)){
 			jRadioButtonShootUntilWater.setSelected(false);
 			jRadioButtonShootAlternatively.setSelected(true);

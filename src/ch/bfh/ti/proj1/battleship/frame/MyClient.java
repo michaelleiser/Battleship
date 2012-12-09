@@ -118,7 +118,9 @@ public class MyClient implements Runnable{
 						game.setOptions(Integer.parseInt(s[1]), Integer.parseInt(s[2]),
 								Integer.parseInt(s[3]), Integer.parseInt(s[4]),
 								Integer.parseInt(s[5]), Integer.parseInt(s[6]), GameMode.valueOf(s[7]));
-						game.getCoordinateFrame().setComponents(s[1], s[2], s[3], s[4], s[5], s[6], GameMode.valueOf(s[7]));
+						game.getCoordinateFrame().setComponents(Integer.parseInt(s[1]), Integer.parseInt(s[2]),
+								Integer.parseInt(s[3]), Integer.parseInt(s[4]),
+								Integer.parseInt(s[5]), Integer.parseInt(s[6]), GameMode.valueOf(s[7]));
 					}
 					if(line.startsWith(Message.COORDINATE_SETFIRST.toString())){
 						game.getCoordinateFrame().setFirst(false);
