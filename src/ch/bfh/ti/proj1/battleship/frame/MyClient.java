@@ -158,8 +158,9 @@ public class MyClient implements Runnable{
 						game.restart();
 					}
 					if(line.startsWith(Message.CLOSECONNECTION.toString())){
-						this.stop();
-						JOptionPane.showMessageDialog(null, "Enemy has left the game");
+						JOptionPane.showMessageDialog(null, "Other player has left the game");
+//						this.stop();
+						System.exit(0);
 					}
 				}
 			}
