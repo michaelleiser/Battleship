@@ -444,15 +444,127 @@ public class GameFrame extends JFrame {
 								type = ShipType.CRUISER;
 							}	
 							if(game.checkConstraints(yourField, new Ship(type), x, y, alignment)){
-								f.setBackground(Color.green);
+								switch (type) {
+								case BATTLESHIP:
+										if(alignment == 0){
+											for(int i = 0; i < type.getSize(); i++){
+												yourField[y][x+i].setBackground(Color.green);
+											}
+										} else{
+											for(int i = 0; i < type.getSize(); i++){
+												yourField[y+i][x].setBackground(Color.green);
+											}
+										}			
+									break;
+								case SUBMARINE:
+										if(alignment == 0){
+											for(int i = 0; i < type.getSize(); i++){
+												yourField[y][x+i].setBackground(Color.green);
+											}
+										} else{
+											for(int i = 0; i < type.getSize(); i++){
+												yourField[y+i][x].setBackground(Color.green);
+											}
+										}
+									break;
+								case DESTROYER:
+										if(alignment == 0){
+											for(int i = 0; i < type.getSize(); i++){
+												yourField[y][x+i].setBackground(Color.green);
+											}
+										} else{
+											for(int i = 0; i < type.getSize(); i++){
+												yourField[y+i][x].setBackground(Color.green);
+											}
+										}
+									break;
+								case CRUISER:
+										if(alignment == 0){
+											for(int i = 0; i < type.getSize(); i++){
+												yourField[y][x+i].setBackground(Color.green);
+											}
+										} else{
+											for(int i = 0; i < type.getSize(); i++){
+												yourField[y+i][x].setBackground(Color.green);
+											}
+										}
+									break;
+								default:
+									break;
+								}
 							} 
 						}
 						@Override
 						public void mouseExited(MouseEvent e) {
 							Field f = (Field) e.getSource();
-							if(f.getBackground().equals(Color.green)){
-								f.setBackground(Color.white);
+							int x = f.getXPos();
+							int y = f.getYPos();
+							int alignment = 0;
+							if(jRadioButtonHorizontal.isSelected()){
+								alignment = 0;
+							} else{
+								alignment = 1;
 							}
+							ShipType type = null;
+							if(jRadioButtonNbrOfBattleship.isSelected()){
+								type = ShipType.BATTLESHIP;
+							} else if(jRadioButtonNbrOfSubmarine.isSelected()){
+								type = ShipType.SUBMARINE;
+							} else if(jRadioButtonNbrOfDestroyer.isSelected()){
+								type = ShipType.DESTROYER;
+							} else{
+								type = ShipType.CRUISER;
+							}	
+							if(game.checkConstraints(yourField, new Ship(type), x, y, alignment)){
+								switch (type) {
+								case BATTLESHIP:
+										if(alignment == 0){
+											for(int i = 0; i < type.getSize(); i++){
+												yourField[y][x+i].setBackground(Color.white);
+											}
+										} else{
+											for(int i = 0; i < type.getSize(); i++){
+												yourField[y+i][x].setBackground(Color.white);
+											}
+										}			
+									break;
+								case SUBMARINE:
+										if(alignment == 0){
+											for(int i = 0; i < type.getSize(); i++){
+												yourField[y][x+i].setBackground(Color.white);
+											}
+										} else{
+											for(int i = 0; i < type.getSize(); i++){
+												yourField[y+i][x].setBackground(Color.white);
+											}
+										}
+									break;
+								case DESTROYER:
+										if(alignment == 0){
+											for(int i = 0; i < type.getSize(); i++){
+												yourField[y][x+i].setBackground(Color.white);
+											}
+										} else{
+											for(int i = 0; i < type.getSize(); i++){
+												yourField[y+i][x].setBackground(Color.white);
+											}
+										}
+									break;
+								case CRUISER:
+										if(alignment == 0){
+											for(int i = 0; i < type.getSize(); i++){
+												yourField[y][x+i].setBackground(Color.white);
+											}
+										} else{
+											for(int i = 0; i < type.getSize(); i++){
+												yourField[y+i][x].setBackground(Color.white);
+											}
+										}
+									break;
+								default:
+									break;
+								}
+							} 
 						}});
 					jPanelYourField.add(field1);
 					
