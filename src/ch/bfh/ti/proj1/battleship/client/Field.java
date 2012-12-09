@@ -41,7 +41,6 @@ public class Field extends JButton {
 	public void placeShip(Ship ship) {
 		this.ship = ship;
 		this.ship.addPosition(this);
-		this.setSelected(true);
 		this.setBackground(Color.black);
 	}
 	
@@ -49,11 +48,9 @@ public class Field extends JButton {
 	 * Removes a ship from this field.
 	 */
 	public void removeShip(){
-		this.setBackground(Color.white);
-		this.setSelected(false);
 		this.ship.removePosition(this);
 		this.ship = null;
-		//TODO: return int if successful???
+		this.setBackground(Color.white);
 	}
 
 	/**
