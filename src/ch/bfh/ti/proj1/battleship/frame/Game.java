@@ -351,7 +351,7 @@ public class Game {
 				gameFrame.incjLabelEnemySunk();
 				gameFrame.incjLabelEnemyShots();
 				this.myClient.sendMessage(Message.GAME_SUNK.toString() + " " + x + " " + y);
-				f[y][x].setBackground(Color.green);
+				f[y][x].setBackground(Color.red);
 				Sound.playingSound(Sounds.SUNK);
 				if(allShipsSunk()){
 					this.myClient.sendMessage(Message.GAME_WON.toString());
@@ -361,7 +361,7 @@ public class Game {
 				gameFrame.incjLabelEnemyHits();
 				gameFrame.incjLabelEnemyShots();
 				this.myClient.sendMessage(Message.GAME_HIT.toString() + " " + x + " " + y);
-				f[y][x].setBackground(Color.red);
+				f[y][x].setBackground(Color.orange);
 				Sound.playingSound(Sounds.HIT);
 			}
 			if(gameMode.equals(GameMode.UNTILWATER)){
@@ -403,7 +403,7 @@ public class Game {
 	 */
 	public void hit(int x, int y) {
 		Field[][]f = gameFrame.getEnemyField();
-		f[y][x].setBackground(Color.red);
+		f[y][x].setBackground(Color.orange);
 		gameFrame.incjLabelYouHits();
 		gameFrame.incjLabelYouShots();
 		gameFrame.concatjTextPaneHistory(player.getName() + " hits : " + (x+1) + " " + ((char)(y+65)) + "\n");
@@ -433,7 +433,7 @@ public class Game {
 	 */
 	public void sunk(int x, int y) {
 		Field[][]f = gameFrame.getEnemyField();
-		f[y][x].setBackground(Color.green);
+		f[y][x].setBackground(Color.red);
 		gameFrame.incjLabelYouHits();
 		gameFrame.incjLabelYouSunk();
 		gameFrame.incjLabelYouShots();

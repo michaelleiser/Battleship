@@ -444,13 +444,13 @@ public class GameFrame extends JFrame {
 								type = ShipType.CRUISER;
 							}	
 							if(game.checkConstraints(yourField, new Ship(type), x, y, alignment)){
-								f.setBackground(Color.orange);
+								f.setBackground(Color.green);
 							} 
 						}
 						@Override
 						public void mouseExited(MouseEvent e) {
 							Field f = (Field) e.getSource();
-							if(f.getBackground().equals(Color.orange)){
+							if(f.getBackground().equals(Color.green)){
 								f.setBackground(Color.white);
 							}
 						}});
