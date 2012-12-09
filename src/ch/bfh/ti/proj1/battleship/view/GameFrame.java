@@ -425,78 +425,15 @@ public class GameFrame extends JFrame {
 						@Override
 						public void mouseEntered(MouseEvent e) {
 							Field f = (Field) e.getSource();
-							int x = f.getXPos();
-							int y = f.getYPos();
-							int alignment = 0;
-							if(jRadioButtonHorizontal.isSelected()){
-								alignment = 0;
-							} else{
-								alignment = 1;
-							}
-							ShipType type = null;
-							if(jRadioButtonNbrOfBattleship.isSelected()){
-								type = ShipType.BATTLESHIP;
-							} else if(jRadioButtonNbrOfSubmarine.isSelected()){
-								type = ShipType.SUBMARINE;
-							} else if(jRadioButtonNbrOfDestroyer.isSelected()){
-								type = ShipType.DESTROYER;
-							} else{
-								type = ShipType.CRUISER;
-							}	
-							if(game.checkConstraints(yourField, new Ship(type), x, y, alignment)){
-								switch (type) {
-								case BATTLESHIP:
-										if(alignment == 0){
-											for(int i = 0; i < type.getSize(); i++){
-												yourField[y][x+i].setBackground(Color.green);
-											}
-										} else{
-											for(int i = 0; i < type.getSize(); i++){
-												yourField[y+i][x].setBackground(Color.green);
-											}
-										}			
-									break;
-								case SUBMARINE:
-										if(alignment == 0){
-											for(int i = 0; i < type.getSize(); i++){
-												yourField[y][x+i].setBackground(Color.green);
-											}
-										} else{
-											for(int i = 0; i < type.getSize(); i++){
-												yourField[y+i][x].setBackground(Color.green);
-											}
-										}
-									break;
-								case DESTROYER:
-										if(alignment == 0){
-											for(int i = 0; i < type.getSize(); i++){
-												yourField[y][x+i].setBackground(Color.green);
-											}
-										} else{
-											for(int i = 0; i < type.getSize(); i++){
-												yourField[y+i][x].setBackground(Color.green);
-											}
-										}
-									break;
-								case CRUISER:
-										if(alignment == 0){
-											for(int i = 0; i < type.getSize(); i++){
-												yourField[y][x+i].setBackground(Color.green);
-											}
-										} else{
-											for(int i = 0; i < type.getSize(); i++){
-												yourField[y+i][x].setBackground(Color.green);
-											}
-										}
-									break;
-								default:
-									break;
-								}
-							} 
+							toggleFieldColor(f, Color.green);
 						}
+						
 						@Override
 						public void mouseExited(MouseEvent e) {
 							Field f = (Field) e.getSource();
+							toggleFieldColor(f, Color.white);
+						}
+						private void toggleFieldColor(Field f, Color color) {
 							int x = f.getXPos();
 							int y = f.getYPos();
 							int alignment = 0;
@@ -520,44 +457,44 @@ public class GameFrame extends JFrame {
 								case BATTLESHIP:
 										if(alignment == 0){
 											for(int i = 0; i < type.getSize(); i++){
-												yourField[y][x+i].setBackground(Color.white);
+												yourField[y][x+i].setBackground(color);
 											}
 										} else{
 											for(int i = 0; i < type.getSize(); i++){
-												yourField[y+i][x].setBackground(Color.white);
+												yourField[y+i][x].setBackground(color);
 											}
 										}			
 									break;
 								case SUBMARINE:
 										if(alignment == 0){
 											for(int i = 0; i < type.getSize(); i++){
-												yourField[y][x+i].setBackground(Color.white);
+												yourField[y][x+i].setBackground(color);
 											}
 										} else{
 											for(int i = 0; i < type.getSize(); i++){
-												yourField[y+i][x].setBackground(Color.white);
+												yourField[y+i][x].setBackground(color);
 											}
 										}
 									break;
 								case DESTROYER:
 										if(alignment == 0){
 											for(int i = 0; i < type.getSize(); i++){
-												yourField[y][x+i].setBackground(Color.white);
+												yourField[y][x+i].setBackground(color);
 											}
 										} else{
 											for(int i = 0; i < type.getSize(); i++){
-												yourField[y+i][x].setBackground(Color.white);
+												yourField[y+i][x].setBackground(color);
 											}
 										}
 									break;
 								case CRUISER:
 										if(alignment == 0){
 											for(int i = 0; i < type.getSize(); i++){
-												yourField[y][x+i].setBackground(Color.white);
+												yourField[y][x+i].setBackground(color);
 											}
 										} else{
 											for(int i = 0; i < type.getSize(); i++){
-												yourField[y+i][x].setBackground(Color.white);
+												yourField[y+i][x].setBackground(color);
 											}
 										}
 									break;
@@ -566,6 +503,7 @@ public class GameFrame extends JFrame {
 								}
 							} 
 						}});
+					
 					jPanelYourField.add(field1);
 					
 					Field field2 = new Field(xCoord-1, yCoord-1);
