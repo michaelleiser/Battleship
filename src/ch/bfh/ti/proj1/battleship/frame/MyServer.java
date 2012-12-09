@@ -24,9 +24,6 @@ public class MyServer implements Runnable {
 	 */
 	public MyServer(int port) {
 		this.portNbr = port;
-	}
-	
-	public boolean isAvailable(){
 		try {
 			serverSocket = new ServerSocket(this.portNbr);
 			connections = new Vector<MyConnection>();
@@ -34,9 +31,15 @@ public class MyServer implements Runnable {
 			connectionThread.start();
 		} catch (IOException e) {
 			e.printStackTrace();
-			return false;
 		}
-		return true;
+	}
+	
+	/**
+	 * @return
+	 * 			{@code true} if server is successfully created.
+	 */
+	public boolean isAvailable(){
+		return serverSocket != null;
 	}
 
 	/* (non-Javadoc)

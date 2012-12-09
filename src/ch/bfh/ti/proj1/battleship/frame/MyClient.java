@@ -170,17 +170,11 @@ public class MyClient implements Runnable{
 	}
 	
 	/**
-	 * Returns the status if the client is connected to a server or not.
 	 * @return
 	 * 			{@code true} if the client is connected to a server.
 	 */
 	public boolean isConnected() {
-		if(socket == null){
-			return false;
-		}
-		else{
-			return true;
-		}
+			return socket != null;
 	}
 
 	/**
