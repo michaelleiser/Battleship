@@ -427,7 +427,6 @@ public class GameFrame extends JFrame {
 							Field f = (Field) e.getSource();
 							toggleFieldColor(f, Color.green);
 						}
-						
 						@Override
 						public void mouseExited(MouseEvent e) {
 							Field f = (Field) e.getSource();

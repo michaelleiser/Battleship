@@ -19,10 +19,8 @@ public class STARTER {
 /**
 *TODO Liste
 *
-* - Beim Platzieren des Schiffes, auf dem Spielfeld bereits andeuten
 * - Fields eventuell als JPanel statt JButton
 * - History aktiver Player ist beim gegner verdreht 
-* - Winner/Loser Frame mit Sound
 * - Sounds einbinden
 * 		- Sounds bei sich selber implementieren
 * 		- Background Musik bei beiden (synchronisiert)
