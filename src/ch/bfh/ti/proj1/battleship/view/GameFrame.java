@@ -13,6 +13,8 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.BorderFactory;
@@ -122,6 +124,12 @@ public class GameFrame extends JFrame {
 	private void initComponents() {
 		this.setTitle("Battleship - Player " + game.getPlayer().getName());
 		this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+		this.addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent e){
+				exit();
+			}
+		});
 		this.setResizable(false);
 		
 		jPanePlayingField = new JPanel();
@@ -1216,5 +1224,10 @@ public class GameFrame extends JFrame {
 	public void concatjTextPaneHistory(String text){
 		String oldText = jTextPaneHistory.getText();
 		jTextPaneHistory.setText(oldText + text);
+	}
+	
+	
+	private void exit(){
+		game.getClient().sendMessage(Message.CLOSECONNECTION.toString());
 	}
 }

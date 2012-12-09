@@ -5,6 +5,8 @@ import java.awt.Font;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.regex.Pattern;
 
 import javax.swing.BorderFactory;
@@ -75,8 +77,14 @@ public class NetworkFrame extends JFrame {
 	private void initComponents() {
 		this.setTitle("Battleship");
 		this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+		this.addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent e){
+				exit();
+			}
+		});
 		this.setResizable(false);
-		
+			
 		jLabelStep1of2 = new JLabel();
 		jLabelStep1of2.setFont(new Font("Tahoma", 0, 24));
 		jLabelStep1of2.setText("Step 1/2 - Establish network connection");
@@ -543,7 +551,7 @@ public class NetworkFrame extends JFrame {
 	 * TODO
 	 */
 	private void jButtonCancelActionPerformed() {
-		System.exit(0);
+		exit();
 	}
 
 	/**
@@ -639,4 +647,9 @@ public class NetworkFrame extends JFrame {
 	public String getPlayerName() {
 		return jTextFieldPlayerName.getText();
 	}
+	
+	private void exit() {
+		System.exit(0);
+	}
+	
 }
