@@ -34,6 +34,7 @@ import javax.swing.UIManager;
 import javax.swing.WindowConstants;
 
 import ch.bfh.ti.proj1.battleship.client.Field;
+import ch.bfh.ti.proj1.battleship.client.Ship;
 import ch.bfh.ti.proj1.battleship.client.ShipType;
 import ch.bfh.ti.proj1.battleship.frame.Game;
 import ch.bfh.ti.proj1.battleship.frame.Message;
@@ -423,11 +424,35 @@ public class GameFrame extends JFrame {
 						}
 						@Override
 						public void mouseEntered(MouseEvent e) {
-//							field1.setBackground(Color.orange);
+							Field f = (Field) e.getSource();
+							int x = f.getXPos();
+							int y = f.getYPos();
+							int alignment = 0;
+							if(jRadioButtonHorizontal.isSelected()){
+								alignment = 0;
+							} else{
+								alignment = 1;
+							}
+							ShipType type = null;
+							if(jRadioButtonNbrOfBattleship.isSelected()){
+								type = ShipType.BATTLESHIP;
+							} else if(jRadioButtonNbrOfSubmarine.isSelected()){
+								type = ShipType.SUBMARINE;
+							} else if(jRadioButtonNbrOfDestroyer.isSelected()){
+								type = ShipType.DESTROYER;
+							} else{
+								type = ShipType.CRUISER;
+							}	
+							if(game.checkConstraints(yourField, new Ship(type), x, y, alignment)){
+								f.setBackground(Color.orange);
+							} 
 						}
 						@Override
 						public void mouseExited(MouseEvent e) {
-//							field1.setBackground(Color.lightGray);
+							Field f = (Field) e.getSource();
+							if(f.getBackground().equals(Color.orange)){
+								f.setBackground(Color.white);
+							}
 						}});
 					jPanelYourField.add(field1);
 					

@@ -252,7 +252,7 @@ public class Game {
 	 * @return
 	 * 			{@code true} if the ship can be placed at this position
 	 */
-	private boolean checkConstraints(Field[][] fields, Ship ship, int x, int y, int alignment) {
+	public boolean checkConstraints(Field[][] fields, Ship ship, int x, int y, int alignment) {
 		if(alignment == 0){
 			for(int i = 0; i < ship.getSize(); i++){
 				if(((x+i) >= this.nbrOfColoumns) || (fields[y][x+i].getShip() != null)){
