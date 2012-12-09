@@ -79,9 +79,15 @@ public class Game {
 	 * @param port
 	 */
 	public void hostGame(final int port) {
-		new MyServer(port);
-		myClient = new MyClient(port, "localhost");
-		myClient.setGame(this);
+		MyServer ms = new MyServer(port);
+		if(ms.isAvailable()){
+			myClient = new MyClient(port, "localhost");
+			myClient.setGame(this);
+			networkFrame.disableComponents();
+		}	
+		else{
+			JOptionPane.showMessageDialog(null, "Entered port is already in use.");
+		}
 	}
 
 	/**
@@ -97,6 +103,9 @@ public class Game {
 			showCoordinateFrame();	
 			coordinateFrame.disableComponents();
 			myClient.sendMessage(Message.GAME_SHOW.toString());
+		}
+		else{
+			JOptionPane.showMessageDialog(null, "Could not connect to the host.");
 		}
 	}
 	

@@ -24,14 +24,19 @@ public class MyServer implements Runnable {
 	 */
 	public MyServer(int port) {
 		this.portNbr = port;
+	}
+	
+	public boolean isAvailable(){
 		try {
 			serverSocket = new ServerSocket(this.portNbr);
+			connections = new Vector<MyConnection>();
+			connectionThread = new Thread(this);
+			connectionThread.start();
 		} catch (IOException e) {
 			e.printStackTrace();
+			return false;
 		}
-		connections = new Vector<MyConnection>();
-		connectionThread = new Thread(this);
-		connectionThread.start();
+		return true;
 	}
 
 	/* (non-Javadoc)

@@ -19,9 +19,6 @@ public class STARTER {
 /**
 *TODO Liste
 *
-* - Fehler bei mehrfach Server erzeugung mit gleichem Port
-* - Fehler bei Client erzeugung mit falscher ip-adresse und port
-* - Message an anderen, dass anderer geschlossen => Message und dann auch schliessen => JEDES FRAME!!!
 * - Beim Platzieren des Schiffes, auf dem Spielfeld bereits andeuten
 * - Fields eventuell als JPanel statt JButton
 * - History aktiver Player ist beim gegner verdreht 

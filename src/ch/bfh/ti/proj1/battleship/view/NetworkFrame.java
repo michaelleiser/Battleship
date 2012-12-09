@@ -564,9 +564,9 @@ public class NetworkFrame extends JFrame {
 				game.enterName(jTextFieldPlayerName.getText());
 				final int port = Integer.parseInt(jTextFieldFreePort.getText());
 				game.hostGame(port);
-				jLabelStatus
-						.setText("Connecting...Please start application of second player if it is not started yet.");
-				disableComponents();
+//				jLabelStatus
+//						.setText("Connecting...Please start application of second player if it is not started yet.");
+//				disableComponents();
 			} else {
 				JOptionPane.showMessageDialog(this,
 						"Entered port number is not valid!");
@@ -632,7 +632,9 @@ public class NetworkFrame extends JFrame {
 	/**
 	 * Disables the components for the hosting player, so he cannot manipulate the specified connection options.
 	 */
-	private void disableComponents() {
+	public void disableComponents() {
+		jLabelStatus
+		.setText("Connecting...Please start application of second player if it is not started yet.");
 		jTextFieldPlayerName.setEnabled(false);
 		jRadioButtonHostGame.setEnabled(false);
 		jRadioButtonJoinGame.setEnabled(false);
