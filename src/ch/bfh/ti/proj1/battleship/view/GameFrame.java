@@ -939,7 +939,7 @@ public class GameFrame extends JFrame {
 	}
 
 	/**
-	 * 
+	 * Toggles between the horizontal and vertical alignment.
 	 */
 	private void jRadioButtonHorizontalActionPerformed() {
 		jRadioButtonVertical.setSelected(false);
@@ -947,7 +947,7 @@ public class GameFrame extends JFrame {
 	}
 
 	/**
-	 * 
+	 * Toggles between the horizontal and vertical alignment.
 	 */
 	private void jRadioButtonVerticalActionPerformed() {
 		jRadioButtonHorizontal.setSelected(false);
@@ -955,7 +955,17 @@ public class GameFrame extends JFrame {
 	}
 
 	/**
-	 * 
+	 * Toggles between the ships to place.
+	 */
+	private void jRadioButtonNbrOfBattleshipActionPerformed() {
+		jRadioButtonNbrOfSubmarine.setSelected(false);
+		jRadioButtonNbrOfDestroyer.setSelected(false);
+		jRadioButtonNbrOfCruiser.setSelected(false);
+		jRadioButtonNbrOfBattleship.setSelected(true);
+	}
+	
+	/**
+	 * Toggles between the ships to place.
 	 */
 	private void jRadioButtonNbrOfSubmarineActionPerformed() {
 		jRadioButtonNbrOfBattleship.setSelected(false);
@@ -965,17 +975,7 @@ public class GameFrame extends JFrame {
 	}
 
 	/**
-	 * 
-	 */
-	private void jRadioButtonNbrOfBattleshipActionPerformed() {
-		jRadioButtonNbrOfSubmarine.setSelected(false);
-		jRadioButtonNbrOfDestroyer.setSelected(false);
-		jRadioButtonNbrOfCruiser.setSelected(false);
-		jRadioButtonNbrOfBattleship.setSelected(true);
-	}
-
-	/**
-	 * 
+	 * Toggles between the ships to place.
 	 */
 	private void jRadioButtonNbrOfDestroyerActionPerformed() {
 		jRadioButtonNbrOfSubmarine.setSelected(false);
@@ -985,7 +985,7 @@ public class GameFrame extends JFrame {
 	}
 
 	/**
-	 * 
+	 * Toggles between the ships to place.
 	 */
 	private void jRadioButtonNbrOfCruiserActionPerformed() {
 		jRadioButtonNbrOfSubmarine.setSelected(false);
@@ -995,7 +995,7 @@ public class GameFrame extends JFrame {
 	}
 
 	/**
-	 * 
+	 * Sends the message to the opponent player and concatenates the messages in the chat jTextPane.
 	 */
 	private void jButtonSendActionPerformed() {
 		String name = game.getPlayer().getName();
@@ -1008,14 +1008,14 @@ public class GameFrame extends JFrame {
 	}
 
 	/**
-	 * 
+	 * Clears the message jTextPane when clicked on it.
 	 */
 	private void jTextPaneYourMessageMouseClicked() {
 		jTextPaneYourMessage.setText(null);
 	}
 
 	/**
-	 * 
+	 * This method invokes the restart() method of the Game.
 	 */
 	@SuppressWarnings("deprecation")
 	private void jButtonRestartActionPerformed() {
@@ -1029,17 +1029,14 @@ public class GameFrame extends JFrame {
 		} catch (Exception e) {
 			Logger.getLogger(CoordinateFrame.class.getName()).log(Level.SEVERE,null, e);
 		}
-		game.showCoordinateFrame();
+		game.restart();
 		game.getCoordinateFrame().enableComponents();
-		this.dispose();
 		game.getClient().sendMessage(Message.GAME_RESTART.toString());
-		
-		game.init();
 //		game.getBgSoundThread().stop();
 	}
 
 	/**
-	 * 
+	 * When all ships are placed, this method invokes the ready() method of the Game.
 	 */
 	private void jButtonReadyActionPerformed() {
 		if(game.allShipsPlaced()){
@@ -1227,6 +1224,9 @@ public class GameFrame extends JFrame {
 	}
 	
 	
+	/**
+	 * Exits the game.
+	 */
 	private void exit(){
 		game.getClient().sendMessage(Message.CLOSECONNECTION.toString());
 	}

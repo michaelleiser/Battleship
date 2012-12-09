@@ -61,6 +61,9 @@ public class WinnerFrame extends JFrame {
 		});
 	}
 
+	/**
+	 * Restarts the game.
+	 */
 	private void restartGame() {
 		this.game.restart();
 		this.dispose();

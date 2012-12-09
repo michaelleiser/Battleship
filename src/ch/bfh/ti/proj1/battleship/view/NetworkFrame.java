@@ -648,6 +648,9 @@ public class NetworkFrame extends JFrame {
 		return jTextFieldPlayerName.getText();
 	}
 	
+	/**
+	 * Exits the game.
+	 */
 	private void exit() {
 		System.exit(0);
 	}

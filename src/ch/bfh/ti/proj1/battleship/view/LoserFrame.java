@@ -61,6 +61,9 @@ public class LoserFrame extends JFrame {
 		});
 	}
 
+	/**
+	 * Restarts the game.
+	 */
 	private void restartGame() {
 		this.game.restart();
 		this.dispose();

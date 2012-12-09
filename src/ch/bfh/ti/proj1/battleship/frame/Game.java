@@ -465,7 +465,6 @@ public class Game {
 		if(canStart){
 			setYourTurn(true);
 			this.myClient.sendMessage(Message.GAME_START.toString());
-			
 			this.gameFrame.concatjTextPaneHistory(">>> " + player.getName() + " <<<\n");
 			this.myClient.sendMessage(Message.GAME_HISTORY.toString() + " " + ">>> " + player.getName() + " <<<\n");
 		}
@@ -483,18 +482,14 @@ public class Game {
 	 */
 	public void startGameSound() {
 		this.gameSoundThread = new Thread(new Runnable() {
-
 			@Override
 			public void run() {
 				while(true) {
-					
 					Sound.playGameSound();
-
 				}
 			}
 		});
 		this.gameSoundThread.start();
-
 	}
 
 	/**
@@ -511,13 +506,11 @@ public class Game {
 	 */
 	public void startBackgroundSound() {
 		this.bgSoundThread = new Thread(new Runnable() {
-
 			@Override
 			public void run() {
 				while(true) {
 					Random random = new Random();
 					Sound.playBackgroundSound(random.nextInt(3));
-
 					try {
 						Thread.sleep(5000);
 					} catch (InterruptedException e) {

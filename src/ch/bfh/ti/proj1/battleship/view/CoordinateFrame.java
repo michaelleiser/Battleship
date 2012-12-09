@@ -894,6 +894,9 @@ public class CoordinateFrame extends JFrame{
 		jTextPaneChat.setText(oldText + text);
 	}
 	
+	/**
+	 * Exits the game.
+	 */
 	private void exit(){
 		game.getClient().sendMessage(Message.CLOSECONNECTION.toString());
 	}
