@@ -27,6 +27,8 @@ public class MyClient implements Runnable{
 	
 	private Game game;
 	
+	private boolean connected = false;
+	
 	/**
 	 * Constructor for a client that connects to a server with the {@code IP} address and the {@code port} address.
 	 * @param port
@@ -162,6 +164,12 @@ public class MyClient implements Runnable{
 //						this.stop();
 						System.exit(0);
 					}
+					if(line.startsWith(Message.TESTCONNECTION.toString())){
+						this.sendMessage(Message.OPENCONNECTION.toString());
+					}
+					if(line.startsWith(Message.OPENCONNECTION.toString())){
+						this.connected = true;
+					}
 				}
 			}
 		} catch (IOException e) {
@@ -171,10 +179,25 @@ public class MyClient implements Runnable{
 	
 	/**
 	 * @return
-	 * 			{@code true} if the client is connected to a server.
+	 * 			{@code true} if the client is connected to the server.
 	 */
 	public boolean isConnected() {
-			return socket != null;
+		if(socket != null){
+			game.getClient().sendMessage(Message.TESTCONNECTION.toString());
+			int i = 0;
+			while(!connected && i < 10){
+				try {
+					Thread.sleep(250);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				i++;
+			}
+			return connected;
+		}
+		else{
+			return false;
+		}
 	}
 
 	/**
