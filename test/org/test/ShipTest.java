@@ -9,32 +9,9 @@ import org.junit.Test;
 import ch.bfh.ti.proj1.battleship.client.Field;
 import ch.bfh.ti.proj1.battleship.client.Ship;
 import ch.bfh.ti.proj1.battleship.client.ShipType;
-import ch.bfh.ti.proj1.battleship.frame.Game;
 
-public class TESTER {
+public class ShipTest {
 
-	@Test
-	public void test() {
-//		
-//		Game g = new Game();
-//		g.showNetworkFrame();
-//		g.hostGame(4444);
-//		g.showCoordinateFrame();
-//		g.showGameFrame();
-//		
-//		Game g2 = new Game();
-//		g2.showNetworkFrame();
-//		g2.joinGame(4444, "localhost");
-//		g2.showCoordinateFrame();
-//		g2.showGameFrame();
-//		
-//		Ship ship = new Ship(ShipType.BATTLESHIP);
-//		assertFalse(ship.isPlaced());
-//		g.placeShip(ship, 0, 0, 0);	
-//		assertTrue(ship.isPlaced());
-		
-	}
-	
 	@Test
 	public void testShip(){
 		Ship battleship = new Ship(ShipType.BATTLESHIP);
@@ -59,32 +36,6 @@ public class TESTER {
 		
 		Ship cruiser = new Ship(ShipType.CRUISER);
 		assertEquals(cruiser.getSize(), 2);
-	}
-	
-	@Test
-	public void testField(){
-		Field f = new Field(0, 0);
-		f.placeShip(new Ship(ShipType.BATTLESHIP));
-		assertFalse(f.isHit());
-		f.shoot();
-		assertTrue(f.isHit());
-	}
-	
-	@Test
-	public void testGame(){
-		Game g = new Game();
-		g.showNetworkFrame();
-		g.enterName("hell");
-		g.hostGame(4444);
-		Game g2 = new Game();
-		g2.showNetworkFrame();
-		g2.enterName("he");
-		
-		assertFalse(g2.getClient().isConnected());
-		g2.joinGame(4444, "localhost");
-		assertTrue(g2.getClient().isConnected());
-		
-		
 	}
 	
 	@Test
