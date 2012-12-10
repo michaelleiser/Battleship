@@ -376,15 +376,7 @@ public class Game {
 			this.myClient.sendMessage(Message.GAME_WATER.toString() + " " + x + " " + y);
 			f[y][x].setBackground(Color.blue);
 			Sound.playingSound(Sounds.WATER);
-			if(gameMode.equals(GameMode.UNTILWATER)){
-				this.gameFrame.concatjTextPaneHistory(">>> " + player.getName() + " <<<\n");
-				this.myClient.sendMessage(Message.GAME_HISTORY.toString() + " " + ">>> " + player.getName() + " <<<\n");
-			}
 			setYourTurn(true);
-		}
-		if(gameMode.equals(GameMode.ALTERNATIVELY)){
-			this.gameFrame.concatjTextPaneHistory(">>> " + player.getName() + " <<<\n");
-			this.myClient.sendMessage(Message.GAME_HISTORY.toString() + " " + ">>> " + player.getName() + " <<<\n");
 		}
 	}
 
@@ -409,6 +401,9 @@ public class Game {
 		gameFrame.concatjTextPaneHistory(player.getName() + " hits : " + (x+1) + " " + ((char)(y+65)) + "\n");
 		myClient.sendMessage(Message.GAME_HISTORY.toString() + " " + player.getName() + " hits : " + (x+1) + " " + ((char)(y+65)) + "\n");
 		Sound.playingSound(Sounds.HIT);
+		if(gameMode.equals(GameMode.ALTERNATIVELY)){
+			this.myClient.sendMessage(Message.GAME_ACTIVEPLAYER.toString());
+		}
 	}
 
 	/**
@@ -424,6 +419,12 @@ public class Game {
 		gameFrame.concatjTextPaneHistory(player.getName() + " water : " + (x+1) + " " + ((char)(y+65)) + "\n");
 		myClient.sendMessage(Message.GAME_HISTORY.toString() + " " + player.getName() + " water : " + (x+1) + " " + ((char)(y+65)) + "\n");
 		Sound.playingSound(Sounds.WATER);
+		if(gameMode.equals(GameMode.UNTILWATER)){
+			this.myClient.sendMessage(Message.GAME_ACTIVEPLAYER.toString());
+		}
+		if(gameMode.equals(GameMode.ALTERNATIVELY)){
+			this.myClient.sendMessage(Message.GAME_ACTIVEPLAYER.toString());
+		}
 	}
 
 	/**
@@ -440,6 +441,9 @@ public class Game {
 		gameFrame.concatjTextPaneHistory(player.getName() + " sunk : " + (x+1) + " " + ((char)(y+65)) + "\n");
 		myClient.sendMessage(Message.GAME_HISTORY.toString() + " " + player.getName() + " sunk : " + (x+1) + " " + ((char)(y+65)) + "\n");
 		Sound.playingSound(Sounds.SUNK);
+		if(gameMode.equals(GameMode.ALTERNATIVELY)){
+			this.myClient.sendMessage(Message.GAME_ACTIVEPLAYER.toString());
+		}
 	}
 
 	/**
@@ -796,5 +800,10 @@ public class Game {
 		this.coordinateFrame.disableComponents();
 		this.init();
 //		this.bgSoundThread.stop();
+	}
+
+	public void setActivePlayer() {
+		this.gameFrame.concatjTextPaneHistory(">>> " + player.getName() + " <<<\n");
+		this.myClient.sendMessage(Message.GAME_HISTORY.toString() + " " + ">>> " + player.getName() + " <<<\n");
 	}
 }

@@ -170,6 +170,9 @@ public class MyClient implements Runnable{
 					if(line.startsWith(Message.OPENCONNECTION.toString())){
 						this.connected = true;
 					}
+					if(line.startsWith(Message.GAME_ACTIVEPLAYER.toString())){
+						game.setActivePlayer();
+					}
 				}
 			}
 		} catch (IOException e) {
