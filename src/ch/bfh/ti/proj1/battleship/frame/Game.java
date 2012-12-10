@@ -805,7 +805,10 @@ public class Game {
 //		this.bgSoundThread.stop();
 	}
 
-	public void setActivePlayer() {
+	/**
+	 * Shows the active player in the history.
+	 */
+	public void showActivePlayer() {
 		this.gameFrame.concatjTextPaneHistory(">>> " + player.getName() + " <<<\n");
 		this.myClient.sendMessage(Message.GAME_HISTORY.toString() + " " + ">>> " + player.getName() + " <<<\n");
 	}

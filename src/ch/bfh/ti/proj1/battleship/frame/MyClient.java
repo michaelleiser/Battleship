@@ -171,7 +171,7 @@ public class MyClient implements Runnable{
 						this.connected = true;
 					}
 					if(line.startsWith(Message.GAME_ACTIVEPLAYER.toString())){
-						game.setActivePlayer();
+						game.showActivePlayer();
 					}
 				}
 			}

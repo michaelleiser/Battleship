@@ -19,6 +19,8 @@ public class STARTER {
 /**
 *TODO Liste
 *
+* - Remove position() in der ship klasse richtig, mit list.remove()
+* - Netzwerk evtl mit ObjectStream.
 * - Sounds einbinden
 * 		- Sounds bei sich selber implementieren
 * 		- Background Musik bei beiden (synchronisiert)
