@@ -19,8 +19,6 @@ public class STARTER {
 /**
 *TODO Liste
 *
-* - Fields eventuell als JPanel statt JButton
-* - History aktiver Player ist beim gegner verdreht 
 * - Sounds einbinden
 * 		- Sounds bei sich selber implementieren
 * 		- Background Musik bei beiden (synchronisiert)

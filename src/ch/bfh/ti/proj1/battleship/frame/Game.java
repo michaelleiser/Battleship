@@ -478,15 +478,18 @@ public class Game {
 		if(canStart){
 			setYourTurn(true);
 			this.myClient.sendMessage(Message.GAME_START.toString());
-			this.gameFrame.concatjTextPaneHistory(">>> " + player.getName() + " <<<\n");
-			this.myClient.sendMessage(Message.GAME_HISTORY.toString() + " " + ">>> " + player.getName() + " <<<\n");
+			this.gameFrame.concatjTextPaneHistory("... " + player.getName() + " ...\n");
+			this.myClient.sendMessage(Message.GAME_HISTORY.toString() + " " + "... " + player.getName() + " ...\n");
 		}
 		if(!canStart){
+			this.gameFrame.concatjTextPaneHistory("... " + player.getName() + " ...\n");
+			this.myClient.sendMessage(Message.GAME_HISTORY.toString() + " " + "... " + player.getName() + " ...\n");
 			this.myClient.sendMessage(Message.GAME_ENABLECOMPONENTS.toString());
 			this.myClient.sendMessage(Message.GAME_SOUND.toString());
 			this.getGameFrame().enableComponents();
 			gameSoundThread.stop();
 			startBackgroundSound();
+			this.myClient.sendMessage(Message.GAME_ACTIVEPLAYER.toString());
 		}
 	}
 	
