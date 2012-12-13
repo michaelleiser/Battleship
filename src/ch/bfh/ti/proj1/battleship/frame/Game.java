@@ -28,6 +28,7 @@ import ch.bfh.ti.proj1.battleship.view.WinnerFrame;
  */
 public class Game {
 	
+	private MyServer myServer;
 	private MyClient myClient;
 	private NetworkFrame networkFrame;
 	private CoordinateFrame coordinateFrame;
@@ -79,7 +80,7 @@ public class Game {
 	 * @param port
 	 */
 	public void hostGame(final int port) {
-		MyServer myServer = new MyServer(port);
+		myServer = new MyServer(port);
 		if(myServer.isAvailable()){
 			myClient = new MyClient(port, "localhost");
 			myClient.setGame(this);
@@ -755,6 +756,14 @@ public class Game {
 	 */
 	public Player getPlayer() {
 		return this.player;
+	}
+	
+	/**
+	 * @return
+	 * 			the server
+	 */
+	public MyServer getServer() {
+		return myServer;
 	}
 	
 	/**
