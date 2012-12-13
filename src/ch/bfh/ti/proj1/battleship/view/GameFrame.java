@@ -40,6 +40,9 @@ import ch.bfh.ti.proj1.battleship.frame.Game;
 import ch.bfh.ti.proj1.battleship.frame.Message;
 
 /**
+ * This class displays the game frame.
+ * It is also responsible for the interaction with the GUI elements.
+ * 
  * @author Daniel Kotlàris
  * @author Michael Leiser
  */
@@ -341,9 +344,9 @@ public class GameFrame extends JFrame {
 		jPanelEnemyField.setLayout(new GridLayout(rows, coloumns));
 		enemyField = new Field[rows][coloumns];
 		
-		for (int yCoord = 0; yCoord < rows; yCoord++) {
+		for (int yCoord = 0; yCoord < rows; yCoord++) {			// Creates the two playing fields.
 			for (int xCoord = 0; xCoord < coloumns; xCoord++) {
-				if (yCoord == 0 && xCoord == 0) {
+				if (yCoord == 0 && xCoord == 0) {				// left top /
 					JLabel x = new JLabel();
 					x.setFont(new Font("Tahoma", 1, 14));
 					x.setHorizontalAlignment(SwingConstants.CENTER);
@@ -357,7 +360,7 @@ public class GameFrame extends JFrame {
 					x1.setBorder(BorderFactory.createEtchedBorder());
 					x1.setText("/");
 					jPanelEnemyField.add(x1);
-				} else if (yCoord == 0) {
+				} else if (yCoord == 0) {						// first row 1, 2, 3, ...
 					JLabel x = new JLabel();
 					x.setFont(new Font("Tahoma", 1, 14));
 					x.setHorizontalAlignment(SwingConstants.CENTER);
@@ -371,7 +374,7 @@ public class GameFrame extends JFrame {
 					x1.setBorder(BorderFactory.createEtchedBorder());
 					x1.setText(xCoord + "");
 					jPanelEnemyField.add(x1);
-				} else if (xCoord == 0) {
+				} else if (xCoord == 0) {						// first coloumn a, b, c, ...
 					JLabel x = new JLabel();
 					x.setFont(new Font("Tahoma", 1, 14));
 					x.setHorizontalAlignment(SwingConstants.CENTER);
@@ -385,7 +388,7 @@ public class GameFrame extends JFrame {
 					x1.setBorder(BorderFactory.createEtchedBorder());
 					x1.setText((char) (yCoord + 64) + "");
 					jPanelEnemyField.add(x1);
-				} else {
+				} else {										// the playing fields
 					final Field field1 = new Field(xCoord-1, yCoord-1);
 					yourField[yCoord-1][xCoord-1] = field1;
 					field1.addMouseListener(new MouseListener(){
@@ -410,9 +413,9 @@ public class GameFrame extends JFrame {
 							} else{
 								type = ShipType.CRUISER;
 							}	
-							if(f.getShip() == null){
+							if(f.getShip() == null){				// if there is no ship on the field, place ship on the field.
 								game.placeShip(type, x, y, alignment);
-							} else{
+							} else{									// if there is a ship on the field, remove ship from the field.
 								game.removeShip(x, y);
 							}
 						}
@@ -432,7 +435,7 @@ public class GameFrame extends JFrame {
 							Field f = (Field) e.getSource();
 							toggleFieldColor(f, Color.white);
 						}
-						private void toggleFieldColor(Field f, Color color) {
+						private void toggleFieldColor(Field f, Color color) {	// method for displaying the positions of the ship when place it.
 							int x = f.getXPos();
 							int y = f.getYPos();
 							int alignment = 0;
@@ -519,9 +522,9 @@ public class GameFrame extends JFrame {
 					field2.addMouseListener(new MouseListener(){
 						@Override
 						public void mouseClicked(MouseEvent e) {
-							if(game.isYourTurn()){
+							if(game.isYourTurn()){					// if it is your turn, you can shoot an a field.
 								Field f = (Field) e.getSource();
-								if(!f.isHit()){
+								if(!f.isHit()){						// only if the field is not already hit.
 									int x = f.getXPos();
 									int y = f.getYPos();
 									game.shootAt(x, y);
@@ -1097,7 +1100,8 @@ public class GameFrame extends JFrame {
 	}
 
 	/**
-	 * This method invokes the restart() method of the Game.
+	 * This method invokes the restart method of the Game.
+	 * This method also sends a message to the other player for restarting the game.
 	 */
 	@SuppressWarnings("deprecation")
 	private void jButtonRestartActionPerformed() {
@@ -1118,7 +1122,8 @@ public class GameFrame extends JFrame {
 	}
 
 	/**
-	 * When all ships are placed, this method invokes the ready() method of the Game.
+	 * When all ships are placed, this method invokes the ready method of the Game.
+	 * This method also removes the listeners from your playing field.
 	 */
 	private void jButtonReadyActionPerformed() {
 		if(game.allShipsPlaced()){
@@ -1138,7 +1143,7 @@ public class GameFrame extends JFrame {
 	}
 	
 	/**
-	 * Enables the components of the enemy field, so the player can shoot on it.
+	 * Enables the components of the enemy playing field, so the player can shoot on it.
 	 */
 	public void enableComponents(){
 		for(int i = 0; i < game.getNbrOfRows(); i++){
@@ -1307,9 +1312,21 @@ public class GameFrame extends JFrame {
 	
 	
 	/**
+	 * Shows the active player in the history field.
+	 */
+	public void showActivePlayer() {
+		concatjTextPaneHistory(">>> " + game.getPlayer().getName() + " <<<\n");
+		game.getClient().sendMessage(Message.GAME_HISTORY.toString() + " " + ">>> " + game.getPlayer().getName() + " <<<\n");
+	}
+
+	/**
+	 * Sends a close connection message to the other client.
+	 * Stops the connection.
 	 * Exits the game.
 	 */
 	private void exit(){
-		game.getClient().sendMessage(Message.CLOSECONNECTION.toString());
+		this.game.getClient().sendMessage(Message.CLOSECONNECTION.toString());
+		this.game.getClient().stop();
+		System.exit(0);
 	}
 }

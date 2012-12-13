@@ -32,6 +32,9 @@ import ch.bfh.ti.proj1.battleship.frame.GameMode;
 import ch.bfh.ti.proj1.battleship.frame.Message;
 
 /**
+ * This class displays the coordinate frame. 
+ * It is also responsible for the interaction with the GUI elements.
+ * 
  * @author Daniel Kotlàris
  * @author Michael Leiser
  */
@@ -668,7 +671,7 @@ public class CoordinateFrame extends JFrame{
 	}
 
 	/**
-	 * Toggle between shoot alternatively and until water.
+	 * Toggle between shoot alternatively and shoot until water.
 	 */
 	private void jRadioButtonShootAlternativelyActionPerformed() {
 		jRadioButtonShootUntilWater.setSelected(false);
@@ -677,7 +680,7 @@ public class CoordinateFrame extends JFrame{
 	}
 
 	/**
-	 * Toggle between shoot alternatively and until water.
+	 * Toggle between shoot alternatively and shoot until water.
 	 */
 	private void jRadioButtonShootUntilWaterActionPerformed() {
 		jRadioButtonShootAlternatively.setSelected(false);
@@ -686,16 +689,15 @@ public class CoordinateFrame extends JFrame{
 	}
 
 	/**
-	 * TODO
+	 * Calls the exit method.
 	 */
 	private void jButtonCancelActionPerformed() {
-		this.game.getClient().sendMessage(Message.CLOSECONNECTION.toString());
-		this.game.getClient().stop();
-		System.exit(0);
+		exit();
 	}
 
 	/**
 	 * Sends the message in the jTextPaneYourMessage to the other player.
+	 * Displays the message in the chat field.
 	 */
 	private void jButtonSendActionPerformed() {
 		String name = game.getPlayer().getName();
@@ -709,7 +711,9 @@ public class CoordinateFrame extends JFrame{
 	
 		
 	/**
-	 * Validate and coordinate settings. At first the entered options are checked for some constraints. If there are no mistakes the options are sent to the other player to do some changes or not.
+	 * Validate and coordinate settings. 
+	 * At first the entered options are checked for some constraints. 
+	 * If there are no mistakes the options are sent to the other player to do some changes or not.
 	 */
 	private void jButtonValidateAndCoordinateActionPerformed() {
 		try {
@@ -820,7 +824,7 @@ public class CoordinateFrame extends JFrame{
 	}	
 
 	/**
-	 * Disable the components for the passive player, so he cannot manipulate the game options.
+	 * Disable the components for the inactive player, so he cannot manipulate the game options.
 	 */
 	public void disableComponents() {
 		jTextFieldNbrOfBattleship.setEnabled(false);
@@ -850,7 +854,7 @@ public class CoordinateFrame extends JFrame{
 	}
 	
 	/**
-	 * Sets the components
+	 * Sets the values of components of the GUI.
 	 * @param nbrOfRows
 	 * @param nbrOfColoumns
 	 * @param nbrOfBattleships
@@ -895,10 +899,14 @@ public class CoordinateFrame extends JFrame{
 	}
 	
 	/**
+	 * Sends a close connection message to the other client.
+	 * Stops the connection.
 	 * Exits the game.
 	 */
 	private void exit(){
-		game.getClient().sendMessage(Message.CLOSECONNECTION.toString());
+		this.game.getClient().sendMessage(Message.CLOSECONNECTION.toString());
+		this.game.getClient().stop();
+		System.exit(0);
 	}
 	
 }

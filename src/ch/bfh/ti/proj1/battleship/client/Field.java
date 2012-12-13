@@ -6,7 +6,7 @@ import javax.swing.JButton;
 
 /**
  * This is a field of the playing field.
- * It can contain a ship and the other player can shoot on it. * 
+ * It can contain a ship and the other player can shoot on it.
  * 
  * @author Daniel Kotlàris
  * @author Michael Leiser
@@ -81,7 +81,7 @@ public class Field extends JButton {
 	/**
 	 * Returns the {@code ship} that is placed on this field.
 	 * @return
-	 * 			the ship covering this field
+	 * 			the ship that is placed this field
 	 */
 	public Ship getShip() {
 		return this.ship;

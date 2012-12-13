@@ -30,7 +30,7 @@ public class Client implements Runnable{
 	private boolean connected = false;
 	
 	/**
-	 * Constructor for a client that connects to a server with the {@code IP} address and the {@code port} address.
+	 * Constructor for a client that connects to a server with the {@code IP} address ("localhost", "127.0.0.1", ...) and the {@code port} number (1024 - 65535).
 	 * @param port
 	 * @param IP
 	 */
@@ -41,7 +41,7 @@ public class Client implements Runnable{
 	}
 
 	/**
-	 * Creates the connection to the server and starts a thread to listen for incoming messages.
+	 * Creates the connection to the server and starts a new thread to listen for the incoming messages.
 	 */
 	public void start() {
 		try {
@@ -53,7 +53,6 @@ public class Client implements Runnable{
 		}
 		if (thread == null) {
 			thread = new Thread(this);
-			thread.setPriority(Thread.MIN_PRIORITY);
 			thread.start();
 		}
 	}
@@ -85,15 +84,15 @@ public class Client implements Runnable{
 				line = in.readLine();
 				if (line != null){
 					if(line.startsWith(Message.COORDINATE_CHAT.toString())){
-						String s = line.substring(16, line.length());
+						String s = line.substring(Message.COORDINATE_CHAT.toString().length() + 1, line.length());
 						game.getCoordinateFrame().concatjTextPaneChat(s + "\n");
 					}
 					if(line.startsWith(Message.GAME_CHAT.toString())){
-						String s = line.substring(10, line.length());
+						String s = line.substring(Message.GAME_CHAT.toString().length() + 1, line.length());
 						game.getGameFrame().concatjTextPaneChat(s + "\n");
 					}
 					if(line.startsWith(Message.GAME_HISTORY.toString())){
-						String s = line.substring(13, line.length());
+						String s = line.substring(Message.GAME_HISTORY.toString().length() + 1, line.length());
 						game.getGameFrame().concatjTextPaneHistory(s + "\n");
 					}
 					if(line.startsWith(Message.GAME_SHOW.toString())){
@@ -171,7 +170,7 @@ public class Client implements Runnable{
 						this.connected = true;
 					}
 					if(line.startsWith(Message.GAME_ACTIVEPLAYER.toString())){
-						game.showActivePlayer();
+						game.getGameFrame().showActivePlayer();
 					}
 				}
 			}
@@ -186,9 +185,9 @@ public class Client implements Runnable{
 	 */
 	public boolean isConnected() {
 		if(socket != null){
-			game.getClient().sendMessage(Message.TESTCONNECTION.toString());
+			game.getClient().sendMessage(Message.TESTCONNECTION.toString());	// Sends a test connection message to the server. The other client will then reply with a open connection message.
 			int i = 0;
-			while(!connected && i < 10){
+			while(!connected && (i < 20)){			// Waits for 5 seconds for an open connection message from the other client.
 				try {
 					Thread.sleep(250);
 				} catch (InterruptedException e) {

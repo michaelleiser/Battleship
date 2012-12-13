@@ -7,6 +7,8 @@ import java.net.Socket;
 import java.util.Vector;
 
 /**
+ * This class defines the server.
+ * 
  * @author Daniel Kotlàris
  * @author Michael Leiser
  */
@@ -19,7 +21,7 @@ public class Server implements Runnable {
 	private Thread connectionThread;
 	
 	/**
-	 * Constructor for a server that opens a port with the {@code port} number and listens for an incoming connection.
+	 * Constructor for a server that opens a port with the {@code port} number (1024 - 65535) and listens for an incoming connection.
 	 * @param port
 	 */
 	public Server(int port) {
@@ -48,8 +50,8 @@ public class Server implements Runnable {
 	public void run() {
 		try {
 			while (true) {
-				Socket client = serverSocket.accept();
-				Connection c = new Connection(this, client);
+				Socket client = serverSocket.accept();				// listens for incoming connections.
+				Connection c = new Connection(this, client);		// Connection between server and client.
 				connections.addElement(c);
 			}
 		} catch (IOException e) {
@@ -58,7 +60,7 @@ public class Server implements Runnable {
 	}
 
 	/**
-	 * Sends the {@code message} to the {@code client}.
+	 * Sends the {@code message} to the other {@code client}.
 	 * @param message
 	 * @param client
 	 */

@@ -6,6 +6,8 @@ import java.io.PrintStream;
 import java.net.Socket;
 
 /**
+ * A connection between a server and a client.
+ * 
  * @author Daniel Kotlàris
  * @author Michael Leiser
  */

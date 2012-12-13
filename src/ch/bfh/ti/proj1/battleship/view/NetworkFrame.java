@@ -23,6 +23,9 @@ import javax.swing.WindowConstants;
 import ch.bfh.ti.proj1.battleship.frame.Game;
 
 /**
+ * This class displays the network frame.
+ * It is also responsible for the interaction with the GUI elements.
+ * 
  * @author Daniel Kotlàris
  * @author Michael Leiser
  */
@@ -60,6 +63,9 @@ public class NetworkFrame extends JFrame {
 	private JButton jButtonCancel;
 
 	private Game game;
+	
+	private String port = "4444";
+	private String IP = "localhost";
 
 	/**
 	 * Creates a new JFrame for the network establishment.
@@ -121,7 +127,7 @@ public class NetworkFrame extends JFrame {
 		jLabelFreePort = new JLabel();
 		jLabelFreePort.setText("Free Port");
 		jTextFieldFreePort = new JTextField();
-		jTextFieldFreePort.setText("4444");
+		jTextFieldFreePort.setText(port);
 
 		jPanelJoinGame = new JPanel();
 		jPanelJoinGame.setBorder(BorderFactory.createEtchedBorder());
@@ -138,12 +144,12 @@ public class NetworkFrame extends JFrame {
 		jLabelSharedPort = new JLabel();
 		jLabelSharedPort.setText("Shared Port of Host");
 		jTextFieldSharedPort = new JTextField();
-		jTextFieldSharedPort.setText("4444");
+		jTextFieldSharedPort.setText(port);
 		jTextFieldSharedPort.setEnabled(false);
 		jLabeIPAddress = new JLabel();
 		jLabeIPAddress.setText("IP-Address of Host");
 		jTextFieldIPAddress = new JTextField();
-		jTextFieldIPAddress.setText("localhost");
+		jTextFieldIPAddress.setText(IP);
 		jTextFieldIPAddress.setEnabled(false);
 		jLabelStatus = new JLabel();
 		jLabelStatus.setText("Select host or join game and click connect");
@@ -548,7 +554,7 @@ public class NetworkFrame extends JFrame {
 	}
 
 	/**
-	 * TODO
+	 * Calls the exit method.
 	 */
 	private void jButtonCancelActionPerformed() {
 		exit();
@@ -564,25 +570,18 @@ public class NetworkFrame extends JFrame {
 				game.enterName(jTextFieldPlayerName.getText());
 				final int port = Integer.parseInt(jTextFieldFreePort.getText());
 				game.hostGame(port);
-//				jLabelStatus
-//						.setText("Connecting...Please start application of second player if it is not started yet.");
-//				disableComponents();
 			} else {
-				JOptionPane.showMessageDialog(this,
-						"Entered port number is not valid!");
+				JOptionPane.showMessageDialog(this, "Entered port number is not valid!");
 			}
 		} else if (jRadioButtonJoinGame.isSelected()) {
 			if (validatePort(jTextFieldSharedPort.getText())
 					&& validateIPAddress(jTextFieldIPAddress.getText())) {
 				game.enterName(jTextFieldPlayerName.getText());
-				final int port = Integer.parseInt(jTextFieldSharedPort
-						.getText());
+				final int port = Integer.parseInt(jTextFieldSharedPort.getText());
 				final String IP = jTextFieldIPAddress.getText();
 				game.joinGame(port, IP);
 			} else {
-				JOptionPane
-						.showMessageDialog(this,
-								"Entered IP address or shared port number is not valid!");
+				JOptionPane.showMessageDialog(this, "Entered IP address or shared port number is not valid!");
 			}
 		}
 	}

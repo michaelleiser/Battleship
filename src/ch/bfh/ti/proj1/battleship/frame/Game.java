@@ -23,6 +23,8 @@ import ch.bfh.ti.proj1.battleship.view.NetworkFrame;
 import ch.bfh.ti.proj1.battleship.view.WinnerFrame;
 
 /**
+ * This class creates the game and defines the settings and the methods for playing the battleship game.
+ * 
  * @author Daniel Kotlàris
  * @author Michael Leiser
  */
@@ -241,23 +243,6 @@ public class Game {
 				break;
 			}
 		}
-	}
-	
-	
-	public int nbrOfBattleshipsLeft(){
-		return this.nbrOfBattleships - this.battleships.size();
-	}
-	
-	public int nbrOfSubmarinesLeft(){
-		return this.nbrOfSubmarines - this.submarines.size();
-	}
-	
-	public int nbrOfDestroyersLeft(){
-		return this.nbrOfDestroyers - this.destroyers.size();
-	}
-	
-	public int nbrOfCruisersLeft(){
-		return this.nbrOfCruisers - this.cruisers.size();
 	}
 
 	/**
@@ -662,6 +647,14 @@ public class Game {
 
 	/**
 	 * @return
+	 * 			the number of battleships left
+	 */
+	public int nbrOfBattleshipsLeft(){
+		return this.nbrOfBattleships - this.battleships.size();
+	}
+
+	/**
+	 * @return
 	 * 			the number of submarines
 	 */
 	public int getNbrOfSubmarines() {
@@ -674,6 +667,14 @@ public class Game {
 	 */
 	public void setNbrOfSubmarines(int nbrOfSubmarines) {
 		this.nbrOfSubmarines = nbrOfSubmarines;
+	}
+
+	/**
+	 * @return
+	 * 			the number of submarines left
+	 */
+	public int nbrOfSubmarinesLeft(){
+		return this.nbrOfSubmarines - this.submarines.size();
 	}
 
 	/**
@@ -694,6 +695,14 @@ public class Game {
 
 	/**
 	 * @return
+	 * 			the number of destroyers left
+	 */
+	public int nbrOfDestroyersLeft(){
+		return this.nbrOfDestroyers - this.destroyers.size();
+	}
+
+	/**
+	 * @return
 	 * 			the number of cruisers
 	 */
 	public int getNbrOfCruisers() {
@@ -708,6 +717,14 @@ public class Game {
 		this.nbrOfCruisers = nbrOfCruisers;
 	}
 
+	/**
+	 * @return
+	 * 			the number of cruisers left
+	 */
+	public int nbrOfCruisersLeft(){
+		return this.nbrOfCruisers - this.cruisers.size();
+	}
+	
 	/**
 	 * @return
 	 * 			the game mode
@@ -825,11 +842,4 @@ public class Game {
 //		this.bgSoundThread.stop();
 	}
 
-	/**
-	 * Shows the active player in the history.
-	 */
-	public void showActivePlayer() {
-		this.gameFrame.concatjTextPaneHistory(">>> " + player.getName() + " <<<\n");
-		this.client.sendMessage(Message.GAME_HISTORY.toString() + " " + ">>> " + player.getName() + " <<<\n");
-	}
 }

@@ -1,6 +1,8 @@
 package ch.bfh.ti.proj1.battleship.frame;
 
 /**
+ * Messages for the network communication and the game communication.
+ * 
  * @author Daniel Kotlàris
  * @author Michael Leiser
  */

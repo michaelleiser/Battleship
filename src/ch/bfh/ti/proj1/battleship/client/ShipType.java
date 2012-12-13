@@ -1,7 +1,7 @@
 package ch.bfh.ti.proj1.battleship.client;
 
 /**
- * The ship type is defined and its size (number of fields covered).
+ * Defines the ship type and its size.
  * 
  * @author Michael Leiser
  * @author Daniel Kotlàris
@@ -15,7 +15,7 @@ public enum ShipType {
 	/**
 	 * Constructor for the ship type where size is the size of the ship type.
 	 * @param size
-	 * 				the size of a ship type
+	 * 				the size of the ship type
 	 */
 	private ShipType(int size) {
 		this.size = size;

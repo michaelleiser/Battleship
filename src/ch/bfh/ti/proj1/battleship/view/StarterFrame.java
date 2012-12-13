@@ -21,45 +21,45 @@ import ch.bfh.ti.proj1.battleship.frame.Game;
  */
 public class StarterFrame extends JFrame {
 
-	/**
-	 * This is the serial for this class
-	 */
-	private static final long serialVersionUID = 243473051023764686L;
+	private static final long serialVersionUID = 1L;
 
 	public StarterFrame() {
-		JLabel label = new JLabel();
+		
+		JLabel label = new JLabel();									// Add Image to the JFrame
 		ImageIcon img = new ImageIcon("img\\start.jpg");
 		label.setIcon(img);
 		this.add(label);
 		this.setSize(img.getIconWidth(), img.getIconHeight());
-		this.setResizable(false);
 		
-		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();	
+		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();	// Centering the JFrame
 		int xCoord = (int)(dim.getWidth() - this.getWidth()) / 2;
 		int yCoord = (int)(dim.getHeight() - this.getHeight()) / 2;
 		this.setLocation(xCoord, yCoord);
 		
+		this.setResizable(false);
 		this.setUndecorated(true);
 		this.setVisible(true);
 		
 		this.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				close();
-				new Game();
+				start();
 			}
 		});
 		
 		this.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
-				close();
-				new Game();
+				start();
 			}
 		});
 	}
 
-	private void close() {
+	/**
+	 * Starts a new game.
+	 */
+	private void start() {
+		new Game();
 		this.dispose();	
 	}
 }
