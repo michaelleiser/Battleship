@@ -18,7 +18,6 @@ public class STARTER {
 
 /**
 *TODO Liste
-* - Components bei CoordinateFrame aktiv wenn Spiel fertig
 * - GameSound ab CoordinateFrame bis Spielstart => ab dann BackgroundSound bis Spiel fertig
 * - Bildergrösse (Winner/Loser) und coolere Darstellung mit Text (cooler Seemannsspruch!)
 * - Remove position() in der ship klasse richtig, mit list.remove()

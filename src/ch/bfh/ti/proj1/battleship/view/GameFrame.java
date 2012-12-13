@@ -454,6 +454,7 @@ public class GameFrame extends JFrame {
 							if(game.checkConstraints(yourField, new Ship(type), x, y, alignment)){
 								switch (type) {
 								case BATTLESHIP:
+									if(game.nbrOfBattleshipsLeft() > 0){
 										if(alignment == 0){
 											for(int i = 0; i < type.getSize(); i++){
 												yourField[y][x+i].setBackground(color);
@@ -462,9 +463,11 @@ public class GameFrame extends JFrame {
 											for(int i = 0; i < type.getSize(); i++){
 												yourField[y+i][x].setBackground(color);
 											}
-										}			
+										}	
+									}
 									break;
 								case SUBMARINE:
+									if(game.nbrOfSubmarinesLeft() > 0){
 										if(alignment == 0){
 											for(int i = 0; i < type.getSize(); i++){
 												yourField[y][x+i].setBackground(color);
@@ -474,8 +477,10 @@ public class GameFrame extends JFrame {
 												yourField[y+i][x].setBackground(color);
 											}
 										}
+									}
 									break;
 								case DESTROYER:
+									if(game.nbrOfDestroyersLeft() > 0){
 										if(alignment == 0){
 											for(int i = 0; i < type.getSize(); i++){
 												yourField[y][x+i].setBackground(color);
@@ -485,8 +490,10 @@ public class GameFrame extends JFrame {
 												yourField[y+i][x].setBackground(color);
 											}
 										}
+									}
 									break;
 								case CRUISER:
+									if(game.nbrOfCruisersLeft() > 0){
 										if(alignment == 0){
 											for(int i = 0; i < type.getSize(); i++){
 												yourField[y][x+i].setBackground(color);
@@ -496,6 +503,7 @@ public class GameFrame extends JFrame {
 												yourField[y+i][x].setBackground(color);
 											}
 										}
+									}
 									break;
 								default:
 									break;

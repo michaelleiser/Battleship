@@ -177,7 +177,7 @@ public class Game {
 		if(checkConstraints(fields, ship, x, y, horizontalOrVertical)){
 			switch (type) {
 			case BATTLESHIP:
-				if((this.nbrOfBattleships - this.battleships.size()) > 0){
+				if(nbrOfBattleshipsLeft() > 0){
 					this.battleships.add(ship);
 					if(horizontalOrVertical == 0){
 						for(int i = 0; i < type.getSize(); i++){
@@ -188,11 +188,11 @@ public class Game {
 							fields[y+i][x].placeShip(ship);
 						}
 					}			
-					this.gameFrame.setNbrOfBattleship(this.nbrOfBattleships - this.battleships.size());
+					this.gameFrame.setNbrOfBattleship(nbrOfBattleshipsLeft());
 				}
 				break;
 			case SUBMARINE:
-				if((this.nbrOfSubmarines - this.submarines.size()) > 0){
+				if(nbrOfSubmarinesLeft() > 0){
 					this.submarines.add(ship);
 					if(horizontalOrVertical == 0){
 						for(int i = 0; i < type.getSize(); i++){
@@ -203,11 +203,11 @@ public class Game {
 							fields[y+i][x].placeShip(ship);
 						}
 					}
-					this.gameFrame.setNbrOfSubmarine(this.nbrOfSubmarines - this.submarines.size());
+					this.gameFrame.setNbrOfSubmarine(nbrOfSubmarinesLeft());
 				}
 				break;
 			case DESTROYER:
-				if((this.nbrOfDestroyers - this.destroyers.size()) > 0){
+				if(nbrOfDestroyersLeft() > 0){
 					this.destroyers.add(ship);
 					if(horizontalOrVertical == 0){
 						for(int i = 0; i < type.getSize(); i++){
@@ -218,11 +218,11 @@ public class Game {
 							fields[y+i][x].placeShip(ship);
 						}
 					}
-					this.gameFrame.setNbrOfDestroyer(this.nbrOfDestroyers - this.destroyers.size());
+					this.gameFrame.setNbrOfDestroyer(nbrOfDestroyersLeft());
 				}
 				break;
 			case CRUISER:
-				if((this.nbrOfCruisers - this.cruisers.size()) > 0){
+				if(nbrOfCruisersLeft() > 0){
 					this.cruisers.add(ship);
 					if(horizontalOrVertical == 0){
 						for(int i = 0; i < type.getSize(); i++){
@@ -233,13 +233,30 @@ public class Game {
 							fields[y+i][x].placeShip(ship);
 						}
 					}
-					this.gameFrame.setNbrOfCruiser(this.nbrOfCruisers - this.cruisers.size());
+					this.gameFrame.setNbrOfCruiser(nbrOfCruisersLeft());
 				}
 				break;
 			default:
 				break;
 			}
 		}
+	}
+	
+	
+	public int nbrOfBattleshipsLeft(){
+		return this.nbrOfBattleships - this.battleships.size();
+	}
+	
+	public int nbrOfSubmarinesLeft(){
+		return this.nbrOfSubmarines - this.submarines.size();
+	}
+	
+	public int nbrOfDestroyersLeft(){
+		return this.nbrOfDestroyers - this.destroyers.size();
+	}
+	
+	public int nbrOfCruisersLeft(){
+		return this.nbrOfCruisers - this.cruisers.size();
 	}
 
 	/**
@@ -453,9 +470,6 @@ public class Game {
 	public void won() {
 		new WinnerFrame(this);
 		Sound.playingSound(Sounds.WINNER);
-		coordinateFrame.disableComponents();
-		coordinateFrame.setFirst(true);
-//		this.bgSoundThread.stop();
 	}
 	
 	/**
@@ -465,9 +479,6 @@ public class Game {
 	public void lost(){
 		new LoserFrame(this);
 		Sound.playingSound(Sounds.LOSER);
-		coordinateFrame.enableComponents();
-		coordinateFrame.setFirst(true);
-//		this.bgSoundThread.stop();
 	}
 	
 	/**
