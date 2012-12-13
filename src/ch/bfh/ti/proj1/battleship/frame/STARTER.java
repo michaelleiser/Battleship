@@ -20,7 +20,6 @@ public class STARTER {
 *TODO Liste
 * - GameSound ab CoordinateFrame bis Spielstart => ab dann BackgroundSound bis Spiel fertig
 * - Bildergrösse (Winner/Loser) und coolere Darstellung mit Text (cooler Seemannsspruch!)
-* - Netzwerk evtl mit ObjectStream.
 * - Klassen sauber strukturieren
 * - Sounds einbinden
 * 		- Sounds bei sich selber implementieren
