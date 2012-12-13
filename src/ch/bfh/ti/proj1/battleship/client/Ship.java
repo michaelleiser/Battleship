@@ -90,8 +90,7 @@ public class Ship {
 	 * 				the field to remove
 	 */
 	public void removePosition(Field field){
-//		positions.remove(field);								// TODO funktioniert nicht?
-		this.positions = new ArrayList<Field>();
+		positions.remove(field);
 	}
 		
 	/**

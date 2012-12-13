@@ -320,8 +320,8 @@ public class Game {
 		Field[][] fields = gameFrame.getYourField();
 		Ship ship = fields[y][x].getShip();
 		List<Field> positions = ship.getPositions();
-		for(Field f : positions){
-			f.removeShip();
+		for(int i = positions.size() - 1; i >= 0; i--){
+			positions.get(i).removeShip();
 		}
 		switch (ship.getShipType()) {
 		case BATTLESHIP:
