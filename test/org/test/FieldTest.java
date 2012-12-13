@@ -1,11 +1,8 @@
 package org.test;
 
 import static org.junit.Assert.*;
-
 import java.util.List;
-
 import org.junit.Test;
-
 import ch.bfh.ti.proj1.battleship.client.Field;
 import ch.bfh.ti.proj1.battleship.client.Ship;
 import ch.bfh.ti.proj1.battleship.client.ShipType;
