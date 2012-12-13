@@ -4,7 +4,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.Vector;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * This class defines the server.
@@ -17,7 +18,7 @@ public class Server implements Runnable {
 	private int portNbr;
 	
 	protected ServerSocket serverSocket;
-	protected Vector<Connection> connections;
+	protected List<Connection> connections;
 	private Thread connectionThread;
 	
 	/**
@@ -28,7 +29,7 @@ public class Server implements Runnable {
 		this.portNbr = port;
 		try {
 			serverSocket = new ServerSocket(this.portNbr);
-			connections = new Vector<Connection>();
+			connections = new ArrayList<Connection>();
 			connectionThread = new Thread(this);
 			connectionThread.start();
 		} catch (IOException e) {
@@ -52,7 +53,7 @@ public class Server implements Runnable {
 			while (true) {
 				Socket client = serverSocket.accept();				// listens for incoming connections.
 				Connection c = new Connection(this, client);		// Connection between server and client.
-				connections.addElement(c);
+				connections.add(c);
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
