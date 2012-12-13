@@ -111,25 +111,30 @@ public class ShipTest {
 		
 		assertFalse(ship.isPlaced());
 		
-		ship.addPosition(new Field(0,0));
+		Field f1 = new Field(0,0);
+		ship.addPosition(f1);
 		assertFalse(ship.isPlaced());
 		
-		ship.addPosition(new Field(0,0));
+		Field f2 = new Field(0,0);
+		ship.addPosition(f2);
 		assertFalse(ship.isPlaced());
 		
-		ship.addPosition(new Field(0,0));
+		Field f3 = new Field(0,0);
+		ship.addPosition(f3);
 		assertFalse(ship.isPlaced());
 		
-		ship.addPosition(new Field(0,0));
+		Field f4 = new Field(0,0);
+		ship.addPosition(f4);
 		assertFalse(ship.isPlaced());
 		
-		ship.addPosition(new Field(0,0));
+		Field f5 = new Field(0,0);
+		ship.addPosition(f5);
 		assertTrue(ship.isPlaced());
 		
-		ship.removePosition(new Field(0,0));
+		ship.removePosition(f5);
 		assertFalse(ship.isPlaced());
 		
-		ship.addPosition(new Field(0,0));
+		ship.addPosition(f5);
 		assertTrue(ship.isPlaced());
 	}
 
