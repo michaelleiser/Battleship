@@ -9,19 +9,19 @@ import java.net.Socket;
  * @author Daniel Kotlàris
  * @author Michael Leiser
  */
-class MyConnection extends Thread {
+class Connection extends Thread {
 	
 	protected Socket client;
 	protected DataInputStream in;
 	protected PrintStream out;
-	protected MyServer server;
+	protected Server server;
 
 	/**
 	 * Constructor for a connection between a {@code server} and a {@code client}.
 	 * @param server
 	 * @param client
 	 */
-	public MyConnection(MyServer server, Socket client) {
+	public Connection(Server server, Socket client) {
 		this.server = server;
 		this.client = client;
 		try {

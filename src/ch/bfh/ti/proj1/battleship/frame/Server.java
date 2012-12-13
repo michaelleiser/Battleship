@@ -10,23 +10,23 @@ import java.util.Vector;
  * @author Daniel Kotlàris
  * @author Michael Leiser
  */
-public class MyServer implements Runnable {
+public class Server implements Runnable {
 	
 	private int portNbr;
 	
 	protected ServerSocket serverSocket;
-	protected Vector<MyConnection> connections;
+	protected Vector<Connection> connections;
 	private Thread connectionThread;
 	
 	/**
 	 * Constructor for a server that opens a port with the {@code port} number and listens for an incoming connection.
 	 * @param port
 	 */
-	public MyServer(int port) {
+	public Server(int port) {
 		this.portNbr = port;
 		try {
 			serverSocket = new ServerSocket(this.portNbr);
-			connections = new Vector<MyConnection>();
+			connections = new Vector<Connection>();
 			connectionThread = new Thread(this);
 			connectionThread.start();
 		} catch (IOException e) {
@@ -49,7 +49,7 @@ public class MyServer implements Runnable {
 		try {
 			while (true) {
 				Socket client = serverSocket.accept();
-				MyConnection c = new MyConnection(this, client);
+				Connection c = new Connection(this, client);
 				connections.addElement(c);
 			}
 		} catch (IOException e) {

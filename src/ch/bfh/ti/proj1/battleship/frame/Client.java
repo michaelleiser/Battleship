@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
  * @author Michael Leiser
  * @author Daniel Kotlàris
  */
-public class MyClient implements Runnable{
+public class Client implements Runnable{
 
 	private int port;
 	private String IP;
@@ -34,7 +34,7 @@ public class MyClient implements Runnable{
 	 * @param port
 	 * @param IP
 	 */
-	public MyClient(int port, String IP) {
+	public Client(int port, String IP) {
 		this.port = port;
 		this.IP = IP;
 		start();

@@ -28,8 +28,8 @@ import ch.bfh.ti.proj1.battleship.view.WinnerFrame;
  */
 public class Game {
 	
-	private MyServer myServer;
-	private MyClient myClient;
+	private Server server;
+	private Client client;
 	private NetworkFrame networkFrame;
 	private CoordinateFrame coordinateFrame;
 	private GameFrame gameFrame;
@@ -80,10 +80,10 @@ public class Game {
 	 * @param port
 	 */
 	public void hostGame(final int port) {
-		myServer = new MyServer(port);
-		if(myServer.isAvailable()){
-			myClient = new MyClient(port, "localhost");
-			myClient.setGame(this);
+		server = new Server(port);
+		if(server.isAvailable()){
+			client = new Client(port, "localhost");
+			client.setGame(this);
 			networkFrame.disableComponents();
 		}	
 		else{
@@ -97,13 +97,13 @@ public class Game {
 	 * @param IP
 	 */
 	public void joinGame(final int port, final String IP) {
-		myClient = new MyClient(port, IP);
-		myClient.setGame(this);
-		if(myClient.isConnected()){
+		client = new Client(port, IP);
+		client.setGame(this);
+		if(client.isConnected()){
 			networkFrame.setVisible(false);
 			showCoordinateFrame();	
 			coordinateFrame.disableComponents();
-			myClient.sendMessage(Message.GAME_SHOW.toString());
+			client.sendMessage(Message.GAME_SHOW.toString());
 		}
 		else{
 			JOptionPane.showMessageDialog(null, "Could not connect to the host.");
@@ -352,7 +352,7 @@ public class Game {
 	 */
 	public void shootAt(int x, int y) {
 		setYourTurn(false);
-		myClient.sendMessage(Message.GAME_SHOOT.toString() + " " + x + " " + y);
+		client.sendMessage(Message.GAME_SHOOT.toString() + " " + x + " " + y);
 	}
 	
 	/**
@@ -368,22 +368,22 @@ public class Game {
 				gameFrame.incjLabelEnemyHits();
 				gameFrame.incjLabelEnemySunk();
 				gameFrame.incjLabelEnemyShots();
-				this.myClient.sendMessage(Message.GAME_SUNK.toString() + " " + x + " " + y);
+				this.client.sendMessage(Message.GAME_SUNK.toString() + " " + x + " " + y);
 				f[y][x].setBackground(Color.red);
 				Sound.playingSound(Sounds.SUNK);
 				if(allShipsSunk()){
-					this.myClient.sendMessage(Message.GAME_WON.toString());
+					this.client.sendMessage(Message.GAME_WON.toString());
 					lost();
 				}
 			} else{
 				gameFrame.incjLabelEnemyHits();
 				gameFrame.incjLabelEnemyShots();
-				this.myClient.sendMessage(Message.GAME_HIT.toString() + " " + x + " " + y);
+				this.client.sendMessage(Message.GAME_HIT.toString() + " " + x + " " + y);
 				f[y][x].setBackground(Color.orange);
 				Sound.playingSound(Sounds.HIT);
 			}
 			if(gameMode.equals(GameMode.UNTILWATER)){
-				this.myClient.sendMessage(Message.GAME_ENABLE.toString());
+				this.client.sendMessage(Message.GAME_ENABLE.toString());
 			}
 			else{
 				setYourTurn(true);
@@ -391,7 +391,7 @@ public class Game {
 		} else {
 			gameFrame.incjLabelEnemyWater();
 			gameFrame.incjLabelEnemyShots();
-			this.myClient.sendMessage(Message.GAME_WATER.toString() + " " + x + " " + y);
+			this.client.sendMessage(Message.GAME_WATER.toString() + " " + x + " " + y);
 			f[y][x].setBackground(Color.blue);
 			Sound.playingSound(Sounds.WATER);
 			setYourTurn(true);
@@ -417,10 +417,10 @@ public class Game {
 		gameFrame.incjLabelYouHits();
 		gameFrame.incjLabelYouShots();
 		gameFrame.concatjTextPaneHistory(player.getName() + " hits : " + (x+1) + " " + ((char)(y+65)) + "\n");
-		myClient.sendMessage(Message.GAME_HISTORY.toString() + " " + player.getName() + " hits : " + (x+1) + " " + ((char)(y+65)) + "\n");
+		client.sendMessage(Message.GAME_HISTORY.toString() + " " + player.getName() + " hits : " + (x+1) + " " + ((char)(y+65)) + "\n");
 		Sound.playingSound(Sounds.HIT);
 		if(gameMode.equals(GameMode.ALTERNATIVELY)){
-			this.myClient.sendMessage(Message.GAME_ACTIVEPLAYER.toString());
+			this.client.sendMessage(Message.GAME_ACTIVEPLAYER.toString());
 		}
 	}
 
@@ -435,13 +435,13 @@ public class Game {
 		gameFrame.incjLabelYouWater();
 		gameFrame.incjLabelYouShots();
 		gameFrame.concatjTextPaneHistory(player.getName() + " water : " + (x+1) + " " + ((char)(y+65)) + "\n");
-		myClient.sendMessage(Message.GAME_HISTORY.toString() + " " + player.getName() + " water : " + (x+1) + " " + ((char)(y+65)) + "\n");
+		client.sendMessage(Message.GAME_HISTORY.toString() + " " + player.getName() + " water : " + (x+1) + " " + ((char)(y+65)) + "\n");
 		Sound.playingSound(Sounds.WATER);
 		if(gameMode.equals(GameMode.UNTILWATER)){
-			this.myClient.sendMessage(Message.GAME_ACTIVEPLAYER.toString());
+			this.client.sendMessage(Message.GAME_ACTIVEPLAYER.toString());
 		}
 		if(gameMode.equals(GameMode.ALTERNATIVELY)){
-			this.myClient.sendMessage(Message.GAME_ACTIVEPLAYER.toString());
+			this.client.sendMessage(Message.GAME_ACTIVEPLAYER.toString());
 		}
 	}
 
@@ -457,10 +457,10 @@ public class Game {
 		gameFrame.incjLabelYouSunk();
 		gameFrame.incjLabelYouShots();
 		gameFrame.concatjTextPaneHistory(player.getName() + " sunk : " + (x+1) + " " + ((char)(y+65)) + "\n");
-		myClient.sendMessage(Message.GAME_HISTORY.toString() + " " + player.getName() + " sunk : " + (x+1) + " " + ((char)(y+65)) + "\n");
+		client.sendMessage(Message.GAME_HISTORY.toString() + " " + player.getName() + " sunk : " + (x+1) + " " + ((char)(y+65)) + "\n");
 		Sound.playingSound(Sounds.SUNK);
 		if(gameMode.equals(GameMode.ALTERNATIVELY)){
-			this.myClient.sendMessage(Message.GAME_ACTIVEPLAYER.toString());
+			this.client.sendMessage(Message.GAME_ACTIVEPLAYER.toString());
 		}
 	}
 
@@ -489,19 +489,19 @@ public class Game {
 	public void ready() {
 		if(canStart){
 			setYourTurn(true);
-			this.myClient.sendMessage(Message.GAME_START.toString());
+			this.client.sendMessage(Message.GAME_START.toString());
 			this.gameFrame.concatjTextPaneHistory("... " + player.getName() + " ...\n");
-			this.myClient.sendMessage(Message.GAME_HISTORY.toString() + " " + "... " + player.getName() + " ...\n");
+			this.client.sendMessage(Message.GAME_HISTORY.toString() + " " + "... " + player.getName() + " ...\n");
 		}
 		if(!canStart){
 			this.gameFrame.concatjTextPaneHistory("... " + player.getName() + " ...\n");
-			this.myClient.sendMessage(Message.GAME_HISTORY.toString() + " " + "... " + player.getName() + " ...\n");
-			this.myClient.sendMessage(Message.GAME_ENABLECOMPONENTS.toString());
-			this.myClient.sendMessage(Message.GAME_SOUND.toString());
+			this.client.sendMessage(Message.GAME_HISTORY.toString() + " " + "... " + player.getName() + " ...\n");
+			this.client.sendMessage(Message.GAME_ENABLECOMPONENTS.toString());
+			this.client.sendMessage(Message.GAME_SOUND.toString());
 			this.getGameFrame().enableComponents();
 			gameSoundThread.stop();
 			startBackgroundSound();
-			this.myClient.sendMessage(Message.GAME_ACTIVEPLAYER.toString());
+			this.client.sendMessage(Message.GAME_ACTIVEPLAYER.toString());
 		}
 	}
 	
@@ -762,16 +762,16 @@ public class Game {
 	 * @return
 	 * 			the server
 	 */
-	public MyServer getServer() {
-		return myServer;
+	public Server getServer() {
+		return server;
 	}
 	
 	/**
 	 * @return
 	 * 			the client
 	 */
-	public MyClient getClient() {
-		return myClient;
+	public Client getClient() {
+		return client;
 	}
 
 	/**
@@ -830,6 +830,6 @@ public class Game {
 	 */
 	public void showActivePlayer() {
 		this.gameFrame.concatjTextPaneHistory(">>> " + player.getName() + " <<<\n");
-		this.myClient.sendMessage(Message.GAME_HISTORY.toString() + " " + ">>> " + player.getName() + " <<<\n");
+		this.client.sendMessage(Message.GAME_HISTORY.toString() + " " + ">>> " + player.getName() + " <<<\n");
 	}
 }
