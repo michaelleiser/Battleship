@@ -155,8 +155,7 @@ public class Client implements Runnable{
 						game.setStartToFalse();
 					}
 					if(line.startsWith(Message.GAME_SOUND.toString())){
-						game.startBackgroundSound();
-						game.getGameSoundThread().stop();
+						// Sound.playBackGroundSound();
 					}
 					if(line.startsWith(Message.GAME_RESTART.toString())){
 						game.restart();

@@ -1103,7 +1103,7 @@ public class GameFrame extends JFrame {
 	 * This method invokes the restart method of the Game.
 	 * This method also sends a message to the other player for restarting the game.
 	 */
-	@SuppressWarnings("deprecation")
+	// @SuppressWarnings("deprecation")
 	private void jButtonRestartActionPerformed() {
 		try {
 			for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
@@ -1118,7 +1118,8 @@ public class GameFrame extends JFrame {
 		game.restart();
 		game.getCoordinateFrame().enableComponents();
 		game.getClient().sendMessage(Message.GAME_RESTART.toString());
-//		game.getBgSoundThread().stop();
+		// game.getBgSoundThread().stop();
+		// Sound.stopBackgroundSound();
 	}
 
 	/**

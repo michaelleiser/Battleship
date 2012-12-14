@@ -14,37 +14,93 @@ import javax.sound.sampled.Clip;
  * @author Michael Leiser
  */
 public class Sound {
-
+	
+	private static Clip gameSoundClip;
+//	private static Clip backGroundSoundClip;
+//	private static boolean bgSoundPlaying = true;
+	
 	public enum Sounds {
 		WATER, HIT, SUNK, GAMESOUND_0, GAMESOUND_1, GAMESOUND_2, WINNER, LOSER
 	}
-
+	
 	/**
-	 * Plays the background sound form the start of the application
-	 * until the player start to play the official game.
+	 * Plays the background sound form the start of the application until the
+	 * player start to play the official game.
 	 * 
 	 * @param soundFile
-	 * 					the file to play
+	 *            the file to play
 	 * @throws Exception
-	 * 					if the file could not be read or anything else goes wrong
+	 *             if the file could not be read or anything else goes wrong
 	 */
-	public static void playGameSound(File soundFile) throws Exception {
-		Clip clip = AudioSystem.getClip();
-		AudioInputStream ais;
-		ais = AudioSystem.getAudioInputStream(soundFile);
-		clip.open(ais);
-		Long length = clip.getMicrosecondLength();
-//		clip.loop(Clip.LOOP_CONTINUOUSLY);
-		clip.start();
-		Thread.sleep(length / 1000);
-		clip.stop();
+	public static void playGameSound(File soundFile) {
+		try {
+			gameSoundClip = AudioSystem.getClip();
+			AudioInputStream ais;
+			ais = AudioSystem.getAudioInputStream(soundFile);
+			gameSoundClip.open(ais);
+			gameSoundClip.start();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
+
+	/**
+	 * Stops the game sound.
+	 */
+	public static void stopGameSound() {
+		gameSoundClip.stop();
+	}
+
+	
+//	/**
+//	 * Plays the background sound form the start of the application until the
+//	 * player start to play the official game.
+//	 * 
+//	 * @param soundFile
+//	 *            the file to play
+//	 * @throws Exception
+//	 *             if the file could not be read or anything else goes wrong
+//	 */
+//	public static void playBackGroundSound() {
+//		try {
+//			bgSoundPlaying = true;
+//			
+//			while(bgSoundPlaying) {
+//				backGroundSoundClip = AudioSystem.getClip();
+//				Random random = new Random();
+//				AudioInputStream ais = AudioSystem.getAudioInputStream(new File("wav/background" + random.nextInt(3) + ".wav"));
+//				backGroundSoundClip.open(ais);
+//				try {
+//					backGroundSoundClip.start();
+//					Thread.sleep(1000);
+//					backGroundSoundClip.stop();
+//					Thread.sleep(random.nextInt(5000) + 2500);
+//					
+//				} catch (InterruptedException e) {
+//					e.printStackTrace();
+//				}
+//			}
+//
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//	}
+//	
+//	/**
+//	 * Stops the game sound.
+//	 */
+//	public static void stopBackgroundSound() {
+//		bgSoundPlaying = false;
+//		backGroundSoundClip.stop();
+//	}
+	
 	
 	/**
 	 * Plays the specific sounds during the game e.g. if a ship was hit.
 	 * 
 	 * @param sound
-	 * 				the sound to play
+	 *            the sound to play
 	 */
 	public static void playingSound(Sounds sound) {
 		File soundFile;
@@ -130,25 +186,4 @@ public class Sound {
 			break;
 		}
 	}
-
-	/**
-	 * Plays the background music (before start of the battle)
-	 */
-	public static void playGameSound() {
-		try {
-			File soundFile = new File("wav/gamesound0.wav");
-			Clip clip = AudioSystem.getClip();
-			AudioInputStream ais;
-			ais = AudioSystem.getAudioInputStream(soundFile);
-			clip.open(ais);
-			Long length = clip.getMicrosecondLength();
-//			clip.loop(Clip.LOOP_CONTINUOUSLY);
-			clip.start();
-			Thread.sleep(length / 1000);
-			clip.stop();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
 }

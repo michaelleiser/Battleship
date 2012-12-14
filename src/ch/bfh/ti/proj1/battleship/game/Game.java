@@ -1,9 +1,9 @@
 package ch.bfh.ti.proj1.battleship.game;
 
 import java.awt.Color;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -39,7 +39,7 @@ public class Game {
 	private CoordinateFrame coordinateFrame;
 	private GameFrame gameFrame;
 	private Player player;
-	private Thread bgSoundThread;
+//	private Thread bgSoundThread;
 	private Thread gameSoundThread;
 	
 	// initialize standard values
@@ -149,7 +149,7 @@ public class Game {
 		}
 		coordinateFrame = new CoordinateFrame(this);
 		coordinateFrame.setVisible(true);
-		startGameSound();												// Start the game sound
+		Sound.playGameSound(new File("wav/gamesound0.wav"));										// Start the game sound
 	}
 	
 	/**
@@ -455,8 +455,9 @@ public class Game {
 	/**
 	 * The active player has won the game. This method creates the winner frame.
 	 */
-	@SuppressWarnings("deprecation")
+//	@SuppressWarnings("deprecation")
 	public void won() {
+//		getBgSoundThread().stop();
 		new WinnerFrame(this);
 		Sound.playingSound(Sounds.WINNER);
 	}
@@ -464,8 +465,9 @@ public class Game {
 	/**
 	 * The passive player has lost the game. This method creates the loser frame.
 	 */
-	@SuppressWarnings("deprecation")
+//	@SuppressWarnings("deprecation")
 	public void lost(){
+//		getBgSoundThread().stop();
 		new LoserFrame(this);
 		Sound.playingSound(Sounds.LOSER);
 	}
@@ -474,8 +476,8 @@ public class Game {
 	 * This method sets the player to the ready state. 
 	 * The first player who calls this method can later start with shooting in the game.
 	 */
-	@SuppressWarnings("deprecation")
 	public void ready() {
+		Sound.stopGameSound();
 		if(canStart){
 			setYourTurn(true);
 			this.client.sendMessage(Message.GAME_START.toString());
@@ -488,27 +490,11 @@ public class Game {
 			this.client.sendMessage(Message.GAME_ENABLECOMPONENTS.toString());
 			this.client.sendMessage(Message.GAME_SOUND.toString());
 			this.getGameFrame().enableComponents();
-			gameSoundThread.stop();
-			startBackgroundSound();
+			// Sound.playBackGroundSound();
 			this.client.sendMessage(Message.GAME_ACTIVEPLAYER.toString());
 		}
 	}
 	
-	/**
-	 * Starts the game sound.
-	 */
-	public void startGameSound() {
-		this.gameSoundThread = new Thread(new Runnable() {
-			@Override
-			public void run() {
-				while(true) {
-					Sound.playGameSound();
-				}
-			}
-		});
-		this.gameSoundThread.start();
-	}
-
 	/**
 	 * Returns a thread of the game sound.
 	 * @return
@@ -518,36 +504,16 @@ public class Game {
 		return gameSoundThread;
 	}
 
-	/**
-	 * Starts the background sound.
-	 */
-	public void startBackgroundSound() {
-		this.bgSoundThread = new Thread(new Runnable() {
-			@Override
-			public void run() {
-				while(true) {
-					Random random = new Random();
-					Sound.playBackgroundSound(random.nextInt(3));
-					try {
-						Thread.sleep(5000);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-				}
-			}
-		});
-		this.bgSoundThread.start();
-	}
 	
 	
-	/**
-	 * Returns the background sound thread.
-	 * @return
-	 * 			background sound thread
-	 */
-	public Thread getBgSoundThread() {
-		return bgSoundThread;
-	}
+//	/**
+//	 * Returns the background sound thread.
+//	 * @return
+//	 * 			background sound thread
+//	 */
+//	public Thread getBgSoundThread() {
+//		return bgSoundThread;
+//	}
 
 	/**
 	 * Sets the can start flag to false.
@@ -833,13 +799,14 @@ public class Game {
 	/**
 	 * Restarts a game.
 	 */
-	@SuppressWarnings("deprecation")
+	// @SuppressWarnings("deprecation")
 	public void restart() {
 		this.gameFrame.dispose();
 		this.showCoordinateFrame();
 		this.coordinateFrame.disableComponents();
 		this.init();
-//		this.bgSoundThread.stop();
+		// this.bgSoundThread.stop();
+		// Sound.stopBackgroundSound();
 	}
 
 }
