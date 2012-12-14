@@ -1,4 +1,4 @@
-package ch.bfh.ti.proj1.battleship.client;
+package ch.bfh.ti.proj1.battleship.common;
 
 /**
  * Defines the ship type and its size.

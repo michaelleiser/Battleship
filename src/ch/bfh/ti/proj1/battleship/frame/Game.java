@@ -10,10 +10,10 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
-import ch.bfh.ti.proj1.battleship.client.Field;
-import ch.bfh.ti.proj1.battleship.client.Player;
-import ch.bfh.ti.proj1.battleship.client.Ship;
-import ch.bfh.ti.proj1.battleship.client.ShipType;
+import ch.bfh.ti.proj1.battleship.common.Field;
+import ch.bfh.ti.proj1.battleship.common.Player;
+import ch.bfh.ti.proj1.battleship.common.Ship;
+import ch.bfh.ti.proj1.battleship.common.ShipType;
 import ch.bfh.ti.proj1.battleship.sound.Sound;
 import ch.bfh.ti.proj1.battleship.sound.Sound.Sounds;
 import ch.bfh.ti.proj1.battleship.view.CoordinateFrame;

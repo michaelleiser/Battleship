@@ -2,9 +2,10 @@ package org.test;
 
 import static org.junit.Assert.*;
 import org.junit.Test;
-import ch.bfh.ti.proj1.battleship.client.Field;
-import ch.bfh.ti.proj1.battleship.client.Ship;
-import ch.bfh.ti.proj1.battleship.client.ShipType;
+
+import ch.bfh.ti.proj1.battleship.common.Field;
+import ch.bfh.ti.proj1.battleship.common.Ship;
+import ch.bfh.ti.proj1.battleship.common.ShipType;
 
 public class ShipTest {
 
