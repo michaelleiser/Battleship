@@ -1,4 +1,4 @@
-package ch.bfh.ti.proj1.battleship.frame;
+package ch.bfh.ti.proj1.battleship.game;
 
 import ch.bfh.ti.proj1.battleship.view.StarterFrame;
 

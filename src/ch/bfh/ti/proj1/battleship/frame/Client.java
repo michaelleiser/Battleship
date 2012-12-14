@@ -7,6 +7,9 @@ import java.net.Socket;
 
 import javax.swing.JOptionPane;
 
+import ch.bfh.ti.proj1.battleship.game.Game;
+import ch.bfh.ti.proj1.battleship.game.GameMode;
+
 /**
  * The client is responsible to connect to the server.
  * It sends and receives messages from the other client

@@ -36,8 +36,8 @@ import javax.swing.WindowConstants;
 import ch.bfh.ti.proj1.battleship.common.Field;
 import ch.bfh.ti.proj1.battleship.common.Ship;
 import ch.bfh.ti.proj1.battleship.common.ShipType;
-import ch.bfh.ti.proj1.battleship.frame.Game;
 import ch.bfh.ti.proj1.battleship.frame.Message;
+import ch.bfh.ti.proj1.battleship.game.Game;
 
 /**
  * This class displays the game frame.

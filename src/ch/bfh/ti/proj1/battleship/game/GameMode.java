@@ -1,4 +1,4 @@
-package ch.bfh.ti.proj1.battleship.frame;
+package ch.bfh.ti.proj1.battleship.game;
 
 /**
  * Defines the game mode.

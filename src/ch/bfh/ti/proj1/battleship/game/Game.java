@@ -1,4 +1,4 @@
-package ch.bfh.ti.proj1.battleship.frame;
+package ch.bfh.ti.proj1.battleship.game;
 
 import java.awt.Color;
 import java.util.ArrayList;
@@ -14,6 +14,9 @@ import ch.bfh.ti.proj1.battleship.common.Field;
 import ch.bfh.ti.proj1.battleship.common.Player;
 import ch.bfh.ti.proj1.battleship.common.Ship;
 import ch.bfh.ti.proj1.battleship.common.ShipType;
+import ch.bfh.ti.proj1.battleship.frame.Client;
+import ch.bfh.ti.proj1.battleship.frame.Message;
+import ch.bfh.ti.proj1.battleship.frame.Server;
 import ch.bfh.ti.proj1.battleship.sound.Sound;
 import ch.bfh.ti.proj1.battleship.sound.Sound.Sounds;
 import ch.bfh.ti.proj1.battleship.view.CoordinateFrame;

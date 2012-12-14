@@ -27,9 +27,9 @@ import javax.swing.LayoutStyle;
 import javax.swing.WindowConstants;
 
 import ch.bfh.ti.proj1.battleship.common.ShipType;
-import ch.bfh.ti.proj1.battleship.frame.Game;
-import ch.bfh.ti.proj1.battleship.frame.GameMode;
 import ch.bfh.ti.proj1.battleship.frame.Message;
+import ch.bfh.ti.proj1.battleship.game.Game;
+import ch.bfh.ti.proj1.battleship.game.GameMode;
 
 /**
  * This class displays the coordinate frame. 

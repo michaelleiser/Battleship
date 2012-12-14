@@ -2,7 +2,8 @@ package org.test;
 
 import static org.junit.Assert.*;
 import org.junit.Test;
-import ch.bfh.ti.proj1.battleship.frame.Game;
+
+import ch.bfh.ti.proj1.battleship.game.Game;
 
 public class NetworkTest {
 

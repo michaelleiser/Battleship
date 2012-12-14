@@ -20,7 +20,8 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle;
 import javax.swing.WindowConstants;
-import ch.bfh.ti.proj1.battleship.frame.Game;
+
+import ch.bfh.ti.proj1.battleship.game.Game;
 
 /**
  * This class displays the network frame.

@@ -5,8 +5,8 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import ch.bfh.ti.proj1.battleship.common.ShipType;
-import ch.bfh.ti.proj1.battleship.frame.Game;
-import ch.bfh.ti.proj1.battleship.frame.GameMode;
+import ch.bfh.ti.proj1.battleship.game.Game;
+import ch.bfh.ti.proj1.battleship.game.GameMode;
 
 public class GameTest {
 	

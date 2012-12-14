@@ -11,7 +11,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-import ch.bfh.ti.proj1.battleship.frame.Game;
+import ch.bfh.ti.proj1.battleship.game.Game;
 
 /**
  * This class displays the start screen.
