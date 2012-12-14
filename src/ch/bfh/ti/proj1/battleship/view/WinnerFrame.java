@@ -29,7 +29,7 @@ public class WinnerFrame extends JFrame {
 		this.game = game;
 		
 		JLabel label = new JLabel();									// Add Image to the JFrame
-		ImageIcon img = new ImageIcon("img\\winner.jpg");
+		ImageIcon img = new ImageIcon("img\\winner.png");
 		label.setIcon(img);
 		this.add(label);
 		this.setSize(img.getIconWidth(), img.getIconHeight());
