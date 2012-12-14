@@ -18,7 +18,6 @@ public class STARTER {
 
 /**
 *TODO Liste
-* - Bildergrösse (Winner/Loser) und coolere Darstellung mit Text (cooler Seemannsspruch!)
 * - Klassen sauber strukturieren
 * - Sounds einbinden
 * 		- Background Musik bei beiden (synchronisiert)

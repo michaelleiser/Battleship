@@ -26,7 +26,7 @@ public class StarterFrame extends JFrame {
 	public StarterFrame() {
 		
 		JLabel label = new JLabel();									// Add Image to the JFrame
-		ImageIcon img = new ImageIcon("img\\start.jpg");
+		ImageIcon img = new ImageIcon("img\\start.png");
 		label.setIcon(img);
 		this.add(label);
 		this.setSize(img.getIconWidth(), img.getIconHeight());
