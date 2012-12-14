@@ -1,4 +1,4 @@
-package ch.bfh.ti.proj1.battleship.frame;
+package ch.bfh.ti.proj1.battleship.network;
 
 import java.io.IOException;
 import java.io.PrintWriter;
