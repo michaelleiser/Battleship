@@ -1,11 +1,11 @@
-package ch.bfh.ti.proj1.battleship.networkTest;
+package ch.bfh.ti.proj1.battleship.commonTest;
 
 import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
 
-public class ClientNetworkControllerTest {
+public class PlayerTest {
 
 	@Before
 	public void setUp() throws Exception {

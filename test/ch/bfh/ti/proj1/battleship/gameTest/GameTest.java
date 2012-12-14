@@ -1,4 +1,4 @@
-package org.test;
+package ch.bfh.ti.proj1.battleship.gameTest;
 
 import static org.junit.Assert.*;
 

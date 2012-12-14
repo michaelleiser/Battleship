@@ -1,4 +1,4 @@
-package org.test;
+package ch.bfh.ti.proj1.battleship.commonTest;
 
 import static org.junit.Assert.*;
 import org.junit.Test;
