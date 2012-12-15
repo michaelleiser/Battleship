@@ -162,7 +162,6 @@ public class Client implements Runnable{
 					}
 					if(line.startsWith(Message.CLOSECONNECTION.toString())){
 						JOptionPane.showMessageDialog(null, "Other player has left the game");
-//						this.stop();
 						System.exit(0);
 					}
 					if(line.startsWith(Message.TESTCONNECTION.toString())){
@@ -187,20 +186,27 @@ public class Client implements Runnable{
 	 */
 	public boolean isConnected() {
 		if(socket != null){
-			game.getClient().sendMessage(Message.TESTCONNECTION.toString());	// Sends a test connection message to the server. The other client will then reply with a open connection message.
-			int i = 0;
-			while(!connected && (i < 20)){			// Waits for 5 seconds for an open connection message from the other client.
-				try {
-					Thread.sleep(250);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-				i++;
-			}
+			testConnection();
 			return connected;
 		}
 		else{
 			return false;
+		}
+	}
+
+	/**
+	 * Tests the connection between the client and the server.
+	 */
+	private void testConnection() {
+		game.getClient().sendMessage(Message.TESTCONNECTION.toString());	// Sends a test connection message to the server. The other client will then reply with a open connection message.
+		int i = 0;
+		while(!connected && (i < 20)){			// Waits for 5 seconds for an open connection message from the other client.
+			try {
+				Thread.sleep(250);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			i++;
 		}
 	}
 

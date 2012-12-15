@@ -157,7 +157,6 @@ public class CoordinateFrame extends JFrame{
 		jLabelGameMode.setFont(new Font("Tahoma", 1, 11));
 		jLabelGameMode.setText("Game mode : ");
 		jRadioButtonShootAlternatively = new JRadioButton();
-		jRadioButtonShootAlternatively.setSelected(true);
 		jRadioButtonShootAlternatively.setText("Shoot alternatively");
 		jRadioButtonShootAlternatively.setToolTipText("Tooltip");
 		jRadioButtonShootAlternatively.addActionListener(new ActionListener() {
@@ -173,6 +172,12 @@ public class CoordinateFrame extends JFrame{
 				jRadioButtonShootUntilWaterActionPerformed();
 			}
 		});
+		if(game.getGameMode() == GameMode.ALTERNATIVELY){
+			jRadioButtonShootAlternatively.setSelected(true);
+		}
+		else if(game.getGameMode() == GameMode.UNTILWATER){
+			jRadioButtonShootUntilWater.setSelected(true);
+		}
 		
 		jPanelChat = new JPanel();
 		jPanelChat.setBorder(BorderFactory.createEtchedBorder());
