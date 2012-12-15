@@ -1,19 +1,16 @@
 package ch.bfh.ti.proj1.battleship.commonTest;
 
 import static org.junit.Assert.*;
-
-import org.junit.Before;
 import org.junit.Test;
+import ch.bfh.ti.proj1.battleship.common.Player;
 
 public class PlayerTest {
 
-	@Before
-	public void setUp() throws Exception {
-	}
-
 	@Test
 	public void test() {
-		fail("Not yet implemented");
+		Player p = new Player("Player");
+		p.setName("New Player");
+		assertTrue(p.getName().equals("New Player"));
 	}
 
 }
