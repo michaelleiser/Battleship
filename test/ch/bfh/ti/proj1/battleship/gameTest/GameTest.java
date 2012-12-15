@@ -14,7 +14,7 @@ public class GameTest {
 	public void testPlaceShips(){
 		Game g1 = new Game();
 		g1.enterName("Player 1");
-		g1.hostGame(4444);
+		g1.hostGame(11111);
 		g1.setOptions(10, 10, 1, 1, 1, 1, GameMode.ALTERNATIVELY);
 		g1.showGameFrame();
 		
@@ -36,7 +36,7 @@ public class GameTest {
 	public void testPlaceShipsOnSamePosition(){
 		Game g1 = new Game();
 		g1.enterName("Player 1");
-		g1.hostGame(5555);
+		g1.hostGame(12222);
 		g1.setOptions(10, 10, 1, 1, 1, 1, GameMode.ALTERNATIVELY);
 		g1.showGameFrame();
 		
@@ -52,7 +52,7 @@ public class GameTest {
 	public void testPlaceShipsRemoveShips(){
 		Game g1 = new Game();
 		g1.enterName("Player 1");
-		g1.hostGame(6666);
+		g1.hostGame(13333);
 		g1.setOptions(10, 10, 1, 1, 1, 1, GameMode.ALTERNATIVELY);
 		g1.showGameFrame();
 		
@@ -76,7 +76,7 @@ public class GameTest {
 	public void testShoot(){
 		Game g1 = new Game();
 		g1.enterName("Player 1");
-		g1.hostGame(6666);
+		g1.hostGame(14444);
 		g1.setOptions(10, 10, 1, 1, 1, 1, GameMode.ALTERNATIVELY);
 		g1.showGameFrame();
 		

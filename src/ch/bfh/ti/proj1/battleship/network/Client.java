@@ -90,37 +90,37 @@ public class Client implements Runnable{
 						String s = line.substring(Message.COORDINATE_CHAT.toString().length() + 1, line.length());
 						game.getCoordinateFrame().concatjTextPaneChat(s + "\n");
 					}
-					if(line.startsWith(Message.GAME_CHAT.toString())){
+					else if(line.startsWith(Message.GAME_CHAT.toString())){
 						String s = line.substring(Message.GAME_CHAT.toString().length() + 1, line.length());
 						game.getGameFrame().concatjTextPaneChat(s + "\n");
 					}
-					if(line.startsWith(Message.GAME_HISTORY.toString())){
+					else if(line.startsWith(Message.GAME_HISTORY.toString())){
 						String s = line.substring(Message.GAME_HISTORY.toString().length() + 1, line.length());
 						game.getGameFrame().concatjTextPaneHistory(s + "\n");
 					}
-					if(line.startsWith(Message.GAME_SHOW.toString())){
+					else if(line.startsWith(Message.GAME_SHOW.toString())){
 						game.getNetworkFrame().dispose();
 						game.showCoordinateFrame();
 					}
-					if(line.startsWith(Message.COORDINATE_ENABLE.toString())){
+					else if(line.startsWith(Message.COORDINATE_ENABLE.toString())){
 						game.getCoordinateFrame().enableComponents();
 					}
-					if(line.startsWith(Message.GAME_ENABLECOMPONENTS.toString())){
+					else if(line.startsWith(Message.GAME_ENABLECOMPONENTS.toString())){
 						game.getGameFrame().enableComponents();
 					}
-					if(line.startsWith(Message.GAME_DISABLE.toString())){
+					else if(line.startsWith(Message.GAME_DISABLE.toString())){
 						game.setYourTurn(false);
 					}
-					if(line.startsWith(Message.GAME_ENABLE.toString())){
+					else if(line.startsWith(Message.GAME_ENABLE.toString())){
 						game.setYourTurn(true);
 					}
-					if(line.startsWith(Message.COORDINATE_SHOWGAMEFRAME.toString())){
+					else if(line.startsWith(Message.COORDINATE_SHOWGAMEFRAME.toString())){
 						game.showGameFrame();
 					}
-					if(line.startsWith(Message.COORDINATE_DISPOSE.toString())){
+					else if(line.startsWith(Message.COORDINATE_DISPOSE.toString())){
 						game.getCoordinateFrame().dispose();
 					}
-					if(line.startsWith(Message.COORDINATE_OPTIONS.toString())){
+					else if(line.startsWith(Message.COORDINATE_OPTIONS.toString())){
 						String[] s = line.split(" ");
 						game.setOptions(Integer.parseInt(s[1]), Integer.parseInt(s[2]),
 								Integer.parseInt(s[3]), Integer.parseInt(s[4]),
@@ -129,48 +129,48 @@ public class Client implements Runnable{
 								Integer.parseInt(s[3]), Integer.parseInt(s[4]),
 								Integer.parseInt(s[5]), Integer.parseInt(s[6]), GameMode.valueOf(s[7]));
 					}
-					if(line.startsWith(Message.COORDINATE_SETFIRST.toString())){
+					else if(line.startsWith(Message.COORDINATE_SETFIRST.toString())){
 						game.getCoordinateFrame().setFirst(false);
 					}
-					if(line.startsWith(Message.GAME_SHOOT.toString())){
+					else if(line.startsWith(Message.GAME_SHOOT.toString())){
 						String[] s = line.split(" ");
 						game.checkShoot(Integer.parseInt(s[1]), Integer.parseInt(s[2]));
 					}
-					if(line.startsWith(Message.GAME_HIT.toString())){
+					else if(line.startsWith(Message.GAME_HIT.toString())){
 						String[] s = line.split(" " );
 						game.hit(Integer.parseInt(s[1]), Integer.parseInt(s[2]));
 					}
-					if(line.startsWith(Message.GAME_WATER.toString())){
+					else if(line.startsWith(Message.GAME_WATER.toString())){
 						String[] s = line.split(" " );
 						game.water(Integer.parseInt(s[1]), Integer.parseInt(s[2]));
 					}
-					if(line.startsWith(Message.GAME_SUNK.toString())){
+					else if(line.startsWith(Message.GAME_SUNK.toString())){
 						String[] s = line.split(" " );
 						game.sunk(Integer.parseInt(s[1]), Integer.parseInt(s[2]));
 					}
-					if(line.startsWith(Message.GAME_WON.toString())){
+					else if(line.startsWith(Message.GAME_WON.toString())){
 						game.won();
 					}
-					if(line.startsWith(Message.GAME_START.toString())){
+					else if(line.startsWith(Message.GAME_START.toString())){
 						game.setStartToFalse();
 					}
-					if(line.startsWith(Message.GAME_SOUND.toString())){
+					else if(line.startsWith(Message.GAME_SOUND.toString())){
 						// Sound.playBackGroundSound();
 					}
-					if(line.startsWith(Message.GAME_RESTART.toString())){
+					else if(line.startsWith(Message.GAME_RESTART.toString())){
 						game.restart();
 					}
-					if(line.startsWith(Message.CLOSECONNECTION.toString())){
+					else if(line.startsWith(Message.CLOSECONNECTION.toString())){
 						JOptionPane.showMessageDialog(null, "Other player has left the game");
 						System.exit(0);
 					}
-					if(line.startsWith(Message.TESTCONNECTION.toString())){
+					else if(line.startsWith(Message.TESTCONNECTION.toString())){
 						this.sendMessage(Message.OPENCONNECTION.toString());
 					}
-					if(line.startsWith(Message.OPENCONNECTION.toString())){
+					else if(line.startsWith(Message.OPENCONNECTION.toString())){
 						this.connected = true;
 					}
-					if(line.startsWith(Message.GAME_ACTIVEPLAYER.toString())){
+					else if(line.startsWith(Message.GAME_ACTIVEPLAYER.toString())){
 						game.getGameFrame().showActivePlayer();
 					}
 				}
