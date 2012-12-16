@@ -4,12 +4,8 @@ import java.awt.Color;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
-
 import ch.bfh.ti.proj1.battleship.common.Field;
 import ch.bfh.ti.proj1.battleship.common.Player;
 import ch.bfh.ti.proj1.battleship.common.Ship;
@@ -127,7 +123,7 @@ public class Game {
 				}
 			}
 		} catch (Exception e) {
-			Logger.getLogger(NetworkFrame.class.getName()).log(Level.SEVERE, null, e);
+			e.printStackTrace();
 		}
 		networkFrame = new NetworkFrame(this);
 		networkFrame.setVisible(true);
@@ -145,7 +141,7 @@ public class Game {
 				}
 			}
 		} catch (Exception e) {
-			Logger.getLogger(CoordinateFrame.class.getName()).log(Level.SEVERE, null, e);
+			e.printStackTrace();
 		}
 		coordinateFrame = new CoordinateFrame(this);
 		coordinateFrame.setVisible(true);
@@ -164,7 +160,7 @@ public class Game {
 				}
 			}
 		} catch (Exception e) {
-			Logger.getLogger(GameFrame.class.getName()).log(Level.SEVERE, null,	e);
+			e.printStackTrace();
 		}
 		gameFrame = new GameFrame(this);
 		gameFrame.setVisible(true);
