@@ -40,14 +40,19 @@ public class ShipTest {
 	public void testBattleshipIsSunk(){
 		Ship battleship = new Ship(ShipType.BATTLESHIP);
 		assertFalse(battleship.isSunk());
+		
 		battleship.shoot();
 		assertFalse(battleship.isSunk());
+		
 		battleship.shoot();
 		assertFalse(battleship.isSunk());
+		
 		battleship.shoot();
 		assertFalse(battleship.isSunk());
+		
 		battleship.shoot();
 		assertFalse(battleship.isSunk());
+		
 		battleship.shoot();
 		assertTrue(battleship.isSunk());
 	}
@@ -56,12 +61,16 @@ public class ShipTest {
 	public void testSubmarineIsSunk(){
 		Ship submarine = new Ship(ShipType.SUBMARINE);
 		assertFalse(submarine.isSunk());
+		
 		submarine.shoot();
 		assertFalse(submarine.isSunk());
+		
 		submarine.shoot();
 		assertFalse(submarine.isSunk());
+		
 		submarine.shoot();
 		assertFalse(submarine.isSunk());
+		
 		submarine.shoot();
 		assertTrue(submarine.isSunk());
 	}
@@ -70,10 +79,13 @@ public class ShipTest {
 	public void testDestroyerIsSunk(){		
 		Ship destroyer = new Ship(ShipType.DESTROYER);
 		assertFalse(destroyer.isSunk());
+		
 		destroyer.shoot();
 		assertFalse(destroyer.isSunk());
+		
 		destroyer.shoot();
 		assertFalse(destroyer.isSunk());
+		
 		destroyer.shoot();
 		assertTrue(destroyer.isSunk());
 	}
@@ -82,8 +94,10 @@ public class ShipTest {
 	public void testCruiserIsSunk(){		
 		Ship cruiser = new Ship(ShipType.CRUISER);
 		assertFalse(cruiser.isSunk());
+		
 		cruiser.shoot();
 		assertFalse(cruiser.isSunk());
+		
 		cruiser.shoot();
 		assertTrue(cruiser.isSunk());
 	}
@@ -92,14 +106,19 @@ public class ShipTest {
 	public void testAddPosition(){		
 		Ship ship = new Ship(ShipType.BATTLESHIP);
 		assertFalse(ship.isPlaced());
+		
 		ship.addPosition(new Field(0,0));
 		assertFalse(ship.isPlaced());
+		
 		ship.addPosition(new Field(0,0));
 		assertFalse(ship.isPlaced());
+		
 		ship.addPosition(new Field(0,0));
 		assertFalse(ship.isPlaced());
+		
 		ship.addPosition(new Field(0,0));
 		assertFalse(ship.isPlaced());
+		
 		ship.addPosition(new Field(0,0));
 		assertTrue(ship.isPlaced());
 	}
@@ -109,23 +128,30 @@ public class ShipTest {
 	public void testAddRemovePosition(){
 		Ship ship = new Ship(ShipType.BATTLESHIP);
 		assertFalse(ship.isPlaced());
+		
 		Field f1 = new Field(0,0);
 		ship.addPosition(f1);
 		assertFalse(ship.isPlaced());
+		
 		Field f2 = new Field(0,0);
 		ship.addPosition(f2);
 		assertFalse(ship.isPlaced());
+		
 		Field f3 = new Field(0,0);
 		ship.addPosition(f3);
 		assertFalse(ship.isPlaced());
+		
 		Field f4 = new Field(0,0);
 		ship.addPosition(f4);
 		assertFalse(ship.isPlaced());
+		
 		Field f5 = new Field(0,0);
 		ship.addPosition(f5);
 		assertTrue(ship.isPlaced());
+		
 		ship.removePosition(f5);
 		assertFalse(ship.isPlaced());
+		
 		ship.addPosition(f5);
 		assertTrue(ship.isPlaced());
 	}

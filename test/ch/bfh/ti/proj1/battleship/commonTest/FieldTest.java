@@ -66,12 +66,16 @@ public class FieldTest {
 		Field f2 = new Field(0, 0);
 		Ship ship = new Ship(ShipType.CRUISER);
 		assertFalse(ship.isPlaced());
+		
 		f1.placeShip(ship);
 		assertFalse(ship.isPlaced());
+		
 		f2.placeShip(ship);
 		assertTrue(ship.isPlaced());
+		
 		f1.removeShip();
 		assertFalse(ship.isPlaced());
+		
 		f2.removeShip();
 		assertFalse(ship.isPlaced());
 	}
@@ -83,13 +87,22 @@ public class FieldTest {
 		Ship ship = new Ship(ShipType.CRUISER);
 		List<Field> l = ship.getPositions();
 		assertFalse(l.contains(f1));
+		assertFalse(l.contains(f2));
+		
 		f1.placeShip(ship);
 		assertTrue(l.contains(f1));
+		assertFalse(l.contains(f2));
+		
 		f2.placeShip(ship);
+		assertTrue(l.contains(f1));
 		assertTrue(l.contains(f2));
+		
 		f1.removeShip();
 		assertFalse(l.contains(f1));
+		assertTrue(l.contains(f2));
+		
 		f2.removeShip();
+		assertFalse(l.contains(f2));
 		assertFalse(l.contains(f2));
 	}
 
