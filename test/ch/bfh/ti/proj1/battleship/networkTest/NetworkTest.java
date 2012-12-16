@@ -2,17 +2,34 @@ package ch.bfh.ti.proj1.battleship.networkTest;
 
 import static org.junit.Assert.*;
 import org.junit.Test;
-
 import ch.bfh.ti.proj1.battleship.game.Game;
 
 public class NetworkTest {
 
 	@Test
-	public void testHostGameLowestPort(){
+	public void testHostGame0Port(){
 		Game g1 = new Game();
 		g1.enterName("Player 1");
 		
 		g1.hostGame(0);
+		assertTrue(g1.getServer().isAvailable());
+	}
+	
+	@Test
+	public void testHostGame1023Port(){
+		Game g1 = new Game();
+		g1.enterName("Player 1");
+		
+		g1.hostGame(1023);
+		assertTrue(g1.getServer().isAvailable());
+	}
+	
+	@Test
+	public void testHostGameLowestPort(){
+		Game g1 = new Game();
+		g1.enterName("Player 1");
+		
+		g1.hostGame(1024);
 		assertTrue(g1.getServer().isAvailable());
 	}
 	
