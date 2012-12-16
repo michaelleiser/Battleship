@@ -35,7 +35,7 @@ public class Ship {
 	 * 			the type of the {@link Ship}
 	 */
 	public ShipType getShipType(){
-		return type;
+		return this.type;
 	}
 
 	/**
@@ -44,7 +44,7 @@ public class Ship {
 	 * 			the size of the {@link Ship}
 	 */
 	public int getSize() {
-		return type.getSize();
+		return this.type.getSize();
 	}
 
 	/**
@@ -60,9 +60,9 @@ public class Ship {
 	 * Shoots at the {@link Ship}. Counts the number of hits.
 	 */
 	public void shoot() {
-		++hits;
-		if(hits == getSize()){
-			sunk = true;
+		++this.hits;
+		if(this.hits == getSize()){
+			this.sunk = true;
 		}
 	}
 

@@ -11,13 +11,13 @@ import javax.swing.JButton;
  * @author Michael Leiser
  */
 public class Field extends JButton {
-
-	private static final long serialVersionUID = 3616779595167692632L;
 	
-	private Ship ship;
-	private boolean hit = false;
+	private static final long serialVersionUID = 1L;
+	
 	private int x;
 	private int y;
+	private boolean hit;
+	private Ship ship;
 	
 	/**
 	 * Constructor for the {@link Field} where {@code x} and {@code y} are the position of the field.
@@ -27,9 +27,10 @@ public class Field extends JButton {
 	 * 			the y-coordinate on the playing field
 	 */
 	public Field(int x, int y) {
-		this.setBackground(Color.white);
 		this.x = x;
 		this.y = y;
+		this.hit = false;
+		this.setBackground(Color.white);
 	}
 	
 	/**
@@ -38,18 +39,22 @@ public class Field extends JButton {
 	 * 				the {@link Ship} to place
 	 */
 	public void placeShip(Ship ship) {
-		this.ship = ship;
-		this.ship.addPosition(this);
-		this.setBackground(Color.black);
+		if(this.ship == null){
+			this.ship = ship;
+			this.ship.addPosition(this);
+			this.setBackground(Color.black);
+		}
 	}
 	
 	/**
 	 * Removes a {@link Ship} from this {@link Field}.
 	 */
 	public void removeShip(){
-		this.ship.removePosition(this);
-		this.ship = null;
-		this.setBackground(Color.white);
+		if(this.ship != null){
+			this.ship.removePosition(this);
+			this.ship = null;
+			this.setBackground(Color.white);
+		}
 	}
 
 	/**
@@ -76,7 +81,7 @@ public class Field extends JButton {
 	 * 			{@code true} if the {@link Field} is already hit
 	 */
 	public boolean isHit() {
-		return hit;
+		return this.hit;
 	}
 
 	/**
@@ -94,7 +99,7 @@ public class Field extends JButton {
 	 * 			the x-coordinate on the playing field
 	 */
 	public int getXPos(){
-		return x;
+		return this.x;
 	}
 
 	/**
@@ -103,7 +108,7 @@ public class Field extends JButton {
 	 * 			the y-coordinate on the playing field
 	 */
 	public int getYPos(){
-		return y;
+		return this.y;
 	}
 	
 }
