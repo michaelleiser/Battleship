@@ -10,7 +10,7 @@ import ch.bfh.ti.proj1.battleship.game.GameMode;
 
 public class GameTest {
 	
-	private Game g1;
+	private Game g1, g2;
 	
 	@Before
 	public void before(){
@@ -19,8 +19,35 @@ public class GameTest {
 		g1.hostGame(11111);
 		g1.setOptions(10, 10, 1, 1, 1, 1, GameMode.ALTERNATIVELY);
 		g1.showGameFrame();
+		
+		g2 = new Game();
+		g2.enterName("Player 2");
+		g2.joinGame(11111 , "localhost");
+		g2.setOptions(10, 10, 1, 1, 1, 1, GameMode.ALTERNATIVELY);
+		g2.showGameFrame();
 	}
 	
+	@Test
+	public void testSetOptions(){
+		assertTrue(g1.getNbrOfRows() == 10);
+		assertTrue(g1.getNbrOfColoumns() == 10);
+		assertTrue(g1.getNbrOfBattleships() == 1);
+		assertTrue(g1.getNbrOfSubmarines() == 1);
+		assertTrue(g1.getNbrOfDestroyers() == 1);
+		assertTrue(g1.getNbrOfCruisers() == 1);
+		assertTrue(g1.getGameMode().equals(GameMode.ALTERNATIVELY));
+		
+		g1.setOptions(20, 20, 2, 4, 6, 8, GameMode.UNTILWATER);
+		
+		assertTrue(g1.getNbrOfRows() == 20);
+		assertTrue(g1.getNbrOfColoumns() == 20);
+		assertTrue(g1.getNbrOfBattleships() == 2);
+		assertTrue(g1.getNbrOfSubmarines() == 4);
+		assertTrue(g1.getNbrOfDestroyers() == 6);
+		assertTrue(g1.getNbrOfCruisers() == 8);
+		assertTrue(g1.getGameMode().equals(GameMode.UNTILWATER));
+	}
+
 	@Test
 	public void testPlaceShips(){
 		assertFalse(g1.allShipsPlaced());
