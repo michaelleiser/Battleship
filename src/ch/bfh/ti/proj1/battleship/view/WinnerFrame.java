@@ -6,11 +6,9 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-
 import ch.bfh.ti.proj1.battleship.game.Game;
 
 /**
@@ -25,6 +23,11 @@ public class WinnerFrame extends JFrame {
 	
 	private Game game;
 
+	/**
+	 * Creates a new {@link JFrame} for the winner screen.
+	 * 
+	 * @param game
+	 */
 	public WinnerFrame(Game game) {
 		this.game = game;
 		
@@ -59,7 +62,7 @@ public class WinnerFrame extends JFrame {
 	}
 
 	/**
-	 * Restarts the game.
+	 * Restarts the {@link Game}.
 	 */
 	private void restartGame() {
 		this.game.restart();

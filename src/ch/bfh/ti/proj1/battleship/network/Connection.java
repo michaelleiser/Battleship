@@ -6,7 +6,7 @@ import java.io.PrintStream;
 import java.net.Socket;
 
 /**
- * A connection between a server and a client.
+ * A connection between a {@link Server} and a {@link Client}.
  * 
  * @author Daniel Kotlàris
  * @author Michael Leiser
@@ -19,7 +19,7 @@ class Connection extends Thread {
 	protected Server server;
 
 	/**
-	 * Constructor for a connection between a {@code server} and a {@code client}.
+	 * Constructor for a connection between a {@link Server} and a {@link Client}.
 	 * @param server
 	 * @param client
 	 */
@@ -57,7 +57,7 @@ class Connection extends Thread {
 	}
 	
 	/**
-	 * Returns the {@code client} of the connection between a server and a client.
+	 * Returns the {@link Client} of the connection between a {@link Server} and a {@link Client}.
 	 * @return
 	 * 			client
 	 */

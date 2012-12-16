@@ -1,12 +1,11 @@
 package ch.bfh.ti.proj1.battleship.common;
 
 import java.awt.Color;
-
 import javax.swing.JButton;
 
 /**
  * This is a field of the playing field.
- * It can contain a ship and the other player can shoot on it.
+ * It can contain a {@link Ship} and the other {@link Player} can shoot on it.
  * 
  * @author Daniel Kotlàris
  * @author Michael Leiser
@@ -21,7 +20,7 @@ public class Field extends JButton {
 	private int y;
 	
 	/**
-	 * Constructor for the field where {@code x} and {@code y} are the position of the field.
+	 * Constructor for the {@link Field} where {@code x} and {@code y} are the position of the field.
 	 * @param x
 	 * 			the x-coordinate on the playing field
 	 * @param y
@@ -34,9 +33,9 @@ public class Field extends JButton {
 	}
 	
 	/**
-	 * Places a {@code ship} onto this field.
+	 * Places a {@link Ship} onto this {@link Field}.
 	 * @param ship
-	 * 				the ship to place
+	 * 				the {@link Ship} to place
 	 */
 	public void placeShip(Ship ship) {
 		this.ship = ship;
@@ -45,7 +44,7 @@ public class Field extends JButton {
 	}
 	
 	/**
-	 * Removes a ship from this field.
+	 * Removes a {@link Ship} from this {@link Field}.
 	 */
 	public void removeShip(){
 		this.ship.removePosition(this);
@@ -54,7 +53,7 @@ public class Field extends JButton {
 	}
 
 	/**
-	 * Shoots at the ship that is placed on this field.
+	 * Shoots at the {@link Ship} that is placed on this {@link Field}.
 	 * Sets the hit flag to true.
 	 */
 	public void shoot() {
@@ -72,25 +71,25 @@ public class Field extends JButton {
 	}
 
 	/**
-	 * Returns the status of the field if it is already hit.
+	 * Returns the status of the {@link Field} if it is already hit.
 	 * @return
-	 * 			{@code true} if the field is already hit
+	 * 			{@code true} if the {@link Field} is already hit
 	 */
 	public boolean isHit() {
 		return hit;
 	}
 
 	/**
-	 * Returns the {@code ship} that is placed on this field.
+	 * Returns the {@link Ship} that is placed on this {@link Field}.
 	 * @return
-	 * 			the ship that is placed this field
+	 * 			the ship that is placed on this {@link Field}
 	 */
 	public Ship getShip() {
 		return this.ship;
 	}
 	
 	/**
-	 * Returns the {@code x}-coordinate of the field in the playingfield.
+	 * Returns the {@code x}-coordinate of the {@link Field} in the playingfield.
 	 * @return
 	 * 			the x-coordinate on the playing field
 	 */
@@ -99,7 +98,7 @@ public class Field extends JButton {
 	}
 
 	/**
-	 * Returns the {@code y}-position of the field in the playingfield.
+	 * Returns the {@code y}-position of the {@link Field} in the playingfield.
 	 * @return
 	 * 			the y-coordinate on the playing field
 	 */

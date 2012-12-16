@@ -18,9 +18,9 @@ public class Ship {
 	private List<Field> positions;	
 
 	/**
-	 * Constructor for a ship where type is the type of the ship.
+	 * Constructor for a {@link Ship} where type is the {@link ShipType}.
 	 * @param type
-	 * 				the type of the ship including a certain size
+	 * 				the type of the {@link Ship} including a certain size
 	 */
 	public Ship(ShipType type) {
 		this.type = type;
@@ -30,34 +30,34 @@ public class Ship {
 	}
 
 	/**
-	 * Returns the type of the ship.
+	 * Returns the {@link ShipType}.
 	 * @return
-	 * 			the type of the ship
+	 * 			the type of the {@link Ship}
 	 */
 	public ShipType getShipType(){
 		return type;
 	}
 
 	/**
-	 * Returns the size of the ship.
+	 * Returns the size of the {@link Ship}.
 	 * @return
-	 * 			the size of the ship
+	 * 			the size of the {@link Ship}
 	 */
 	public int getSize() {
 		return type.getSize();
 	}
 
 	/**
-	 * Returns the status whether the ship is placed or not.
+	 * Returns the status whether the {@link Ship} is placed or not.
 	 * @return
-	 * 			{@code true} if the ship is placed.
+	 * 			{@code true} if the {@link Ship} is placed.
 	 */
 	public boolean isPlaced() {
 		return this.getSize() == this.positions.size();
 	}
 
 	/**
-	 * Shoots at the ship. Counts the number of hits.
+	 * Shoots at the {@link Ship}. Counts the number of hits.
 	 */
 	public void shoot() {
 		++hits;
@@ -67,36 +67,36 @@ public class Ship {
 	}
 
 	/**
-	 * Returns the status if the ship is already sunk or not.
+	 * Returns the status if the {@link Ship} is already sunk or not.
 	 * @return
-	 * 			{@code true} if the ship is sunk
+	 * 			{@code true} if the {@link Ship} is sunk
 	 */
 	public boolean isSunk(){
 		return sunk;
 	}
 	
 	/**
-	 * Adds the position of the {@code field} to the ship.
+	 * Adds the position of the {@link Field} to the {@link Ship}.
 	 * @param field
-	 * 				the field to add
+	 * 				the {@link Field} to add
 	 */
 	public void addPosition(Field field) {
 		positions.add(field);
 	}
 	
 	/**
-	 * Removes the position of the {@code field} from the ship.
+	 * Removes the position of the {@link Field} from the {@link Ship}.
 	 * @param field
-	 * 				the field to remove
+	 * 				the {@link Field} to remove
 	 */
 	public void removePosition(Field field){
 		positions.remove(field);
 	}
 		
 	/**
-	 * Returns a {@code List} of positions, where the ship is placed on.
+	 * Returns a {@link List} of positions, where the {@link Ship} is placed on.
 	 * @return
-	 * 			List of positions
+	 * 			{@link List} of positions
 	 */
 	public List<Field> getPositions() {
 		return positions;

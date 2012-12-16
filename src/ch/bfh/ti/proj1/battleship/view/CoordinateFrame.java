@@ -86,7 +86,7 @@ public class CoordinateFrame extends JFrame{
 	public boolean firstCoordinate = true;
 	
 	/**
-	 * Creates a new JFrame for the coordination of the game settings.
+	 * Creates a new {@link JFrame} for the coordination of the game settings.
 	 * 
 	 * @param game
 	 */
@@ -701,7 +701,7 @@ public class CoordinateFrame extends JFrame{
 	}
 
 	/**
-	 * Sends the message in the jTextPaneYourMessage to the other player.
+	 * Sends the {@link Message} in the jTextPaneYourMessage to the other {@link Player}.
 	 * Displays the message in the chat field.
 	 */
 	private void jButtonSendActionPerformed() {
@@ -718,7 +718,7 @@ public class CoordinateFrame extends JFrame{
 	/**
 	 * Validate and coordinate settings. 
 	 * At first the entered options are checked for some constraints. 
-	 * If there are no mistakes the options are sent to the other player to do some changes or not.
+	 * If there are no mistakes the options are sent to the other {@link Player} to do some changes or not.
 	 */
 	private void jButtonValidateAndCoordinateActionPerformed() {
 		try {
@@ -769,7 +769,7 @@ public class CoordinateFrame extends JFrame{
 	/**
 	 * The number of rows and coloumns have to be between 10 and 20.
 	 * The number of each ship have to be between 1 and 20.
-	 * The ships must cover more than 10% and less than 30% of the number of fields.
+	 * The {@link Ship}s must cover more than 10% and less than 30% of the number of {@link Field}s.
 	 * @param nbrOfRows
 	 * @param nbrOfColoumns
 	 * @param nbrOfBattleships
@@ -829,7 +829,7 @@ public class CoordinateFrame extends JFrame{
 	}	
 
 	/**
-	 * Disable the components for the inactive player, so he cannot manipulate the game options.
+	 * Disable the components for the inactive {@link Player}, so he cannot manipulate the game options.
 	 */
 	public void disableComponents() {
 		jTextFieldNbrOfBattleship.setEnabled(false);
@@ -844,7 +844,7 @@ public class CoordinateFrame extends JFrame{
 	}
 	
 	/**
-	 * Enables the components for the active player, so he can manipulate the game options.
+	 * Enables the components for the active {@link Player}, so he can manipulate the game options.
 	 */
 	public void enableComponents() {
 		jTextFieldNbrOfBattleship.setEnabled(true);
@@ -904,9 +904,9 @@ public class CoordinateFrame extends JFrame{
 	}
 	
 	/**
-	 * Sends a close connection message to the other client.
-	 * Stops the connection.
-	 * Exits the game.
+	 * Sends a close connection {@link Message} to the other {@link Client}.
+	 * Stops the {@link Connection}.
+	 * Exits the {@link Game}.
 	 */
 	private void exit(){
 		this.game.getClient().sendMessage(Message.CLOSECONNECTION.toString());

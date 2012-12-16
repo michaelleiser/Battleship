@@ -61,7 +61,7 @@ public class Server implements Runnable {
 	}
 
 	/**
-	 * Sends the {@code message} to the other {@code client}.
+	 * Sends the {@link Message} to the other {@link Client}.
 	 * @param message
 	 * @param client
 	 */

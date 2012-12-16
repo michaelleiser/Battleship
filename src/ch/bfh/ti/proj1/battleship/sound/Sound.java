@@ -1,13 +1,13 @@
 package ch.bfh.ti.proj1.battleship.sound;
 
 import java.io.File;
-
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
+import ch.bfh.ti.proj1.battleship.common.Player;
 
 /**
- * The class Sound is responsible for playing background music
+ * The class sound is responsible for playing background music
  * and for the sounds during the game.
  * 
  * @author Daniel Kotlàris
@@ -25,12 +25,10 @@ public class Sound {
 	
 	/**
 	 * Plays the background sound form the start of the application until the
-	 * player start to play the official game.
+	 * {@link Player} start to play the official {@link Game}.
 	 * 
 	 * @param soundFile
 	 *            the file to play
-	 * @throws Exception
-	 *             if the file could not be read or anything else goes wrong
 	 */
 	public static void playGameSound(File soundFile) {
 		try {
@@ -39,7 +37,6 @@ public class Sound {
 			ais = AudioSystem.getAudioInputStream(soundFile);
 			gameSoundClip.open(ais);
 			gameSoundClip.start();
-			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -97,7 +94,7 @@ public class Sound {
 	
 	
 	/**
-	 * Plays the specific sounds during the game e.g. if a ship was hit.
+	 * Plays the specific sounds during the {@link Game} e.g. if a {@link Ship} was hit.
 	 * 
 	 * @param sound
 	 *            the sound to play
@@ -150,40 +147,40 @@ public class Sound {
 		}
 	}
 	
-	/**
-	 * Plays the background sound during the battle (waves etc.)
-	 * @param random
-	 * 				a random number specifying the sound to play
-	 */
-	public static void playBackgroundSound(int random) {		
-		File soundFile;
-		switch (random) {
-		case 0:
-			soundFile = new File("wav/background0.wav");
-			try {
-				playGameSound(soundFile);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			break;
-		case 1:
-			soundFile = new File("wav/background1.wav");
-			try {
-				playGameSound(soundFile);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			break;
-		case 2:
-			soundFile = new File("wav/background2.wav");
-			try {
-				playGameSound(soundFile);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			break;
-		default:
-			break;
-		}
-	}
+//	/**
+//	 * Plays the background sound during the battle (waves etc.)
+//	 * @param random
+//	 * 				a random number specifying the sound to play
+//	 */
+//	public static void playBackgroundSound(int random) {		
+//		File soundFile;
+//		switch (random) {
+//		case 0:
+//			soundFile = new File("wav/background0.wav");
+//			try {
+//				playGameSound(soundFile);
+//			} catch (Exception e) {
+//				e.printStackTrace();
+//			}
+//			break;
+//		case 1:
+//			soundFile = new File("wav/background1.wav");
+//			try {
+//				playGameSound(soundFile);
+//			} catch (Exception e) {
+//				e.printStackTrace();
+//			}
+//			break;
+//		case 2:
+//			soundFile = new File("wav/background2.wav");
+//			try {
+//				playGameSound(soundFile);
+//			} catch (Exception e) {
+//				e.printStackTrace();
+//			}
+//			break;
+//		default:
+//			break;
+//		}
+//	}
 }

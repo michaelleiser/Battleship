@@ -113,7 +113,7 @@ public class GameFrame extends JFrame {
 	private Field[][] enemyField;
 	
 	/**
-	 * Creates a new JFrame for the game.
+	 * Creates a new {@link JFrame} for the {@link Game}.
 	 * 
 	 * @param game
 	 */
@@ -1040,7 +1040,7 @@ public class GameFrame extends JFrame {
 	}
 
 	/**
-	 * Toggles between the ships to place.
+	 * Toggles between the {@link Ship}s to place.
 	 */
 	private void jRadioButtonNbrOfBattleshipActionPerformed() {
 		jRadioButtonNbrOfSubmarine.setSelected(false);
@@ -1050,7 +1050,7 @@ public class GameFrame extends JFrame {
 	}
 	
 	/**
-	 * Toggles between the ships to place.
+	 * Toggles between the {@link Ship}s to place.
 	 */
 	private void jRadioButtonNbrOfSubmarineActionPerformed() {
 		jRadioButtonNbrOfBattleship.setSelected(false);
@@ -1060,7 +1060,7 @@ public class GameFrame extends JFrame {
 	}
 
 	/**
-	 * Toggles between the ships to place.
+	 * Toggles between the {@link Ship}s to place.
 	 */
 	private void jRadioButtonNbrOfDestroyerActionPerformed() {
 		jRadioButtonNbrOfSubmarine.setSelected(false);
@@ -1070,7 +1070,7 @@ public class GameFrame extends JFrame {
 	}
 
 	/**
-	 * Toggles between the ships to place.
+	 * Toggles between the {@link Ship}s to place.
 	 */
 	private void jRadioButtonNbrOfCruiserActionPerformed() {
 		jRadioButtonNbrOfSubmarine.setSelected(false);
@@ -1080,7 +1080,7 @@ public class GameFrame extends JFrame {
 	}
 
 	/**
-	 * Sends the message to the opponent player and concatenates the messages in the chat jTextPane.
+	 * Sends the {@link Message} to the opponent {@link Player} and concatenates the messages in the chat jTextPane.
 	 */
 	private void jButtonSendActionPerformed() {
 		String name = game.getPlayer().getName();
@@ -1093,15 +1093,15 @@ public class GameFrame extends JFrame {
 	}
 
 	/**
-	 * Clears the message jTextPane when clicked on it.
+	 * Clears the {@link Message} jTextPane when clicked on it.
 	 */
 	private void jTextPaneYourMessageMouseClicked() {
 		jTextPaneYourMessage.setText(null);
 	}
 
 	/**
-	 * This method invokes the restart method of the Game.
-	 * This method also sends a message to the other player for restarting the game.
+	 * This method invokes the restart method of the {@link Game}.
+	 * This method also sends a {@link Message} to the other {@link Player} for restarting the {@link Game}.
 	 */
 	// @SuppressWarnings("deprecation")
 	private void jButtonRestartActionPerformed() {
@@ -1123,8 +1123,8 @@ public class GameFrame extends JFrame {
 	}
 
 	/**
-	 * When all ships are placed, this method invokes the ready method of the Game.
-	 * This method also removes the listeners from your playing field.
+	 * When all {@link Ship}s are placed, this method invokes the ready method of the {@link Game}.
+	 * This method also removes the {@link MouseListener}s from your playing field.
 	 */
 	private void jButtonReadyActionPerformed() {
 		if(game.allShipsPlaced()){
@@ -1144,7 +1144,7 @@ public class GameFrame extends JFrame {
 	}
 	
 	/**
-	 * Enables the components of the enemy playing field, so the player can shoot on it.
+	 * Enables the components of the enemy playing field, so the {@link Player} can shoot on it.
 	 */
 	public void enableComponents(){
 		for(int i = 0; i < game.getNbrOfRows(); i++){
@@ -1155,7 +1155,7 @@ public class GameFrame extends JFrame {
 	}
 	
 	/**
-	 * Disables the components of the enemy field, so the player cannot shoot on it.
+	 * Disables the components of the enemy field, so the {@link Player} cannot shoot on it.
 	 */
 	public void disableComponents(){
 		for(int i = 0; i < game.getNbrOfRows(); i++){
@@ -1166,7 +1166,7 @@ public class GameFrame extends JFrame {
 	}
 
 	/**
-	 * Returns a two dimensional array of your fields.
+	 * Returns a two dimensional array of your {@link Field}s.
 	 * @return
 	 * 			your fields
 	 */
@@ -1175,7 +1175,7 @@ public class GameFrame extends JFrame {
 	}
 	
 	/**
-	 * Returns a two dimensional array of the enemy fields.
+	 * Returns a two dimensional array of the enemy {@link Field}s.
 	 * @return
 	 * 			enemy fields
 	 */
@@ -1313,7 +1313,7 @@ public class GameFrame extends JFrame {
 	
 	
 	/**
-	 * Shows the active player in the history field.
+	 * Shows the active {@link Player} in the history field.
 	 */
 	public void showActivePlayer() {
 		concatjTextPaneHistory(">>> " + game.getPlayer().getName() + " <<<\n");
@@ -1321,9 +1321,9 @@ public class GameFrame extends JFrame {
 	}
 
 	/**
-	 * Sends a close connection message to the other client.
-	 * Stops the connection.
-	 * Exits the game.
+	 * Sends a close connection {@link Message} to the other {@link Client}.
+	 * Stops the {@link Connection}.
+	 * Exits the {@link Game}.
 	 */
 	private void exit(){
 		this.game.getClient().sendMessage(Message.CLOSECONNECTION.toString());

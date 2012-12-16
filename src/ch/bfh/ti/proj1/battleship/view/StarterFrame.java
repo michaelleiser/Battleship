@@ -6,11 +6,9 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-
 import ch.bfh.ti.proj1.battleship.game.Game;
 
 /**
@@ -23,6 +21,9 @@ public class StarterFrame extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * Creates a new {@link JFrame} for the start screen.
+	 */
 	public StarterFrame() {
 		
 		JLabel label = new JLabel();									// Add Image to the JFrame
@@ -56,7 +57,7 @@ public class StarterFrame extends JFrame {
 	}
 
 	/**
-	 * Starts a new game.
+	 * Starts a new {@link Game}.
 	 */
 	private void start() {
 		new Game();

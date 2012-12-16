@@ -11,7 +11,7 @@ public class Player {
 	private String name;
 	
 	/**
-	 * Constructor for a Player.
+	 * Constructor for a {@link Player}.
 	 * @param name
 	 * 			the Player's name
 	 */
@@ -20,7 +20,7 @@ public class Player {
 	}
 	
 	/**
-	 * Get Player's {@code name}.
+	 * Get {@link Player}'s {@code name}.
 	 * @return
 	 * 			the Player's name
 	 */
@@ -30,7 +30,7 @@ public class Player {
 
 
 	/**
-	 * Set Player's {@code name}.
+	 * Set @link Player}'s {@code name}.
 	 * @param name
 	 * 			the Player's name
 	 */

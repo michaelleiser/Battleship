@@ -61,7 +61,7 @@ public class Game {
 	private boolean yourTurn;
 	
 	/**
-	 * Constructor for creating a new game.
+	 * Constructor for creating a new {@link Game}.
 	 */
 	public Game(){
 		init();
@@ -81,7 +81,7 @@ public class Game {
 	}
 	
 	/**
-	 * Host a game. This method creates a server and listens on the specified {@code port} number.
+	 * Host a {@link Game}. This method creates a {@link Server} and listens on the specified {@code port} number.
 	 * @param port number
 	 */
 	public void hostGame(final int port) {
@@ -97,7 +97,7 @@ public class Game {
 	}
 
 	/**
-	 * Join a game. This method connects to the server with the {@code IP} address and {@code port} number.
+	 * Join a {@link Game}. This method creates a {@link Client} and connects to the {@link Server} with the {@code IP} address and {@code port} number.
 	 * @param port number
 	 * @param IP address
 	 */
@@ -116,7 +116,7 @@ public class Game {
 	}
 	
 	/**
-	 * Creates a new NetworkFrame and displays it.
+	 * Creates a new {@link NetworkFrame} and displays it.
 	 */
 	public void showNetworkFrame(){
 		try {
@@ -134,7 +134,7 @@ public class Game {
 	}
 
 	/**
-	 *  Creates a new CoordinateFrame and displays it.
+	 *  Creates a new {@link CoordinateFrame} and displays it.
 	 */
 	public void showCoordinateFrame() {
 		try {
@@ -153,7 +153,7 @@ public class Game {
 	}
 	
 	/**
-	 *  Creates a new GameFrame and displays it.
+	 *  Creates a new {@link GameFrame} and displays it.
 	 */
 	public void showGameFrame(){
 		try {
@@ -171,7 +171,7 @@ public class Game {
 	}
 
 	/**
-	 * Places a ship with the specified {@code type} either horizontally or vertically at the position {@code x} and {@code y}.
+	 * Places a {@link Ship} with the specified {@link ShipType} either horizontally or vertically at the position {@code x} and {@code y}.
 	 * @param type
 	 * @param x
 	 * @param y
@@ -249,14 +249,14 @@ public class Game {
 	}
 
 	/**
-	 * Checks if the {@code ship} can be placed at the {@code fields} with starting {@code x} and {@code y} position.
+	 * Checks if the {@link Ship} can be placed at the {@link field}s with starting {@code x} and {@code y} position.
 	 * @param fields of the playing field
 	 * @param ship to be placed
 	 * @param x coordinate
 	 * @param y coordinate
 	 * @param alignment horizontal or vertical
 	 * @return
-	 * 			{@code true} if the ship can be placed at this position
+	 * 			{@code true} if the {@link Ship} can be placed at this position
 	 */
 	public boolean checkConstraints(Field[][] fields, Ship ship, int x, int y, int alignment) {
 		if(alignment == 0){
@@ -300,7 +300,7 @@ public class Game {
 	}
 
 	/**
-	 * Removes the ship that is placed on the field with {@code x} and {@code y} position.
+	 * Removes the {@link Ship} that is placed on the {@link Field} with {@code x} and {@code y} position.
 	 * @param x coordinate
 	 * @param y coordinate
 	 */
@@ -334,7 +334,7 @@ public class Game {
 	}
 
 	/**
-	 * The active player shoots at the field with {@code x} and {@code y} position. 
+	 * The active {@link Player} shoots at the {@link Field} with {@code x} and {@code y} position. 
 	 * @param x coordinate
 	 * @param y coordinate
 	 */
@@ -344,7 +344,7 @@ public class Game {
 	}
 	
 	/**
-	 * The passive player checks the field with {@code x} and {@code y} position for a shoot in the water, hit a ship, sunk a ship and for wining the game. 
+	 * The passive {@link Player} checks the {@link Field} with {@code x} and {@code y} position for a shoot in the water, hit a {@link Ship}, sunk a {@link Ship} and for wining the game. 
 	 * @param x coordinate
 	 * @param y coordinate
 	 */
@@ -387,7 +387,7 @@ public class Game {
 	}
 
 	/**
-	 * Creat a new Player with the entered {@code name}.
+	 * Creat a new {@link Player} with the entered {@code name}.
 	 * @param name
 	 */
 	public void enterName(String name) {
@@ -395,7 +395,7 @@ public class Game {
 	}
 
 	/**
-	 * The active player has hit a ship at the field with {@code x} and {@code y} coordinate.
+	 * The active {@link Player} has hit a {@link Ship} at the {@link Field} with {@code x} and {@code y} coordinate.
 	 * @param x coordinate
 	 * @param y coordinate
 	 */
@@ -413,7 +413,7 @@ public class Game {
 	}
 
 	/**
-	 * The active player has hit the water at the field with {@code x} and {@code y} coordinate.
+	 * The active {@link Player} has hit the water at the {@link Field} with {@code x} and {@code y} coordinate.
 	 * @param x coordinate
 	 * @param y coordinate
 	 */
@@ -434,7 +434,7 @@ public class Game {
 	}
 
 	/**
-	 * The active player has sunk a ship at the field with {@code x} and {@code y} coordinate.
+	 * The active {@link Player} has sunk a {@link Ship} at the {@link Field} with {@code x} and {@code y} coordinate.
 	 * @param x coordinate
 	 * @param y coordinate
 	 */
@@ -453,7 +453,7 @@ public class Game {
 	}
 
 	/**
-	 * The active player has won the game. This method creates the winner frame.
+	 * The active {@link Player} has won the game. This method creates the {@link WinnerFrame}.
 	 */
 //	@SuppressWarnings("deprecation")
 	public void won() {
@@ -463,7 +463,7 @@ public class Game {
 	}
 	
 	/**
-	 * The passive player has lost the game. This method creates the loser frame.
+	 * The passive {@link Player} has lost the game. This method creates the {@link LoserFrame}.
 	 */
 //	@SuppressWarnings("deprecation")
 	public void lost(){
@@ -473,8 +473,8 @@ public class Game {
 	}
 	
 	/**
-	 * This method sets the player to the ready state. 
-	 * The first player who calls this method can later start with shooting in the game.
+	 * This method sets the {@link Player} to the ready state. 
+	 * The first {@link Player} who calls this method can later start with shooting in the game.
 	 */
 	public void ready() {
 		Sound.stopGameSound();
@@ -523,9 +523,9 @@ public class Game {
 	}
 
 	/**
-	 * Returns the status if all ships are placed or not.
+	 * Returns the status if all {@link Ship}s are placed or not.
 	 * @return
-	 * 			{@code true} if all ships are placed
+	 * 			{@code true} if all {@link Ship}s are placed
 	 */
 	public boolean allShipsPlaced() {
 		if((nbrOfBattleships == this.battleships.size()) &&
@@ -539,9 +539,9 @@ public class Game {
 	}
 	
 	/**
-	 * Returns the status if all ships are sunk or not.
+	 * Returns the status if all {@link Ship}s are sunk or not.
 	 * @return
-	 * 			{@code true} if all ships are sunk
+	 * 			{@code true} if all {@link Ship}s are sunk
 	 */
 	public boolean allShipsSunk(){
 		for(Ship s : battleships){
@@ -734,7 +734,7 @@ public class Game {
 
 	/**
 	 * @return
-	 * 			the player
+	 * 			the {@link Player}
 	 */
 	public Player getPlayer() {
 		return this.player;
@@ -742,7 +742,7 @@ public class Game {
 	
 	/**
 	 * @return
-	 * 			the server
+	 * 			the {@link Server}
 	 */
 	public Server getServer() {
 		return server;
@@ -750,7 +750,7 @@ public class Game {
 	
 	/**
 	 * @return
-	 * 			the client
+	 * 			the {@link Client}
 	 */
 	public Client getClient() {
 		return client;
@@ -758,7 +758,7 @@ public class Game {
 
 	/**
 	 * @return
-	 * 			the networkFrame
+	 * 			the {@link NetworkFrame}
 	 */
 	public NetworkFrame getNetworkFrame() {
 		return networkFrame;
@@ -766,7 +766,7 @@ public class Game {
 	
 	/**
 	 * @return
-	 * 			the coordinateFrame
+	 * 			the {@link CoordinateFrame}
 	 */
 	public CoordinateFrame getCoordinateFrame(){
 		return coordinateFrame;
@@ -774,7 +774,7 @@ public class Game {
 	
 	/**
 	 * @return
-	 * 			the gameFrame
+	 * 			the {@link GameFrame}
 	 */
 	public GameFrame getGameFrame(){
 		return gameFrame;
@@ -797,7 +797,7 @@ public class Game {
 	}
 
 	/**
-	 * Restarts a game.
+	 * Restarts a {@link Game}.
 	 */
 	// @SuppressWarnings("deprecation")
 	public void restart() {

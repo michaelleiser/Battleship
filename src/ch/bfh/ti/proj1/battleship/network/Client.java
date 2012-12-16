@@ -4,15 +4,13 @@ import java.io.DataInputStream;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.net.Socket;
-
 import javax.swing.JOptionPane;
-
 import ch.bfh.ti.proj1.battleship.game.Game;
 import ch.bfh.ti.proj1.battleship.game.GameMode;
 
 /**
- * The client is responsible to connect to the server.
- * It sends and receives messages from the other client
+ * The client is responsible to connect to the {@link Server}.
+ * It sends and receives {@link Message}s from the other client
  * and acts as the controller for the corresponding actions.
  * 
  * @author Michael Leiser
@@ -33,7 +31,7 @@ public class Client implements Runnable{
 	private boolean connected = false;
 	
 	/**
-	 * Constructor for a client that connects to a server with the {@code IP} address ("localhost", "127.0.0.1", ...) and the {@code port} number (1024 - 65535).
+	 * Constructor for a client that connects to a {@link Server} with the {@code IP} address ("localhost", "127.0.0.1", ...) and the {@code port} number (1024 - 65535).
 	 * @param port
 	 * @param IP
 	 */
@@ -44,7 +42,7 @@ public class Client implements Runnable{
 	}
 
 	/**
-	 * Creates the connection to the server and starts a new thread to listen for the incoming messages.
+	 * Creates the {@link Connection} to the {@link Server} and starts a new thread to listen for the incoming messages.
 	 */
 	public void start() {
 		try {
@@ -61,7 +59,7 @@ public class Client implements Runnable{
 	}
 
 	/**
-	 * Stops the connection to the server.
+	 * Stops the {@link Connection} to the {@link Server}.
 	 */
 	@SuppressWarnings("deprecation")
 	public void stop() {
@@ -182,7 +180,7 @@ public class Client implements Runnable{
 	
 	/**
 	 * @return
-	 * 			{@code true} if the client is connected to the server.
+	 * 			{@code true} if the client is connected to the {@link Server}.
 	 */
 	public boolean isConnected() {
 		if(socket != null){
@@ -195,7 +193,7 @@ public class Client implements Runnable{
 	}
 
 	/**
-	 * Tests the connection between the client and the server.
+	 * Tests the {@link Connection} between the {@link Client} and the {@link Server}.
 	 */
 	private void testConnection() {
 		game.getClient().sendMessage(Message.TESTCONNECTION.toString());	// Sends a test connection message to the server. The other client will then reply with a open connection message.
@@ -211,7 +209,7 @@ public class Client implements Runnable{
 	}
 
 	/**
-	 * Sets the {@code game} to the client.
+	 * Sets the {@link Game} to the {@link Client}.
 	 * @param game
 	 */
 	public void setGame(Game game) {
@@ -219,7 +217,7 @@ public class Client implements Runnable{
 	}
 
 	/**
-	 * Sends a {@code message} to the server.
+	 * Sends a {@link Message} to the {@link Server}.
 	 * @param message
 	 */
 	public void sendMessage(String message) {

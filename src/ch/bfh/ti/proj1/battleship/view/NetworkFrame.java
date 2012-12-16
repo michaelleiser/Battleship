@@ -8,7 +8,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.regex.Pattern;
-
 import javax.swing.BorderFactory;
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
@@ -20,7 +19,6 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle;
 import javax.swing.WindowConstants;
-
 import ch.bfh.ti.proj1.battleship.game.Game;
 
 /**
@@ -69,7 +67,7 @@ public class NetworkFrame extends JFrame {
 	private String IP = "localhost";
 
 	/**
-	 * Creates a new JFrame for the network establishment.
+	 * Creates a new {@link JFrame} for the network establishment.
 	 * 
 	 * @param game
 	 */
@@ -562,8 +560,8 @@ public class NetworkFrame extends JFrame {
 	}
 
 	/**
-	 * If host is selected then a new server is created that listens for an incoming connection on the specified port number.
-	 * If join is selected then a new client is created that tries to connect to server with the specified IP address and port number.
+	 * If host is selected then a new {@link Server} is created that listens for an incoming connection on the specified port number.
+	 * If join is selected then a new {@link Client} is created that tries to connect to {@link Server} with the specified IP address and port number.
 	 */
 	private void jButtonConnectActionPerformed() {
 		if (jRadioButtonHostGame.isSelected()) {
@@ -607,7 +605,7 @@ public class NetworkFrame extends JFrame {
 	}
 
 	/**
-	 * Validates the ipAddress. The ipAddress can either be "localhost" or in the format "x.x.x.x", where "x" is between 0 and 255.
+	 * Validates the IP Address. The IP Address can either be "localhost" or in the format "x.x.x.x", where "x" is between 0 and 255.
 	 * @param ipAddress
 	 * @return
 	 * 			{@code true} if the ipAddress is valid
@@ -630,7 +628,7 @@ public class NetworkFrame extends JFrame {
 	}
 
 	/**
-	 * Disables the components for the hosting player, so he cannot manipulate the specified connection options.
+	 * Disables the components for the hosting {@link Player}, so he cannot manipulate the specified connection options.
 	 */
 	public void disableComponents() {
 		jLabelStatus
@@ -644,14 +642,14 @@ public class NetworkFrame extends JFrame {
 
 	/**
 	 * @return
-	 * 			the player's name
+	 * 			the {@link Player}'s name
 	 */
 	public String getPlayerName() {
 		return jTextFieldPlayerName.getText();
 	}
 	
 	/**
-	 * Exits the game.
+	 * Exits the {@link Game}.
 	 */
 	private void exit() {
 		System.exit(0);
