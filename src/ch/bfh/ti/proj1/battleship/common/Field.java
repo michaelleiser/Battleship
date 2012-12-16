@@ -58,7 +58,9 @@ public class Field extends JButton {
 	 * Sets the hit flag to true.
 	 */
 	public void shoot() {
-		this.ship.shoot();
+		if(this.ship != null){
+			this.ship.shoot();
+		}
 		this.hit = true;
 	}
 
