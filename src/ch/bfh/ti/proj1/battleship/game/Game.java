@@ -400,8 +400,8 @@ public class Game {
 		f[y][x].setBackground(Color.orange);
 		gameFrame.incjLabelYouHits();
 		gameFrame.incjLabelYouShots();
-		gameFrame.concatjTextPaneHistory(player.getName() + " hits : " + (x+1) + " " + ((char)(y+65)) + "\n");
-		client.sendMessage(Message.GAME_HISTORY.toString() + " " + player.getName() + " hits : " + (x+1) + " " + ((char)(y+65)) + "\n");
+		gameFrame.concatjTextPaneHistory(player.getName() + " : hits a ship at : " + (x+1) + " " + ((char)(y+65)) + "\n");
+		client.sendMessage(Message.GAME_HISTORY.toString() + " " + player.getName() + " : hits a ship at : " + (x+1) + " " + ((char)(y+65)) + "\n");
 		Sound.playingSound(Sounds.HIT);
 		if(gameMode.equals(GameMode.ALTERNATIVELY)){
 			this.client.sendMessage(Message.GAME_ACTIVEPLAYER.toString());
@@ -418,8 +418,8 @@ public class Game {
 		f[y][x].setBackground(Color.blue);
 		gameFrame.incjLabelYouWater();
 		gameFrame.incjLabelYouShots();
-		gameFrame.concatjTextPaneHistory(player.getName() + " water : " + (x+1) + " " + ((char)(y+65)) + "\n");
-		client.sendMessage(Message.GAME_HISTORY.toString() + " " + player.getName() + " water : " + (x+1) + " " + ((char)(y+65)) + "\n");
+		gameFrame.concatjTextPaneHistory(player.getName() + " : hits the water at : " + (x+1) + " " + ((char)(y+65)) + "\n");
+		client.sendMessage(Message.GAME_HISTORY.toString() + " " + player.getName() + " : hits the water at : " + (x+1) + " " + ((char)(y+65)) + "\n");
 		Sound.playingSound(Sounds.WATER);
 		if(gameMode.equals(GameMode.UNTILWATER)){
 			this.client.sendMessage(Message.GAME_ACTIVEPLAYER.toString());
@@ -440,8 +440,8 @@ public class Game {
 		gameFrame.incjLabelYouHits();
 		gameFrame.incjLabelYouSunk();
 		gameFrame.incjLabelYouShots();
-		gameFrame.concatjTextPaneHistory(player.getName() + " sunk : " + (x+1) + " " + ((char)(y+65)) + "\n");
-		client.sendMessage(Message.GAME_HISTORY.toString() + " " + player.getName() + " sunk : " + (x+1) + " " + ((char)(y+65)) + "\n");
+		gameFrame.concatjTextPaneHistory(player.getName() + " : sinks a ship at : " + (x+1) + " " + ((char)(y+65)) + "\n");
+		client.sendMessage(Message.GAME_HISTORY.toString() + " " + player.getName() + " : sinks a ship at : " + (x+1) + " " + ((char)(y+65)) + "\n");
 		Sound.playingSound(Sounds.SUNK);
 		if(gameMode.equals(GameMode.ALTERNATIVELY)){
 			this.client.sendMessage(Message.GAME_ACTIVEPLAYER.toString());
@@ -477,12 +477,12 @@ public class Game {
 		if(canStart){
 			setYourTurn(true);
 			this.client.sendMessage(Message.GAME_START.toString());
-			this.gameFrame.concatjTextPaneHistory("... " + player.getName() + " ...\n");
-			this.client.sendMessage(Message.GAME_HISTORY.toString() + " " + "... " + player.getName() + " ...\n");
+			this.gameFrame.concatjTextPaneHistory(player.getName() + " : is ready\n");
+			this.client.sendMessage(Message.GAME_HISTORY.toString() + " " + player.getName() + " : is ready\n");
 		}
 		if(!canStart){
-			this.gameFrame.concatjTextPaneHistory("... " + player.getName() + " ...\n");
-			this.client.sendMessage(Message.GAME_HISTORY.toString() + " " + "... " + player.getName() + " ...\n");
+			this.gameFrame.concatjTextPaneHistory(player.getName() + " : is ready\n");
+			this.client.sendMessage(Message.GAME_HISTORY.toString() + " " + player.getName() + " : is ready\n");
 			this.client.sendMessage(Message.GAME_ENABLECOMPONENTS.toString());
 			this.client.sendMessage(Message.GAME_SOUND.toString());
 			this.getGameFrame().enableComponents();

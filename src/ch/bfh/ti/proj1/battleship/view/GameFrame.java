@@ -1316,8 +1316,8 @@ public class GameFrame extends JFrame {
 	 * Shows the active {@link Player} in the history field.
 	 */
 	public void showActivePlayer() {
-		concatjTextPaneHistory(">>> " + game.getPlayer().getName() + " <<<\n");
-		game.getClient().sendMessage(Message.GAME_HISTORY.toString() + " " + ">>> " + game.getPlayer().getName() + " <<<\n");
+		concatjTextPaneHistory("<<< " + game.getPlayer().getName() + " >>>\n");
+		game.getClient().sendMessage(Message.GAME_HISTORY.toString() + " " + "<<< " + game.getPlayer().getName() + " >>>\n");
 	}
 
 	/**
