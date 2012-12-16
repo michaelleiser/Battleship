@@ -196,7 +196,7 @@ public class Client implements Runnable{
 	 * Tests the {@link Connection} between the {@link Client} and the {@link Server}.
 	 */
 	private void testConnection() {
-		game.getClient().sendMessage(Message.TESTCONNECTION.toString());	// Sends a test connection message to the server. The other client will then reply with a open connection message.
+		sendMessage(Message.TESTCONNECTION.toString());	// Sends a test connection message to the server. The other client will then reply with a open connection message.
 		int i = 0;
 		while(!connected && (i < 20)){			// Waits for 5 seconds for an open connection message from the other client.
 			try {
