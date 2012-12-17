@@ -1,10 +1,13 @@
 package ch.bfh.ti.proj1.battleship.network;
 
+import java.awt.Color;
 import java.io.DataInputStream;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.net.Socket;
 import javax.swing.JOptionPane;
+
+import ch.bfh.ti.proj1.battleship.common.Field;
 import ch.bfh.ti.proj1.battleship.game.Game;
 import ch.bfh.ti.proj1.battleship.game.GameMode;
 
@@ -139,11 +142,11 @@ public class Client implements Runnable{
 						game.hit(Integer.parseInt(s[1]), Integer.parseInt(s[2]));
 					}
 					else if(line.startsWith(Message.GAME_WATER.toString())){
-						String[] s = line.split(" " );
+						String[] s = line.split(" ");
 						game.water(Integer.parseInt(s[1]), Integer.parseInt(s[2]));
 					}
 					else if(line.startsWith(Message.GAME_SUNK.toString())){
-						String[] s = line.split(" " );
+						String[] s = line.split(" ");
 						game.sunk(Integer.parseInt(s[1]), Integer.parseInt(s[2]));
 					}
 					else if(line.startsWith(Message.GAME_WON.toString())){
@@ -170,6 +173,11 @@ public class Client implements Runnable{
 					}
 					else if(line.startsWith(Message.GAME_ACTIVEPLAYER.toString())){
 						game.getGameFrame().showActivePlayer();
+					}
+					else if(line.startsWith(Message.GAME_SOLUTION.toString())){
+						String[] s = line.split(" ");
+						Field[][] f = game.getGameFrame().getEnemyField();
+						f[Integer.parseInt(s[2])][Integer.parseInt(s[1])].setBackground(Color.YELLOW);
 					}
 				}
 			}

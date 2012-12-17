@@ -450,14 +450,30 @@ public class Game {
 
 	/**
 	 * The active {@link Player} has won the game. This method creates the {@link WinnerFrame}.
+	 * It also sends the solution to the other player.
 	 */
 //	@SuppressWarnings("deprecation")
 	public void won() {
 //		getBgSoundThread().stop();
+		sendSolution();
 		new WinnerFrame(this);
 		Sound.playingSound(Sounds.WINNER);
 	}
 	
+	/**
+	 * This method checks the {@link Field}s, which are not hit be the other {@link Player} and sends these {@link Field}s to the other {@link Player}.
+	 */
+	private void sendSolution() {
+		Field[][] yourField = this.gameFrame.getYourField();
+		for(int i = 0 ; i < nbrOfColoumns ; i++){
+			for(int j = 0 ; j < nbrOfRows ; j++){
+				if(!yourField[i][j].isHit() && (yourField[i][j].getShip() != null)){
+					this.client.sendMessage(Message.GAME_SOLUTION.toString() + " " + j + " " + i);
+				}
+			}
+		}
+	}
+
 	/**
 	 * The passive {@link Player} has lost the game. This method creates the {@link LoserFrame}.
 	 */
