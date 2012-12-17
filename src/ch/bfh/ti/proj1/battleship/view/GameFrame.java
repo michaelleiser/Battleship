@@ -1039,8 +1039,8 @@ public class GameFrame extends JFrame {
 	 * Toggles between the horizontal and vertical alignment.
 	 */
 	private void jRadioButtonHorizontalActionPerformed() {
-		jRadioButtonVertical.setSelected(false);
 		jRadioButtonHorizontal.setSelected(true);
+		jRadioButtonVertical.setSelected(false);
 	}
 
 	/**
@@ -1055,10 +1055,10 @@ public class GameFrame extends JFrame {
 	 * Toggles between the {@link Ship}s to place.
 	 */
 	private void jRadioButtonNbrOfBattleshipActionPerformed() {
+		jRadioButtonNbrOfBattleship.setSelected(true);
 		jRadioButtonNbrOfSubmarine.setSelected(false);
 		jRadioButtonNbrOfDestroyer.setSelected(false);
 		jRadioButtonNbrOfCruiser.setSelected(false);
-		jRadioButtonNbrOfBattleship.setSelected(true);
 	}
 	
 	/**
@@ -1066,9 +1066,9 @@ public class GameFrame extends JFrame {
 	 */
 	private void jRadioButtonNbrOfSubmarineActionPerformed() {
 		jRadioButtonNbrOfBattleship.setSelected(false);
+		jRadioButtonNbrOfSubmarine.setSelected(true);
 		jRadioButtonNbrOfDestroyer.setSelected(false);
 		jRadioButtonNbrOfCruiser.setSelected(false);
-		jRadioButtonNbrOfSubmarine.setSelected(true);
 	}
 
 	/**
@@ -1077,8 +1077,8 @@ public class GameFrame extends JFrame {
 	private void jRadioButtonNbrOfDestroyerActionPerformed() {
 		jRadioButtonNbrOfSubmarine.setSelected(false);
 		jRadioButtonNbrOfBattleship.setSelected(false);
-		jRadioButtonNbrOfCruiser.setSelected(false);
 		jRadioButtonNbrOfDestroyer.setSelected(true);
+		jRadioButtonNbrOfCruiser.setSelected(false);
 	}
 
 	/**
