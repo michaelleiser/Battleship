@@ -631,8 +631,7 @@ public class NetworkFrame extends JFrame {
 	 * Disables the components for the hosting {@link Player}, so he cannot manipulate the specified connection options.
 	 */
 	public void disableComponents() {
-		jLabelStatus
-		.setText("Connecting...Please start application of second player if it is not started yet.");
+		jLabelStatus.setText("Connecting...Please start application of second player if it is not started yet.");
 		jTextFieldPlayerName.setEnabled(false);
 		jRadioButtonHostGame.setEnabled(false);
 		jRadioButtonJoinGame.setEnabled(false);

@@ -679,8 +679,8 @@ public class CoordinateFrame extends JFrame{
 	 * Toggle between shoot alternatively and shoot until water.
 	 */
 	private void jRadioButtonShootAlternativelyActionPerformed() {
-		jRadioButtonShootUntilWater.setSelected(false);
 		jRadioButtonShootAlternatively.setSelected(true);
+		jRadioButtonShootUntilWater.setSelected(false);
 		game.setGameMode(GameMode.ALTERNATIVELY);
 	}
 

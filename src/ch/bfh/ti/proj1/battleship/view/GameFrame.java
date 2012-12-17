@@ -540,9 +540,21 @@ public class GameFrame extends JFrame {
 						}
 						@Override
 						public void mouseEntered(MouseEvent e) {
+							if(game.isYourTurn()){
+								Field f = (Field) e.getSource();
+								if(!f.isHit()){
+									f.setBackground(Color.green);
+								}
+							}
 						}
 						@Override
 						public void mouseExited(MouseEvent e) {
+							if(game.isYourTurn()){
+								Field f = (Field) e.getSource();
+								if(!f.isHit()){
+									f.setBackground(Color.white);
+								}
+							}
 						}});
 					jPanelEnemyField.add(field2);
 				}
