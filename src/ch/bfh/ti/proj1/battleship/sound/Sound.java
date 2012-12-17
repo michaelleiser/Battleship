@@ -15,7 +15,7 @@ import ch.bfh.ti.proj1.battleship.common.Player;
  */
 public class Sound {
 	
-	private static Clip gameSoundClip;
+	private static Clip gameSoundClip, soundClip;
 //	private static Clip backGroundSoundClip;
 //	private static boolean bgSoundPlaying = true;
 	
@@ -24,8 +24,26 @@ public class Sound {
 	}
 	
 	/**
+	 * Plays the background sounds when a shoot hits the water, hits a ship, a ship is sunk, the winner and loser sound.
+	 * 
+	 * @param soundFile
+	 *            the file to play
+	 */
+	public static void playSound(File soundFile) {
+		try {
+			soundClip = AudioSystem.getClip();
+			AudioInputStream ais;
+			ais = AudioSystem.getAudioInputStream(soundFile);
+			soundClip.open(ais);
+			soundClip.start();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	/**
 	 * Plays the background sound form the start of the application until the
-	 * {@link Player} start to play the official {@link Game}.
+	 * end of the official {@link Game}.
 	 * 
 	 * @param soundFile
 	 *            the file to play
@@ -37,6 +55,7 @@ public class Sound {
 			ais = AudioSystem.getAudioInputStream(soundFile);
 			gameSoundClip.open(ais);
 			gameSoundClip.start();
+			gameSoundClip.loop(Clip.LOOP_CONTINUOUSLY);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -105,7 +124,7 @@ public class Sound {
 		case HIT:
 			soundFile = new File("wav/hit.wav");
 			try {
-				playGameSound(soundFile);
+				playSound(soundFile);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -113,7 +132,7 @@ public class Sound {
 		case SUNK:
 			soundFile = new File("wav/sunk.wav");
 			try {
-				playGameSound(soundFile);
+				playSound(soundFile);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -121,7 +140,7 @@ public class Sound {
 		case WATER:
 			soundFile = new File("wav/water.wav");
 			try {
-				playGameSound(soundFile);
+				playSound(soundFile);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -129,13 +148,21 @@ public class Sound {
 		case WINNER:
 			soundFile = new File("wav/win.wav");
 			try {
-				playGameSound(soundFile);
+				playSound(soundFile);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 			break;
 		case LOSER:
 			soundFile = new File("wav/lose.wav");
+			try {
+				playSound(soundFile);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			break;
+		case GAMESOUND_0:
+			soundFile = new File("wav/gamesound0.wav");
 			try {
 				playGameSound(soundFile);
 			} catch (Exception e) {

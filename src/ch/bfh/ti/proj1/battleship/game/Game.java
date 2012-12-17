@@ -145,7 +145,8 @@ public class Game {
 		}
 		coordinateFrame = new CoordinateFrame(this);
 		coordinateFrame.setVisible(true);
-		Sound.playGameSound(new File("wav/gamesound0.wav"));										// Start the game sound
+//		Sound.playGameSound(new File("wav/gamesound0.wav"));										// Start the game sound
+		Sound.playingSound(Sounds.GAMESOUND_0);
 	}
 	
 	/**
@@ -455,6 +456,7 @@ public class Game {
 //	@SuppressWarnings("deprecation")
 	public void won() {
 //		getBgSoundThread().stop();
+		Sound.stopGameSound();
 		sendSolution();
 		new WinnerFrame(this);
 		Sound.playingSound(Sounds.WINNER);
@@ -490,6 +492,7 @@ public class Game {
 //	@SuppressWarnings("deprecation")
 	public void lost(){
 //		getBgSoundThread().stop();
+		Sound.stopGameSound();
 		new LoserFrame(this);
 		Sound.playingSound(Sounds.LOSER);
 	}
@@ -499,7 +502,6 @@ public class Game {
 	 * The first {@link Player} who calls this method can later start with shooting in the game.
 	 */
 	public void ready() {
-		Sound.stopGameSound();
 		if(canStart){
 			setYourTurn(true);
 			this.client.sendMessage(Message.GAME_START.toString());
