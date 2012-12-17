@@ -177,7 +177,7 @@ public class Client implements Runnable{
 					else if(line.startsWith(Message.GAME_SOLUTION.toString())){
 						String[] s = line.split(" ");
 						Field[][] f = game.getGameFrame().getEnemyField();
-						f[Integer.parseInt(s[2])][Integer.parseInt(s[1])].setBackground(Color.YELLOW);
+						f[Integer.parseInt(s[2])][Integer.parseInt(s[1])].setBackground(Color.black);
 					}
 				}
 			}
