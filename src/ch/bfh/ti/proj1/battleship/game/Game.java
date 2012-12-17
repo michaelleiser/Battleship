@@ -465,15 +465,25 @@ public class Game {
 	 */
 	private void sendSolution() {
 		Field[][] yourField = this.gameFrame.getYourField();
-		for(int i = 0 ; i < nbrOfColoumns ; i++){
-			for(int j = 0 ; j < nbrOfRows ; j++){
-				if(!yourField[i][j].isHit() && (yourField[i][j].getShip() != null)){
-					this.client.sendMessage(Message.GAME_SOLUTION.toString() + " " + j + " " + i);
+		for(int y = 0 ; y < nbrOfColoumns ; y++){
+			for(int x = 0 ; x < nbrOfRows ; x++){
+				if(!yourField[y][x].isHit() && (yourField[y][x].getShip() != null)){
+					this.client.sendMessage(Message.GAME_SOLUTION.toString() + " " + x + " " + y);
 				}
 			}
 		}
 	}
 
+	/**
+	 * This method displays the {@link Ship}s which are not hit by the {@link Player}.
+	 * @param x coordinate of the {@link Field}
+	 * @param y coordinate of the {@link Field}
+	 */
+	public void showSolution(int x, int y) {
+		Field[][] f = this.gameFrame.getEnemyField();
+		f[y][x].setBackground(Color.black);
+	}
+	
 	/**
 	 * The passive {@link Player} has lost the game. This method creates the {@link LoserFrame}.
 	 */
