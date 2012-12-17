@@ -4,7 +4,6 @@ import java.io.File;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
-import ch.bfh.ti.proj1.battleship.common.Player;
 
 /**
  * The class sound is responsible for playing background music
