@@ -18,10 +18,7 @@ public class STARTER {
 
 /**
 *TODO Liste
-* - Klassen sauber strukturieren
-* - Sounds einbinden
-* 		- Background Musik bei beiden (synchronisiert)
-* 		- GameSound ab CoordinateFrame bis Spielstart => ab dann BackgroundSound bis Spiel fertig (Winner/Loser oder Restart)
+*
 * - Tests
 * - Dokumente anpassen (Design model, Domain model)
 * - Präsentation fertig machen
