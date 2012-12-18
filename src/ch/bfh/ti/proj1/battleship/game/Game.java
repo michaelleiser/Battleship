@@ -34,8 +34,6 @@ public class Game {
 	private CoordinateFrame coordinateFrame;
 	private GameFrame gameFrame;
 	private Player player;
-//	private Thread bgSoundThread;
-	private Thread gameSoundThread;
 	
 	// initialize standard values
 	private int nbrOfRows = 10;
@@ -144,8 +142,7 @@ public class Game {
 		}
 		coordinateFrame = new CoordinateFrame(this);
 		coordinateFrame.setVisible(true);
-//		Sound.playGameSound(new File("wav/gamesound0.wav"));										// Start the game sound
-		Sound.playingSound(Sounds.GAMESOUND_0);
+		Sound.playingSound(Sounds.GAMESOUND);		// Start the game sound
 	}
 	
 	/**
@@ -452,9 +449,7 @@ public class Game {
 	 * The active {@link Player} has won the game. This method creates the {@link WinnerFrame}.
 	 * It also sends the solution to the other player.
 	 */
-//	@SuppressWarnings("deprecation")
 	public void won() {
-//		getBgSoundThread().stop();
 		Sound.stopGameSound();
 		sendSolution();
 		new WinnerFrame(this);
@@ -488,9 +483,7 @@ public class Game {
 	/**
 	 * The passive {@link Player} has lost the game. This method creates the {@link LoserFrame}.
 	 */
-//	@SuppressWarnings("deprecation")
 	public void lost(){
-//		getBgSoundThread().stop();
 		Sound.stopGameSound();
 		new LoserFrame(this);
 		Sound.playingSound(Sounds.LOSER);
@@ -513,30 +506,9 @@ public class Game {
 			this.client.sendMessage(Message.GAME_ENABLECOMPONENTS.toString());
 			this.client.sendMessage(Message.GAME_SOUND.toString());
 			this.getGameFrame().enableComponents();
-			// Sound.playBackGroundSound();
 			this.client.sendMessage(Message.GAME_ACTIVEPLAYER.toString());
 		}
 	}
-	
-	/**
-	 * Returns a thread of the game sound.
-	 * @return
-	 * 			game sound thread
-	 */
-	public Thread getGameSoundThread() {
-		return gameSoundThread;
-	}
-
-	
-	
-//	/**
-//	 * Returns the background sound thread.
-//	 * @return
-//	 * 			background sound thread
-//	 */
-//	public Thread getBgSoundThread() {
-//		return bgSoundThread;
-//	}
 
 	/**
 	 * Sets the can start flag to false.
@@ -822,14 +794,12 @@ public class Game {
 	/**
 	 * Restarts a {@link Game}.
 	 */
-	// @SuppressWarnings("deprecation")
 	public void restart() {
+		Sound.playingSound(Sounds.WINNER);
 		this.gameFrame.dispose();
 		this.showCoordinateFrame();
 		this.coordinateFrame.disableComponents();
 		this.init();
-		// this.bgSoundThread.stop();
-		// Sound.stopBackgroundSound();
 	}
 
 }
