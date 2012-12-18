@@ -37,7 +37,9 @@ public class ConnectionTest {
 		assertTrue(g1.getNbrOfDestroyers() == 3);
 		assertTrue(g1.getNbrOfCruisers() == 4);
 		
-		g2.getClient().sendMessage(Message.COORDINATE_OPTIONS + " " + "20" + " " + "20" + " " + "2" + " " + "4" + " " + "6" + " " + "8" + " " + GameMode.ALTERNATIVELY);
+		g2.getClient().sendMessage(Message.COORDINATE_OPTIONS + " " +
+				"" + "20" + " " + "20" + " " + "2" + " " + "4" + "" +
+						"" + "6" + " " + "8" + " " + GameMode.ALTERNATIVELY);
 		
 		assertTrue(g1.getNbrOfRows() == 20);
 	}
