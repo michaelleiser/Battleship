@@ -19,6 +19,8 @@ public class STARTER {
 /**
 *TODO Liste
 *
+* - Bei spiel ende beim winner und looser frame, bei bild klick bei beiden wieder zu coordinate Frame wechseln.
+* 
 * - Tests
 * - Dokumente anpassen (Design model, Domain model)
 * - Präsentation fertig machen
